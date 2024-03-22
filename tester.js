@@ -1,6 +1,7 @@
 // data structure testing
 class classroom{
-    constructor(){
+    constructor(classid){
+        this.classid = classid; 
         this.time_slot_test={
             '08-09':{   //8-9
                 class_status:0,
@@ -45,6 +46,6 @@ class classroom{
         }    
     }
 }
-let a = new classroom(); // cr101
-a.time_slot_test["01-02"].class_status = 1
-console.log(a.time_slot_test["01-02"].class_status);
+let cr101 = new classroom(); // cr101
+cr101.time_slot_test["01-02"].class_status = 1
+console.log(cr101.time_slot_test["01-02"].class_status);
