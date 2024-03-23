@@ -47,5 +47,13 @@ class classroom{
     }
 }
 let cr101 = new classroom(); // cr101
+let cr102 = new classroom(); // cr101
+let cr103 = new classroom(); // cr101
+let cr104 = new classroom(); // cr101
+let cr105 = new classroom(); // cr101
+let cr106 = new classroom(); // cr101
+
+
+
 cr101.time_slot_test["01-02"].class_status = 1
 console.log(cr101.time_slot_test["01-02"].class_status);

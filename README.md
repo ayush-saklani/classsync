@@ -1,8 +1,8 @@
-# **Class-sync (beta-beta)**    <img src="media/logo.png" height="100" align="left"/>
+# **Class-sync (beta-beta)**    <img src="asset/image/logo.png" height="100" align="left"/>
 <!-- **Indoor mapping solution for University campus.**  -->
 ***(currently in concept and testing phase)***
  
-# **Coding Language and Tools Used**
+# **Coding Language and Tools Used and which will be used**
 <p align="left">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" height="60"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" height="60"/>
