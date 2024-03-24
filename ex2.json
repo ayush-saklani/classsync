@@ -1,0 +1,16 @@
+[
+    {
+        "class_id": "A101",
+        "teacher_ID": "21011352",
+        "day": "mon",
+        "slot": "01-02",
+        "slotdata":"Placement Class LT-202"
+    },
+    {
+        "class_id": "B202",
+        "teacher_ID": "21011352",
+        "day": "mon",
+        "slot": "02-03",
+        "slotdata":"Placement Class LT-202"
+    }
+] 

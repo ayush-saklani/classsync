@@ -1,6 +1,6 @@
 import json
 
-with open("./extractedOutput-page-1-table-1.json", "r") as file:
+with open("extractedOutput-page-1-table-1 test.json", "r") as file:
     data = json.load(file)
 
 # Create a dictionary to store the structured data
