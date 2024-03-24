@@ -17,8 +17,8 @@ function load_JSON(){
                 // Store the schedule in the map using class ID as the key
                 classSchedules[classId] = schedule;
             });
-            load_changes()
-            // save_JSON();
+            // load_changes()
+            save_JSON();
         }catch (error) {
             console.error("Error parsing JSON:", error);
         }
@@ -64,5 +64,5 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
         }
     });
 }
+
 load_JSON();
-save_JSON();
