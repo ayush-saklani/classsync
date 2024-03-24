@@ -1,5 +1,5 @@
 const fs = require('fs');
-let classData,tempdata,classSchedules,tempSchedules;
+let classData,classSchedules;
 function load_JSON(){
     fs.readFile('ex.json', 'utf8', (err, data) => {
         if (err) {
@@ -47,9 +47,7 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
             return;
         }
         try {
-            tempdata = JSON.parse(data);
-            // Create a map to store class schedules
-            tempSchedules = {};
+            let tempdata = JSON.parse(data);
             // Iterate through the class data
             tempdata.forEach(classObj => {
                 const classid = classObj.class_id;
