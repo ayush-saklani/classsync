@@ -1,0 +1,55 @@
+{
+    "type": "FeatureCollection",
+    "generator": "JOSM",
+    "features": [
+        {
+            "type": "Feature",
+            "properties": {
+                "indoor": "room",
+                "level": "0"
+            },
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        77.99923910126,
+                        30.27363959920
+                    ],
+                    [
+                        77.99929007891,
+                        30.27368474409
+                    ],
+                    [
+                        77.99936209846,
+                        30.27362352771
+                    ],
+                    [
+                        77.99931005126,
+                        30.27357665920
+                    ],
+                    [
+                        77.99923910126,
+                        30.27363959920
+                    ]
+                ]
+            }
+        },
+        {
+            "type": "Feature",
+            "properties": null,
+            "geometry": {
+                "type": "LineString",
+                "coordinates": [
+                    [
+                        77.99936209846,
+                        30.27362352771
+                    ],
+                    [
+                        77.99929007891,
+                        30.27368474409
+                    ]
+                ]
+            }
+        }
+    ]
+}
