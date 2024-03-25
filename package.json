@@ -1,0 +1,12 @@
+{
+  "name": "classsync",
+  "version": "1.0.0",
+  "description": "<!-- **Indoor mapping solution for University campus.**  -->\r ***(currently in concept and designing phase)***",
+  "main": "parsing_test_ex.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
