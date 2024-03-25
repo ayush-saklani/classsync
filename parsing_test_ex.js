@@ -17,7 +17,7 @@ function load_JSON(){
                 // Store the schedule in the map using class ID as the key
                 classSchedules[classId] = schedule;
             });
-            // load_changes()
+            load_changes()
             save_JSON();
         }catch (error) {
             console.error("Error parsing JSON:", error);
@@ -54,8 +54,11 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
                 const teacherid = classObj.teacher_ID;
                 const day = classObj.day;
                 const slot = classObj.slot;
+                const course = classObj.course;
+                const section = classObj.section;
+                const semester = classObj.semester;
                 const slotdata = classObj.slotdata;
-                classSchedules[classid][day][slot] = {"slotdata": slotdata, "teacher_ID": teacherid };
+                classSchedules[classid][day][slot] = { "course":course,"section":section,"semester":semester,"slotdata": slotdata, "teacher_ID": teacherid };
                 console.log("done ");
             }); 
             save_JSON();
