@@ -1,13 +1,13 @@
 const fs = require('fs');
-let classData,classSchedules;
+let classSchedules;
 function load_JSON(){
-    fs.readFile('ex.json', 'utf8', (err, data) => {
+    fs.readFile('scripts/ex.json', 'utf8', (err, data) => {
         if (err) {
             console.error("Error reading file:", err);
             return;
         }
         try {
-            classData = JSON.parse(data);
+            let classData = JSON.parse(data);
             // Create a map to store class schedules
             classSchedules = {};
             // Iterate through the class data
@@ -17,8 +17,9 @@ function load_JSON(){
                 // Store the schedule in the map using class ID as the key
                 classSchedules[classId] = schedule;
             });
-            load_changes()
-            save_JSON();
+            // load_changes()
+            // save_JSON();
+            fetching_timetable();
         }catch (error) {
             console.error("Error parsing JSON:", error);
         }
@@ -31,7 +32,7 @@ function save_JSON(){
     }
     const reconstructedJson = JSON.stringify(reconstructedClassData, null, 2);
     // console.log("Reconstructed JSON:", reconstructedJson);
-    fs.writeFile('reconstructed_ex.json', reconstructedJson, 'utf8', err => {
+    fs.writeFile('scripts/reconstructed_ex.json', reconstructedJson, 'utf8', err => {
         if (err) {
             console.error("Error writing file:", err);
             return;
@@ -41,7 +42,7 @@ function save_JSON(){
     });
 }
 function load_changes(){ // load data from ex2.json and save it to ex.json
-    fs.readFile('ex2.json', 'utf8', (err, data) => {
+    fs.readFile('scripts/ex2.json', 'utf8', (err, data) => {
         if (err) {
             console.error("Error reading file:", err);
             return;
@@ -66,6 +67,25 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
             console.error("Error parsing JSON:", error);
         }
     });
+}
+function fetching_timetable(){
+    for (const classid in classSchedules) {
+        if (classSchedules.hasOwnProperty(classid)) {
+            const local_schedule = classSchedules[classid];
+            for (const day in local_schedule) {
+                if (local_schedule.hasOwnProperty(day)) {
+                    const slots = local_schedule[day];
+                    for (const slot in slots) {
+                        if (slots.hasOwnProperty(slot)) {
+                            //if in this stage section semester and course matches
+                            // add it to json that will be returned to front end
+                            console.log(slots[slot]);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 load_JSON();
