@@ -4,9 +4,9 @@
         "teacher_ID": 21011352,
         "day": "mon",
         "slot": "01-02",
-        "course":"xyz",
-        "section":"a",
-        "semester":0,
+        "course":"BTechcse",
+        "section":"z",
+        "semester":6,
         "slotdata":"Placement Class LT-202"
     },
     {
@@ -14,9 +14,9 @@
         "teacher_ID": 21011352,
         "day": "mon",
         "slot": "02-03",
-        "course":"xyz",
-        "section":"a",
-        "semester":0,
+        "course":"BTechcse",
+        "section":"z",
+        "semester":6,
         "slotdata":"Placement Class LT-202"
     }
 ] 
