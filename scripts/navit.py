@@ -169,13 +169,15 @@ html_code = """
                     </optgroup>
 """
 
-soup = BeautifulSoup(html_code, 'html.parser')
+soup = BeautifulSoup(html_code, "html.parser")
 
 result = {}
 
-for optgroup in soup.find_all('optgroup'):
-    label = optgroup['label']
-    for option in optgroup.find_all('option'):
-        result[option['value']] = option.text.strip()
+for optgroup in soup.find_all("optgroup"):
+    label = optgroup["label"]
+    for option in optgroup.find_all("option"):
+        result[option.text.strip()] = option["value"]
 
-print(result)
+result = "class_to_id = " + str(result)
+with open("class_to_id_dict.py", "w") as file:
+    file.write(result)
