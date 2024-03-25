@@ -1,0 +1,80 @@
+[
+    {
+        "class_id": "4036",
+        "day": "mon",
+        "slot": "8.00-8.55",
+        "slotdata": "Elective   Cyber-security"
+    },
+    {
+        "class_id": "4036",
+        "day": "mon",
+        "slot": "11.05-12.00",
+        "slotdata": "Placement Class  LT-202"
+    },
+    {
+        "class_id": "4036",
+        "day": "mon",
+        "slot": "12.55-1.50",
+        "slotdata": "XCS 601  AS  LT-301"
+    },
+    {
+        "class_id": "4036",
+        "day": "mon",
+        "slot": "4.10-5.05",
+        "slotdata": "Elective   G. A.I.  LT-201"
+    },
+    {
+        "class_id": "4036",
+        "day": "tue",
+        "slot": "8.00-8.55",
+        "slotdata": "TCS  693  LT 201"
+    },
+    {
+        "class_id": "4036",
+        "day": "tue",
+        "slot": "8.55-9.50",
+        "slotdata": "XCS  601  PA  LT 302"
+    },
+    {
+        "class_id": "4036",
+        "day": "tue",
+        "slot": "10.10-11.05",
+        "slotdata": "TCS 604  LT 302"
+    },
+    {
+        "class_id": "4036",
+        "day": "tue",
+        "slot": "2.10-3.05",
+        "slotdata": "Elective   Devops (CR- 204) / A.I.  LAB (UL-I)"
+    },
+    {
+        "class_id": "4036",
+        "day": "wed",
+        "slot": "8.00-8.55",
+        "slotdata": "TCS  693  LT 201"
+    },
+    {
+        "class_id": "4036",
+        "day": "wed",
+        "slot": "11.05-12.00",
+        "slotdata": "Placement Class  LT-202"
+    },
+    {
+        "class_id": "4036",
+        "day": "thu",
+        "slot": "8.55-9.50",
+        "slotdata": "TCS  693  LT 301"
+    },
+    {
+        "class_id": "4036",
+        "day": "thu",
+        "slot": "10.10-11.05",
+        "slotdata": "TCS 604  LT 302"
+    },
+    {
+        "class_id": "4036",
+        "day": "fri",
+        "slot": "10.10-11.05",
+        "slotdata": "TCS 604  LT 302"
+    }
+]

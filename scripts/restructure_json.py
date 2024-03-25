@@ -1,6 +1,8 @@
 import json
 
-with open("./extractedOutput-page-1-table-1.json", "r") as file:
+from class_to_id_dict import class_to_id
+
+with open("./input_table1.json", "r") as file:
     data = json.load(file)
 
 # Create a dictionary to store the structured data
@@ -15,10 +17,11 @@ for day_data in data[1:]:
     day = day_data["0"]
     day_data = dict(list(day_data.items())[1:])
     for hour, subject in zip(hours, day_data.values()):
+        print(subject.split(" ")[-1])
         if subject.strip():  # Ignore empty cells
             structured_data.append(
                 {
-                    # "class_id": ,
+                    "class_id": class_to_id["CR504"],
                     "day": day.lower(),
                     "slot": hours[hour].strip().replace("\n", ""),
                     "slotdata": subject.strip().replace(

@@ -1,6 +1,6 @@
 import camelot
 
-tables = camelot.read_pdf(pages='all',filepath='alltimetable.pdf')
-tables.export('output.json', f='json',compress=True)
-# tables.to_json('foo.json')
+tables = camelot.read_pdf(filepath="../asset/docs/alltimetable.pdf")
+tables.export("output.json", f="json")
+# tables.to_json("foo.json")
 print(tables)
