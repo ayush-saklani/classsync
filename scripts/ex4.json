@@ -1,7 +1,7 @@
 {
-  "course": "xyz",
+  "course": "",
   "semester": 0,
-  "section": "a",
+  "section": "",
   "schedule": {
     "mon": {
       "08-09": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
