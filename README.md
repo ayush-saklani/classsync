@@ -22,6 +22,7 @@
 * **`ex.json`** data structure  
 * **`ex2.json`** conceptual updates structure
 * **`ex3.json`** testing data structure
+* **`ex4.json`** DS for front end section wise fetching 
 * **`restructure_json.py`** **`py`**
 * **`ttpdf_to_data.py`** **`py`**
 * **`reconstructed_ex.json`** testing data structure
