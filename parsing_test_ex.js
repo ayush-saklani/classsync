@@ -19,7 +19,7 @@ function load_JSON(){
             });
             // load_changes()
             // save_JSON();
-            fetching_timetable();
+            fetching_timetable("btech",6,"a");
         }catch (error) {
             console.error("Error parsing JSON:", error);
         }
@@ -68,7 +68,7 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
         }
     });
 }
-function fetching_timetable(){
+function fetching_timetable(qcourse,qsemester,qsection){
     for (const classid in classSchedules) {
         if (classSchedules.hasOwnProperty(classid)) {
             const local_schedule = classSchedules[classid];
@@ -77,9 +77,9 @@ function fetching_timetable(){
                     const slots = local_schedule[day];
                     for (const slot in slots) {
                         if (slots.hasOwnProperty(slot)) {
-                            //if in this stage section semester and course matches
-                            // add it to json that will be returned to front end
-                            console.log(slots[slot]);
+                            if(slots[slot].course == qcourse && slots[slot].semester == qsemester && slots[slot].section == qsection){
+                                console.log(slot);
+                            }
                         }
                     }
                 }
