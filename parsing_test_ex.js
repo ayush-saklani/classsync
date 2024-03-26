@@ -69,6 +69,21 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
     });
 }
 function fetching_timetable(qcourse,qsemester,qsection){
+    let qresp;
+    fs.readFileSync("scripts/ex4.json",'utf-8',(err, data) => {
+        if(err){
+            console.error("Error reading file:", err);
+            return;
+        }
+        qresp = JSON.parse(data);
+        qresp.course = qcourse;
+        qresp.section = qsection;
+        qresp.semester = qsemester;
+        // console.log("===============================================");
+        // console.log(qresp);
+        // console.log("===============================================");
+    });
+    
     for (const classid in classSchedules) {
         if (classSchedules.hasOwnProperty(classid)) {
             const local_schedule = classSchedules[classid];
@@ -78,7 +93,9 @@ function fetching_timetable(qcourse,qsemester,qsection){
                     for (const slot in slots) {
                         if (slots.hasOwnProperty(slot)) {
                             if(slots[slot].course == qcourse && slots[slot].semester == qsemester && slots[slot].section == qsection){
-                                console.log(slot);
+                                // qresp.schedule.day.slot = {"class_id": classid, "slotdata": slots[slot].slotdata, "teacher_ID": slots[slot].teacher_ID}
+                                // async function problem
+                                console.log({"class_id": classid, "slotdata": slots[slot].slotdata, "teacher_ID": slots[slot].teacher_ID});
                             }
                         }
                     }
