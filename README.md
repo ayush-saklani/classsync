@@ -23,13 +23,13 @@
 * **`ex2.json`** conceptual updates structure
 * **`ex3.json`** testing data structure
 * **`ex4.json`** DS for front end section wise fetching 
-* **`restructure_json.py`** **`py`**
-* **`ttpdf_to_data.py`** **`py`**
+* **`restructure_json.py`** script to convert raw time table data to structured format
+* **`ttpdf_to_data.py`** script to extract raw time table data 
 * **`reconstructed_ex.json`** testing data structure
 * **`tester.js`**  server.js testing
 * **`testjsonparsing.js`**  another function testing JS file
 * **`New Microsoft Excel Worksheet.xlsx`** stored class ID
-* **`class_id_dict.txt`** stored class ID
+* **`class_id_dict.py`** stored class ID
 * **`README.md`** README.md
 
 <!--  -->

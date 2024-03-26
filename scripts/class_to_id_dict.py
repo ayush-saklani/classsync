@@ -1,7 +1,7 @@
 class_to_id = {
-    "Ubuntu lab 1": "1",
-    "Ubuntu lab 2": "3",
-    "Bosch Lab": "33",
+    "ULI": "1",  # renamed
+    "ULII": "3",  # renamed
+    "Bosch lab": "33",  # renamed
     "Mac lab": "6",
     "Reception": "15",
     "Main Office": "25",
@@ -12,8 +12,8 @@ class_to_id = {
     "Open Auditorium": "54",
     "Staff room G1": "57",
     "Staff room G2": "56",
-    "Lab 1": "69",
-    "Lab 9": "101",
+    "LAB1": "69",  # renamed
+    "LAB9": "101",  # renamed
     "Teacher office(Teacher name)": "73",
     "CR102": "75",
     "CR103": "71",
@@ -64,7 +64,7 @@ class_to_id = {
     "Dr Mahesh Manchanda": "2052",
     "Staff room 31": "2057",
     "Staff room 32": "2056",
-    "Lab 3": "2069",
+    "LAB3": "2069",  # renamed
     "Lab 7": "2101",
     "Pharmaceutical Analysis Lab": "2075",
     "Pharmaceutical chemistry I Lab": "2071",
@@ -136,4 +136,3 @@ class_to_id = {
     "Cafeteria": "6085",
     "Parking": "6177",
 }
-
