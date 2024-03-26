@@ -3,8 +3,8 @@
     "class_id": "A101",
     "schedule": {
       "mon": {
-        "08-09": { "course":"xyz","section":"a","semester":0,"slotdata":"abc","teacher_ID":0  },
-        "09-10": { "course":"xyz","section":"a","semester":0,"slotdata":"abc","teacher_ID":0  },
+        "08-09": { "course":"btech","section":"a","semester":6,"slotdata":"placement class","teacher_ID":2101132  },
+        "09-10": { "course":"btech","section":"a","semester":6,"slotdata":"placement class","teacher_ID":2101132  },
         "10-11": { "course":"xyz","section":"a","semester":0,"slotdata":"abc","teacher_ID":0  },
         "11-12": { "course":"xyz","section":"a","semester":0,"slotdata":"abc","teacher_ID":0  },
         "12-01": { "course":"xyz","section":"a","semester":0,"slotdata":"abc","teacher_ID":0  },
