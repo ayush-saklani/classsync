@@ -6,13 +6,12 @@
 .text{
     color: rgb(36, 36, 36);
     font-family:"Montserrat", sans-serif;
-    font-weight: bold;
 }
 .labelmaker{
     align-items: center;
     padding: 2px;
     text-align: center;
-    font-family:"anta";
+    font-family:"Montserrat", sans-serif;
     font-size:large;
     margin: 4px ;
     margin-top:   auto;
