@@ -69,20 +69,14 @@ function load_changes(){ // load data from ex2.json and save it to ex.json
     });
 }
 function fetching_timetable(qcourse,qsemester,qsection){
-    let qresp;
-    fs.readFileSync("scripts/ex4.json",'utf-8',(err, data) => {
-        if(err){
-            console.error("Error reading file:", err);
-            return;
-        }
-        qresp = JSON.parse(data);
-        qresp.course = qcourse;
-        qresp.section = qsection;
-        qresp.semester = qsemester;
-        // console.log("===============================================");
-        // console.log(qresp);
-        // console.log("===============================================");
-    });
+    let data = fs.readFileSync("scripts/ex4.json",'utf-8');
+    let qresp = JSON.parse(data);
+    qresp.course = qcourse;
+    qresp.section = qsection;
+    qresp.semester = qsemester;
+    console.log("===============================================parsing done");
+    // console.log(qresp);
+    console.log("===============================================parsing done");
     
     for (const classid in classSchedules) {
         if (classSchedules.hasOwnProperty(classid)) {
@@ -93,9 +87,7 @@ function fetching_timetable(qcourse,qsemester,qsection){
                     for (const slot in slots) {
                         if (slots.hasOwnProperty(slot)) {
                             if(slots[slot].course == qcourse && slots[slot].semester == qsemester && slots[slot].section == qsection){
-                                // qresp.schedule.day.slot = {"class_id": classid, "slotdata": slots[slot].slotdata, "teacher_ID": slots[slot].teacher_ID}
-                                // async function problem
-                                console.log({"class_id": classid, "slotdata": slots[slot].slotdata, "teacher_ID": slots[slot].teacher_ID});
+                                qresp.schedule[day][slot] = {"class_id": classid, "slotdata": slots[slot].slotdata, "teacher_ID": slots[slot].teacher_ID}
                             }
                         }
                     }
@@ -103,6 +95,15 @@ function fetching_timetable(qcourse,qsemester,qsection){
             }
         }
     }
+    const reconstructedJson = JSON.stringify(qresp, null, 2);
+    fs.writeFile('scripts/res_ex4.json', reconstructedJson, 'utf8', err => {
+        if (err) {
+            console.error("Error writing file:", err);
+            return;
+        } else {
+            console.log("File saved.");
+        }
+    });
 }
 
 load_JSON();
