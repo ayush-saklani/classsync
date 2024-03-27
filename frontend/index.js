@@ -76,16 +76,16 @@ let temp_obj = {
         "05-06": { "class_id": "lt204", "slotdata": "sat", "teacher_ID": 0 }
       },
       "sun": {
-        "08-09": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "09-10": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "10-11": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "11-12": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "12-01": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "01-02": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "02-03": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "03-04": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "04-05": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 },
-        "05-06": { "class_id": "lt204", "slotdata": "sun", "teacher_ID": 0 }
+        "08-09": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "09-10": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "10-11": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "11-12": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "12-01": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "01-02": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "02-03": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "03-04": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "04-05": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
+        "05-06": { "class_id": "", "slotdata": "", "teacher_ID": 0 }
       }
     }
   }
@@ -97,10 +97,10 @@ document.getElementById('letmesee').addEventListener('click',()=>{
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
             document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata
             if(!document.getElementById("mytable").rows[i].cells[j].innerHTML){
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-success");
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-success text-white");
             }
             else{
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger");
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white"); 
             }
         }
     }
