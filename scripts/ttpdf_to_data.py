@@ -46,18 +46,28 @@ def extract_course_info(pdf_path):
 
 
 source_pdf_path = "../asset/docs/timetable project.pdf"
+output_data = {"courses": {}}
 course_details = extract_course_info(source_pdf_path)
 
 tables = camelot.read_pdf(filepath=source_pdf_path)
 
-timetable = {"timetable": tables[0].data}
-facultytable = {"facultytable": tables[1].data}
+schedule = {"timetable": tables[0].data, "facultytable": tables[1].data}
 
-output_data = []
 
-output_data.append(course_details)
-output_data.append(timetable)
-output_data.append(facultytable)
+output_data["courses"][course_details["course_name"]] = {
+    course_details["semester"]: {course_details["section"]: schedule},
+}
+
+# output strucutre:-
+#     courses : {
+#         course_name: {
+#             semester:{
+#                     section:{
+#                         timetable(list),facultytable(list)
+#             }
+#         }
+#     }
+# }
 
 with open("raw_output.json", "w") as output_file:
     json.dump(output_data, output_file, indent=4)

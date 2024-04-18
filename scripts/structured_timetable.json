@@ -1,232 +1,158 @@
-[
-    {
-        "room_id": "1031",
-        "Teacher_Name": "MR AKSHAY RAJPUT",
-        "day": "mon",
-        "slot": "11.05-12.00",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "Placement Class  LT202"
-    },
-    {
-        "room_id": "1031",
-        "Teacher_Name": "MR AKSHAY RAJPUT",
-        "day": "mon",
-        "slot": "12.00-12.55",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "Placement Class  LT202"
-    },
-    {
-        "room_id": "2041",
-        "Teacher_Name": "MR PA ANAND / MR \nABHISEKH SHARMA",
-        "day": "mon",
-        "slot": "12.55-1.50",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "XCS601  LT301"
-    },
-    {
-        "room_id": "2031",
-        "Teacher_Name": "MR PA ANAND / MR \nABHISEKH SHARMA",
-        "day": "mon",
-        "slot": "3.05-4.00",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "XCS601  LT302"
-    },
-    {
-        "room_id": "1041",
-        "Teacher_Name": "MR AMRISH",
-        "day": "mon",
-        "slot": "4.10-5.05",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS692  LT201"
-    },
-    {
-        "room_id": "1041",
-        "Teacher_Name": "MR AMRISH",
-        "day": "mon",
-        "slot": "5.05-6.00",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS692  LT201"
-    },
-    {
-        "room_id": "1041",
-        "Teacher_Name": "MR PIYUSH",
-        "day": "tue",
-        "slot": "8.00-8.55",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS693  LT201"
-    },
-    {
-        "room_id": "2031",
-        "Teacher_Name": "HON\u2019BLE VC SIR",
-        "day": "tue",
-        "slot": "8.55-9.50",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS604  LT302"
-    },
-    {
-        "room_id": "2031",
-        "Teacher_Name": "HON\u2019BLE VC SIR",
-        "day": "tue",
-        "slot": "10.10-11.05",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS604  LT302"
-    },
-    {
-        "room_id": "1",
-        "Teacher_Name": "MR AMRISH",
-        "day": "tue",
-        "slot": "2.10-3.05",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "A.I.LAB  ULI"
-    },
-    {
-        "room_id": "1",
-        "Teacher_Name": "MR AMRISH",
-        "day": "tue",
-        "slot": "3.05-4.00",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "A.I.LAB  ULI"
-    },
-    {
-        "room_id": "1041",
-        "Teacher_Name": "MR PIYUSH",
-        "day": "wed",
-        "slot": "8.00-8.55",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS693  LT201"
-    },
-    {
-        "room_id": "1031",
-        "Teacher_Name": "MR AKSHAY RAJPUT",
-        "day": "wed",
-        "slot": "11.05-12.00",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "Placement Class  LT202"
-    },
-    {
-        "room_id": "1031",
-        "Teacher_Name": "MR AKSHAY RAJPUT",
-        "day": "wed",
-        "slot": "12.00-12.55",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "Placement Class  LT202"
-    },
-    {
-        "room_id": "69",
-        "Teacher_Name": "MR PIYUSH",
-        "day": "wed",
-        "slot": "2.10-3.05",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "PCS693  LAB1"
-    },
-    {
-        "room_id": "2031",
-        "Teacher_Name": "DR DEVESH P. SINGH",
-        "day": "wed",
-        "slot": "4.10-5.05",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS601  LT302"
-    },
-    {
-        "room_id": "2041",
-        "Teacher_Name": "MR PIYUSH",
-        "day": "thu",
-        "slot": "8.55-9.50",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS693  LT301"
-    },
-    {
-        "room_id": "33",
-        "Teacher_Name": "MS NEELAM",
-        "day": "thu",
-        "slot": "10.10-11.05",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "PXCS601  Bosch lab"
-    },
-    {
-        "room_id": "33",
-        "Teacher_Name": "MS NEELAM",
-        "day": "thu",
-        "slot": "11.05-12.00",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "PXCS601  Bosch lab"
-    },
-    {
-        "room_id": "2069",
-        "Teacher_Name": "MS SONAL",
-        "day": "fri",
-        "slot": "8.00-8.55",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "PCS601  LAB3"
-    },
-    {
-        "room_id": "2069",
-        "Teacher_Name": "MS SONAL",
-        "day": "fri",
-        "slot": "8.55-9.50",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "PCS601  LAB3"
-    },
-    {
-        "room_id": "2031",
-        "Teacher_Name": "DR DEVESH P. SINGH",
-        "day": "fri",
-        "slot": "12.00-12.55",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS601  LT302"
-    },
-    {
-        "room_id": "2031",
-        "Teacher_Name": "DR DEVESH P. SINGH",
-        "day": "fri",
-        "slot": "12.55-1.50",
-        "course": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A",
-        "slotdata": "TCS601      LT302"
+{
+    "courses": {
+        "B.TECH CSE": {
+            "VI": {
+                "A": {
+                    "MON": [
+                        {
+                            "room_id": "1031",
+                            "Teacher_Name": "MR AKSHAY RAJPUT",
+                            "slot": "11.05-12.00",
+                            "slotdata": "Placement Class  LT202"
+                        },
+                        {
+                            "room_id": "1031",
+                            "Teacher_Name": "MR AKSHAY RAJPUT",
+                            "slot": "12.00-12.55",
+                            "slotdata": "Placement Class  LT202"
+                        },
+                        {
+                            "room_id": "2041",
+                            "Teacher_Name": "MR PA ANAND / MR \nABHISEKH SHARMA",
+                            "slot": "12.55-1.50",
+                            "slotdata": "XCS601  LT301"
+                        },
+                        {
+                            "room_id": "2031",
+                            "Teacher_Name": "MR PA ANAND / MR \nABHISEKH SHARMA",
+                            "slot": "3.05-4.00",
+                            "slotdata": "XCS601  LT302"
+                        },
+                        {
+                            "room_id": "1041",
+                            "Teacher_Name": "MR AMRISH",
+                            "slot": "4.10-5.05",
+                            "slotdata": "TCS692  LT201"
+                        },
+                        {
+                            "room_id": "1041",
+                            "Teacher_Name": "MR AMRISH",
+                            "slot": "5.05-6.00",
+                            "slotdata": "TCS692  LT201"
+                        }
+                    ],
+                    "TUE": [
+                        {
+                            "room_id": "1041",
+                            "Teacher_Name": "MR PIYUSH",
+                            "slot": "8.00-8.55",
+                            "slotdata": "TCS693  LT201"
+                        },
+                        {
+                            "room_id": "2031",
+                            "Teacher_Name": "HON\u2019BLE VC SIR",
+                            "slot": "8.55-9.50",
+                            "slotdata": "TCS604  LT302"
+                        },
+                        {
+                            "room_id": "2031",
+                            "Teacher_Name": "HON\u2019BLE VC SIR",
+                            "slot": "10.10-11.05",
+                            "slotdata": "TCS604  LT302"
+                        },
+                        {
+                            "room_id": "1",
+                            "Teacher_Name": "MR AMRISH",
+                            "slot": "2.10-3.05",
+                            "slotdata": "A.I.LAB  ULI"
+                        },
+                        {
+                            "room_id": "1",
+                            "Teacher_Name": "MR AMRISH",
+                            "slot": "3.05-4.00",
+                            "slotdata": "A.I.LAB  ULI"
+                        }
+                    ],
+                    "WED": [
+                        {
+                            "room_id": "1041",
+                            "Teacher_Name": "MR PIYUSH",
+                            "slot": "8.00-8.55",
+                            "slotdata": "TCS693  LT201"
+                        },
+                        {
+                            "room_id": "1031",
+                            "Teacher_Name": "MR AKSHAY RAJPUT",
+                            "slot": "11.05-12.00",
+                            "slotdata": "Placement Class  LT202"
+                        },
+                        {
+                            "room_id": "1031",
+                            "Teacher_Name": "MR AKSHAY RAJPUT",
+                            "slot": "12.00-12.55",
+                            "slotdata": "Placement Class  LT202"
+                        },
+                        {
+                            "room_id": "69",
+                            "Teacher_Name": "MR PIYUSH",
+                            "slot": "2.10-3.05",
+                            "slotdata": "PCS693  LAB1"
+                        },
+                        {
+                            "room_id": "2031",
+                            "Teacher_Name": "DR DEVESH P. SINGH",
+                            "slot": "4.10-5.05",
+                            "slotdata": "TCS601  LT302"
+                        }
+                    ],
+                    "THU": [
+                        {
+                            "room_id": "2041",
+                            "Teacher_Name": "MR PIYUSH",
+                            "slot": "8.55-9.50",
+                            "slotdata": "TCS693  LT301"
+                        },
+                        {
+                            "room_id": "33",
+                            "Teacher_Name": "MS NEELAM",
+                            "slot": "10.10-11.05",
+                            "slotdata": "PXCS601  Bosch lab"
+                        },
+                        {
+                            "room_id": "33",
+                            "Teacher_Name": "MS NEELAM",
+                            "slot": "11.05-12.00",
+                            "slotdata": "PXCS601  Bosch lab"
+                        }
+                    ],
+                    "FRI": [
+                        {
+                            "room_id": "2069",
+                            "Teacher_Name": "MS SONAL",
+                            "slot": "8.00-8.55",
+                            "slotdata": "PCS601  LAB3"
+                        },
+                        {
+                            "room_id": "2069",
+                            "Teacher_Name": "MS SONAL",
+                            "slot": "8.55-9.50",
+                            "slotdata": "PCS601  LAB3"
+                        },
+                        {
+                            "room_id": "2031",
+                            "Teacher_Name": "DR DEVESH P. SINGH",
+                            "slot": "12.00-12.55",
+                            "slotdata": "TCS601  LT302"
+                        },
+                        {
+                            "room_id": "2031",
+                            "Teacher_Name": "DR DEVESH P. SINGH",
+                            "slot": "12.55-1.50",
+                            "slotdata": "TCS601      LT302"
+                        }
+                    ]
+                }
+            }
+        }
     }
-]
+}

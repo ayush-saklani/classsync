@@ -1,158 +1,157 @@
-[
-    {
-        "course_name": "B.TECH CSE",
-        "semester": "VI",
-        "section": "A"
-    },
-    {
-        "timetable": [
-            [
-                "DAY / \nTIME",
-                "8.00- \n8.55",
-                "8.55- \n9.50",
-                "10.10- \n11.05",
-                "11.05- \n12.00",
-                "12.00- \n12.55",
-                "12.55- \n1.50",
-                "2.10- \n3.05",
-                "3.05- \n4.00",
-                "4.10- \n5.05",
-                "5.05- \n6.00"
-            ],
-            [
-                "MON",
-                "",
-                "",
-                "",
-                "Placement Class \nLT202",
-                "Placement Class \nLT202",
-                "XCS601 \nLT301",
-                "",
-                "XCS601 \nLT302",
-                "TCS692 \nLT201",
-                "TCS692 \nLT201"
-            ],
-            [
-                "TUE",
-                "TCS693 \nLT201",
-                "TCS604 \nLT302",
-                "TCS604 \nLT302",
-                "",
-                "",
-                "",
-                "A.I.LAB \nULI",
-                "A.I.LAB \nULI",
-                "",
-                ""
-            ],
-            [
-                "WED",
-                "TCS693 \nLT201",
-                "",
-                "",
-                "Placement Class \nLT202",
-                "Placement Class \nLT202",
-                "",
-                "PCS693 \nLAB1",
-                "",
-                "TCS601 \nLT302",
-                ""
-            ],
-            [
-                "THU",
-                "",
-                "TCS693 \nLT301",
-                "PXCS601 \nBosch lab",
-                "PXCS601 \nBosch lab",
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ],
-            [
-                "FRI",
-                "PCS601 \nLAB3",
-                "PCS601 \nLAB3",
-                "",
-                "",
-                "TCS601 \nLT302",
-                "TCS601 \n \n \nLT302",
-                "",
-                "",
-                "",
-                ""
-            ]
-        ]
-    },
-    {
-        "facultytable": [
-            [
-                "SUBJECT CODE",
-                "NAME OF THE SUBJECT",
-                "NAME OF FACULTY"
-            ],
-            [
-                "TCS601",
-                "COMPILER DESIGN",
-                "DR DEVESH P. SINGH"
-            ],
-            [
-                "TCS611",
-                "SOFTWARE ENGINEERING",
-                "ILEARN PLATFORM"
-            ],
-            [
-                "TCS604",
-                "COMPUTER NETWORKS I",
-                "HON\u2019BLE VC SIR"
-            ],
-            [
-                "TCS693",
-                "FULL STACK WEB DEVELOPMENT",
-                "MR PIYUSH"
-            ],
-            [
-                "TCS692",
-                "GEN. A.I.",
-                "MR AMRISH"
-            ],
-            [
-                "XCS601",
-                "CAREER SKILLS",
-                "MR PA ANAND / MR \nABHISEKH SHARMA"
-            ],
-            [
-                "Placement Class",
-                "PLACEMENT CLASS",
-                "MR AKSHAY RAJPUT"
-            ],
-            [
-                "PCS601",
-                "COMPILER DESIGN LAB",
-                "MS SONAL"
-            ],
-            [
-                "PCS611",
-                "SOFTWARE ENGINEERING LAB",
-                "ILEARN PLATFORM"
-            ],
-            [
-                "PCS693",
-                "FULL STACK WEB LAB",
-                "MR PIYUSH"
-            ],
-            [
-                "PXCS601",
-                "CAREER SKILLS LAB",
-                "MS NEELAM"
-            ],
-            [
-                "A.I.LAB",
-                "GEN. A.I. LAB",
-                "MR AMRISH"
-            ]
-        ]
+{
+    "courses": {
+        "B.TECH CSE": {
+            "VI": {
+                "A": {
+                    "timetable": [
+                        [
+                            "DAY / \nTIME",
+                            "8.00- \n8.55",
+                            "8.55- \n9.50",
+                            "10.10- \n11.05",
+                            "11.05- \n12.00",
+                            "12.00- \n12.55",
+                            "12.55- \n1.50",
+                            "2.10- \n3.05",
+                            "3.05- \n4.00",
+                            "4.10- \n5.05",
+                            "5.05- \n6.00"
+                        ],
+                        [
+                            "MON",
+                            "",
+                            "",
+                            "",
+                            "Placement Class \nLT202",
+                            "Placement Class \nLT202",
+                            "XCS601 \nLT301",
+                            "",
+                            "XCS601 \nLT302",
+                            "TCS692 \nLT201",
+                            "TCS692 \nLT201"
+                        ],
+                        [
+                            "TUE",
+                            "TCS693 \nLT201",
+                            "TCS604 \nLT302",
+                            "TCS604 \nLT302",
+                            "",
+                            "",
+                            "",
+                            "A.I.LAB \nULI",
+                            "A.I.LAB \nULI",
+                            "",
+                            ""
+                        ],
+                        [
+                            "WED",
+                            "TCS693 \nLT201",
+                            "",
+                            "",
+                            "Placement Class \nLT202",
+                            "Placement Class \nLT202",
+                            "",
+                            "PCS693 \nLAB1",
+                            "",
+                            "TCS601 \nLT302",
+                            ""
+                        ],
+                        [
+                            "THU",
+                            "",
+                            "TCS693 \nLT301",
+                            "PXCS601 \nBosch lab",
+                            "PXCS601 \nBosch lab",
+                            "",
+                            "",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ],
+                        [
+                            "FRI",
+                            "PCS601 \nLAB3",
+                            "PCS601 \nLAB3",
+                            "",
+                            "",
+                            "TCS601 \nLT302",
+                            "TCS601 \n \n \nLT302",
+                            "",
+                            "",
+                            "",
+                            ""
+                        ]
+                    ],
+                    "facultytable": [
+                        [
+                            "SUBJECT CODE",
+                            "NAME OF THE SUBJECT",
+                            "NAME OF FACULTY"
+                        ],
+                        [
+                            "TCS601",
+                            "COMPILER DESIGN",
+                            "DR DEVESH P. SINGH"
+                        ],
+                        [
+                            "TCS611",
+                            "SOFTWARE ENGINEERING",
+                            "ILEARN PLATFORM"
+                        ],
+                        [
+                            "TCS604",
+                            "COMPUTER NETWORKS I",
+                            "HON\u2019BLE VC SIR"
+                        ],
+                        [
+                            "TCS693",
+                            "FULL STACK WEB DEVELOPMENT",
+                            "MR PIYUSH"
+                        ],
+                        [
+                            "TCS692",
+                            "GEN. A.I.",
+                            "MR AMRISH"
+                        ],
+                        [
+                            "XCS601",
+                            "CAREER SKILLS",
+                            "MR PA ANAND / MR \nABHISEKH SHARMA"
+                        ],
+                        [
+                            "Placement Class",
+                            "PLACEMENT CLASS",
+                            "MR AKSHAY RAJPUT"
+                        ],
+                        [
+                            "PCS601",
+                            "COMPILER DESIGN LAB",
+                            "MS SONAL"
+                        ],
+                        [
+                            "PCS611",
+                            "SOFTWARE ENGINEERING LAB",
+                            "ILEARN PLATFORM"
+                        ],
+                        [
+                            "PCS693",
+                            "FULL STACK WEB LAB",
+                            "MR PIYUSH"
+                        ],
+                        [
+                            "PXCS601",
+                            "CAREER SKILLS LAB",
+                            "MS NEELAM"
+                        ],
+                        [
+                            "A.I.LAB",
+                            "GEN. A.I. LAB",
+                            "MR AMRISH"
+                        ]
+                    ]
+                }
+            }
+        }
     }
-]
+}
