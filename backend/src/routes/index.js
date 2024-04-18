@@ -1,3 +1,8 @@
-const router = require("express").Router();
+import express from "express";
+const router = express.Router();
 
-module.exports = router;
+import tableRouter from "./table.js";
+
+router.use("/table", tableRouter);
+
+export default router;
