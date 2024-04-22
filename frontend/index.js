@@ -86,7 +86,7 @@ let temp_obj = {
         "03-04": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
         "04-05": { "class_id": "", "slotdata": "", "teacher_ID": 0 },
         "05-06": { "class_id": "", "slotdata": "", "teacher_ID": 0 }
-      }
+      } 
     }
   }
 
