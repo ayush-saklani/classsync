@@ -97,10 +97,10 @@ document.getElementById('letmesee').addEventListener('click',()=>{
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
             document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata
             if(!document.getElementById("mytable").rows[i].cells[j].innerHTML){
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-success text-white");
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-success text-white heading-text");
             }
             else{
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white"); 
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text"); 
             }
         }
     }
