@@ -30,64 +30,70 @@
 
 	<div class="container-fluid mt-5">
 		<div class="container">
-			<h1 class="center">Timetable entering Portal</h1>
+			<h1 class="center text fw-bold">Timetable entering Portal</h1>
 		</div>
 		<div class="container">
 			<div class="row mt-3">
 				<div class="col">
-					<select class="form-select form-select-lg mb-3" aria-label="Large select example" name="course" id="course_option">
-						<option selected>Course</option>
-						<option value="asdas">BTech CSE</option>
-						<option value="asdas">BTech ME</option>
-						<option value="asdas">BTech EE</option>
-						<option value="asdas">BTech CE</option>
-						<option value="asdas">BCA</option>
-						<option value="asdas">MCA</option>
-						<option value="asdas">others</option>
-					  </select>
+					<div class="form-floating">
+						<select class="form-select mb-3 text" name="course" id="course_option">
+							<option selected value="btechcse">BTech CSE</option>
+							<option value="btechme">BTech ME</option>
+							<option value="btechee">BTech EE</option>
+							<option value="btechce">BTech CE</option>
+							<option value="bca">BCA</option>
+							<option value="mca">MCA</option>
+							<option value="others">others</option>
+						</select>
+						<label for="course_option" class="heading-text">Course</label>
+					</div>
 				</div>
 				<div class="col">
-					<select class="form-select form-select-lg mb-3" aria-label="Large select example" name="semester" id="semester_option">
-						<option selected>Semester</option>
-						<option value="asdas">1</option>
-						<option value="asdas">2</option>
-						<option value="asdas">3</option>
-						<option value="asdas">4</option>
-						<option value="asdas">5</option>
-						<option value="asdas">6</option>
-						<option value="asdas">7</option>
-						<option value="asdas">8</option>
-					  </select> 
+					<div class="form-floating">
+						<select class="form-select mb-3 text" name="semester" id="semester_option">
+							<option selected value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+							<option value="6">6</option>
+							<option value="7">7</option>
+							<option value="8">8</option>
+						</select>
+						<label for="semester_option" class="heading-text">Semester</label>
+					</div>
 				</div>
 				<div class="col">
-					<select class="form-select form-select-lg mb-3" aria-label="Large select example" name="section" id="section_option" class="optionbox">
-						<option selected>Section</option>
-						<option value="asdas">A</option>
-						<option value="asdas">B</option>
-						<option value="asdas">C</option>
-						<option value="asdas">D</option>
-						<option value="asdas">E</option>
-						<option value="asdas">F</option>
-						<option value="asdas">G</option>
-						<option value="asdas">H</option>
-						<option value="asdas">I</option>
-						<option value="asdas">J</option>
-						<option value="asdas">K</option>
-						<option value="asdas">L</option>
-						<option value="asdas">M</option>
-						<option value="asdas">N</option>
-						<option value="asdas">O</option>
-						<option value="asdas">P</option>
-						<option value="asdas">Q</option>
-						<option value="asdas">R</option>
-						<option value="asdas">S</option>
-						<option value="asdas">T</option>
-						<option value="asdas">U</option>
-						<option value="asdas">V</option>
-						<option value="asdas">W</option>
-					  </select>
+					<div class="form-floating">
+						<select class="form-select mb-3 text" name="section" id="section_option">
+							<option selected value="A">A</option>
+							<option value="B">B</option>
+							<option value="C">C</option>
+							<option value="D">D</option>
+							<option value="E">E</option>
+							<option value="F">F</option>
+							<option value="G">G</option>
+							<option value="H">H</option>
+							<option value="I">I</option>
+							<option value="J">J</option>
+							<option value="K">K</option>
+							<option value="L">L</option>
+							<option value="M">M</option>
+							<option value="N">N</option>
+							<option value="O">O</option>
+							<option value="P">P</option>
+							<option value="Q">Q</option>
+							<option value="R">R</option>
+							<option value="S">S</option>
+							<option value="T">T</option>
+							<option value="U">U</option>
+							<option value="V">V</option>
+							<option value="W">W</option>
+						</select>
+						<label for="section_option" class="heading-text">Section</label>
+					</div>
 				</div>
-			</div>
+			  </div>
 		</div>
 		<div class="container-fluid mt-3">
 			<table class="table" id="mytable">
@@ -109,101 +115,101 @@
 				<tbody>
 				  <tr>
 					<th class="table-light" scope="row">MON</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 				  <tr>
 					<th class="table-light" scope="row">TUE</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 				  <tr>
 					<th class="table-light" scope="row">WED</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 				  <tr>
 					<th class="table-light" scope="row">THU</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 				  <tr>
 					<th class="table-light" scope="row">FRI</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 				  <tr>
 					<th class="table-light" scope="row">SAT</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 
 				  <tr>
 					<th class="table-light" scope="row">SUN</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="class code"><input class="form-control form-control-sm" type="text" placeholder="subject"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
 				  </tr>
 				</tbody>
 			  </table>
 		</div>
 		<div class="container text-center">
-			<button type="button" class="btn btn-outline-success mt-2 mb-3"><b>Download JSON</b></button>
+			<button type="button" class="btn btn-lg btn-outline-success mt-2 mb-3"><b>Download TT JSON</b></button>
 		</div>
 	</div>
 	<footer class="bd-footer py-4 py-md-5 mt-5 ">
