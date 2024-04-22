@@ -106,7 +106,18 @@ document.getElementById('letmesee').addEventListener('click',()=>{
     }
 })
 
-
+const letmeseeitbaby = () => {
+	let course = document.getElementById("course_option").value;
+	let semester = document.getElementById("semester_option").value; 
+	let section = document.getElementById("section_option").value;
+	let requestBody = { course: course , semester : semester ,section : section }; 
+	fetch('http://127.0.0.1:3000/gettt', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify(requestBody)
+}).then(response => response.json()).then(data => {
+	let slotdata = data;// data ke sath kuch bhi karo yaha pe 
+})
+.catch(error => console.error('Data unavailable:', error));
+}
+document.getElementById('letmesee').addEventListener('click', letmeseeitbaby);
 
 
 // document.getElementById('go').addEventListener('click', () => {
