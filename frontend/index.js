@@ -1,7 +1,7 @@
 let temp_obj = {
-    "course": "",
-    "semester": 0,
-    "section": "",
+    "course": "btechcse",
+    "semester": 6,
+    "section": "A",
     "schedule": {
       "mon": {
         "08-09": { "class_id": "lt204", "slotdata": "mon", "teacher_ID": 0 },
@@ -13,7 +13,7 @@ let temp_obj = {
         "02-03": { "class_id": "lt204", "slotdata": "mon", "teacher_ID": 0 },
         "03-04": { "class_id": "lt204", "slotdata": "mon", "teacher_ID": 0 },
         "04-05": { "class_id": "lt204", "slotdata": "mon", "teacher_ID": 0 },
-        "05-06": { "class_id": "lt204", "slotdata": "mon", "teacher_ID": 0 }
+        "05-06": { "class_id": "", "slotdata": "", "teacher_ID": 0 }
       },
       "tue": {
         "08-09": { "class_id": "lt204", "slotdata": "tue", "teacher_ID": 0 },
