@@ -111,8 +111,10 @@ const letmeseeitbaby = () => {
 	let semester = document.getElementById("semester_option").value; 
 	let section = document.getElementById("section_option").value;
 	let requestBody = { course: course , semester : semester ,section : section }; 
+  console.log(JSON.stringify(requestBody));
 	fetch('http://127.0.0.1:3000/gettt', {method: 'POST',headers: {'Content-Type': 'application/json'},body: JSON.stringify(requestBody)
-}).then(response => response.json()).then(data => {
+})
+.then(response => response.json()).then(data => {
 	let slotdata = data;// data ke sath kuch bhi karo yaha pe 
 })
 .catch(error => console.error('Data unavailable:', error));
