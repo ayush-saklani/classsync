@@ -1,11 +1,14 @@
 .heading-text{
-    color: rgb(36, 36, 36);
+    /* color: rgb(36, 36, 36); */
     font-family:"Montserrat", sans-serif;
     font-weight: bold;
 }
 .text{
-    color: rgb(36, 36, 36);
+    /* color: rgb(36, 36, 36); */
     font-family:"Montserrat", sans-serif;
+}
+body{
+    background-color: rgb(240, 244, 249);
 }
 .labelmaker{
     align-items: center;
@@ -16,4 +19,27 @@
     margin: 4px ;
     margin-top:   auto;
     margin-bottom:auto ;
+}
+.signinbox{
+    border-radius: 30px;
+    width: 75%;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.signupbox{
+    border-radius: 30px;
+    width: 75%;
+    background-color: rgb(255, 255, 255);
+}
+#signin_button,#signup_button{
+    background-color: #DC3545;
+    transition: ease-in 0.5s;
+}
+#signin_button:hover,#signup_button:hover{
+    background-color: #0D6EFD;
+    transition: ease-out 0.5s;
 }
