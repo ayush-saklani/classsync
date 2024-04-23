@@ -1,6 +1,6 @@
 import json
 
-from class_to_id_dict import class_to_id
+from room_to_id_dict import room_to_id
 
 with open("./raw_output.json", "r") as file:
     raw_data = json.load(file)
@@ -30,12 +30,12 @@ for day_data in class_data[1:]:
     day_data = day_data[1:]
     for hour, subject in zip(hours, day_data):
         subjectList = subject.split("\n")
-        class_room = subjectList[-1]
+        room = subjectList[-1]
         subject_code = subjectList[0].strip()
         if subject.strip():  # Ignore empty cells
             structured_data.append(
                 {
-                    "class_id": class_to_id[class_room],
+                    "room_id": room_to_id[room],
                     "Teacher_Name": subject_to_faculty_dict[subject_code],
                     "day": day.lower(),
                     "slot": hour.strip().replace("\n", "").replace(" ", ""),
