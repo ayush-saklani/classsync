@@ -95,6 +95,36 @@
 				</div>
 			  </div>
 		</div>
+		<div class="col-md">
+			<div class="form-floating">
+			  <select class="form-select" id="floatingSelectGrid">
+				<option selected>Open this select menu</option>
+				<option value="1">One</option>
+				<option value="2">Two</option>
+				<option value="3">Three</option>
+			  </select>
+			  <label for="floatingSelectGrid">Room ID</label>
+			</div>
+			<div class="form-floating">
+				<select class="form-select" id="floatingSelectGrid">
+				  <option selected>Open this select menu</option>
+				  <option value="1">One</option>
+				  <option value="2">Two</option>
+				  <option value="3">Three</option>
+				</select>
+				<label for="floatingSelectGrid">Subject code</label>
+			  </div>
+			  <div class="form-floating">
+				<select class="form-select" id="floatingSelectGrid">
+				  <option selected>Open this select menu</option>
+				  <option value="1">One</option>
+				  <option value="2">Two</option>
+				  <option value="3">Three</option>
+				</select>
+				<label for="floatingSelectGrid">teacher id</label>
+			  </div>
+		</div>
+
 		<div class="container-fluid mt-3">
 			<table class="table" id="mytable">
 				<thead>
@@ -115,16 +145,16 @@
 				<tbody>
 				  <tr>
 					<th class="table-light" scope="row">MON</th>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="Room code"><input class="form-control form-control-sm" type="text" placeholder="Subject code"></td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
+					<td class="checkfield">abc</td>
 				  </tr>
 				  <tr>
 					<th class="table-light" scope="row">TUE</th>
@@ -211,6 +241,35 @@
 		<div class="container text-center">
 			<button type="button" class="btn btn-lg btn-outline-success mt-2 mb-3"><b>Download TT JSON</b></button>
 		</div>
+		<div class="container mt-3">
+			<table class="table" id="mytable">
+				<thead>
+				  <tr>
+					<th class="table-light" scope="col">subject code</th>
+					<th class="table-light" scope="col">Teacher </th>
+					<th class="table-light" scope="col">Teacher name</th>
+					<th class="table-light" scope="col">Number of Hours</th>
+				  </tr>
+				</thead>
+				<tbody>
+				  <tr>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+				  </tr>
+				  <tr>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
+				  </tr>
+				</tbody>
+			  </table>
+		</div>
+		<div class="container text-center">
+			<button type="button" class="btn btn-lg btn-outline-success mt-2 mb-3"><b>Save</b></button>
+		</div>
 	</div>
 	<footer class="bd-footer py-4 py-md-5 mt-5 ">
 		<div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
@@ -230,7 +289,7 @@
 				<a target="_blank" href="https://github.com/ayush-saklani" class="mx-1"><i class="bi bi-github text text-danger"></i></a>				
 			</ul>
 		</div>
-	  </footer>
+	</footer>
 	<!-- <script src="bootstrap.min.js"></script> -->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
