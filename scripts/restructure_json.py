@@ -1,4 +1,5 @@
 import json
+import re
 
 from room_to_id_dict import room_to_id
 
@@ -45,30 +46,66 @@ def fill_data_to_day_field(timetable_data, faculty_data):
 
 structured_data = {"courses": {}}
 
+
+def restructure_hour(hour):
+    hour = re.sub(r"[\n ]", "", hour)
+    hours = hour.split("-")
+
+    for i in range(2):
+        hours[i] = str(round(float(hours[i])) % 12)
+        if hours[i] == "0":
+            hours[i] = "12"
+        if len(hours[i]) == 1:
+            hours[i] = "0" + hours[i]
+
+    return "-".join(hours)
+
+
 with open("./raw_output.json", "r") as file:
     raw_data = json.load(file)
 
-courses = raw_data["courses"]
+class_data = raw_data[1]["timetable"]
 
-# below loop nests the data in json
-# and innermost loop fills daywise data for every section
-for course in courses:
-    course_data = courses[course]
-    structured_data["courses"] = {course: {}}
-    structured_courses = structured_data["courses"]
-    for semester in course_data:
-        semester_data = course_data[semester]
-        structured_courses[course] = {semester: {}}
-        structured_semesters = structured_courses[course]
-        for section in semester_data:
-            section_data = semester_data[section]
-            timetable_data = section_data["timetable"]
-            faculty_data = section_data["facultytable"]
-            structured_sections = structured_semesters[semester]
+faculty_data = raw_data[2]["facultytable"]
 
-            structured_sections[section] = fill_data_to_day_field(
-                timetable_data, faculty_data
-            )
+course_details = raw_data[0]
+
+# Create a dictionary to store the structured data
+structured_data = {}
+structured_data["course"] = course_details["course_name"]
+structured_data["semester"] = course_details["semester"]
+structured_data["section"] = course_details["section"]
+subject_to_faculty_dict = {}
+
+for faculty in faculty_data[1:]:
+    subject_to_faculty_dict[faculty[0]] = faculty[
+        2
+    ]  # 0 index has subject code and 2 has faculty name
+
+# Extract the header row
+header = class_data[0]
+hours = header[1:]  # Ignore the first column (DAY)
+
+daywise_json = {}
+# Process each day's schedule
+for day_data in class_data[1:]:
+    day = day_data[0].lower()
+    daywise_json[day] = {}
+    day_data = day_data[1:]
+    for hour, subject in zip(hours, day_data):
+        hour = restructure_hour(hour)
+        subjectList = subject.split("\n")
+        room = subjectList[-1]
+        subject_code = subjectList[0].strip()
+        slot = hour
+        if subject.strip():  # Ignore empty cells
+            daywise_json[day][slot] = {
+                "class_id": class_to_id[room],
+                "Teacher_Name": subject_to_faculty_dict[subject_code],
+                "slotdata": subject.strip().replace("\n", " "),  # Remove line breaks
+            }
+
+structured_data["schedule"] = daywise_json
 
 with open("structured_timetable.json", "w") as f:
     json.dump(structured_data, f, indent=4)
