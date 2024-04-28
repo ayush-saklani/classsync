@@ -22,7 +22,6 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(mongosanitize());
-
 app.use(routes);
 
 export { app };

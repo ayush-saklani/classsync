@@ -1,4 +1,4 @@
-class_to_id = {
+room_to_id = {
     "ULI": "1",  # renamed
     "ULII": "3",  # renamed
     "Bosch lab": "33",  # renamed
