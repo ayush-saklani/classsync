@@ -3,6 +3,7 @@ import morgan from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
 import routes from "./routes/index.js";
+import mongosanitize from "express-mongo-sanitize";
 
 dotenv.config({ path: "./.env" });
 
@@ -20,6 +21,7 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(mongosanitize());
 app.use(routes);
 
 export { app };
