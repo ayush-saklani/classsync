@@ -18,3 +18,4 @@ function addMoreRows(){
       newCell.innerHTML="<tr><td><input type='text' name='total'></td></tr>";
 
     }
+  }
