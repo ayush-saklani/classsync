@@ -242,7 +242,7 @@
 			<button type="button" class="btn btn-lg btn-outline-success mt-2 mb-3"><b>Download TT JSON</b></button>
 		</div>
 		<div class="container mt-3">
-			<table class="table" id="mytable">
+			<table class="table" id="teacher_table">
 				<thead>
 				  <tr>
 					<th class="table-light" scope="col">subject code</th>
@@ -258,14 +258,11 @@
 					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
 					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
 				  </tr>
-				  <tr>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
-					<td class="checkfield"><input class="form-control form-control-sm" type="text" placeholder="example"></td>
-				  </tr>
 				</tbody>
-			  </table>
+			</table>
+			<div class="container text-center">
+				<button type="button" class="rounded-circle btn btn-light my-2 border border-0 p-0" id="add_row"><i class="h2 bi bi-plus-circle m-0"></i></button>
+			</div>
 		</div>
 		<div class="container text-center">
 			<button type="button" class="btn btn-lg btn-outline-success mt-2 mb-3"><b>Save</b></button>
@@ -296,7 +293,7 @@
 	<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 	<script src="https://unpkg.com/leaflet" type="text/javascript"></script>
 	<script src="https://unpkg.com/leaflet-ant-path" type="text/javascript"></script>
-	<!-- <script src="index.js"></script> -->
+	<script src="index_input.js"></script>
 </body>
 
 </html>
