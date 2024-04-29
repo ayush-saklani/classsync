@@ -1,50 +1,7 @@
 import json
 import re
 
-from room_to_id_dict import room_to_id
-
-
-def fill_data_to_day_field(timetable_data, faculty_data):
-    """
-    Extracts daywise data for each section
-    returns a dictionary
-    """
-    daywise_schedule_dict = {}
-    subject_to_faculty_dict = {}
-
-    for faculty in faculty_data[1:]:
-        subject_to_faculty_dict[faculty[0]] = faculty[
-            2
-        ]  # 0 index has subject code and 2 has faculty name
-
-    header = timetable_data[0]
-    hours = header[1:]  # Ignore the first column (DAY)
-
-    for day_data in timetable_data[1:]:
-        day = day_data[0]
-        day_data = day_data[1:]
-
-        for hour, subject in zip(hours, day_data):
-            subjectList = subject.split("\n")
-            room = subjectList[-1]
-            subject_code = subjectList[0].strip()
-
-            if subject.strip():
-                if not (day in daywise_schedule_dict):
-                    daywise_schedule_dict[day] = []
-
-                daywise_schedule_dict[day].append(
-                    {
-                        "room_id": room_to_id[room],
-                        "Teacher_Name": subject_to_faculty_dict[subject_code],
-                        "slot": hour.strip().replace("\n", "").replace(" ", ""),
-                        "slotdata": subject.strip().replace("\n", " "),
-                    }
-                )
-    return daywise_schedule_dict
-
-
-structured_data = {"courses": {}}
+from class_to_id_dict import class_to_id
 
 
 def restructure_hour(hour):
