@@ -3,6 +3,17 @@ import json
 import camelot
 import pypdfium2
 
+roman_to_int = {
+    "I": "1",
+    "II": "2",
+    "III": "3",
+    "IV": "4",
+    "V": "5",
+    "VI": "6",
+    "VII": "7",
+    "VIII": "8",
+}
+
 
 def extract_course_info(pdf_path):
     """
@@ -22,16 +33,14 @@ def extract_course_info(pdf_path):
         text = page.get_textpage().get_text_range()
 
         # Look for lines containing "COURSE NAME" and "SECTION"
-        course_name = None
+        course_name = "btechcse"
         semester = None
         section = None
 
         for line in text.splitlines():
-            if "COURSE NAME" in line:
-                course_name = line.split(":")[1].strip()
-            elif "SEMESTER" in line:
+            if "SEMESTER" in line:
                 semester_section = line.split(":")[1].strip().split(" ")[:2]
-                semester = semester_section[0]
+                semester = roman_to_int[semester_section[0]]
                 section = semester_section[1]
 
         # Check if both course name and section are found
@@ -46,28 +55,20 @@ def extract_course_info(pdf_path):
 
 
 source_pdf_path = "../asset/docs/timetable project.pdf"
-output_data = {"courses": {}}
 course_details = extract_course_info(source_pdf_path)
 
 tables = camelot.read_pdf(filepath=source_pdf_path)
 
+timetable = {"timetable": tables[0].data}
+facultytable = {"facultytable": tables[1].data}
 schedule = {"timetable": tables[0].data, "facultytable": tables[1].data}
 
+output_data = []
 
-output_data["courses"][course_details["course_name"]] = {
-    course_details["semester"]: {course_details["section"]: schedule},
-}
+output_data.append(course_details)
+output_data.append(timetable)
+output_data.append(facultytable)
 
-# output strucutre:-
-#     courses : {
-#         course_name: {
-#             semester:{
-#                     section:{
-#                         timetable(list),facultytable(list)
-#             }
-#         }
-#     }
-# }
 
 with open("raw_output.json", "w") as output_file:
     json.dump(output_data, output_file, indent=4)
