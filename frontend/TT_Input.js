@@ -180,7 +180,7 @@ const save_sub_teacher_table_sync_db = () => {
 	for (let i = 0; i < tableBody.rows.length; i++) {
 		let row = tableBody.rows[i];
 		let selectElements = row.getElementsByTagName('select');
-		// Object to store data for each row
+
 		let rowData = {};
 		// Iterate over each select element in the row
 		for (let j = 0; j < selectElements.length; j++) {
@@ -201,10 +201,7 @@ const save_sub_teacher_table_sync_db = () => {
 		"section": document.getElementById("section_option").value,
 		"teacher_sub_data": tempjsonData,
 	})
-	// jsonData.push(tempjsonData);
 	console.log(JSON.stringify(jsonData, null, 2));
-	// jsonData ka post request marna hai for teacher subject data
-	
 }
 // add event to all the select box that updates the rows
 const updateItAll = ()=>{
