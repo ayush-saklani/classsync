@@ -50,7 +50,7 @@ body{
 }
 .bus-dep{
     border-right-style:double;
-    border-right-width: 5px;
+    border-right-width: 10px;
     border-right-color: rgb(231, 178, 3);
     /* border-right-color: rgb(255, 208, 0); */
 }

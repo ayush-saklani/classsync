@@ -152,33 +152,45 @@ const save_sub_teacher_table_func = () => {
 	console.log(JSON.stringify(jsonData, null, 2));
 	globaljsonData = jsonData;
 	// jsonData ka post request marna hai for teacher subject data  
+	
+	let testinglist = [];
+	tempjsonData.forEach(element => {
+		testinglist.push(element.subjectname);
+	}); 
+	addselectboc_tomyteachertable_addoptions(testinglist,testinglist);
 };
 const addselectboc_tomyteachertable =  ()=>{
     let mytable = document.getElementById("mytable");
     for (let i = 1; i < mytable.rows.length; i++) {
         for (let j = 1; j < mytable.rows[1].cells.length; j++) {
             let tempcell = mytable.rows[i].cells[j];
-            let html  = `
-				<select class="form-select form-select-sm text classselectbox">
-					<option selected>Subject</option>
-				<select>
-				<select class="form-select form-select-sm text roomselectbox">
-					<option selected>Room</option>
-				<select>
-				`;
-			tempcell.innerHTML = html;
+			let select = document.createElement('select');
+			select.setAttribute('class','form-select form-select-sm text subjectselectbox');
+			tempcell.appendChild(select);
+			let select2 = document.createElement('select');
+			select2.setAttribute('class','form-select form-select-sm text roomselectbox');
+			tempcell.appendChild(select2);
         }        
     }
 }
-const addselectboc_tomyteachertable_addoptions = () =>{
-	let classselectbox = document.querySelectorAll(".classselectbox");
-	for(let i in classselectbox.length){
-		let html = `
-			<select class="form-select form-select-sm text classselectbox">
-				<option selected>Subject</option>
-			<select>
-		`;
-		classselectbox[i].innerHTML = html
-	}
-		
-}
+const addselectboc_tomyteachertable_addoptions = (room_list,subject_list) => {
+    let classselectboxes = document.querySelectorAll(".subjectselectbox");
+    classselectboxes.forEach(select => {
+		room_list.forEach(val => {
+			let option = document.createElement("option");
+            option.value = val;
+            option.text = val.charAt(0).toUpperCase() + val.slice(1);
+            select.appendChild(option);
+        });
+    });
+
+	let roomselectbox = document.querySelectorAll(".roomselectbox");
+	roomselectbox.forEach(select => {
+        subject_list.forEach(val => {
+            let option = document.createElement("option");
+            option.value = val;
+            option.text = val.charAt(0).toUpperCase() + val.slice(1);
+            select.appendChild(option);
+        });
+    });
+};

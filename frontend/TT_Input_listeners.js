@@ -17,3 +17,9 @@ const updateItAll = ()=>{
 addselectboc_tomyteachertable();
 
 // e.rows[1].cells[1].childNodes[3].options[e.rows[1].cells[1].childNodes[3].selectedIndex].value   
+
+
+let values = ["dog", "cat", "parrot", "rabbit"];
+let roomvalues = ["cr101", "cr102", "cr103", "cr104"];
+document.getElementById("save_tt_json").addEventListener("click", addselectboc_tomyteachertable_addoptions(roomvalues,values));
+// room and subject data will be passed from api and table below
