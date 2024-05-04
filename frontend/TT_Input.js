@@ -1,4 +1,5 @@
-// Sample data for generating dropdowns
+// Sample data for generating dropdowns will be fetched from apis and database
+let globaljsonData ;
 let teacher_data = [
 	{
 		"teacher_name":"ms neelam",
@@ -66,7 +67,7 @@ const update_detail_table =()=>{
 			if(subjectdata[ele].subjectcode == rowfirstdata){				
 				row.cells[2].firstChild.innerHTML = subjectdata[ele].subjectcode.toUpperCase();
 				row.cells[3].firstChild.innerHTML = subjectdata[ele].weekly_hrs;
-				row.cells[4].firstChild.innerHTML = subjectdata[ele].theory_practical;
+				row.cells[4].firstChild.innerHTML = subjectdata[ele].theory_practical.charAt(0).toUpperCase() + subjectdata[ele].theory_practical.slice(1);
 			}
 		}
     }
@@ -101,10 +102,6 @@ const add_row_func = () => {
     }
 	update_detail_table();
 };
-document.getElementById("add_row").addEventListener("click", ()=>{
-	add_row_func();
-	updateItAll();
-});
 
 const save_sub_teacher_table_func = () => {
 	let tempjsonData = [];
@@ -153,60 +150,35 @@ const save_sub_teacher_table_func = () => {
 	};
 	// jsonData.push(tempjsonData);
 	console.log(JSON.stringify(jsonData, null, 2));
+	globaljsonData = jsonData;
 	// jsonData ka post request marna hai for teacher subject data  
 };
-document.getElementById("save_sub_teacher_table").addEventListener("click", save_sub_teacher_table_func);
-
-const save_sub_teacher_table_sync_db = () => {
-	let data_fetched_from_db = [
-		{
-			"subject_code_option": "BTech CSE",
-			"teacher_name_option": "1",
-			"subject_name_option": "A",
-			"total_lecture_hours_option": "A"
-		},
-		{
-			"subject_code_option": "BTech CSE",
-			"teacher_name_option": "1",
-			"subject_name_option": "A",
-			"total_lecture_hours_option": "A"
-		}
-	];
-	
-	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-	data_fetched_from_db.forEach(Element =>{
-
-	});
-	for (let i = 0; i < tableBody.rows.length; i++) {
-		let row = tableBody.rows[i];
-		let selectElements = row.getElementsByTagName('select');
-
-		let rowData = {};
-		// Iterate over each select element in the row
-		for (let j = 0; j < selectElements.length; j++) {
-			let selectElement = selectElements[j];
-			let fieldName = selectElement.getAttribute('name');
-			let selectedValue = selectElement.value;
-			// Add the selected value to the rowData object
-			rowData[fieldName] = selectedValue;
-		}
-		// Add the rowData object to the tempjsonData array
-		tempjsonData.push(rowData);
-	}
-	// Convert the tempjsonData array to JSON string and log it
-	let jsonData = [];
-	jsonData.push({
-		"course": document.getElementById("course_option").value,
-		"semester": document.getElementById("semester_option").value,
-		"section": document.getElementById("section_option").value,
-		"teacher_sub_data": tempjsonData,
-	})
-	console.log(JSON.stringify(jsonData, null, 2));
+const addselectboc_tomyteachertable =  ()=>{
+    let mytable = document.getElementById("mytable");
+    for (let i = 1; i < mytable.rows.length; i++) {
+        for (let j = 1; j < mytable.rows[1].cells.length; j++) {
+            let tempcell = mytable.rows[i].cells[j];
+            let html  = `
+				<select class="form-select form-select-sm text classselectbox">
+					<option selected>Subject</option>
+				<select>
+				<select class="form-select form-select-sm text roomselectbox">
+					<option selected>Room</option>
+				<select>
+				`;
+			tempcell.innerHTML = html;
+        }        
+    }
 }
-// add event to all the select box that updates the rows
-const updateItAll = ()=>{
-	let selectors = document.getElementsByClassName("form-select");
-	for(let i = 0;i<selectors.length;i++){
-		selectors[i].addEventListener("change",update_detail_table);
+const addselectboc_tomyteachertable_addoptions = () =>{
+	let classselectbox = document.querySelectorAll(".classselectbox");
+	for(let i in classselectbox.length){
+		let html = `
+			<select class="form-select form-select-sm text classselectbox">
+				<option selected>Subject</option>
+			<select>
+		`;
+		classselectbox[i].innerHTML = html
 	}
+		
 }
