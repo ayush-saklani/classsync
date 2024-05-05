@@ -1,24 +1,12 @@
 .heading-text{
-    /* color: rgb(36, 36, 36); */
     font-family:"Montserrat", sans-serif;
     font-weight: bold;
 }
 .text{
-    /* color: rgb(36, 36, 36); */
     font-family:"Montserrat", sans-serif;
 }
 body{
     background-color: rgb(240, 244, 249);
-}
-.labelmaker{
-    align-items: center;
-    padding: 2px;
-    text-align: center;
-    font-family:"Montserrat", sans-serif;
-    font-size:large;
-    margin: 4px ;
-    margin-top:   auto;
-    margin-bottom:auto ;
 }
 .signinbox{
     border-radius: 30px;
@@ -49,14 +37,14 @@ body{
     width: 45px; 
 }
 .bus-dep{
-    border-right-style:double;
+    border-right-style: double;
     border-right-width: 10px;
     border-right-color: rgb(231, 178, 3);
-    /* border-right-color: rgb(255, 208, 0); */
+    border-right-color: #ef1f34;
 }
 .bus-arr{
-    border-right-style:dotted;
-    border-right-width: 5px;
+    border-right-style: dotted;
+    border-right-width: 10px;
     border-right-color: rgb(21, 168, 5);
-    /* border-right-color: rgb(255, 208, 0); */
+    border-right-color: #3385ff;
 }

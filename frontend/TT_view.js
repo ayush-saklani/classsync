@@ -57,8 +57,7 @@ const letmesee2 = (temp_obj) => {
             }
             else {
                 document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary text-white heading-text border");
-                // document.getElementById("mytable").rows[i].cells[j].innerHTML = `<img height="50px" src="https://cdn.dribbble.com/users/1443748/screenshots/10868115/perry.jpg">`;
-
+                document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
             }
         }
     }
