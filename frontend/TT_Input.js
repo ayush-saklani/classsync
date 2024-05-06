@@ -176,6 +176,7 @@ const addselectboc_tomyteachertable =  ()=>{
 const addselectboc_tomyteachertable_addoptions = (room_list,subject_list) => {
     let classselectboxes = document.querySelectorAll(".subjectselectbox");
     classselectboxes.forEach(select => {
+		select.innerHTML = "";
 		room_list.forEach(val => {
 			let option = document.createElement("option");
             option.value = val;
@@ -183,9 +184,9 @@ const addselectboc_tomyteachertable_addoptions = (room_list,subject_list) => {
             select.appendChild(option);
         });
     });
-
 	let roomselectbox = document.querySelectorAll(".roomselectbox");
 	roomselectbox.forEach(select => {
+		select.innerHTML = "";
         subject_list.forEach(val => {
             let option = document.createElement("option");
             option.value = val;
