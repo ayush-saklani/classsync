@@ -14,32 +14,32 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="70"/>
 <img src="https://camelot-py.readthedocs.io/en/master/_static/png/camelot-logo.png" height="70"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" height="70"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/b0/Openstreetmap_logo.svg"height="70"/> 
-<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/Leaflet_logo.svg/1280px-Leaflet_logo.svg.png" height="70"/>
 </p>
 
 # File Structure
 * **`asset`** folder to store logos, docs and extra files
-* **`parsing_test_ex.js`** **MAIN SERVER.JS**
-* **`ex.json`** data structure  
-* **`ex2.json`** conceptual updates structure
-* **`ex3.json`** testing data structure
-* **`ex4.json`** DS for front end section wise fetching 
-* **`restructure_json.py`** script to convert raw time table data to structured format
-* **`ttpdf_to_data.py`** script to extract raw time table data 
-* **`reconstructed_ex.json`** testing data structure
 * **`tester.js`**  server.js testing
 * **`testjsonparsing.js`**  another function testing JS file
-* **`New Microsoft Excel Worksheet.xlsx`** stored class ID
 * **`class_id_dict.py`** stored class ID
 * **`README.md`** README.md
 
-<!--  -->
-# Future plans
+<!-- # Future plans
     list below  |    
-                V    
-*   **start here**
+                V     -->
+#
+# ==============================
+##   Things to work out right now *(kuch idea ya kaam hoga to list kardena neeche)*
 
+* ***1st api*** - post reqest to send the teacher subject relation data to the backend to save it to database 
+* ***2nd API*** -  to fetch the same data through a GET API
+ 
+*( idea being i will fetch the table when the page refreshes and if the data  is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )*
+* ***3rd API*** - show the room list 
+* ***4th API*** -  to fetch the teacher 
+
+*( i want these two seperate get APIs to return the data with no request params)*
+* **5th api** - itna karle phir batata hu 
+# ==============================
 
 
 
