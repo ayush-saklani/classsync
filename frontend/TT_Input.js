@@ -213,15 +213,16 @@ const fetch_room_list = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			let value
+			let value = {}
 			for (let key in data) {
 				if (data.hasOwnProperty(key)) {
 					value = data[key];
 				}
 			}
+			// console.log(value)
 			addselectboc_tomyteachertable_addoptions(value, value)
 		})
-		.catch(error => console.error('Room Data not available :::: ', error));
+		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
 };
 const fetch_faculties_list = () => {
 	fetch('http://127.0.0.1:3000/list/get-faculties', {
@@ -232,16 +233,15 @@ const fetch_faculties_list = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			console.log(data.data)
-			let valuelist
-			for (let key in data.data) {
-				// if (data.hasOwnProperty(key)) {
-					let value = data[key];
-					console.log("Key:", key, "Value:", value);
-					// You can perform operations using key and value here
-				// }
+			data = data.data;
+			let value = {}
+			for (let key in data) {
+				if (data.hasOwnProperty(key)) {
+					value[key] = data[key];
+				}
 			}
+			// console.log(value)
 			// addselectboc_tomyteachertable_addoptions(valuelist, values)
 		})
-		.catch(error => console.error('Room Data not available :::: ', error));
+		.catch(error => console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error));
 };
