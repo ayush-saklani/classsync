@@ -38,38 +38,33 @@
 ## Things to work out right now _(kuch idea ya kaam hoga to list kardena neeche)_
 
 - [x] (/table/post-teachertable) + body will contain json
-      **_1st api_** - post reqest to send the teacher subject relation data to the backend to save it to database
+      ~~**_1st api_** - post reqest to send the teacher subject relation data to the backend to save it to database~~
 - [x] (/table/get-timetable) old api
-      **_2nd API_** - to fetch the same data through a GET API
+      ~~**_2nd API_** - to fetch the same data through a GET API~~
 
-_( idea being i will fetch the table when the page refreshes and if the data is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )_
+~~_( idea being i will fetch the table when the page refreshes and if the data is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )_~~
 
 - [x] (/list/get-rooms)
-      **_3rd API_** - show the room list
+      ~~**_3rd API_** - show the room list~~
 - [x] (/list/get-faculties)
-      **_4th API_** - to fetch the teacher
+      ~~**_4th API_** - to fetch the teacher~~
 
-_( i want these two seperate get APIs to return the data with no request params)_
+~~_( i want these two seperate get APIs to return the data with no request params)_~~
 
-- **5th api** - itna karle phir batata hu
+- **5th api** - get request for fetching the subject list similar to `1st API` but this time include some details like below
 
+      [
+	      {
+	      	"subjectcode": "xcs601",
+	      	"subjectname":"career skills",
+	      	"weekly_hrs": 2,
+	      	"theory_practical":"theory"
+	      },
+	      {
+	      	"subjectcode": "pcs602",
+	      	"subjectname":"compiler lab",
+	      	"weekly_hrs": 2,
+	      	"theory_practical":"practical"
+	      }
+      ]
 # ==============================
-
-<!--
-# **How to run this project ?**
-
-1. Run `server.js` (server side).
-2. Now run the website and enjoy.
-3. Ensure all required modules and installed, *(use the latest npm Modules from [here](https://www.npmjs.com/)) or using the commands below.*
-
-
-```code
-npm install js-graph-algorithms
-npm install express --save
-npm install cors
-```
-
-# updates
-* All floor updated acuurately. -->
-
-- Basement floor updated version added with workshop.
