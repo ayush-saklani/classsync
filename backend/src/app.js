@@ -10,17 +10,18 @@ dotenv.config({ path: "./.env" });
 const app = express();
 
 app.use(
-  cors({
-    origin: "*",
-    methods: ["GET", "PATCH", "POST", "DELETE", "PUT"],
-    credentials: true,
-  })
+    cors({
+        origin: "*",
+        methods: ["GET", "PATCH", "POST", "DELETE", "PUT"],
+        credentials: true,
+    })
 );
 
 if (process.env.NODE_ENV === "development") {
-  app.use(morgan("dev"));
+    app.use(morgan("dev"));
 }
 
+app.use(express.json());
 app.use(mongosanitize());
 app.use(routes);
 

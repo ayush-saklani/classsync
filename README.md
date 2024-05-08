@@ -1,8 +1,11 @@
-# **Class-Sync Timetable manager (beta)**    <img src="asset/image/logo.png" height="100" align="left"/>
+# **Class-Sync Timetable manager (beta)** <img src="asset/image/logo.png" height="100" align="left"/>
+
 <!-- **Indoor mapping solution for University campus.**  -->
-***(currently in concept and designing phase)***
- 
+
+**_(currently in concept and designing phase)_**
+
 # **Language and Tools**
+
 <p align="left">
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" height="70"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" height="70"/>
@@ -17,35 +20,43 @@
 </p>
 
 # File Structure
-* **`asset`** folder to store logos, docs and extra files
-* **`tester.js`**  server.js testing
-* **`testjsonparsing.js`**  another function testing JS file
-* **`class_id_dict.py`** stored class ID
-* **`README.md`** README.md
+
+- **`asset`** folder to store logos, docs and extra files
+- **`tester.js`** server.js testing
+- **`testjsonparsing.js`** another function testing JS file
+- **`class_id_dict.py`** stored class ID
+- **`README.md`** README.md
 
 <!-- # Future plans
-    list below  |    
+    list below  |
                 V     -->
+
 #
-# ==============================
-##   Things to work out right now *(kuch idea ya kaam hoga to list kardena neeche)*
 
-* ***1st api*** - post reqest to send the teacher subject relation data to the backend to save it to database 
-* ***2nd API*** -  to fetch the same data through a GET API
- 
-*( idea being i will fetch the table when the page refreshes and if the data  is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )*
-* ***3rd API*** - show the room list 
-* ***4th API*** -  to fetch the teacher 
-
-*( i want these two seperate get APIs to return the data with no request params)*
-* **5th api** - itna karle phir batata hu 
 # ==============================
 
+## Things to work out right now _(kuch idea ya kaam hoga to list kardena neeche)_
 
+- [x] (/table/post-teachertable) + body will contain json
+      **_1st api_** - post reqest to send the teacher subject relation data to the backend to save it to database
+- [x] (/table/get-timetable) old api
+      **_2nd API_** - to fetch the same data through a GET API
 
+_( idea being i will fetch the table when the page refreshes and if the data is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )_
 
-<!-- 
-# **How to run this project ?** 
+- [x] (/list/get-rooms)
+      **_3rd API_** - show the room list
+- [x] (/list/get-faculties)
+      **_4th API_** - to fetch the teacher
+
+_( i want these two seperate get APIs to return the data with no request params)_
+
+- **5th api** - itna karle phir batata hu
+
+# ==============================
+
+<!--
+# **How to run this project ?**
 
 1. Run `server.js` (server side).
 2. Now run the website and enjoy.
@@ -59,5 +70,6 @@ npm install cors
 ```
 
 # updates
-* Basement floor updated version added with workshop.
 * All floor updated acuurately. -->
+
+- Basement floor updated version added with workshop.
