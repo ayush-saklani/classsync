@@ -174,24 +174,74 @@ const addselectboc_tomyteachertable =  ()=>{
     }
 }
 const addselectboc_tomyteachertable_addoptions = (room_list,subject_list) => {
-    let classselectboxes = document.querySelectorAll(".subjectselectbox");
-    classselectboxes.forEach(select => {
+	let classselectboxes = document.querySelectorAll(".subjectselectbox");
+	classselectboxes.forEach(select => {
 		select.innerHTML = "";
-		room_list.forEach(val => {
+		Object.entries(room_list).forEach(([key, value]) => {
 			let option = document.createElement("option");
-            option.value = val;
-            option.text = val.charAt(0).toUpperCase() + val.slice(1);
-            select.appendChild(option);
-        });
-    });
+			option.value = key;
+			option.text = value.charAt(0).toUpperCase() + value.slice(1);
+			select.appendChild(option);
+		});
+	});
 	let roomselectbox = document.querySelectorAll(".roomselectbox");
+	classselectboxes.forEach(select => {
+		select.innerHTML = "";
+		Object.entries(room_list).forEach(([key, value]) => {
+			let option = document.createElement("option");
+			option.value = key;
+			option.text = value.charAt(0).toUpperCase() + value.slice(1);
+			select.appendChild(option);
+		});
+	});
 	roomselectbox.forEach(select => {
 		select.innerHTML = "";
-        subject_list.forEach(val => {
-            let option = document.createElement("option");
-            option.value = val;
-            option.text = val.charAt(0).toUpperCase() + val.slice(1);
-            select.appendChild(option);
-        });
+		Object.entries(subject_list).forEach(([key, value]) => {
+			let option = document.createElement("option");
+			option.value = key;
+			option.text = value.charAt(0).toUpperCase() + value.slice(1);
+			select.appendChild(option);
+		});
     });
+};
+const fetch_room_list = () => {
+	fetch('http://127.0.0.1:3000/list/get-rooms', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(response => response.json())
+		.then(data => {
+			let value
+			for (let key in data) {
+				if (data.hasOwnProperty(key)) {
+					value = data[key];
+				}
+			}
+			addselectboc_tomyteachertable_addoptions(value, value)
+		})
+		.catch(error => console.error('Room Data not available :::: ', error));
+};
+const fetch_faculties_list = () => {
+	fetch('http://127.0.0.1:3000/list/get-faculties', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(response => response.json())
+		.then(data => {
+			console.log(data.data)
+			let valuelist
+			for (let key in data.data) {
+				// if (data.hasOwnProperty(key)) {
+					let value = data[key];
+					console.log("Key:", key, "Value:", value);
+					// You can perform operations using key and value here
+				// }
+			}
+			// addselectboc_tomyteachertable_addoptions(valuelist, values)
+		})
+		.catch(error => console.error('Room Data not available :::: ', error));
 };

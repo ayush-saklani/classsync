@@ -19,22 +19,22 @@ addselectboc_tomyteachertable();
 // e.rows[1].cells[1].childNodes[3].options[e.rows[1].cells[1].childNodes[3].selectedIndex].value   
 
 
-let values = ["dog", "cat", "parrot", "rabbit"];
-let roomvalues = ["cr101", "cr102", "cr103", "cr104"];
-document.getElementById("save_tt_json").addEventListener("click", () => {
-	fetch('http://127.0.0.1:3000/table/get-room-data', {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
-		.then(response => response.json())
-		.then(data => {
-			temp_obj = data;
-			console.log(data);
-			letmesee2(data);
-		})
-		.catch(error => console.error('Room Data unavailable try again later :::: ', error));
-		addselectboc_tomyteachertable_addoptions(roomvalues, values)
-});
+// document.getElementById("save_tt_json").addEventListener("click", () => {
+// 	fetch('http://127.0.0.1:3000/table/get-room-data', {
+// 		method: 'GET',
+// 		headers: {
+// 			'Content-Type': 'application/json'
+// 		}
+// 	})
+// 		.then(response => response.json())
+// 		.then(data => {
+// 			temp_obj = data;
+// 			console.log(data);
+// 			letmesee2(data);
+// 		})
+// 		.catch(error => console.error('Room Data unavailable try again later :::: ', error));
+// 		addselectboc_tomyteachertable_addoptions(roomvalues, values)
+// });
 // room and subject data will be passed from api and table below
+document.getElementById("save_tt_json").addEventListener("click", fetch_room_list);
+document.getElementById("testing").addEventListener("click", fetch_faculties_list);
