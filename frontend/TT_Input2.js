@@ -8,10 +8,10 @@ fetch_faculties_list(); // fetched when the page loads initially
 fetch_room_list();
 
 // [ save TT JSON on DB button ]
-document.getElementById("save_tt_json").addEventListener("click", fetch_room_list);
+document.getElementById("save_tt_json").addEventListener("click", save_table_func);
 
 // [ Save on DB button ] teacher subject relation table ka listner
-document.getElementById("save_sub_teacher_table").addEventListener("click", save_sub_teacher_table_func);
+document.getElementById("save_sub_teacher_table").addEventListener("click", pass_second_table_to_first);
 
 // [ + button ] add row when plus button is pressed 
 document.getElementById("add_row").addEventListener("click", () => {add_row_func();	updateItAll();});
