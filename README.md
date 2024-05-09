@@ -68,3 +68,121 @@
 	      }
       ]
 # ==============================
+
+# Well Well Well Devanshu I did it AGAIN !! 
+# I have a new DS for Time-Table storage 
+- i was working on techniques to load timetable when the page loads, i observed a huge mistake i did by seperating the subject-teacher relation table from the time table ***[ I will explain it when i meet you ]***
+- But for the time being 
+
+## This is the proposed new improved structure 
+***[ slot data is a optional field ]***
+
+		{
+            "course" : "btechcse",
+            "semester" : "1",
+            "section" : "A",
+            "schedule": {
+                "mon": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                },
+                "tue": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                },
+                "wed": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                },
+                "thu": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                },
+                "fri": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                },
+                "sat": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                },
+                "sun": {
+                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                }
+            },
+            "teacher_subject_data":[
+                {
+                    "subjectcode" : "TCS601",
+                    "teacherid" : "21184220",
+                    "weekly_hrs" : "3",
+                    "teachername" : "DR ANKIT TOMAR",
+                    "subjectname" : "COMPILER DESIGN",
+                    "theory_practical" : "THEORY"
+                },
+                {
+                    "subjectcode" : "TCS602",
+                    "teacherid" : "21184221",
+                    "weekly_hrs" : "3",
+                    "teachername" : "DR ANKITA TOMAR",
+                    "subjectname" : "COMPILER DESIGN LAB",
+                    "theory_practical" : "PRACTICAL"
+                }
+            ]
+        }
