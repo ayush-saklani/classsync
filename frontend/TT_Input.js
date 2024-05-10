@@ -633,27 +633,31 @@ const save_table_func = () => {
 	console.log(JSON.stringify(jsonData, null, 2));
 	globaljsonData = jsonData;
 	// jsonData ka post request marna hai for teacher subject data  
-
-
-	// below code migrated to pass_second_table_to_first() function for time being
-
-	// let testinglist = [
-	// 	{
-	// 	"subjectcode": "",
-	// 	"subjectname": "",
-	// 	"weekly_hrs": "",
-	// 	"theory_practical": ""
-	// 	}
-	// ]; // for empty field in mytable
-	// globaljsonData.teacher_subject_data.forEach(element => {
-	// 	testinglist.push({
-	// 		"subjectcode": element.subjectcode,
-	// 		"subjectname": element.subjectname,
-	// 		"weekly_hrs": element.weekly_hrs,
-	// 		"theory_practical": element.theory_practical
-	// 	});
-	// });
-	// add_subjects_options_to_myteacher_table(testinglist);
+	
+	
+	// Convert JSON data to a string
+	const jsonDataString = JSON.stringify(jsonData, null, 4);
+	
+	// Create a POST request
+	fetch('https://392b3fc8-82fd-4e8d-9982-d930629f36f5.mock.pstmn.io', {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+			body: jsonDataString
+		})
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(':::::  DATA NOT SAVED  :::::');
+			}
+			return response.json();
+		})
+		.then(data => {
+			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', data);
+		})
+		.catch(error => {
+			console.error('::::: ERROR SAVING DATA :::::', error);
+		});
 };
 
 const pass_second_table_to_first = () => {
@@ -876,6 +880,7 @@ const render_tables = () => {
 			cell.appendChild(cell_insert);
 		}
 	}
+	update_detail_table();
 	add_subjects_options_to_myteacher_table(localteacher_subject_data)
 
 	// rendering the first main table now 

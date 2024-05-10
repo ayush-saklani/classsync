@@ -42,7 +42,7 @@ body{
     border-color: rgb(103, 103, 103);
 }
 .bus-dep{
-    border-right-style: double;
+    border-right-style: dotted;
     border-right-width: 10px;
     border-right-color: rgb(231, 178, 3);
     border-right-color: #ef1f34;
