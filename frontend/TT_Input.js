@@ -894,6 +894,15 @@ const render_tables = () => {
 	for (let i = 1; i < mytable.rows.length; i++) {
 		let curr_day = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		let curr_whole_row = mytable.rows[i];
+		
+		let day_row_border_adding = document.getElementById("mytable").rows[i];
+		let today = new Date();
+        const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+        let day_slot = weekdays[today.getDay()];
+		if(curr_day===day_slot){
+			day_row_border_adding.classList.add("day_highlight");
+		}
+
 		for (let j = 1; j <= 10; j++) {
 			let curr_timeslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
 			let curr_col_slot = curr_whole_row.cells[j];

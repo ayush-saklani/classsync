@@ -62,6 +62,6 @@ body{
 }
 .day_highlight{
     border-style: solid;
-    border-width: 3px;
-    border-color: rgb(0, 58, 112);
+    border-width: 4px;
+    border-color: rgb(2, 104, 138);
 }
