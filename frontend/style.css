@@ -60,3 +60,8 @@ body{
     padding-bottom: 1.5px;
     vertical-align:top;
 }
+.day_highlight{
+    border-style: solid;
+    border-width: 3px;
+    border-color: rgb(0, 58, 112);
+}

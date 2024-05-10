@@ -407,6 +407,14 @@ let timetable = {
 const letmesee2 = (temp_obj) => {
     for (let i = 1; i <= 7; i++) {
         let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
+        let day_row_border_adding = document.getElementById("mytable").rows[i];
+		let today = new Date();
+        const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+        let day_slot = weekdays[today.getDay()];
+		if(currrow===day_slot){
+			day_row_border_adding.classList.add("day_highlight");
+		}
+
         for (let j = 1; j <= 10; j++) {
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
             if (temp_obj && temp_obj.schedule && temp_obj.schedule[currrow] && temp_obj.schedule[currrow][currcol] && temp_obj.schedule[currrow][currcol].slotdata) {
