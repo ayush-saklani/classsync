@@ -411,7 +411,7 @@ const letmesee2 = (temp_obj) => {
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
             if (temp_obj && temp_obj.schedule && temp_obj.schedule[currrow] && temp_obj.schedule[currrow][currcol] && temp_obj.schedule[currrow][currcol].slotdata) {
                 document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border");
-                document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata;
+                document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
             }
             else {
                 document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary text-white heading-text border");
