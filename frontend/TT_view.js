@@ -1,57 +1,415 @@
-// let temp_obj = {
-//     "_id": "662fb98949abdb5257ddf223",
-//     "course": "btechcse",
-//     "semester": "6",
-//     "section": "A",
-//     "schedule": {
-//         "mon": {
-//             "11-12": { "class_id": "1031", "Teacher_Name": "MR AKSHAY RAJPUT", "slotdata": "Placement Class  LT202", "_id": "6635d77e56b1b1ca8d250855" },
-//             "12-01": { "class_id": "1031", "Teacher_Name": "MR AKSHAY RAJPUT", "slotdata": "Placement Class  LT202", "_id": "6635d77e56b1b1ca8d250856" },
-//             "01-02": { "class_id": "2041", "Teacher_Name": "MR PA ANAND / MR \nABHISEKH SHARMA", "slotdata": "XCS601  LT301", "_id": "6635d77e56b1b1ca8d250857" },
-//             "03-04": { "class_id": "2031", "Teacher_Name": "MR PA ANAND / MR \nABHISEKH SHARMA", "slotdata": "XCS601  LT302", "_id": "6635d77e56b1b1ca8d250858" },
-//             "04-05": { "class_id": "1041", "Teacher_Name": "MR AMRISH", "slotdata": "TCS692  LT201", "_id": "6635d77e56b1b1ca8d250859" },
-//             "05-06": { "class_id": "1041", "Teacher_Name": "MR AMRISH", "slotdata": "TCS692  LT201", "_id": "6635d77e56b1b1ca8d25085a" },
-//             "_id": "6635d77e56b1b1ca8d25085b"
-//         },
-//         "tue": {
-//             "08-09": { "class_id": "1041", "Teacher_Name": "MR PIYUSH", "slotdata": "TCS693  LT201", "_id": "6635d77e56b1b1ca8d25085c" },
-//             "09-10": { "class_id": "2031", "Teacher_Name": "HON’BLE VC SIR", "slotdata": "TCS604  LT302", "_id": "6635d77e56b1b1ca8d25085d" },
-//             "10-11": { "class_id": "2031", "Teacher_Name": "HON’BLE VC SIR", "slotdata": "TCS604  LT302", "_id": "6635d77e56b1b1ca8d25085e" },
-//             "02-03": { "class_id": "1", "Teacher_Name": "MR AMRISH", "slotdata": "A.I.LAB  ULI", "_id": "6635d77e56b1b1ca8d25085f" },
-//             "03-04": { "class_id": "1", "Teacher_Name": "MR AMRISH", "slotdata": "A.I.LAB  ULI", "_id": "6635d77e56b1b1ca8d250860" },
-//             "_id": "6635d77e56b1b1ca8d250861"
-//         },
-//         "wed": {
-//             "08-09": { "class_id": "1041", "Teacher_Name": "MR PIYUSH", "slotdata": "TCS693  LT201", "_id": "6635d77e56b1b1ca8d250862" },
-//             "11-12": { "class_id": "1031", "Teacher_Name": "MR AKSHAY RAJPUT", "slotdata": "Placement Class  LT202", "_id": "6635d77e56b1b1ca8d250863" },
-//             "12-01": { "class_id": "1031", "Teacher_Name": "MR AKSHAY RAJPUT", "slotdata": "Placement Class  LT202", "_id": "6635d77e56b1b1ca8d250864" },
-//             "02-03": { "class_id": "69", "Teacher_Name": "MR PIYUSH", "slotdata": "PCS693  LAB1", "_id": "6635d77e56b1b1ca8d250865" },
-//             "04-05": { "class_id": "2031", "Teacher_Name": "DR DEVESH P. SINGH", "slotdata": "TCS601  LT302", "_id": "6635d77e56b1b1ca8d250866" },
-//             "_id": "6635d77e56b1b1ca8d250867"
-//         },
-//         "thu": {
-//             "09-10": { "class_id": "2041", "Teacher_Name": "MR PIYUSH", "slotdata": "TCS693  LT301", "_id": "6635d77e56b1b1ca8d250868" },
-//             "10-11": { "class_id": "33", "Teacher_Name": "MS NEELAM", "slotdata": "PXCS601  Bosch lab", "_id": "6635d77e56b1b1ca8d250869" },
-//             "11-12": { "class_id": "33", "Teacher_Name": "MS NEELAM", "slotdata": "PXCS601  Bosch lab", "_id": "6635d77e56b1b1ca8d25086a" },
-//             "_id": "6635d77e56b1b1ca8d25086b"
-//         },
-//         "fri": {
-//             "08-09": { "class_id": "2069", "Teacher_Name": "MS SONAL", "slotdata": "PCS601  LAB3", "_id": "6635d77e56b1b1ca8d25086c" },
-//             "09-10": { "class_id": "2069", "Teacher_Name": "MS SONAL", "slotdata": "PCS601  LAB3", "_id": "6635d77e56b1b1ca8d25086d" },
-//             "12-01": { "class_id": "2031", "Teacher_Name": "DR DEVESH P. SINGH", "slotdata": "TCS601  LT302", "_id": "6635d77e56b1b1ca8d25086e" },
-//             "01-02": { "class_id": "2031", "Teacher_Name": "DR DEVESH P. SINGH", "slotdata": "TCS601      LT302", "_id": "6635d77e56b1b1ca8d25086f" },
-//             "_id": "6635d77e56b1b1ca8d250870"
-//         },
-//         "_id": "6635d77e56b1b1ca8d250871"
-//     }
-// }
+let timetable = {
+	"course": "btechcse",
+	"semester": "6",
+	"section": "A",
+	"schedule": {
+	  "mon": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"10-11": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"11-12": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		}
+	  },
+	  "tue": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"10-11": {
+		  "class_id": "2001",
+		  "subjectcode": "TCS601",
+		  "slotdata": "TCS601\nDepartment of visual Art"
+		},
+		"11-12": {
+		  "class_id": "5006",
+		  "subjectcode": "XCS601Q",
+		  "slotdata": "XCS601Q\nreachers scholer room (room beside audi)"
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		}
+	  },
+	  "wed": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"10-11": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"11-12": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "71",
+		  "subjectcode": "XCS601Q",
+		  "slotdata": "XCS601Q\nCR103"
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		}
+	  },
+	  "thu": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"10-11": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"11-12": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		}
+	  },
+	  "fri": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "33",
+		  "subjectcode": "PXCS601",
+		  "slotdata": "PXCS601\nBosch lab"
+		},
+		"10-11": {
+		  "class_id": "33",
+		  "subjectcode": "PXCS601",
+		  "slotdata": "PXCS601\nBosch lab"
+		},
+		"11-12": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		}
+	  },
+	  "sat": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"10-11": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"11-12": {
+		  "class_id": "89",
+		  "subjectcode": "XCS601Q",
+		  "slotdata": "XCS601Q\nCR106"
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		}
+	  },
+	  "sun": {
+		"08-09": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"09-10": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"10-11": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"11-12": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"12-01": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"01-02": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"02-03": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"03-04": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"04-05": {
+		  "class_id": "0",
+		  "subjectcode": "",
+		  "slotdata": ""
+		},
+		"05-06": {
+		  "class_id": "87",
+		  "subjectcode": "TCS604",
+		  "slotdata": "TCS604\nCR105"
+		}
+	  }
+	},
+	"teacher_subject_data": [
+	  {
+		"subjectcode": "TCS601",
+		"teacherid": "2",
+		"weekly_hrs": "",
+		"teachername": "DR DEVESH P SINGH",
+		"subjectname": "COMPILER DESIGN",
+		"theory_practical": ""
+	  },
+	  {
+		"subjectcode": "PXCS601",
+		"teacherid": "21011355",
+		"weekly_hrs": "",
+		"teachername": "MS NEELAM",
+		"subjectname": "CAREER SKILLS LAB",
+		"theory_practical": ""
+	  },
+	  {
+		"subjectcode": "XCS601Q",
+		"teacherid": "10",
+		"weekly_hrs": "",
+		"teachername": "MR PA ANAND",
+		"subjectname": "CAREER SKILLS QUANT",
+		"theory_practical": ""
+	  },
+	  {
+		"subjectcode": "TCS604",
+		"teacherid": "3",
+		"weekly_hrs": "",
+		"teachername": "DR SATVIK VATS",
+		"subjectname": "COMPUTER NETWORKS I",
+		"theory_practical": ""
+	  }
+	]
+  }
 
 const letmesee2 = (temp_obj) => {
     for (let i = 1; i <= 7; i++) {
         let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
         for (let j = 1; j <= 10; j++) {
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
-            if (temp_obj && temp_obj.schedule && temp_obj.schedule[currrow] && temp_obj.schedule[currrow][currcol] && temp_obj.schedule[currrow][currcol].Teacher_Name) {
+            if (temp_obj && temp_obj.schedule && temp_obj.schedule[currrow] && temp_obj.schedule[currrow][currcol] && temp_obj.schedule[currrow][currcol].slotdata) {
                 document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border");
                 document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata;
             }
@@ -84,7 +442,7 @@ const letmeseeitbaby = () => {
         .then(data => {
             temp_obj = data;        // Do something with the response data here 
             console.log(data);
-            letmesee2(data);
+            letmesee2(timetable);
         })
         .catch(error => console.error('Data unavailable:', error));
 }
