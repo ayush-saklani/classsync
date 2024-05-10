@@ -31,7 +31,7 @@ body{
     background-color: #0D6EFD;
     transition: ease-out 0.5s;
 }
-#add_row{
+#add_row, #delete_row{
     background-color: rgba(255, 255, 255, 0);
     height: 45px; 
     width: 45px; 
@@ -58,4 +58,5 @@ body{
     padding: 0px;
     padding-top: 1.5px;
     padding-bottom: 1.5px;
+    vertical-align:top;
 }

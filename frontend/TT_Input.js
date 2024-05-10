@@ -105,406 +105,406 @@ let timetable = {
 	"semester": "1",
 	"section": "A",
 	"schedule": {
-	  "mon": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"mon": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"10-11": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"11-12": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			}
 		},
-		"09-10": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"tue": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"10-11": {
+				"class_id": "2001",
+				"subjectcode": "TCS601",
+				"slotdata": "TCS601\nDepartment of visual Art"
+			},
+			"11-12": {
+				"class_id": "5006",
+				"subjectcode": "XCS601Q",
+				"slotdata": "XCS601Q\nreachers scholer room (room beside audi)"
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			}
 		},
-		"10-11": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"wed": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"10-11": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"11-12": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "71",
+				"subjectcode": "XCS601Q",
+				"slotdata": "XCS601Q\nCR103"
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			}
 		},
-		"11-12": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"thu": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"10-11": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"11-12": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			}
 		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"fri": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "33",
+				"subjectcode": "PXCS601",
+				"slotdata": "PXCS601\nBosch lab"
+			},
+			"10-11": {
+				"class_id": "33",
+				"subjectcode": "PXCS601",
+				"slotdata": "PXCS601\nBosch lab"
+			},
+			"11-12": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			}
 		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"sat": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"10-11": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"11-12": {
+				"class_id": "89",
+				"subjectcode": "XCS601Q",
+				"slotdata": "XCS601Q\nCR106"
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			}
 		},
-		"02-03": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
+		"sun": {
+			"08-09": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"09-10": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"10-11": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"11-12": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"12-01": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"01-02": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"02-03": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"03-04": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"04-05": {
+				"class_id": "0",
+				"subjectcode": "",
+				"slotdata": ""
+			},
+			"05-06": {
+				"class_id": "87",
+				"subjectcode": "TCS604",
+				"slotdata": "TCS604\nCR105"
+			}
 		}
-	  },
-	  "tue": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"09-10": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"10-11": {
-		  "class_id": "2001",
-		  "subjectcode": "TCS601",
-		  "slotdata": "TCS601\nDepartment of visual Art"
-		},
-		"11-12": {
-		  "class_id": "5006",
-		  "subjectcode": "XCS601Q",
-		  "slotdata": "XCS601Q\nreachers scholer room (room beside audi)"
-		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"02-03": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		}
-	  },
-	  "wed": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"09-10": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"10-11": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"11-12": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"02-03": {
-		  "class_id": "71",
-		  "subjectcode": "XCS601Q",
-		  "slotdata": "XCS601Q\nCR103"
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		}
-	  },
-	  "thu": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"09-10": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"10-11": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"11-12": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"02-03": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		}
-	  },
-	  "fri": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"09-10": {
-		  "class_id": "33",
-		  "subjectcode": "PXCS601",
-		  "slotdata": "PXCS601\nBosch lab"
-		},
-		"10-11": {
-		  "class_id": "33",
-		  "subjectcode": "PXCS601",
-		  "slotdata": "PXCS601\nBosch lab"
-		},
-		"11-12": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"02-03": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		}
-	  },
-	  "sat": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"09-10": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"10-11": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"11-12": {
-		  "class_id": "89",
-		  "subjectcode": "XCS601Q",
-		  "slotdata": "XCS601Q\nCR106"
-		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"02-03": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		}
-	  },
-	  "sun": {
-		"08-09": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"09-10": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"10-11": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"11-12": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"12-01": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"01-02": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"02-03": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"03-04": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"04-05": {
-		  "class_id": "0",
-		  "subjectcode": "",
-		  "slotdata": ""
-		},
-		"05-06": {
-		  "class_id": "87",
-		  "subjectcode": "TCS604",
-		  "slotdata": "TCS604\nCR105"
-		}
-	  }
 	},
 	"teacher_subject_data": [
-	  {
-		"subjectcode": "TCS601",
-		"teacherid": "2",
-		"weekly_hrs": "",
-		"teachername": "DR DEVESH P SINGH",
-		"subjectname": "COMPILER DESIGN",
-		"theory_practical": ""
-	  },
-	  {
-		"subjectcode": "PXCS601",
-		"teacherid": "21011355",
-		"weekly_hrs": "",
-		"teachername": "MS NEELAM",
-		"subjectname": "CAREER SKILLS LAB",
-		"theory_practical": ""
-	  },
-	  {
-		"subjectcode": "XCS601Q",
-		"teacherid": "10",
-		"weekly_hrs": "",
-		"teachername": "MR PA ANAND",
-		"subjectname": "CAREER SKILLS QUANT",
-		"theory_practical": ""
-	  },
-	  {
-		"subjectcode": "TCS604",
-		"teacherid": "3",
-		"weekly_hrs": "",
-		"teachername": "DR SATVIK VATS",
-		"subjectname": "COMPUTER NETWORKS I",
-		"theory_practical": ""
-	  }
+		{
+			"subjectcode": "TCS601",
+			"teacherid": "2",
+			"weekly_hrs": "",
+			"teachername": "DR DEVESH P SINGH",
+			"subjectname": "COMPILER DESIGN",
+			"theory_practical": ""
+		},
+		{
+			"subjectcode": "PXCS601",
+			"teacherid": "21011355",
+			"weekly_hrs": "",
+			"teachername": "MS NEELAM",
+			"subjectname": "CAREER SKILLS LAB",
+			"theory_practical": ""
+		},
+		{
+			"subjectcode": "XCS601Q",
+			"teacherid": "10",
+			"weekly_hrs": "",
+			"teachername": "MR PA ANAND",
+			"subjectname": "CAREER SKILLS QUANT",
+			"theory_practical": ""
+		},
+		{
+			"subjectcode": "TCS604",
+			"teacherid": "3",
+			"weekly_hrs": "",
+			"teachername": "DR SATVIK VATS",
+			"subjectname": "COMPUTER NETWORKS I",
+			"theory_practical": ""
+		}
 	]
-  }
+}
 
 //  the function below updates the teacher subject table acc to the subject choosen 
 const update_detail_table = () => {
@@ -554,7 +554,11 @@ const add_row_func = () => {
 	}
 	update_detail_table();
 };
-
+const delete_row_func = ()=>{
+	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+    let rowCount = table.rows.length;
+    table.deleteRow(rowCount -1);
+}
 // add eventlistner to all the select box that updates the rows and data on content change in all selectboxs
 const updateItAll = () => {
 	let selectors = document.getElementsByClassName("form-select");
@@ -633,29 +637,29 @@ const save_table_func = () => {
 	console.log(JSON.stringify(jsonData, null, 2));
 	globaljsonData = jsonData;
 	// jsonData ka post request marna hai for teacher subject data  
-	
-	
+
+
 	// Convert JSON data to a string
 	const jsonDataString = JSON.stringify(jsonData, null, 4);
-	
+
 	// Create a POST request
-	fetch('https://392b3fc8-82fd-4e8d-9982-d930629f36f5.mock.pstmn.io', {
+	fetch('http://127.0.0.1:3000/save-section-data', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
-			body: jsonDataString
-		})
+		body: jsonDataString
+	})
 		.then(response => {
-			if (!response.ok) {
-				throw new Error(':::::  DATA NOT SAVED  :::::');
+			if (response.ok) {
+				return response.json();
+			} else {
+				throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 			}
-			return response.json();
-		})
-		.then(data => {
-			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', data);
-		})
-		.catch(error => {
+		}).then(parsedData => {
+			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', parsedData);
+
+		}).catch(error => {
 			console.error('::::: ERROR SAVING DATA :::::', error);
 		});
 };
@@ -719,7 +723,7 @@ const add_select_box_to_myteacher_table = () => {
 		for (let j = 1; j < mytable.rows[1].cells.length; j++) {
 			let tempcell = mytable.rows[i].cells[j];
 			let select = document.createElement('select');
-			select.setAttribute('class', 'form-select form-select-sm text subjectselectbox');
+			select.setAttribute('class', 'form-select form-select-sm text subjectselectbox fw-bold');
 			select.setAttribute('style', 'white-space: pre-wrap;');
 			tempcell.appendChild(select);
 			let select2 = document.createElement('select');
@@ -735,13 +739,13 @@ const add_select_box_to_myteacher_table = () => {
 const add_rooms_options_to_myteacher_table = (room_list) => {
 	let roomselectboxes = document.querySelectorAll(".roomselectbox");
 	roomselectboxes.forEach(select => {
-		let tempselectedvalue = select.value; 
+		let tempselectedvalue = select.value;
 		select.innerHTML = "";
 		Object.entries(room_list).forEach(([key, value]) => {
 			let option = document.createElement("option");
 			option.value = key;
 			option.text = value;
-			if(key == tempselectedvalue){
+			if (key == tempselectedvalue) {
 				option.selected = true;
 			}
 			select.appendChild(option);
@@ -751,14 +755,14 @@ const add_rooms_options_to_myteacher_table = (room_list) => {
 const add_subjects_options_to_myteacher_table = (subject_list) => {
 	let subjectselectbox = document.querySelectorAll(".subjectselectbox");
 	subjectselectbox.forEach(select => {
-		let tempselectedvalue = select.value; 
+		let tempselectedvalue = select.value;
 		select.innerHTML = "";
 
 		// adidng blank option 
 		let option = document.createElement("option");
 		option.value = "";
 		option.text = "";
-		if(option.value == tempselectedvalue){
+		if (option.value == tempselectedvalue) {
 			option.selected = true;
 		}
 		select.appendChild(option);
@@ -767,7 +771,7 @@ const add_subjects_options_to_myteacher_table = (subject_list) => {
 			option = document.createElement("option");
 			option.value = element.subjectcode;
 			option.text = element.subjectcode
-			if(element.subjectcode == tempselectedvalue){
+			if (element.subjectcode == tempselectedvalue) {
 				option.selected = true;
 			}
 			select.appendChild(option);
@@ -841,7 +845,7 @@ const render_tables = () => {
 		let option = document.createElement('option');
 		option.value = "";
 		option.text = "";
-		if("" == localteacher_subject_data[i].subjectcode){
+		if ("" == localteacher_subject_data[i].subjectcode) {
 			option.selected = true;
 		}
 		select.appendChild(option);
@@ -849,13 +853,13 @@ const render_tables = () => {
 			option = document.createElement('option');
 			option.value = subjectdata[ele].subjectcode;
 			option.text = subjectdata[ele].subjectname;
-			if(subjectdata[ele].subjectcode == localteacher_subject_data[i].subjectcode){
+			if (subjectdata[ele].subjectcode == localteacher_subject_data[i].subjectcode) {
 				option.selected = true;
 				// console.log(ele)
 			}
 			select.appendChild(option);
 		}
-		
+
 		// teacher select box render
 		cell = newRow.insertCell();
 		select = document.createElement('select');
@@ -864,8 +868,8 @@ const render_tables = () => {
 		for (let ele in faculty_data) {
 			let option = document.createElement('option');
 			option.value = ele;
-			option.text =  faculty_data[ele];
-			if(ele == localteacher_subject_data[i].teacherid){
+			option.text = faculty_data[ele];
+			if (ele == localteacher_subject_data[i].teacherid) {
 				option.selected = true;
 				// console.log(ele)
 			}
@@ -876,7 +880,7 @@ const render_tables = () => {
 		for (let i = 2; i < 5; i++) {
 			let cell = newRow.insertCell();
 			let cell_insert = document.createElement("span");
-			cell_insert.setAttribute("class","text");
+			cell_insert.setAttribute("class", "text");
 			cell.appendChild(cell_insert);
 		}
 	}
@@ -899,9 +903,9 @@ const render_tables = () => {
 			for (let i = 0; i < curr_col_slot_childs[0].options.length; i++) {
 				let subject_options = curr_col_slot_childs[0].options;
 				let optionValue = subject_options[i].value;
-				if(optionValue == local_time_table_data[curr_day][curr_timeslot].subjectcode){
-					console.log(optionValue);
-					console.log(local_time_table_data[curr_day][curr_timeslot].subjectcode);
+				if (optionValue == local_time_table_data[curr_day][curr_timeslot].subjectcode) {
+					// console.log(optionValue);
+					// console.log(local_time_table_data[curr_day][curr_timeslot].subjectcode);
 					subject_options[i].selected = true;
 				}
 			}
@@ -910,9 +914,9 @@ const render_tables = () => {
 			for (let i = 0; i < curr_col_slot_childs[1].options.length; i++) {
 				let room_options = curr_col_slot_childs[1].options;
 				optionValue = room_options[i].value;
-				if(optionValue == local_time_table_data[curr_day][curr_timeslot].class_id){
-					console.log(optionValue);
-					console.log(local_time_table_data[curr_day][curr_timeslot].class_id);
+				if (optionValue == local_time_table_data[curr_day][curr_timeslot].class_id) {
+					// console.log(optionValue);
+					// console.log(local_time_table_data[curr_day][curr_timeslot].class_id);
 					room_options[i].selected = true;
 				}
 			}
@@ -924,4 +928,4 @@ fetch_faculties_list();
 add_subjects_options_to_myteacher_table(subjectdata);
 add_rooms_options_to_myteacher_table(room_list);
 
-setTimeout(render_tables,3000); // promises sekh le 
+setTimeout(render_tables, 3000); // promises sekh le 
