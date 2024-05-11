@@ -603,14 +603,16 @@ const save_table_func = () => {
 		let row = tableBody.rows[i];
 
 		let subjectid = row.cells[0].firstChild.value;
-		let subjectname = '';
 		let teacherid = row.cells[1].firstChild.value;
 		let teachername = faculty_data[teacherid];
-		let hours = row.cells[3].firstChild.innerHTML;
-		let theory_practical = row.cells[4].firstChild.innerHTML;
+		let subjectname = "";
+		let weekly_hrs = "";
+		let theory_practical = "";
 		for (let ele of subjectdata) {
 			if (ele.subjectcode === subjectid) {
 				subjectname = ele.subjectname;
+				weekly_hrs = ele.weekly_hrs
+				theory_practical = ele.theory_practical
 				break;
 			}
 		}
@@ -618,7 +620,7 @@ const save_table_func = () => {
 		let rowData = {
 			"subjectcode": subjectid,
 			"teacherid": teacherid,
-			"weekly_hrs": hours,
+			"weekly_hrs": weekly_hrs,
 			"teachername": teachername,
 			"subjectname": subjectname,
 			"theory_practical": theory_practical,
