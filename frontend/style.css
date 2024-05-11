@@ -81,6 +81,10 @@ body{
 .bg-primary {
     background-color: rgba(1, 106, 137, 0.827) !important;
 }
-.bg-opiom{
-    background-color: black ;
+.bg-danger {
+    background-color: #dc3545 !important;
+}
+.bg-peela{
+    background-color: #ffc107 !important;
+    color: black !important;
 }

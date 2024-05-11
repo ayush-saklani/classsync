@@ -1,6 +1,6 @@
 let timetable = {
 	"course": "btechcse",
-	"semester": "6",
+	"semester": "1",
 	"section": "A",
 	"schedule": {
 	  "mon": {
@@ -74,7 +74,7 @@ let timetable = {
 		"11-12": {
 		  "class_id": "5006",
 		  "subjectcode": "XCS601Q",
-		  "slotdata": "XCS601Q\nLT301"
+		  "slotdata": "XCS601Q\nCR103"
 		},
 		"12-01": {
 		  "class_id": "0",
@@ -372,34 +372,34 @@ let timetable = {
 	  {
 		"subjectcode": "TCS601",
 		"teacherid": "2",
-		"weekly_hrs": "",
+		"weekly_hrs": "3",
 		"teachername": "DR DEVESH P SINGH",
 		"subjectname": "COMPILER DESIGN",
-		"theory_practical": ""
+		"theory_practical": "Theory"
 	  },
 	  {
 		"subjectcode": "PXCS601",
 		"teacherid": "21011355",
-		"weekly_hrs": "",
+		"weekly_hrs": "3",
 		"teachername": "MS NEELAM",
 		"subjectname": "CAREER SKILLS LAB",
-		"theory_practical": ""
+		"theory_practical": "Practical"
 	  },
 	  {
 		"subjectcode": "XCS601Q",
 		"teacherid": "10",
-		"weekly_hrs": "",
+		"weekly_hrs": "3",
 		"teachername": "MR PA ANAND",
 		"subjectname": "CAREER SKILLS QUANT",
-		"theory_practical": ""
+		"theory_practical": "Theory"
 	  },
 	  {
 		"subjectcode": "TCS604",
 		"teacherid": "3",
-		"weekly_hrs": "",
+		"weekly_hrs": "3",
 		"teachername": "DR SATVIK VATS",
 		"subjectname": "COMPUTER NETWORKS I",
-		"theory_practical": ""
+		"theory_practical": "Theory"
 	  }
 	]
 }
@@ -411,20 +411,29 @@ const letmesee2 = (temp_obj) => {
 		let today = new Date();
         const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
         let day_slot = weekdays[today.getDay()];
-		if(currrow===day_slot){
-			day_row_border_adding.classList.add("day_highlight");
-		}
+		let hours = today.getHours();
+		let houre = hours + 1;
+		hours = (hours > 12) ? String(hours - 12).padStart(2, "0") : String(hours).padStart(2, "0");
+		houre = (houre > 12) ? String(houre - 12).padStart(2, "0") : String(houre).padStart(2, "0");
+		let time_slot = hours + "-" + houre;
+		time_slot = (time_slot).toString();
 
         for (let j = 1; j <= 10; j++) {
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
             if (temp_obj && temp_obj.schedule && temp_obj.schedule[currrow] && temp_obj.schedule[currrow][currcol] && temp_obj.schedule[currrow][currcol].slotdata) {
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border border-2");
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger  text-white heading-text border-dark border-3");
                 document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
             }
             else {
                 document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
                 document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
             }
+
+			if(currcol === time_slot && currrow === day_slot){ // color the time and day and period slots 
+				day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
+				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
+				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
+			}
         }
     }
 };
@@ -450,7 +459,8 @@ const letmeseeitbaby = () => {
         .then(data => {
             temp_obj = data;        // Do something with the response data here 
             console.log(data);
-            // letmesee2(timetable);
+            letmesee2(timetable);
+			render_tables();
         })
         .catch(error => console.error('Data unavailable:', error));
 }
@@ -461,10 +471,11 @@ document.getElementById('letmesee').addEventListener('click', letmeseeitbaby);
 const render_tables = () => {
 	// rendering the second table first 
 	let localteacher_subject_data = timetable.teacher_subject_data;
+	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+	table.innerHTML = "";
 	for (let i = 0; i < localteacher_subject_data.length; i++) {
 		const element = localteacher_subject_data[i];
 
-		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 		let newRow = table.insertRow(table.rows.length);
 
 		let cell = newRow.insertCell();
@@ -498,4 +509,3 @@ const render_tables = () => {
 		cell.appendChild(select);
 	}
 }
-render_tables();
