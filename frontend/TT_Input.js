@@ -554,10 +554,10 @@ const add_row_func = () => {
 	}
 	update_detail_table();
 };
-const delete_row_func = ()=>{
+const delete_row_func = () => {
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-    let rowCount = table.rows.length;
-    table.deleteRow(rowCount -1);
+	let rowCount = table.rows.length;
+	table.deleteRow(rowCount - 1);
 }
 // add eventlistner to all the select box that updates the rows and data on content change in all selectboxs
 const updateItAll = () => {
@@ -896,7 +896,7 @@ const render_tables = () => {
 	for (let i = 1; i < mytable.rows.length; i++) {
 		let curr_day = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		let curr_whole_row = mytable.rows[i];
-		
+
 		for (let j = 1; j <= 10; j++) {
 			let curr_timeslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
 			let curr_col_slot = curr_whole_row.cells[j];
@@ -926,9 +926,3 @@ const render_tables = () => {
 		}
 	}
 }
-fetch_room_list();
-fetch_faculties_list();
-add_subjects_options_to_myteacher_table(subjectdata);
-add_rooms_options_to_myteacher_table(room_list);
-
-setTimeout(render_tables, 3000); // promises sekh le 
