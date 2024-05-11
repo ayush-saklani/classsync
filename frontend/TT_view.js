@@ -69,12 +69,12 @@ let timetable = {
 		"10-11": {
 		  "class_id": "2001",
 		  "subjectcode": "TCS601",
-		  "slotdata": "TCS601\nDepartment of visual Art"
+		  "slotdata": "TCS601\nLT401"
 		},
 		"11-12": {
 		  "class_id": "5006",
 		  "subjectcode": "XCS601Q",
-		  "slotdata": "XCS601Q\nreachers scholer room (room beside audi)"
+		  "slotdata": "XCS601Q\nLT301"
 		},
 		"12-01": {
 		  "class_id": "0",
@@ -402,7 +402,7 @@ let timetable = {
 		"theory_practical": ""
 	  }
 	]
-  }
+}
 
 const letmesee2 = (temp_obj) => {
     for (let i = 1; i <= 7; i++) {
@@ -418,11 +418,11 @@ const letmesee2 = (temp_obj) => {
         for (let j = 1; j <= 10; j++) {
             let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
             if (temp_obj && temp_obj.schedule && temp_obj.schedule[currrow] && temp_obj.schedule[currrow][currcol] && temp_obj.schedule[currrow][currcol].slotdata) {
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border");
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border border-2");
                 document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_obj.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
             }
             else {
-                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary text-white heading-text border");
+                document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
                 document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
             }
         }
@@ -450,7 +450,7 @@ const letmeseeitbaby = () => {
         .then(data => {
             temp_obj = data;        // Do something with the response data here 
             console.log(data);
-            letmesee2(timetable);
+            // letmesee2(timetable);
         })
         .catch(error => console.error('Data unavailable:', error));
 }
@@ -458,3 +458,44 @@ letmeseeitbaby()
 
 document.getElementById('letmesee').addEventListener('click', letmeseeitbaby);
 
+const render_tables = () => {
+	// rendering the second table first 
+	let localteacher_subject_data = timetable.teacher_subject_data;
+	for (let i = 0; i < localteacher_subject_data.length; i++) {
+		const element = localteacher_subject_data[i];
+
+		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+		let newRow = table.insertRow(table.rows.length);
+
+		let cell = newRow.insertCell();
+		cell.setAttribute("class","table-light text border-dark border-3");
+		let select = document.createElement('span');
+		select.innerText = localteacher_subject_data[i].subjectname;
+		cell.appendChild(select);
+
+		cell = newRow.insertCell();
+		cell.setAttribute("class","table-light text border-dark border-3");
+		select = document.createElement('span');
+		select.innerText = localteacher_subject_data[i].teachername;
+		cell.appendChild(select);
+
+		cell = newRow.insertCell();
+		cell.setAttribute("class","table-light text border-dark border-3");
+		select = document.createElement('span');
+		select.innerText = localteacher_subject_data[i].subjectcode;
+		cell.appendChild(select);
+		
+		cell = newRow.insertCell();
+		cell.setAttribute("class","table-light text border-dark border-3");
+		select = document.createElement('span');
+		select.innerText = localteacher_subject_data[i].weekly_hrs;
+		cell.appendChild(select);
+		
+		cell = newRow.insertCell();
+		cell.setAttribute("class","table-light text border-dark border-3");
+		select = document.createElement('span');
+		select.innerText = localteacher_subject_data[i].theory_practical;
+		cell.appendChild(select);
+	}
+}
+render_tables();

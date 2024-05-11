@@ -42,16 +42,16 @@ body{
     border-color: rgb(103, 103, 103);
 }
 .bus-dep{
-    border-right-style: dotted;
-    border-right-width: 10px;
-    border-right-color: rgb(231, 178, 3);
-    border-right-color: #ef1f34;
+    border-right-style: dotted !important;
+    border-right-width: 10px !important;
+    border-right-color: rgb(255, 162, 1) !important;
+    border-right-color: #ff384c !important;
 }
 .bus-arr{
-    border-right-style: dotted;
-    border-right-width: 10px;
-    border-right-color: rgb(21, 168, 5);
-    border-right-color: #3385ff;
+    border-right-style: dotted !important; 
+    border-right-width: 10px !important;
+    border-right-color: rgb(0, 113, 165) !important;
+    border-right-color: #3385ff !important;
 }
 /* removes the margin but it looks bad in viewing portal as it uses same css in between might seperate it in future */
 #mytable td {
@@ -62,6 +62,25 @@ body{
 }
 .day_highlight{
     border-style: solid;
-    border-width: 4px;
-    border-color: rgb(2, 104, 138);
+    border-width: 5px;
+    border-color: rgb(0, 0, 0);
+}
+@media only screen and (max-width: 900px) {
+    body>div {
+    display: none;
+    }
+    footer::before{
+        content: "This App is made Exclusive for Desktop";
+        font-size: xx-large;
+        font-weight: bolder;
+        padding: 30px;
+        display: flex;
+        justify-content: center;        
+    }
+}
+.bg-primary {
+    background-color: rgba(1, 106, 137, 0.827) !important;
+}
+.bg-opiom{
+    background-color: black ;
 }
