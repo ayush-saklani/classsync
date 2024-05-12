@@ -1,15 +1,9 @@
-// add subject and room select boxes to all the table cells  
-add_select_box_to_myteacher_table();
-
-// fetch faculty list from the server when the page loads 
-fetch_faculties_list(); // fetched when the page loads initially 
-
-// fetch Room list from the server when the page loads 
-fetch_room_list();
-
-add_subjects_options_to_myteacher_table(subjectdata);
-add_rooms_options_to_myteacher_table(room_list);
-setTimeout(render_tables, 3000); // promises sekh le 
+// add_select_box_to_myteacher_table(); // add subject and room select boxes to all the table cells  
+// fetch_faculties_list(); // fetch faculty list from the server when the page loads 
+// fetch_room_list();   // fetch Room list from the server when the page loads 
+// add_subjects_options_to_myteacher_table(subjectdata);
+// add_rooms_options_to_myteacher_table(room_list);
+// setTimeout(render_tables, 3000); // promises sekh le 
 
 // [ save TT JSON on DB button ]
 document.getElementById("save_tt_json").addEventListener("click", save_table_func);

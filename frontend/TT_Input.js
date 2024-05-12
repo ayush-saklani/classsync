@@ -926,3 +926,9 @@ const render_tables = () => {
 		}
 	}
 }
+add_select_box_to_myteacher_table();
+fetch_faculties_list(); 
+fetch_room_list();
+add_subjects_options_to_myteacher_table(subjectdata);
+add_rooms_options_to_myteacher_table(room_list);
+setTimeout(render_tables, 3000); // promises sekh le 
