@@ -1,7 +1,105 @@
 // Sample data for generating dropdowns will be fetched from apis and database
 let globaljsonData;
 let faculty_data;
-let subjectdata;
+let subjectdata; 
+// let subjectdata = [
+// 	{
+// 		"subjectcode": "TCS601",
+// 		"subjectname": "COMPILER DESIGN",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "TCS604",
+// 		"subjectname": "COMPUTER NETWORKS I",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "TCS693",
+// 		"subjectname": "FULL STACK WEB DEVELOPMENT",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "XCS601Q",
+// 		"subjectname": "CAREER SKILLS QUANT",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "XCS601V",
+// 		"subjectname": "CAREER SKILLS VERBAL",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "PCS601",
+// 		"subjectname": "COMPILER DESIGN LAB",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "practical"
+// 	},
+// 	{
+// 		"subjectcode": "PCS611",
+// 		"subjectname": "SOFTWARE ENGINEERING LAB",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "practical"
+// 	},
+// 	{
+// 		"subjectcode": "PCS693",
+// 		"subjectname": "FULL STACK WEB LAB",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "practical"
+// 	},
+// 	{
+// 		"subjectcode": "PXCS601",
+// 		"subjectname": "CAREER SKILLS LAB",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "practical"
+// 	},
+// 	{
+// 		"subjectcode": "ELECT",
+// 		"subjectname": "ELECTIVE (ALL)",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "TCS651",
+// 		"subjectname": "DEVOPS ON CLOUD (ELECTIVE)",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "TCS675",
+// 		"subjectname": "VIRTUAL REALITY (ELECTIVE)",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "TCS692",
+// 		"subjectname": "GEN. A.I (ELECTIVE)",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "TCS619",
+// 		"subjectname": "NETWORK AND SYSTEM SECURITY (ELECTIVE)",
+// 		"weekly_hrs": 3,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "PLCEC",
+// 		"subjectname": "PLACEMENT CLASSES ( CODING )",
+// 		"weekly_hrs": 4,
+// 		"theory_practical": "theory"
+// 	},
+// 	{
+// 		"subjectcode": "PLCEP",
+// 		"subjectname": "PLACEMENT CLASSES ( PROJECTS )",
+// 		"weekly_hrs": 4,
+// 		"theory_practical": "theory"
+// 	}
+// ]
 let room_list;
 let timetable = {
 	"course": "btechcse",
@@ -411,6 +509,7 @@ let timetable = {
 
 //  the function below updates the teacher subject table acc to the subject choosen 
 const update_detail_table = () => {
+	console.log("asjlkdjaslkd")
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 	for (let i = 0; i < table.rows.length; i++) {
 		let row = table.rows[i];
@@ -463,6 +562,7 @@ const delete_row_func = () => {
 	let rowCount = table.rows.length;
 	table.deleteRow(rowCount - 1);
 }
+
 // add eventlistner to all the select box that updates the rows and data on content change in all selectboxs
 const updateItAll = () => {
 	let selectors = document.getElementsByClassName("form-select");
@@ -602,14 +702,7 @@ const pass_second_table_to_first = () => {
 		tempteachersubjectdata.push(rowData);
 	}
 
-	let testinglist = [
-		// {
-		// 	"subjectcode": "",
-		// 	"subjectname": "",
-		// 	"weekly_hrs": "",
-		// 	"theory_practical": ""
-		// }
-	]; // for blank field in mytable diaable becuase this is added in the dinal funciton if working fine delete it  [ WDTL ]
+	let testinglist = []; // for blank field in mytable diaable becuase this is added in the dinal funciton if working fine delete it  [ WDTL ]
 	tempteachersubjectdata.forEach(element => {
 		testinglist.push({
 			"subjectcode": element.subjectcode,
@@ -647,6 +740,7 @@ const add_rooms_options_to_myteacher_table = (room_list) => {
 	roomselectboxes.forEach(select => {
 		let tempselectedvalue = select.value;
 		select.innerHTML = "";
+		console.log(room_list)
 		Object.entries(room_list).forEach(([key, value]) => {
 			let option = document.createElement("option");
 			option.value = key;
@@ -743,7 +837,6 @@ const fetch_subject_list = () => {
 		.then(response => response.json())
 		.then(data => {
 			subjectdata = data.data;
-			console.log(subjectdata)
 		})
 		.catch(error => console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error));
 };

@@ -38,7 +38,7 @@ body{
 }
 .bording{
     border-style: solid;
-    border-width: 3px;
+    border-width: 3px !important;
     border-color: rgb(103, 103, 103);
 }
 .bus-dep{
