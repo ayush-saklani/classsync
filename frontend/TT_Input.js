@@ -650,7 +650,7 @@ const add_rooms_options_to_myteacher_table = (room_list) => {
 		Object.entries(room_list).forEach(([key, value]) => {
 			let option = document.createElement("option");
 			option.value = key;
-			option.text = value;
+			option.text = value.classname;
 			if (key == tempselectedvalue) {
 				option.selected = true;
 			}
@@ -695,15 +695,9 @@ const fetch_room_list = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			let value = {}
-			for (let key in data) {
-				if (data.hasOwnProperty(key)) {
-					value = data[key];
-				}
-			}
+			room_list=data.data
 			// console.log(value)
-			// console.log(room_list)
-			room_list = value
+			console.log(room_list)
 			add_rooms_options_to_myteacher_table(room_list);
 		})
 		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));

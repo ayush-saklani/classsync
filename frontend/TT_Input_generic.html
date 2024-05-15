@@ -30,7 +30,13 @@
 
 	<div class="container-fluid mt-5">
 		<div class="container">
-			<h1 class="center text fw-bold">Timetable Editing Portal ( Send Generic Data )</h1>
+			<h1 class="center text fw-bold">Timetable Editing Portal ( Sending Generic Data )</h1>
+			<ul>
+				<li class="center text"><b>Use all CAPS</b></li>
+				<li class="center text">Don't use space in Subject Code</li>
+				<li class="center text">Two different teacher can't teach same subject to same section so we have to divide the subject</li>
+				<li class="center text">e.g <b>XCS601</b> (career skills) <b>--></b> <b>XCS601Q</b> (career skills Quant) && <b>XCS601V</b> (career skills Verbal)</li>
+			</ul>
 		</div>
 		<div class="container">
 			<div class="row mt-3">
@@ -72,10 +78,9 @@
 				<thead>
 					<tr>
 						<th class="table-light text" scope="col">Subject Name </th>
-						<!-- <th class="table-light text" scope="col">Teacher Name</th> -->
 						<th class="table-light text" scope="col">Subject Code</th>
-						<th class="table-light text" scope="col">Number of Hours</th>
-						<th class="table-light text" scope="col">type</th>
+						<th class="table-light text" scope="col">Weekly Teaching Hours</th>
+						<th class="table-light text" scope="col">Theory / Practical</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -94,7 +99,8 @@
 
 		<!-- save button div  -->
 		<div class="container text-center">
-			<button type="button" class="btn btn-lg btn-info mt-2 mb-3" id="save_tt_json"><b>Set subject for ALL</b></button>
+			<button type="button" class="btn btn-lg btn-info mt-2 mb-3" id="set_for_all"><b>Set subject for
+					ALL</b></button>
 		</div>
 		<!-- save button div end -->
 
@@ -136,7 +142,6 @@
 		integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
 		crossorigin="anonymous"></script>
 	<script src="TT_Input_generic.js"></script>
-	<script src="TT_Input_generic2.js"></script>
 	<!--java scripts used end-->
 </body>
 
