@@ -9195,6 +9195,7 @@ const delete_row_func = () => {
 	let rowCount = table.rows.length;
 	table.deleteRow(rowCount - 1);
 }
+
 // add eventlistner to all the select box that updates the rows and data on content change in all selectboxs
 const updateItAll = () => {
 	let selectors = document.getElementsByClassName("form-select");
@@ -9343,12 +9344,12 @@ const pass_second_table_to_first = () => {
 			"theory_practical": element.theory_practical
 		});
 	});
-	add_subjects_options_to_myteacher_table(testinglist);
+	add_subjects_options_to_mytable(testinglist);
 }
 
 //  this function below adds the select option field to each table cell in the table  and also give them appropriate classes 
 // 	for additional essential funcitonality such as selecting all select box to add options dynamically to them 
-const add_select_box_to_myteacher_table = () => {
+const add_select_box_to_mytable = () => {
 	let mytable = document.getElementById("mytable");
 	for (let i = 1; i < mytable.rows.length; i++) {
 		for (let j = 1; j < mytable.rows[1].cells.length; j++) {
@@ -9367,7 +9368,7 @@ const add_select_box_to_myteacher_table = () => {
 
 //  these two function below adds the options to the previously created select option field to each table cell in the table 
 // 	this add options to subject select box and room select box in the main table dynamically with the data obtained from mongoDB
-const add_rooms_options_to_myteacher_table = (room_list) => {
+const add_rooms_options_to_mytable = (room_list) => {
 	let roomselectboxes = document.querySelectorAll(".roomselectbox");
 	roomselectboxes.forEach(select => {
 		let tempselectedvalue = select.value;
@@ -9383,7 +9384,7 @@ const add_rooms_options_to_myteacher_table = (room_list) => {
 		});
 	});
 };
-const add_subjects_options_to_myteacher_table = (subject_list) => {
+const add_subjects_options_to_mytable = (subject_list) => {
 	let subjectselectbox = document.querySelectorAll(".subjectselectbox");
 	subjectselectbox.forEach(select => {
 		let tempselectedvalue = select.value;
@@ -9423,7 +9424,7 @@ const fetch_room_list = () => {
 			room_list=data.data
 			// console.log(value)
 			console.log(room_list)
-			add_rooms_options_to_myteacher_table(room_list);
+			add_rooms_options_to_mytable(room_list);
 		})
 		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
 };
@@ -9524,7 +9525,7 @@ const render_tables = () => {
 		}
 	}
 	update_detail_table();
-	add_subjects_options_to_myteacher_table(localteacher_subject_data)
+	add_subjects_options_to_mytable(localteacher_subject_data)
 
 	// rendering the first main table now 
 	let local_time_table_data = timetable.schedule;
@@ -9566,6 +9567,6 @@ const render_tables = () => {
 
 fetch_room_list();
 fetch_subject_list();
-add_subjects_options_to_myteacher_table(subjectdata);
-add_rooms_options_to_myteacher_table(room_list);
+add_subjects_options_to_mytable(subjectdata);
+add_rooms_options_to_mytable(room_list);
 setTimeout(render_tables, 3000); // promises sekh le 
