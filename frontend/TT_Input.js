@@ -9159,27 +9159,34 @@ const add_row_func = () => {
 
 	// Subject name drop-down
 	let cell = newRow.insertCell();
-	let html = `<select class="form-select text">`;
+	let select = document.createElement("select");
+	select.className = "form-select text";
 	for (let ele in subjectdata) {
-		html += `<option value="${subjectdata[ele].subjectcode}">${subjectdata[ele].subjectname}</option>`;
+		let option = document.createElement("option");
+		option.value = subjectdata[ele].subjectcode;
+		option.text = subjectdata[ele].subjectname;
+		select.appendChild(option);
 	}
-	html += `</select>`;
-	cell.innerHTML = html;
+	cell.appendChild(select);
 
 	// Teacher name drop-down
 	cell = newRow.insertCell();
-	html = `<select class="form-select text">`;
+	select = document.createElement("select");
+	select.className = "form-select text";
 	for (let code in faculty_data) {
-		let name = faculty_data[code];
-		html += `<option value="${code}">${name}</option>`;
+		let option = document.createElement("option");
+		option.value = code;
+		option.text = faculty_data[code];
+		select.appendChild(option);
 	}
-	html += `</select>`;
-	cell.innerHTML = html;
+	cell.appendChild(select);
 
 	// Empty span tags for cells
 	for (let i = 2; i < 5; i++) {
 		let cell = newRow.insertCell();
-		cell.innerHTML = `<span class="text"></span>`;
+		let span = document.createElement("span");
+		span.className = "text";
+		cell.appendChild(span);
 	}
 	update_detail_table();
 };
