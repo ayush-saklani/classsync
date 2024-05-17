@@ -4,6 +4,10 @@ fetch_faculties_list();                 // fetch faculty list from the server wh
 
 // [ save TT JSON on DB button ]
 document.getElementById("save_tt_json").addEventListener("click", save_table_func);
+document.getElementById("showit").addEventListener("click", ()=>{
+    fetch_timetable();
+    
+});
 
 // [ Save on DB button ] teacher subject relation table ka listner
 document.getElementById("save_sub_teacher_table").addEventListener("click", pass_second_table_to_first);

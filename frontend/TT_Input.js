@@ -454,7 +454,7 @@ const update_detail_table = () => {
 		});
 	});
 	add_subjects_options_to_mytable(testinglist);
-	any_change_event_listner();
+	// any_change_event_listner();
 }
 
 //  this function creates a row of table for teacher-subject table dynamically and add the options to the subjects and faculty data 
@@ -530,6 +530,9 @@ const save_table_func = () => {
 			if (sl_class_id != '0' || sl_subjectcode != '') {
 				let curr_box = mytable.rows[i].cells[j].childNodes[1];
 				sl_slotdata = `${sl_subjectcode}\n${curr_box.options[curr_box.selectedIndex].textContent}`;
+			}
+			else {
+				sl_slotdata = "";
 			}
 
 			tempdayslot[currcol] = {
@@ -673,7 +676,7 @@ const add_rooms_options_to_mytable = (room_list) => {
 			let option = document.createElement("option");
 			option.value = key;
 			option.text = value.classname;
-			console.log(option.value, option.text)
+			// console.log(option.value, option.text)
 			if (key == tempselectedvalue) {
 				option.selected = true;
 			}
@@ -719,7 +722,7 @@ const fetch_room_list = () => {
 		.then(response => response.json())
 		.then(data => {
 			room_list=data.data[0]
-			console.log(room_list)
+			// console.log(room_list)
 			add_rooms_options_to_mytable(room_list);
 		})
 		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
@@ -759,6 +762,8 @@ const fetch_subject_list = () => {
 const render_tables = () => {
 	// rendering the second table first 
 	let localteacher_subject_data = timetable.teacher_subject_data;
+	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+	table.innerHTML = "";
 	for (let i = 0; i < localteacher_subject_data.length; i++) {
 		const element = localteacher_subject_data[i];
 
