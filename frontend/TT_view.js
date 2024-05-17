@@ -2,45 +2,44 @@ let timetable ;
 
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
-	if(temp_tt && temp_tt.teacher_subject_data){
-		for (let i = 1; i <= 7; i++) {
-			// ======================================== will be used in download optin [ future feature ] ======================================== 
-			// document.getElementById("render-course-detail").innerHTML =   "Course : " + document.getElementById("course_option").options[document.getElementById("course_option").selectedIndex].textContent;;
-			// document.getElementById("render-semester-detail").innerHTML = "Semester : " + document.getElementById("semester_option").value;
-			// document.getElementById("render-section-detail").innerHTML =  "Section : " + document.getElementById("section_option").value;
-			// =================================================================================================================================== 
+	for (let i = 1; i <= 7; i++) {
+		// ======================================== will be used in download optin [ future feature ] ======================================== 
+		// document.getElementById("render-course-detail").innerHTML =   "Course : " + document.getElementById("course_option").options[document.getElementById("course_option").selectedIndex].textContent;;
+		// document.getElementById("render-semester-detail").innerHTML = "Semester : " + document.getElementById("semester_option").value;
+		// document.getElementById("render-section-detail").innerHTML =  "Section : " + document.getElementById("section_option").value;
+		// =================================================================================================================================== 
+		
+		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
+		let day_row_border_adding = document.getElementById("mytable").rows[i];
+		let today = new Date();
+		const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
+		let day_slot = weekdays[today.getDay()];
+		let hours = today.getHours();
+		let houre = hours + 1;
+		hours = (hours > 12) ? String(hours - 12).padStart(2, "0") : String(hours).padStart(2, "0");
+		houre = (houre > 12) ? String(houre - 12).padStart(2, "0") : String(houre).padStart(2, "0");
+		let time_slot = hours + "-" + houre;
+		time_slot = (time_slot).toString();
+		
+		for (let j = 1; j <= 10; j++) {
+			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
+			if (temp_tt && temp_tt.schedule && temp_tt.schedule[currrow] && temp_tt.schedule[currrow][currcol] && temp_tt.schedule[currrow][currcol].slotdata) {
+				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger  text-white heading-text border-dark border-3");
+				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace(" ", "<br>");;
+			}
+			else {
+				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
+				document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
+			}
 			
-			let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
-			let day_row_border_adding = document.getElementById("mytable").rows[i];
-			let today = new Date();
-			const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
-			let day_slot = weekdays[today.getDay()];
-			let hours = today.getHours();
-			let houre = hours + 1;
-			hours = (hours > 12) ? String(hours - 12).padStart(2, "0") : String(hours).padStart(2, "0");
-			houre = (houre > 12) ? String(houre - 12).padStart(2, "0") : String(houre).padStart(2, "0");
-			let time_slot = hours + "-" + houre;
-			time_slot = (time_slot).toString();
-			
-			for (let j = 1; j <= 10; j++) {
-				let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
-				if (temp_tt && temp_tt.schedule && temp_tt.schedule[currrow] && temp_tt.schedule[currrow][currcol] && temp_tt.schedule[currrow][currcol].slotdata) {
-					document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger  text-white heading-text border-dark border-3");
-					document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace(" ", "<br>");;
-				}
-				else {
-					document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
-					document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
-				}
-				
-				if (currcol === time_slot && currrow === day_slot && today.getHours()<19) { // color the time and day and period slots 
-					day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
-					document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
-					document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
-				}
+			if (currcol === time_slot && currrow === day_slot && today.getHours()<19) { // color the time and day and period slots 
+				day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
+				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
+				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
 			}
 		}
-		
+	}
+	if(temp_tt && temp_tt.teacher_subject_data){
 		// populate the subject teacher table with the data
 		let localteacher_subject_data = temp_tt.teacher_subject_data;
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
@@ -88,7 +87,6 @@ const letmesee2 = (temp_tt) => {
 		
 		for (let i = 0; i < rows.length; i++) {
 			const cells = rows[i].getElementsByTagName("td");
-			// Loop through each cell
 			for (let j = 0; j < cells.length; j++) {
 				const cell = cells[j];
 				cell.classList.remove('bg-primary');
@@ -113,11 +111,6 @@ const letmeseeitbaby = () => {
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
 
-
-	// let queryString = `?course=${course}&semester=${semester}&section=${section}`;  // Constructing the query string
-	// console.log("Request URL: http://127.0.0.1:3000/table/get-timetable" + queryString);    // Logging the constructed query string
-
-	// Sending the GET request
 	fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
 		method: 'GET',
 		headers: {
@@ -133,13 +126,11 @@ const letmeseeitbaby = () => {
 		})
 		.catch(error => console.error('Data unavailable:', error));
 }
-setTimeout(letmeseeitbaby,3000)
-
-document.getElementById('letmesee').addEventListener('click', letmeseeitbaby);
-
-const render_tables = () => {
-	
-}
+letmeseeitbaby();
+// document.getElementById('letmesee').addEventListener('click', letmeseeitbaby);
+document.getElementById('course_option').addEventListener('change', letmeseeitbaby);
+document.getElementById('semester_option').addEventListener('change', letmeseeitbaby);
+document.getElementById('section_option').addEventListener('change', letmeseeitbaby);
 
 // ======================================== will be used in download optin [ future feature ] ======================================== 
 // document.getElementById("download").addEventListener("click", function() {
