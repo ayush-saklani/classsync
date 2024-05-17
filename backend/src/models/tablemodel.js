@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 
 const slotSchema = new mongoose.Schema({
     class_id: String,
-    Teacher_Name: String,
+    subjectcode: String,
     slotdata: String,
 });
 
