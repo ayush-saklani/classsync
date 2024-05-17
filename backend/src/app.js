@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
-app.use(express.json());
+app.use(express.json({ limit: "1MB" }));
 app.use(mongosanitize());
 app.use(routes);
 
