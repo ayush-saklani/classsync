@@ -3,411 +3,420 @@ let globaljsonData;
 let faculty_data;
 let subjectdata;
 let room_list;
-let timetable = {
-	"course": "btechcse",
-	"semester": "1",
-	"section": "A",
-	"schedule": {
-		"mon": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"10-11": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"11-12": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			}
-		},
-		"tue": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"10-11": {
-				"class_id": "2001",
-				"subjectcode": "TCS601",
-				"slotdata": "TCS601\nDepartment of visual Art"
-			},
-			"11-12": {
-				"class_id": "5006",
-				"subjectcode": "XCS601Q",
-				"slotdata": "XCS601Q\nreachers scholer room (room beside audi)"
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			}
-		},
-		"wed": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"10-11": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"11-12": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "71",
-				"subjectcode": "XCS601Q",
-				"slotdata": "XCS601Q\nCR103"
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			}
-		},
-		"thu": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"10-11": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"11-12": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			}
-		},
-		"fri": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "33",
-				"subjectcode": "PXCS601",
-				"slotdata": "PXCS601\nBosch lab"
-			},
-			"10-11": {
-				"class_id": "33",
-				"subjectcode": "PXCS601",
-				"slotdata": "PXCS601\nBosch lab"
-			},
-			"11-12": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			}
-		},
-		"sat": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"10-11": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"11-12": {
-				"class_id": "89",
-				"subjectcode": "XCS601Q",
-				"slotdata": "XCS601Q\nCR106"
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			}
-		},
-		"sun": {
-			"08-09": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"09-10": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"10-11": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"11-12": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"12-01": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"01-02": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"02-03": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"03-04": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"04-05": {
-				"class_id": "0",
-				"subjectcode": "",
-				"slotdata": ""
-			},
-			"05-06": {
-				"class_id": "87",
-				"subjectcode": "TCS604",
-				"slotdata": "TCS604\nCR105"
-			}
-		}
-	},
-	"teacher_subject_data": [
-		{
-			"subjectcode": "TCS601",
-			"teacherid": "2",
-			"weekly_hrs": "",
-			"teachername": "DR DEVESH P SINGH",
-			"subjectname": "COMPILER DESIGN",
-			"theory_practical": ""
-		},
-		{
-			"subjectcode": "PXCS601",
-			"teacherid": "21011355",
-			"weekly_hrs": "",
-			"teachername": "MS NEELAM",
-			"subjectname": "CAREER SKILLS LAB",
-			"theory_practical": ""
-		},
-		{
-			"subjectcode": "XCS601Q",
-			"teacherid": "10",
-			"weekly_hrs": "",
-			"teachername": "MR PA ANAND",
-			"subjectname": "CAREER SKILLS QUANT",
-			"theory_practical": ""
-		},
-		{
-			"subjectcode": "TCS604",
-			"teacherid": "3",
-			"weekly_hrs": "",
-			"teachername": "DR SATVIK VATS",
-			"subjectname": "COMPUTER NETWORKS I",
-			"theory_practical": ""
-		}
-	]
-}
+let timetable;
+// let timetable = {
+// 	"course": "btechcse",
+// 	"semester": "1",
+// 	"section": "A",
+// 	"schedule": {
+// 		"mon": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"10-11": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"11-12": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			}
+// 		},
+// 		"tue": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"10-11": {
+// 				"class_id": "2001",
+// 				"subjectcode": "TCS601",
+// 				"slotdata": "TCS601\nDepartment of visual Art"
+// 			},
+// 			"11-12": {
+// 				"class_id": "5006",
+// 				"subjectcode": "XCS601Q",
+// 				"slotdata": "XCS601Q\nreachers scholer room (room beside audi)"
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			}
+// 		},
+// 		"wed": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"10-11": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"11-12": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "71",
+// 				"subjectcode": "XCS601Q",
+// 				"slotdata": "XCS601Q\nCR103"
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			}
+// 		},
+// 		"thu": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"10-11": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"11-12": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			}
+// 		},
+// 		"fri": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "33",
+// 				"subjectcode": "PXCS601",
+// 				"slotdata": "PXCS601\nBosch lab"
+// 			},
+// 			"10-11": {
+// 				"class_id": "33",
+// 				"subjectcode": "PXCS601",
+// 				"slotdata": "PXCS601\nBosch lab"
+// 			},
+// 			"11-12": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			}
+// 		},
+// 		"sat": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"10-11": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"11-12": {
+// 				"class_id": "89",
+// 				"subjectcode": "XCS601Q",
+// 				"slotdata": "XCS601Q\nCR106"
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			}
+// 		},
+// 		"sun": {
+// 			"08-09": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"09-10": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"10-11": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"11-12": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"12-01": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"01-02": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"02-03": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"03-04": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"04-05": {
+// 				"class_id": "0",
+// 				"subjectcode": "",
+// 				"slotdata": ""
+// 			},
+// 			"05-06": {
+// 				"class_id": "87",
+// 				"subjectcode": "TCS604",
+// 				"slotdata": "TCS604\nCR105"
+// 			}
+// 		}
+// 	},
+// 	"teacher_subject_data": [
+//         {
+//             "subjectcode": "TCS601",
+//             "teacherid": "",
+//             "weekly_hrs": "3",
+//             "teachername": "",
+//             "subjectname": "COMPILER DESIGN",
+//             "theory_practical": "THEORY"
+//         },
+//         {
+//             "subjectcode": "PXCS601",
+//             "teacherid": "",
+//             "weekly_hrs": "2",
+//             "teachername": "",
+//             "subjectname": "CAREER SKILLS LAB",
+//             "theory_practical": "PRACTICAL"
+//         },
+//         {
+//             "subjectcode": "XCS601Q",
+//             "teacherid": "",
+//             "weekly_hrs": "2",
+//             "teachername": "",
+//             "subjectname": "CAREER SKILLS QUANT",
+//             "theory_practical": "THEORY"
+//         },
+//         {
+//             "subjectcode": "TCS604",
+//             "teacherid": "",
+//             "weekly_hrs": "3",
+//             "teachername": "",
+//             "subjectname": "COMPUTER NETWORKS I",
+//             "theory_practical": "THEORY"
+//         },
+//         {
+//             "subjectcode": "TCS506",
+//             "teacherid": "",
+//             "weekly_hrs": "3",
+//             "teachername": "",
+//             "subjectname": "COMPUTER ",
+//             "theory_practical": "THEORY"
+//         }
+// 	]
+// }
 
 let cuurently_assigned_hrs =async (rowfirstdata) => {
     let count = 0;
@@ -425,23 +434,41 @@ let cuurently_assigned_hrs =async (rowfirstdata) => {
 
 //  the function below updates the teacher subject table acc to the subject choosen 
 const update_detail_table = () => {
-	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-	for (let i = 0; i < table.rows.length; i++) {
-		let row = table.rows[i];
-		let rowfirstdata = row.cells[0].firstChild.value;
-		for (let ele in subjectdata) {
-			if (subjectdata[ele].subjectcode == rowfirstdata) {
-				row.cells[2].firstChild.innerHTML = subjectdata[ele].subjectcode.toUpperCase();
-				row.cells[3].firstChild.innerHTML = subjectdata[ele].weekly_hrs;
-				row.cells[4].firstChild.innerHTML = subjectdata[ele].theory_practical.charAt(0).toUpperCase() + subjectdata[ele].theory_practical.slice(1);
-				cuurently_assigned_hrs(rowfirstdata).then((data) => {
-                    row.cells[5].firstChild.innerHTML = data;
-                })
-			}
+	let tempteachersubjectdata = [];
+	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+	// Iterate over each row in the table body
+	for (let i = 0; i < tableBody.rows.length; i++) {
+		let row = tableBody.rows[i];
+
+		let subjectname = row.cells[0].firstChild.innerHTML;
+		let teacherid = row.cells[1].firstChild.value;
+		let subjectid = row.cells[2].firstChild.innerHTML;
+		let teachername = faculty_data[teacherid];
+		let weekly_hrs = row.cells[3].firstChild.innerHTML;
+		let theory_practical = row.cells[4].firstChild.innerHTML;
+	
+
+		let rowData = {
+			"subjectcode": subjectid,
+			"teacherid": teacherid,
+			"weekly_hrs": weekly_hrs,
+			"teachername": teachername,
+			"subjectname": subjectname,
+			"theory_practical": theory_practical,
 		}
+		tempteachersubjectdata.push(rowData);
 	}
-	pass_second_table_to_first();
-	updateItAll();
+	let testinglist = [];
+	tempteachersubjectdata.forEach(element => {
+		testinglist.push({
+			"subjectcode": element.subjectcode,
+			"subjectname": element.subjectname,
+			"weekly_hrs": element.weekly_hrs,
+			"theory_practical": element.theory_practical
+		});
+	});
+	add_subjects_options_to_mytable(testinglist);
+	any_change_event_listner();
 }
 
 //  this function creates a row of table for teacher-subject table dynamically and add the options to the subjects and faculty data 
@@ -490,10 +517,13 @@ const delete_row_func = () => {
 }
 
 // add eventlistner to all the select box that updates the rows and data on content change in all selectboxs
-const updateItAll = () => {
+const any_change_event_listner = () => {
 	let selectors = document.getElementsByClassName("form-select");
 	for (let i = 0; i < selectors.length; i++) {
-		selectors[i].addEventListener("change", update_detail_table);
+		selectors[i].addEventListener("change", ()=>{
+			// fetch_timetable()
+			update_detail_table()
+		});
 	}
 }
 
@@ -532,20 +562,13 @@ const save_table_func = () => {
 	for (let i = 0; i < tableBody.rows.length; i++) {
 		let row = tableBody.rows[i];
 
-		let subjectid = row.cells[0].firstChild.value;
+		let subjectname = row.cells[0].firstChild.innerHTML;
 		let teacherid = row.cells[1].firstChild.value;
+		let subjectid = row.cells[2].firstChild.innerHTML;
+		let weekly_hrs = row.cells[3].firstChild.innerHTML;
+		let theory_practical = row.cells[4].firstChild.innerHTML;
 		let teachername = faculty_data[teacherid];
-		let subjectname = "";
-		let weekly_hrs = "";
-		let theory_practical = "";
-		for (let ele of subjectdata) {
-			if (ele.subjectcode === subjectid) {
-				subjectname = ele.subjectname;
-				weekly_hrs = ele.weekly_hrs
-				theory_practical = ele.theory_practical
-				break;
-			}
-		}
+	
 
 		let rowData = {
 			"subjectcode": subjectid,
@@ -604,23 +627,18 @@ const pass_second_table_to_first = () => {
 	for (let i = 0; i < tableBody.rows.length; i++) {
 		let row = tableBody.rows[i];
 
-		let subjectid = row.cells[0].firstChild.value;
-		let subjectname = '';
+		let subjectname = row.cells[0].firstChild.innerHTML;
 		let teacherid = row.cells[1].firstChild.value;
-		let teachername = faculty_data[teacherid];
-		let hours = row.cells[3].firstChild.innerHTML;
+		let subjectid = row.cells[2].firstChild.innerHTML;
+		let weekly_hrs = row.cells[3].firstChild.innerHTML;
 		let theory_practical = row.cells[4].firstChild.innerHTML;
-		for (let ele of subjectdata) {
-			if (ele.subjectcode === subjectid) {
-				subjectname = ele.subjectname;
-				break;
-			}
-		}
+		let teachername = faculty_data[teacherid];
+	
 
 		let rowData = {
 			"subjectcode": subjectid,
 			"teacherid": teacherid,
-			"weekly_hrs": hours,
+			"weekly_hrs": weekly_hrs,
 			"teachername": teachername,
 			"subjectname": subjectname,
 			"theory_practical": theory_practical,
@@ -770,28 +788,12 @@ const render_tables = () => {
 
 		// subject select box render
 		let cell = newRow.insertCell();
-		let select = document.createElement('select');
-		select.setAttribute('class', 'form-select text');
-		cell.appendChild(select);
-		// adding blank option
-		let option = document.createElement('option');
-		option.value = "";
-		option.text = "";
-		if ("" == localteacher_subject_data[i].subjectcode) {
-			option.selected = true;
-		}
-		select.appendChild(option);
-		for (let ele in subjectdata) {
-			option = document.createElement('option');
-			option.value = subjectdata[ele].subjectcode;
-			option.text = subjectdata[ele].subjectname;
-			if (subjectdata[ele].subjectcode == localteacher_subject_data[i].subjectcode) {
-				option.selected = true;
-				// console.log(ele)
-			}
-			select.appendChild(option);
-		}
-
+		
+		let cell_insert = document.createElement("span");
+		cell_insert.setAttribute("class", "text");
+		cell_insert.innerHTML = localteacher_subject_data[i].subjectname;
+		cell.appendChild(cell_insert);
+		
 		// teacher select box render
 		cell = newRow.insertCell();
 		select = document.createElement('select');
@@ -807,14 +809,29 @@ const render_tables = () => {
 			}
 			select.appendChild(option);
 		}
+		cell = newRow.insertCell();
+		cell_insert = document.createElement("span");
+		cell_insert.innerHTML = localteacher_subject_data[i].subjectcode;
+		cell_insert.setAttribute("class", "text");
+		cell.appendChild(cell_insert);
 
-		// rest of the slots are inserted with empty elements and then updated
-		for (let i = 2; i < 6; i++) {
-			let cell = newRow.insertCell();
-			let cell_insert = document.createElement("span");
-			cell_insert.setAttribute("class", "text");
-			cell.appendChild(cell_insert);
-		}
+		cell = newRow.insertCell();
+		cell_insert = document.createElement("span");
+		cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
+		cell_insert.setAttribute("class", "text");
+		cell.appendChild(cell_insert);
+
+		cell = newRow.insertCell();
+		cell_insert = document.createElement("span");
+		cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
+		cell_insert.setAttribute("class", "text");
+		cell.appendChild(cell_insert);
+
+		cell = newRow.insertCell();
+		cell_insert = document.createElement("span");
+		cell_insert.innerHTML = 0;
+		cell_insert.setAttribute("class", "text");
+		cell.appendChild(cell_insert);
 	}
 	update_detail_table();
 	add_subjects_options_to_mytable(localteacher_subject_data)
@@ -856,9 +873,29 @@ const render_tables = () => {
 		}
 	}
 }
+const fetch_timetable = () => {
+	let course = document.getElementById("course_option").value;
+	let semester = document.getElementById("semester_option").value;
+	let section = document.getElementById("section_option").value;
+
+	fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(response => response.json())
+		.then(data => {
+			timetable = data;        // Do something with the response data here 
+			console.log(timetable);
+			// render_tables();
+		})
+		.catch(error => console.error('Data unavailable:', error));
+}
+fetch_timetable()
 
 fetch_room_list();
-fetch_subject_list();
-add_subjects_options_to_mytable(subjectdata);
+// fetch_subject_list();
+// add_subjects_options_to_mytable(subjectdata);
 add_rooms_options_to_mytable(room_list);
 setTimeout(render_tables, 3000); // promises sekh le 

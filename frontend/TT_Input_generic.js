@@ -58,7 +58,7 @@ const add_row_func = () => {
 	select = document.createElement('select');
 	select.setAttribute('class', 'form-select text');
 	cell.appendChild(select);
-	for (let i = 1; i <= 6; i++) {
+	for (let i = 0; i <= 6; i++) {
 		let option = document.createElement('option');
 		option.value = option.text = i;
 		if (i == 3) {
@@ -170,7 +170,7 @@ const render_tables = () => {
 		select = document.createElement('select');
 		select.setAttribute('class', 'form-select text');
 		cell.appendChild(select);
-		for (let j = 1; j <= 6; j++) {
+		for (let j = 0; j <= 6; j++) {
 			let option = document.createElement('option');
 			option.value = option.text = j;
 			select.appendChild(option);
