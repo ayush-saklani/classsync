@@ -36,4 +36,29 @@ const post_teachertable = async (req, res, next) => {
     res.status(200).json({ message: "success" });
 };
 
-export { get_timetable, post_teachertable };
+const save_timetable = async (req, res, next) => {
+    const course_name = req.body.course;
+    const semester = req.body.semester;
+    const section = req.body.section;
+
+    const schedule = await Tables.findOne({
+        course: course_name,
+        semester: semester,
+        section: section,
+    });
+    if (schedule) {
+        res.status(200).json({ message: "already exists" });
+    } else {
+        const new_schedule = await Tables.create({
+            course: course_name,
+            semester: semester,
+            section: section,
+            schedule: req.body.schedule,
+            teacher_subject_data: req.body.teacher_subject_data,
+        });
+        await new_schedule.save();
+        res.status(200).json({ message: "success" });
+    }
+};
+
+export { get_timetable, post_teachertable, save_timetable };
