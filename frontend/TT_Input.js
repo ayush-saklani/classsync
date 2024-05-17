@@ -583,7 +583,7 @@ const save_table_func = () => {
 	const jsonDataString = JSON.stringify(jsonData, null, 4);
 
 	// Create a POST request
-	fetch('http://127.0.0.1:3000/save-section-data', {
+	fetch('http://127.0.0.1:3000/table/save-timetable', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
