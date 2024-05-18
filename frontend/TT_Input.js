@@ -777,6 +777,7 @@ const render_tables = () => {
 		cell_insert.setAttribute("class", "text");
 		cell_insert.innerHTML = localteacher_subject_data[i].subjectname;
 		cell.appendChild(cell_insert);
+		cell.setAttribute("class", "border-dark border-3");
 		
 		// teacher select box render
 		cell = newRow.insertCell();
@@ -793,29 +794,35 @@ const render_tables = () => {
 			}
 			select.appendChild(option);
 		}
+		cell.setAttribute("class", "border-dark border-3 p-0");
+
 		cell = newRow.insertCell();
 		cell_insert = document.createElement("span");
 		cell_insert.innerHTML = localteacher_subject_data[i].subjectcode;
 		cell_insert.setAttribute("class", "text");
 		cell.appendChild(cell_insert);
+		cell.setAttribute("class", "border-dark border-3 fw-bolder");
 
 		cell = newRow.insertCell();
 		cell_insert = document.createElement("span");
 		cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
 		cell_insert.setAttribute("class", "text");
 		cell.appendChild(cell_insert);
+		cell.setAttribute("class", "border-dark border-3");
 
 		cell = newRow.insertCell();
 		cell_insert = document.createElement("span");
 		cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
 		cell_insert.setAttribute("class", "text");
 		cell.appendChild(cell_insert);
+		cell.setAttribute("class", "border-dark border-3");
 
 		cell = newRow.insertCell();
 		cell_insert = document.createElement("span");
 		cell_insert.innerHTML = 0;
 		cell_insert.setAttribute("class", "text");
 		cell.appendChild(cell_insert);
+		cell.setAttribute("class", "border-dark border-3");
 	}
 	update_detail_table();
 	add_subjects_options_to_mytable(localteacher_subject_data)
