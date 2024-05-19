@@ -9,7 +9,7 @@ nav>h2::after,nav>h2::before {
     content: '';
     width: 8%;
     height: 4px;
-    background: #f44336;
+    background: #dc3545;
     display: block;
     transition: 2s;
     margin-top: 5px;
@@ -84,7 +84,7 @@ body{
     border-color: rgb(0, 0, 0);
 }
 @media only screen and (max-width: 900px) {
-    body>div {
+    body>div , body>section{
     display: none;
     }
     footer::before{
@@ -117,7 +117,7 @@ body{
     font: inherit;
     cursor: pointer;
 }
-.button-top {
+.button-top-blue, .button-top-red {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -133,10 +133,10 @@ body{
     -webkit-user-select: none;
     user-select: none;
 }
-.button:active .button-top {
+.button:active .button-top-blue ,.button:active .button-top-red {
     transform: translateY(6px);
 }
-.button-top::after {
+.button-top-blue::after, .button-top-red::after {
     content: '';
     position: absolute;
     z-index: -1;
@@ -151,7 +151,7 @@ body{
     transition-property: border-radius, padding, width, transform;
     transition-duration: .2s;
 }
-.button-bottom {
+.button-bottom-blue, .button-bottom-red {
     position: absolute;
     z-index: -1;
     bottom: 4px;
@@ -167,8 +167,15 @@ body{
     transition-property: border-radius, padding-top;
     transition-duration: .2s;
 }
-.button:active .button-bottom {
+.button:active .button-bottom-blue, .button:active .button-bottom-red  {
     border-radius: 10px 10px 8px 8px / 8px;
     padding-top: 0;
+}
+/* red color below and blue color + red color above */
+.button-top-red::after {
+    background-image: radial-gradient(#dc3545,#9f1d2a);
+}
+.button-bottom-red {
+    background-color: #9f1d2a; 
 }
 /* 3d button end */

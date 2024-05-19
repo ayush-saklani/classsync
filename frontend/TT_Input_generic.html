@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Class-Sync | Editing Portal</title>
+	<title>Class-Sync | Generic Data Portal</title>
 
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,13 +29,15 @@
 	<section class="container-fluid mt-5">
 		<div class="container">
 			<h1 class="center text fw-bold">Timetable Editing Portal ( Sending Generic Data )</h1>
-			<ul>
+			<ul class="pt-3">
+				<h4 class="center text text-danger fw-bold">Warning <i class="bi bi-exclamation-triangle-fill"></i> </h1>
 				<li class="center text text-danger"><b>Use all CAPS</b></li>
 				<li class="center text text-danger">Don't use space in Subject Code</li>
 				<li class="center text text-danger">Two different teacher can't teach same subject to same section so we
 					have to divide the subject</li>
-				<li class="center text text-danger">e.g <b>XCS601</b> (career skills) <b>--></b> <b>XCS601Q</b> (career
+				<li type="none" class="center text text-danger">e.g <b>XCS601</b> (career skills) <i class="bi bi-arrow-right" style="-webkit-text-stroke: 2px;"></i> <b>XCS601Q</b> (career
 					skills Quant) && <b>XCS601V</b> (career skills Verbal)</li>
+				<li class="center text text-danger"><B>DONT USE THIS IF THE TEACHERS ARE ALREADY DECIDED AS IT WILL RESET TEACHER DATA</B></li>
 			</ul>
 		</div>
 		<div class="container">
@@ -96,7 +98,11 @@
 			
 			<!-- save button div  -->
 			<div class="container text-center">
-				<button type="button" class="btn btn-lg btn-info mt-2 mb-3" id="set_for_all"><b>Set subject for ALL</b></button>
+				<button type="button" class="button" id="set_for_all">
+					<div class="button-top-blue h4"><b>Set subject for ALL</b></div>
+					<div class="button-bottom-blue"></div>
+				</button>
+				<!-- <button type="button" class="btn btn-lg btn-info mt-2 mb-3" id="set_for_all"><b>Set subject for ALL</b></button> -->
 			</div>
 			<!-- save button div end -->
 
@@ -108,7 +114,7 @@
 	<!-- all content of page here above-->
 
 	<!-- footer div start -->
-	<footer class="bd-footer py-4 py-md-5 mt-5 ">
+	<footer class="bd-footer py-4 py-md-5 ">
 		<div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
 			<a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/">
 				<img src="/asset/image/logo.png" height="75px" class="d-inline-block align-text-top">
