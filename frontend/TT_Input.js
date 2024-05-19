@@ -349,6 +349,7 @@ const fetch_subject_list = () => {
 // renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 const render_tables = () => {
 	// rendering the second table first
+	if(timetable){
 	let localteacher_subject_data = timetable.teacher_subject_data;
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 	table.innerHTML = "";
@@ -450,6 +451,10 @@ const render_tables = () => {
 				}
 			}
 		}
+	}
+	}
+	else{
+		alert("Time Table Data not available")
 	}
 }
 const fetch_timetable = () => {
