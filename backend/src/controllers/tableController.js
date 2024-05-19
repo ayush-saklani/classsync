@@ -40,25 +40,66 @@ const save_timetable = async (req, res, next) => {
     const course_name = req.body.course;
     const semester = req.body.semester;
     const section = req.body.section;
+    const schedule = req.body.schedule;
+    const teacher_table = req.body.teacher_subject_data;
 
-    const schedule = await Tables.findOne({
+    const section_data = await Tables.findOne({
         course: course_name,
         semester: semester,
         section: section,
     });
-    if (schedule) {
-        res.status(200).json({ message: "already exists" });
+    if (section_data) {
+        await Tables.findOneAndUpdate(
+            {
+                course: course_name,
+                semester: semester,
+                section: section,
+            },
+            {
+                $set: {
+                    schedule: schedule,
+                    teacher_subject_data: teacher_table,
+                },
+            }
+        );
+        res.status(200).json({
+            message: "success! already exists and updated",
+        });
     } else {
-        const new_schedule = await Tables.create({
+        const new_section_data = await Tables.create({
             course: course_name,
             semester: semester,
             section: section,
-            schedule: req.body.schedule,
-            teacher_subject_data: req.body.teacher_subject_data,
+            schedule: schedule,
+            teacher_subject_data: teacher_table,
         });
-        await new_schedule.save();
+        await new_section_data.save();
         res.status(200).json({ message: "success" });
     }
 };
 
-export { get_timetable, post_teachertable, save_timetable };
+const save_generic_teachertable = async (req, res, next) => {
+    const course_name = req.body.course;
+    const semester = req.body.semester;
+    const teacher_table = req.body.teacher_subject_data;
+
+    await Tables.updateMany(
+        {
+            course: course_name,
+            semester: semester,
+        },
+        {
+            $set: {
+                teacher_subject_data: teacher_table,
+            },
+        }
+    );
+    res.status(200).json({ message: "success" });
+};
+
+export {
+    get_timetable,
+    post_teachertable,
+    save_timetable,
+    save_generic_teachertable,
+};
