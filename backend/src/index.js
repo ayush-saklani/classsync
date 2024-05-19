@@ -1,21 +1,20 @@
+import dotenv from "dotenv";
 import { app } from "./app.js";
-import mongoose from "mongoose";
+import connectDB from "./db/index.js";
 
-app.get("/", (req, res) => {
-  res.send("hello world");
-});
+dotenv.config({ path: "./.env" });
 
-const DB = process.env.DBURI.replace("<password>", process.env.DBPASSWORD);
-mongoose
-  .connect(DB)
-  .then((con) => {
-    console.log("DB connection is successful");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+connectDB()
+    .then(() => {
+        app.on("error", (error) => {
+            console.log("ERR: ", error);
+            throw error;
+        });
+        const port = process.env.PORT || 3000;
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
+        });
+    })
+    .catch((err) => {
+        console.log("MONGODB connection Failed", err);
+    });
