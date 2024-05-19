@@ -25,6 +25,8 @@ const scheduleSchema = new mongoose.Schema({
     wed: daySchema,
     thu: daySchema,
     fri: daySchema,
+    sat: daySchema,
+    sun: daySchema,
 });
 
 const tableSchema = new mongoose.Schema({
