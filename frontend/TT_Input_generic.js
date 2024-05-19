@@ -1,5 +1,146 @@
 // Sample data for generating dropdowns will be fetched from apis and database
-let timetable ;
+let timetable = {
+	"course": "btechcse",
+	"semester": "6",
+	"teacher_subject_data": [
+		{
+			"subjectcode": "TCS601",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "COMPILER DESIGN",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS611",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "SOFTWARE ENGINEERING",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS604",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "COMPUTER NETWORKS I",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS693",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "FULL STACK WEB DEVELOPMENT",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "XCS601Q",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "CAREER SKILLS QUANT",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "XCS601V",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "CAREER SKILLS VERBAL",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "PCS601",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "COMPILER DESIGN LAB",
+			"theory_practical": "PRACTICAL"
+		},
+		{
+			"subjectcode": "PCS611",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "SOFTWARE ENGINEERING LAB",
+			"theory_practical": "PRACTICAL"
+		},
+		{
+			"subjectcode": "PCS693",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "FULL STACK WEB LAB",
+			"theory_practical": "PRACTICAL"
+		},
+		{
+			"subjectcode": "PXCS601",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "CAREER SKILLS LAB",
+			"theory_practical": "PRACTICAL"
+		},
+		{
+			"subjectcode": "ELECT",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "ELECTIVE (ALL)",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS651",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "DEVOPS ON CLOUD (ELECTIVE)",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS675",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "VIRTUAL REALITY (ELECTIVE)",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS692",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "GEN. A.I (ELECTIVE)",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "TCS619",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "NETWORK AND SYSTEM SECURITY (ELECTIVE)",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "PLCEC",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "PLACEMENT CLASSES ( CODING )",
+			"theory_practical": "THEORY"
+		},
+		{
+			"subjectcode": "PLCEP",
+			"teacherid": "",
+			"weekly_hrs": "2",
+			"teachername": "",
+			"subjectname": "PLACEMENT CLASSES ( PROJECTS )",
+			"theory_practical": "THEORY"
+		}
+	]
+}// for testing purpose only
 //  these functions creates a row on table 
 const add_row_func = () => {
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];

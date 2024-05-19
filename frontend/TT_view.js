@@ -25,7 +25,7 @@ const letmesee2 = (temp_tt) => {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			if (temp_tt && temp_tt.schedule && temp_tt.schedule[currrow] && temp_tt.schedule[currrow][currcol] && temp_tt.schedule[currrow][currcol].slotdata) {
 				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger  text-white heading-text border-dark border-3");
-				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace(" ", "<br>");;
+				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
 			}
 			else {
 				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
