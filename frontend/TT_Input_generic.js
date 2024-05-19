@@ -1,42 +1,5 @@
 // Sample data for generating dropdowns will be fetched from apis and database
-let timetable = {
-	"course": "btechcse",
-	"semester": "6",
-	"teacher_subject_data": [
-		{
-			"subjectcode": "TCS601",
-			"teacherid": "2",
-			"weekly_hrs": "3",
-			"teachername": "DR DEVESH P SINGH",
-			"subjectname": "COMPILER DESIGN",
-			"theory_practical": "THEORY"
-		},
-		{
-			"subjectcode": "PXCS601",
-			"teacherid": "21011355",
-			"weekly_hrs": "2",
-			"teachername": "MS NEELAM",
-			"subjectname": "CAREER SKILLS LAB",
-			"theory_practical": "PRACTICAL"
-		},
-		{
-			"subjectcode": "XCS601Q",
-			"teacherid": "10",
-			"weekly_hrs": "2",
-			"teachername": "MR PA ANAND",
-			"subjectname": "CAREER SKILLS QUANT",
-			"theory_practical": "THEORY"
-		},
-		{
-			"subjectcode": "TCS604",
-			"teacherid": "3",
-			"weekly_hrs": "3",
-			"teachername": "DR SATVIK VATS",
-			"subjectname": "COMPUTER NETWORKS I",
-			"theory_practical": "THEORY"
-		}
-	]
-}
+let timetable ;
 //  these functions creates a row on table 
 const add_row_func = () => {
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
@@ -122,7 +85,7 @@ const save_table_func = () => {
 	console.log(jsonDataString);
 
 	// Create a POST request
-	fetch('http://127.0.0.1:3000/save-section-data-tester', {
+	fetch('http://127.0.0.1:3000/table/save-generic-teachertable', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
