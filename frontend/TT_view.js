@@ -1,5 +1,26 @@
 let timetable ;
-
+let flag=0;
+let events = {
+	//limit the description to and under 10 words
+	"2024-05-22": { "description": "Grafest DAY 1 DJchetas" },
+	"2024-05-23": { "description": "Grafest DAY 2 Divine" },
+	"2024-05-24": { "description": "Grafest DAY 3 Baadshah" },
+	// "2024-05-25": { "description": "2024-05-25 amet consectetur adipisicing elit Pariatur similique" },
+	//26 is missing so it is not rendering 
+	"2024-05-27": { "description": "2024-05-27 event testing adipisicing elit Pariatur similique" },
+	"2024-05-28": { "description": "2024-05-28 event testing adipisicing elit Pariatur similique" },
+	"2024-05-29": { "description": "2024-05-29 event testing adipisicing elit Pariatur similique" },
+	"2024-05-30": { "description": "2024-05-30 event testing adipisicing elit Pariatur similique" },
+	"2024-05-31": { "description": "2024-05-31 event testing adipisicing elit Pariatur similique" },
+	"2024-06-01": { "description": "2024-06-01 event testing adipisicing elit Pariatur similique" },
+	"2024-06-02": { "description": "2024-06-02 event testing adipisicing elit Pariatur similique" },
+	"2024-06-03": { "description": "2024-06-03 event testing adipisicing elit Pariatur similique" },
+	"2024-06-04": { "description": "2024-06-04 event testing adipisicing elit Pariatur similique" },
+	"2024-06-05": { "description": "2024-06-05 event testing adipisicing elit Pariatur similique" },
+	"2024-06-06": { "description": "2024-06-06 event testing adipisicing elit Pariatur similique" },
+	"2024-06-07": { "description": "2024-06-07 event testing adipisicing elit Pariatur similique" },
+	"2024-06-08": { "description": "2024-06-08 event testing adipisicing elit Pariatur similique" }
+};  
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
 	for (let i = 1; i <= 7; i++) {
@@ -20,7 +41,7 @@ const letmesee2 = (temp_tt) => {
 		houre = (houre > 12) ? String(houre - 12).padStart(2, "0") : String(houre).padStart(2, "0");
 		let time_slot = hours + "-" + houre;
 		time_slot = (time_slot).toString();
-		
+		let holidaychecker = 0;
 		for (let j = 1; j <= 10; j++) {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			if (temp_tt && temp_tt.schedule && temp_tt.schedule[currrow] && temp_tt.schedule[currrow][currcol] && temp_tt.schedule[currrow][currcol].slotdata) {
@@ -28,6 +49,7 @@ const letmesee2 = (temp_tt) => {
 				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
 			}
 			else {
+				holidaychecker++;
 				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
 				document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
 			}
@@ -37,6 +59,16 @@ const letmesee2 = (temp_tt) => {
 				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
 				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
 			}
+		}
+		if(holidaychecker === 10){
+			let row = document.getElementById("mytable").rows[i];
+			for (let k = 1; k <= 10; k++) {
+				row.cells[k].className = "";
+				row.cells[k].innerHTML = "";
+				row.cells[k].className = 'text bg-warning fw-bold text-dark-emphasis border-warning border-end-3 align-middle';
+			}
+			// document.getElementById("mytable").rows[i].cells[1].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
+			document.getElementById("mytable").rows[i].cells[5].innerHTML = 'Holiday';
 		}
 	}
 	if(temp_tt && temp_tt.teacher_subject_data){
@@ -106,6 +138,44 @@ const letmesee2 = (temp_tt) => {
 };
 // letmesee2(temp_tt)
 
+const college_event_manager = () => {  
+	let today = new Date();
+    // let todayString = today.toISOString().split('T')[0];
+    
+    // const weekdays = ["MON", "TUE", "WED", "THU", "FRI", "SAT","SUN"];
+    let startDayIndex = today.getDay()-1;
+    console.log(startDayIndex);
+    for (let i = 0; i < 7; i++) {
+		let currentDate = new Date();
+		currentDate.setDate(today.getDate() + i);
+		let currentDateString = currentDate.toISOString().split('T')[0];
+		console.log(currentDateString);	
+		if (events[currentDateString]) {
+			let rowIndex = (startDayIndex + i) % 7 + 1;
+			let row = document.getElementById("mytable").rows[rowIndex];
+			
+			for (let j = 1; j <= 10; j++) {
+				row.cells[j].className = "";
+				row.cells[j].innerHTML = "";
+				row.cells[j].className = 'text bg-warning fw-bold text-dark border-warning border-end-3 align-middle';
+			}
+			
+			// Split the description into words
+			let words = events[currentDateString].description.split(' ');
+			let cellIndex = Math.floor((10-words.length)/2)+1 // Start updating from the second cell (first is for day label)
+			
+			for (let word of words) {
+				if (cellIndex < row.cells.length) {
+					row.cells[cellIndex].innerHTML = word;
+					row.cells[cellIndex].className = "";
+					row.cells[cellIndex].className = 'text bg-warning fw-bold text-dark border-warning border-end-3 align-middle';
+				}
+				cellIndex++;
+			}
+		}
+	}	
+};
+
 const letmeseeitbaby = () => {
 	let course = document.getElementById("course_option").value;
 	let semester = document.getElementById("semester_option").value;
@@ -120,9 +190,14 @@ const letmeseeitbaby = () => {
 		.then(response => response.json())
 		.then(data => {
 			timetable = data;        // Do something with the response data here 
-			console.log(data);
+			// console.log(data);
 			letmesee2(timetable);
-			render_tables();
+			// render_tables();
+		})
+		.then(() => {
+			if(flag === 1){
+				college_event_manager();
+			}
 		})
 		.catch(error => console.error('Data unavailable:', error));
 }
@@ -146,3 +221,7 @@ document.getElementById('section_option').addEventListener('change', letmeseeitb
 //     html2pdf().from(element).set(opt).save();
 // });
 // =================================================================================================================================== 
+document.getElementById("toggle_event").addEventListener("click", function() {
+	flag = flag === 1 ? 0 : 1;
+	letmeseeitbaby();
+});
