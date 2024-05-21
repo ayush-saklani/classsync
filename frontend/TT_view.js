@@ -189,7 +189,7 @@ const letmeseeitbaby = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			timetable = data;        // Do something with the response data here 
+			timetable = data.data;        // Do something with the response data here 
 			// console.log(data);
 			letmesee2(timetable);
 			// render_tables();
