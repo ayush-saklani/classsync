@@ -250,5 +250,8 @@ body{
 .toggle-input:checked+.toggle .toggle-icon.off {
     fill: var(--active-color);
 }
-
 /* toggle switch end */
+.form-select{
+    border-radius: 0% !important;
+    /* margin: 0px !important; */
+}

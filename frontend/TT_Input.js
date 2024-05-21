@@ -101,7 +101,7 @@ const any_change_event_listner = () => {
 }
 
 const fixtime_firstphase = ()=>{
-	console.log(':::::  FIRST PHASE start  :::::');
+	// console.log(':::::  FIRST PHASE start  :::::');
 	// console.log(room_list);
 	let prev = room_list;
 	let mytable = document.getElementById("mytable");
@@ -110,21 +110,10 @@ const fixtime_firstphase = ()=>{
 		for(let j=1;j<=10;j++){
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
 			let temp = timetable.schedule[currday][currslot].class_id;
-			if(temp != "0"){
-				// console.log(temp);
-				// console.log(room_list[temp].schedule[currday][currslot])
-				room_list[temp].schedule[currday][currslot] = false;
-				console.log(room_list[temp].schedule[currday][currslot])
-			}
+			if (temp in room_list) {
+                room_list[temp].schedule[currday][currslot] = false;
+            }
 		}
-	}
-	// console.log(room_list);
-	console.log(':::::  FIRST PHASE DONE  :::::');
-	if(prev == room_list){
-		console.log(':::::  SAME HAI YAAR  :::::');
-	}
-	else{
-		console.log(':::::  ALAG HAI YAAR  :::::');
 	}
 } 
 const fixtime_secondphase = ()=>{
@@ -134,12 +123,9 @@ const fixtime_secondphase = ()=>{
 		for(let j=1;j<=10;j++){
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
 			let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
-			if(curr_slot_room != '0'){
-				console.log(curr_slot_room);
-				room_list[curr_slot_room].schedule[currday][currslot] = true;
-				console.log(room_list[curr_slot_room].schedule[currday][currslot])
-
-			}
+			if (curr_slot_room in room_list) {
+                room_list[curr_slot_room].schedule[currday][currslot] = true;
+            }
 		}
 	}
 	// console.log(room_list);
@@ -241,9 +227,26 @@ const save_table_func = () => {
 			fixtime_secondphase();
 		})
 		.then(()=>{
-			add_rooms_options_to_mytable(room_list);
+			fetch('http://127.0.0.1:3000/list/save-list', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					"type": "rooms",
+					"data": room_list
+				})
+			})
+			.then(response => {
+				if (response.ok) {
+					return response.json();
+				} else {
+					throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
+				}
+			})
 		})
 		.then(parsedData => {
+			add_rooms_options_to_mytable(room_list);
 			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', parsedData);
 
 		}).catch(error => {
@@ -298,11 +301,11 @@ const add_select_box_to_mytable = () => {
 		for (let j = 1; j < mytable.rows[1].cells.length; j++) {
 			let tempcell = mytable.rows[i].cells[j];
 			let select = document.createElement('select');
-			select.setAttribute('class', 'form-select form-select-sm text subjectselectbox fw-bold');
+			select.setAttribute('class', 'form-select form-select text subjectselectbox fw-bold');
 			select.setAttribute('style', 'white-space: pre-wrap;');
 			tempcell.appendChild(select);
 			let select2 = document.createElement('select');
-			select2.setAttribute('class', 'form-select form-select-sm text roomselectbox');
+			select2.setAttribute('class', 'form-select form-select text roomselectbox');
 			select2.setAttribute('style', 'white-space: pre-wrap;');
 			tempcell.appendChild(select2);
 		}
@@ -323,10 +326,10 @@ const add_rooms_options_to_mytable = (room_list) => {
 				let option = document.createElement("option");
 				option.value = key;
 				option.text = value.classname;
+				option.setAttribute("class","text");
 				// console.log(room_list);
 				if(room_list[key].schedule[currday][currslot] == true){
-					console.log("aaya")
-					option.setAttribute("class","bg-danger");
+					option.setAttribute("class","bg-danger bg-gradient text text-light fw-bold");
 				}
 				// console.log(option.value, option.text)
 				if (key == tempselectedvalue) {
@@ -336,21 +339,6 @@ const add_rooms_options_to_mytable = (room_list) => {
 			});
 		}
 	}
-	// let roomselectboxes = document.querySelectorAll(".roomselectbox");
-	// roomselectboxes.forEach(select => {
-	// 	let tempselectedvalue = select.value;
-	// 	select.innerHTML = "";
-	// 	Object.entries(room_list).forEach(([key, value]) => {
-	// 		let option = document.createElement("option");
-	// 		option.value = key;
-	// 		option.text = value.classname;
-	// 		// console.log(option.value, option.text)
-	// 		if (key == tempselectedvalue) {
-	// 			option.selected = true;
-	// 		}
-	// 		select.appendChild(option);
-	// 	});
-	// });
 };
 const add_subjects_options_to_mytable = (subject_list) => {
 	let subjectselectbox = document.querySelectorAll(".subjectselectbox");
@@ -381,7 +369,7 @@ const add_subjects_options_to_mytable = (subject_list) => {
 
 //  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use  
 const fetch_room_list = () => {
-	fetch('http://127.0.0.1:3000/list/get-rooms', {
+	fetch('http://127.0.0.1:3000/list/get-list?type=rooms',{
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -389,15 +377,15 @@ const fetch_room_list = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			room_list=data.data[0]
-			// console.log(room_list)
+			room_list=data.data.data;
+			console.log(room_list)
 			add_rooms_options_to_mytable(room_list);
 		})
 		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
 };
 //  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
 const fetch_faculties_list = () => {
-	fetch('http://127.0.0.1:3000/list/get-faculties', {
+	fetch('http://127.0.0.1:3000/list/get-list?type=faculties',{
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -405,9 +393,9 @@ const fetch_faculties_list = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			data = data.data;
+			data = data.data.data;
+			faculty_data = data;
 			console.log(data)
-			faculty_data = data[0];
 		})
 		.catch(error => console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error));
 };
@@ -551,7 +539,7 @@ const fetch_timetable = () => {
 	})
 		.then(response => response.json())
 		.then(data => {
-			timetable = data;        // Do something with the response data here 
+			timetable = data.data;        // Do something with the response data here 
 			console.log(timetable);
 		})
 		.then(() => {
