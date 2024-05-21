@@ -1,27 +1,49 @@
 import Lists from "../models/listmodel.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
+import { ApiResponse } from "../utils/ApiResponse.js";
+import { ApiError } from "../utils/ApiError.js";
 
-const get_rooms = async (req, res, next) => {
-    const rooms = await Lists.findOne({
-        type: "rooms",
+const get_list = asyncHandler(async (req, res, next) => {
+    const type = req.query.type;
+    if (!type) {
+        throw new ApiError(400, `Missing required parameter "type"`);
+    }
+
+    const listData = await Lists.findOne({
+        type: type,
     }).select("data");
 
-    res.status(200).json(rooms);
-};
+    if (!listData) {
+        throw new ApiError(404, "List not found");
+    }
+    res.status(200).json(new ApiResponse(200, listData));
+});
 
-const get_faculties = async (req, res, next) => {
-    const faculties = await Lists.findOne({
-        type: "faculties",
-    }).select("data");
+const save_list = asyncHandler(async (req, res, next) => {
+    const type = req.body.type;
+    const data = req.body.data;
 
-    res.status(200).json(faculties);
-};
+    const rooms_data = await Lists.findOne({
+        type: type,
+    });
 
-const get_subjects = async (req, res, next) => {
-    const subjects = await Lists.findOne({
-        type: "subjects",
-    }).select("data");
+    if (rooms_data) {
+        await Lists.findOneAndUpdate(
+            {
+                type: type,
+            },
+            {
+                $set: {
+                    data: data,
+                },
+            }
+        );
+        res.status(200).json(
+            new ApiResponse(200, {}, "success! already exists and updated")
+        );
+    } else {
+        throw new ApiError(404, "no list with this name exists");
+    }
+});
 
-    res.status(200).json(subjects);
-};
-
-export { get_rooms, get_faculties, get_subjects };
+export { get_list, save_list };
