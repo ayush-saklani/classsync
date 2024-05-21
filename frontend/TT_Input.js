@@ -1,9 +1,7 @@
 // Sample data for generating dropdowns will be fetched from apis and database
-let globaljsonData;
 let faculty_data;
 let subjectdata;
 let room_list;
-// let timetable;
 let timetable;
 
 //  the function below updates the teacher subject table acc to the subject choosen 
@@ -198,7 +196,6 @@ const save_table_func = () => {
 	};
 
 	console.log(JSON.stringify(jsonData, null, 2));
-	globaljsonData = jsonData;
 	// jsonData ka post request marna hai for teacher subject data  
 
 
@@ -227,7 +224,7 @@ const save_table_func = () => {
 			fixtime_secondphase();
 		})
 		.then(()=>{
-			fetch('http://127.0.0.1:3000/list/save-list', {
+			return fetch('http://127.0.0.1:3000/list/save-list', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -243,13 +240,16 @@ const save_table_func = () => {
 				} else {
 					throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 				}
-			})
+			});
 		})
 		.then(parsedData => {
-			add_rooms_options_to_mytable(room_list);
+			fetch_room_list();
 			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', parsedData);
-
-		}).catch(error => {
+		})
+		.then(()=>{
+			fetch_timetable();
+		})
+		.catch(error => {
 			console.error('::::: ERROR SAVING DATA :::::', error);
 		});
 };
