@@ -100,6 +100,52 @@ const any_change_event_listner = () => {
 	}
 }
 
+const fixtime_firstphase = ()=>{
+	console.log(':::::  FIRST PHASE start  :::::');
+	// console.log(room_list);
+	let prev = room_list;
+	let mytable = document.getElementById("mytable");
+	for(let i=1;i<=7;i++){
+		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+		for(let j=1;j<=10;j++){
+			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+			let temp = timetable.schedule[currday][currslot].class_id;
+			if(temp != "0"){
+				// console.log(temp);
+				// console.log(room_list[temp].schedule[currday][currslot])
+				room_list[temp].schedule[currday][currslot] = false;
+				console.log(room_list[temp].schedule[currday][currslot])
+			}
+		}
+	}
+	// console.log(room_list);
+	console.log(':::::  FIRST PHASE DONE  :::::');
+	if(prev == room_list){
+		console.log(':::::  SAME HAI YAAR  :::::');
+	}
+	else{
+		console.log(':::::  ALAG HAI YAAR  :::::');
+	}
+} 
+const fixtime_secondphase = ()=>{
+	let mytable = document.getElementById("mytable");
+	for(let i=1;i<=7;i++){
+		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+		for(let j=1;j<=10;j++){
+			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+			let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
+			if(curr_slot_room != '0'){
+				console.log(curr_slot_room);
+				room_list[curr_slot_room].schedule[currday][currslot] = true;
+				console.log(room_list[curr_slot_room].schedule[currday][currslot])
+
+			}
+		}
+	}
+	// console.log(room_list);
+	console.log(':::::  SECOND PHASE DONE  :::::');
+} 
+
 //  function below calculate and construct the main timetable table && teacher subject relation table json 
 // and send that to the backend via post request 
 // 	============================	[ post request pending ]	============================ 
@@ -107,7 +153,7 @@ const save_table_func = () => {
 	let tempteachersubjectdata = [];
 
 	let scheduleslot = {}
-	for (let i = 1; i < mytable.rows.length; i++) {
+	for (let i = 1; i <=7; i++) {
 		let currrow = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		let tempdayslot = {}
 		for (let j = 1; j <= 10; j++) {
@@ -187,7 +233,17 @@ const save_table_func = () => {
 			} else {
 				throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 			}
-		}).then(parsedData => {
+		})
+		.then(()=>{
+			fixtime_firstphase();
+		})
+		.then(()=>{
+			fixtime_secondphase();
+		})
+		.then(()=>{
+			add_rooms_options_to_mytable(room_list);
+		})
+		.then(parsedData => {
 			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', parsedData);
 
 		}).catch(error => {
@@ -256,21 +312,45 @@ const add_select_box_to_mytable = () => {
 //  these two function below adds the options to the previously created select option field to each table cell in the table 
 // 	this add options to subject select box and room select box in the main table dynamically with the data obtained from mongoDB
 const add_rooms_options_to_mytable = (room_list) => {
-	let roomselectboxes = document.querySelectorAll(".roomselectbox");
-	roomselectboxes.forEach(select => {
-		let tempselectedvalue = select.value;
-		select.innerHTML = "";
-		Object.entries(room_list).forEach(([key, value]) => {
-			let option = document.createElement("option");
-			option.value = key;
-			option.text = value.classname;
-			// console.log(option.value, option.text)
-			if (key == tempselectedvalue) {
-				option.selected = true;
-			}
-			select.appendChild(option);
-		});
-	});
+	for (let i = 1; i <= 7; i++) {
+		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+		for (let j = 1; j <= 10; j++) {
+			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+			let currslotroom = mytable.rows[i].cells[j].childNodes[1];
+			let tempselectedvalue = currslotroom.value;
+			currslotroom.innerHTML = "";
+			Object.entries(room_list).forEach(([key, value]) => {
+				let option = document.createElement("option");
+				option.value = key;
+				option.text = value.classname;
+				// console.log(room_list);
+				if(room_list[key].schedule[currday][currslot] == true){
+					console.log("aaya")
+					option.setAttribute("class","bg-danger");
+				}
+				// console.log(option.value, option.text)
+				if (key == tempselectedvalue) {
+					option.selected = true;
+				}
+				currslotroom.appendChild(option);
+			});
+		}
+	}
+	// let roomselectboxes = document.querySelectorAll(".roomselectbox");
+	// roomselectboxes.forEach(select => {
+	// 	let tempselectedvalue = select.value;
+	// 	select.innerHTML = "";
+	// 	Object.entries(room_list).forEach(([key, value]) => {
+	// 		let option = document.createElement("option");
+	// 		option.value = key;
+	// 		option.text = value.classname;
+	// 		// console.log(option.value, option.text)
+	// 		if (key == tempselectedvalue) {
+	// 			option.selected = true;
+	// 		}
+	// 		select.appendChild(option);
+	// 	});
+	// });
 };
 const add_subjects_options_to_mytable = (subject_list) => {
 	let subjectselectbox = document.querySelectorAll(".subjectselectbox");
@@ -326,6 +406,7 @@ const fetch_faculties_list = () => {
 		.then(response => response.json())
 		.then(data => {
 			data = data.data;
+			console.log(data)
 			faculty_data = data[0];
 		})
 		.catch(error => console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error));
@@ -478,6 +559,9 @@ const fetch_timetable = () => {
 			// add_select_box_to_mytable();
 			// fetch_faculties_list();
 			// fetch_room_list();
+		})
+		.then(() => {
+			document.getElementById("save_tt_json").disabled=false;
 		})
 		.catch(error => console.error('Data unavailable:', error));
 }
