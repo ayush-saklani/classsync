@@ -22,6 +22,7 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json({ limit: "1MB" }));
+app.use(express.urlencoded({ limit: "16kb", extended: true }));
 app.use(mongosanitize());
 app.use(routes);
 
