@@ -15,32 +15,89 @@
 </head>
 
 <body>
-
 	<nav class="navbar navbar-expand mx-3">
 		<img src="/asset/image/logo.png" height="75px" class="d-inline-block align-text-top ">
 		<h2 class="mx-3 my-3 heading-text">Class-Sync Timetable Manager</h2>
 	</nav>
 
-	<section class="container mt-3">
-		<ul>
-			<li type="none">
-				<h1 class="heading-text text-center align-middle text-dark">Home</h1>
-				<h6 class="heading-text text-center align-middle text-primary">
-					Welcome to my house <br>
-					Play that music too loud <br>
-					Show me what you do now <br>
-					We don't have to go out
-				</h6>
-			</li>
-		</ul>
-		<div class="container text-center">
-			<div class="btn-group-vertical" role="group" aria-label="Vertical button group">
-				<a class="text btn btn-lg btn-outline-danger h3  mt-3 rounded-pill" href="TT_view.html"target="_blank"><b>Timetable viewing Portal</b></a>
-				<a class="text btn btn-lg btn-outline-primary h3 mt-3 rounded-pill" href="TT_Input.html" target="_blank"><b>Timetable editing Portal</b></a>
-				<a class="text btn btn-lg btn-outline-danger h3  mt-3 rounded-pill" href="TT_Input_generic.html" target="_blank"><b>Sending Generic Data</b></a>
-				<a class="text btn btn-lg btn-outline-primary h3 mt-3 rounded-pill" href="List_modifier.html" target="_blank"><b>List Modifier</b></a>
-				<a class="text btn btn-lg btn-outline-danger h3 mt-3 rounded-pill" href="signup_page.html" target="_blank"><b>Signup page [ testing ]</b></a>
-				<a class="text btn btn-lg btn-outline-primary h3  mt-3 rounded-pill" href="login_page.html" target="_blank"><b>Login page [ testing ]</b></a>
+	<section class="container mt-5">
+		<div class="container">
+			<h1 class="center text fw-bold">Home Page</h1>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 mt-4">
+					<div class="card">
+						<a href="TT_view.html"><img src="../asset/image/viewing_portal.jpg" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Timetable viewing Portal</h5>
+							<p class="card-text">
+								This portal is used to view the timetable of the classes. It is a read-only portal.
+							</p>
+							<a href="TT_view.html" class="btn btn-lg btn-primary fw-bold rounded-pill">Go to Page</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4">
+					<div class="card">
+						<a href="TT_Input.html"><img src="../asset/image/editing_portal.jpg" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Timetable Editing Portal</h5>
+							<p class="card-text">
+								This portal is used to edit the timetable of the classes. It is a read-write portal.
+							</p>
+							<a href="TT_Input.html" class="btn btn-lg btn-danger fw-bold rounded-pill">Go to Page</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4">
+					<div class="card">
+						<a href="TT_Input_generic.html"><img src="../asset/image/Generic_data.jpg" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Timetable Setting Generic Data</h5>
+							<p class="card-text">
+								This portal is used to send generic data to the timetable. Sets the same subjects to all section.
+							</p>
+							<a href="TT_Input_generic.html" class="btn btn-lg btn-primary fw-bold rounded-pill">Go to Page</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4">
+					<div class="card">
+						<a href="List_modifier.html"><img src="../asset/image/teacher_edit_portal.jpg" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Timetable Teacher List Modifier</h5>
+							<p class="card-text">
+								This portal is used to modify the list of the Teacher. It is a read-write portal.
+							</p>
+							<a href="List_modifier.html" class="btn btn-lg btn-danger fw-bold rounded-pill">Go to Page</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4">
+					<div class="card">
+						<a href="login_page.html"><img src="../asset/image/general.jpg" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Timetable Login Page</h5>
+							<p class="card-text">
+								This is a Login page for the portal. <i><b>Currently just the UI.</b></i>								
+							</p>
+							<a href="login_page.html" class="btn btn-lg btn-primary fw-bold rounded-pill">Go to Page</a>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4 mt-4">
+					<div class="card">
+						<a href="signup_page.html"><img src="../asset/image/signup_portal.jpg" class="card-img-top" alt="..."></a>
+						<div class="card-body">
+							<h5 class="card-title fw-bold">Timetable Signup Page</h5>
+							<p class="card-text">
+								This is a signup page for the portal. <i><b>Currently just the UI.</b></i>								
+							</p>
+							<a href="signup_page.html" class="btn btn-lg btn-danger fw-bold rounded-pill">Go to Page</a>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -73,7 +130,6 @@
 
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-	<script src="index.js"></script>
 
 </body>
 
