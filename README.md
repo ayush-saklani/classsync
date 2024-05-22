@@ -2,40 +2,37 @@
 
 <!-- **Indoor mapping solution for University campus.**  -->
 
-**_(currently in concept and designing phase)_**
+**_( currently in finalization phase )_**
 
 # **Language and Tools**
 
-<p align="left">
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" height="70"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" height="70"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" height="70"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"height="70"/>
-<img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png"height="70"/>
-<img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Status_iucn_EX_icon_blank.svg" height="70"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-plain.svg" height="70"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="70"/>
-<img src="https://camelot-py.readthedocs.io/en/master/_static/png/camelot-logo.png" height="70"/>
-<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" height="70"/>
-</p>
+<div align="left">
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"height="75"/>
+<img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png"height="75"/>
+<img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Status_iucn_EX_icon_blank.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-plain.svg" height="75"/>
+<!-- <img src="https://camelot-py.readthedocs.io/en/master/_static/png/camelot-logo.png" height="75"/> -->
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="75"/>
+</div>
 
-# File Structure
+# Folder Structure
 
 - **`asset`** folder to store logos, docs and extra files
-- **`tester.js`** server.js testing
-- **`testjsonparsing.js`** another function testing JS file
-- **`class_id_dict.py`** stored class ID
+- **`frontend`** HTML frontend
+- **`backend`** NodeJS and MongoDB Backend
+- **`frontend`** HTML frontend
+- **`JSONS`** Data Structure used to store documents in DB
 - **`README.md`** README.md
-
-<!-- # Future plans
-    list below  |
-                V     -->
 
 #
 
 # ==============================
 
-## Things to work out right now _(kuch idea ya kaam hoga to list kardena neeche)_
+## Things to work out right now _( kuch idea ya kaam hoga to list kardena neeche and ping me )_
 
 - [x] (/table/post-teachertable) + body will contain json
       ~~**_1st api_** - post reqest to send the teacher subject relation data to the backend to save it to database~~
@@ -75,15 +72,19 @@
 - But for the time being 
 
 ## This is the proposed new improved structure 
-***[ slot data is a optional field ]***
+***[ slot data is a not an optional field ]***
 
 		{
             "course" : "btechcse",
-            "semester" : "1",
+            "semester" : "6",
             "section" : "A",
             "schedule": {
                 "mon": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
+                    "08-09": { 
+                        "class_id" : "55",
+                        "subjectcode" : "XCS300", 
+                        "slotdata" : "XCS300\nCR304"
+                    },
                     "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
                     "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
                     "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
@@ -94,77 +95,18 @@
                     "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
                     "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
                 },
-                "tue": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
-                },
-                "wed": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
-                },
-                "thu": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
-                },
-                "fri": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
-                },
-                "sat": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
-                },
+                .
+                .
+                .
+                .
+                .
+                .
                 "sun": {
                     "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
+                    .
+                    .
+                    .
+                    .
                 }
             },
             "teacher_subject_data":[
