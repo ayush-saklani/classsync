@@ -21,6 +21,15 @@ _( currently in finalization phase )_**
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="75"/>
 </div>
 
+# How to run this project
+### **To start the Server**
+- cd backend ***( From the root folder )***
+- npm start ***( starts the server )***
+### **To start the Frontend**
+- Open in live server
+- OR
+- Open the `index.html` ***( home page )*** 
+
 # Folder Structure
 
 - **`asset`** folder to store logos, docs and extra files
