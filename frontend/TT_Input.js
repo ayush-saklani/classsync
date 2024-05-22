@@ -369,7 +369,7 @@ const add_subjects_options_to_mytable = (subject_list) => {
 
 //  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use  
 const fetch_room_list = () => {
-	fetch('http://127.0.0.1:3000/list/get-list?type=rooms',{
+	return fetch('http://127.0.0.1:3000/list/get-list?type=rooms',{
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -385,7 +385,7 @@ const fetch_room_list = () => {
 };
 //  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
 const fetch_faculties_list = () => {
-	fetch('http://127.0.0.1:3000/list/get-list?type=faculties',{
+	return fetch('http://127.0.0.1:3000/list/get-list?type=faculties',{
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -419,114 +419,114 @@ const fetch_subject_list = () => {
 const render_tables = () => {
 	// rendering the second table first
 	if(timetable){
-	let localteacher_subject_data = timetable.teacher_subject_data;
-	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-	table.innerHTML = "";
-	for (let i = 0; i < localteacher_subject_data.length; i++) {
-		const element = localteacher_subject_data[i];
-
+		let localteacher_subject_data = timetable.teacher_subject_data;
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-		let newRow = table.insertRow(table.rows.length);
+		table.innerHTML = "";
+		for (let i = 0; i < localteacher_subject_data.length; i++) {
+			const element = localteacher_subject_data[i];
 
-		// subject select box render
-		let cell = newRow.insertCell();
-		
-		let cell_insert = document.createElement("span");
-		cell_insert.setAttribute("class", "text");
-		cell_insert.innerHTML = localteacher_subject_data[i].subjectname;
-		cell.appendChild(cell_insert);
-		cell.setAttribute("class", "border-dark border-3");
-		
-		// teacher select box render
-		cell = newRow.insertCell();
-		select = document.createElement('select');
-		select.setAttribute('class', 'form-select text');
-		cell.appendChild(select);
-		for (let ele in faculty_data) {
-			let option = document.createElement('option');
-			option.value = ele;
-			option.text = faculty_data[ele];
-			if (ele == localteacher_subject_data[i].teacherid) {
-				option.selected = true;
-				// console.log(ele)
+			let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+			let newRow = table.insertRow(table.rows.length);
+
+			// subject select box render
+			let cell = newRow.insertCell();
+
+			let cell_insert = document.createElement("span");
+			cell_insert.setAttribute("class", "text");
+			cell_insert.innerHTML = localteacher_subject_data[i].subjectname;
+			cell.appendChild(cell_insert);
+			cell.setAttribute("class", "border-dark border-3");
+
+			// teacher select box render
+			cell = newRow.insertCell();
+			select = document.createElement('select');
+			select.setAttribute('class', 'form-select text');
+			cell.appendChild(select);
+			for (let ele in faculty_data) {
+				let option = document.createElement('option');
+				option.value = ele;
+				option.text = faculty_data[ele];
+				if (ele == localteacher_subject_data[i].teacherid) {
+					option.selected = true;
+					// console.log(ele)
+				}
+				select.appendChild(option);
 			}
-			select.appendChild(option);
+			cell.setAttribute("class", "border-dark border-3 p-0");
+
+			cell = newRow.insertCell();
+			cell_insert = document.createElement("span");
+			cell_insert.innerHTML = localteacher_subject_data[i].subjectcode;
+			cell_insert.setAttribute("class", "text");
+			cell.appendChild(cell_insert);
+			cell.setAttribute("class", "border-dark border-3 fw-bolder");
+
+			cell = newRow.insertCell();
+			cell_insert = document.createElement("span");
+			cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
+			cell_insert.setAttribute("class", "text");
+			cell.appendChild(cell_insert);
+			cell.setAttribute("class", "border-dark border-3");
+
+			cell = newRow.insertCell();
+			cell_insert = document.createElement("span");
+			cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
+			cell_insert.setAttribute("class", "text");
+			cell.appendChild(cell_insert);
+			cell.setAttribute("class", "border-dark border-3");
+
+			cell = newRow.insertCell();
+			cell_insert = document.createElement("span");
+			cell_insert.innerHTML = 0;
+			cell_insert.setAttribute("class", "text");
+			cell.appendChild(cell_insert);
+			cell.setAttribute("class", "border-dark border-3");
 		}
-		cell.setAttribute("class", "border-dark border-3 p-0");
+		update_detail_table();
+		add_subjects_options_to_mytable(localteacher_subject_data)
 
-		cell = newRow.insertCell();
-		cell_insert = document.createElement("span");
-		cell_insert.innerHTML = localteacher_subject_data[i].subjectcode;
-		cell_insert.setAttribute("class", "text");
-		cell.appendChild(cell_insert);
-		cell.setAttribute("class", "border-dark border-3 fw-bolder");
+		// rendering the first main table now 
+		let local_time_table_data = timetable.schedule;
+		let mytable = document.getElementById("mytable");
 
-		cell = newRow.insertCell();
-		cell_insert = document.createElement("span");
-		cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
-		cell_insert.setAttribute("class", "text");
-		cell.appendChild(cell_insert);
-		cell.setAttribute("class", "border-dark border-3");
+		for (let i = 1; i < mytable.rows.length; i++) {
+			let curr_day = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+			let curr_whole_row = mytable.rows[i];
 
-		cell = newRow.insertCell();
-		cell_insert = document.createElement("span");
-		cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
-		cell_insert.setAttribute("class", "text");
-		cell.appendChild(cell_insert);
-		cell.setAttribute("class", "border-dark border-3");
+			for (let j = 1; j <= 10; j++) {
+				let curr_timeslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+				let curr_col_slot = curr_whole_row.cells[j];
+				let curr_col_slot_childs = curr_col_slot.childNodes;
 
-		cell = newRow.insertCell();
-		cell_insert = document.createElement("span");
-		cell_insert.innerHTML = 0;
-		cell_insert.setAttribute("class", "text");
-		cell.appendChild(cell_insert);
-		cell.setAttribute("class", "border-dark border-3");
-	}
-	update_detail_table();
-	add_subjects_options_to_mytable(localteacher_subject_data)
+				// trying for subjects
+				for (let i = 0; i < curr_col_slot_childs[0].options.length; i++) {
+					let subject_options = curr_col_slot_childs[0].options;
+					let optionValue = subject_options[i].value;
+					if (optionValue == local_time_table_data[curr_day][curr_timeslot].subjectcode) {
+						// console.log(optionValue);
+						// console.log(local_time_table_data[curr_day][curr_timeslot].subjectcode);
+						subject_options[i].selected = true;
+					}
+				}
 
-	// rendering the first main table now 
-	let local_time_table_data = timetable.schedule;
-	let mytable = document.getElementById("mytable");
-
-	for (let i = 1; i < mytable.rows.length; i++) {
-		let curr_day = mytable.rows[i].cells[0].innerHTML.toLowerCase();
-		let curr_whole_row = mytable.rows[i];
-
-		for (let j = 1; j <= 10; j++) {
-			let curr_timeslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-			let curr_col_slot = curr_whole_row.cells[j];
-			let curr_col_slot_childs = curr_col_slot.childNodes;
-
-			// trying for subjects
-			for (let i = 0; i < curr_col_slot_childs[0].options.length; i++) {
-				let subject_options = curr_col_slot_childs[0].options;
-				let optionValue = subject_options[i].value;
-				if (optionValue == local_time_table_data[curr_day][curr_timeslot].subjectcode) {
-					// console.log(optionValue);
-					// console.log(local_time_table_data[curr_day][curr_timeslot].subjectcode);
-					subject_options[i].selected = true;
+				// trying for rooms
+				for (let i = 0; i < curr_col_slot_childs[1].options.length; i++) {
+					let room_options = curr_col_slot_childs[1].options;
+					optionValue = room_options[i].value;
+					if (optionValue == local_time_table_data[curr_day][curr_timeslot].class_id) {
+						// console.log(optionValue);
+						// console.log(local_time_table_data[curr_day][curr_timeslot].class_id);
+						room_options[i].selected = true;
+					}
 				}
 			}
-
-			// trying for rooms
-			for (let i = 0; i < curr_col_slot_childs[1].options.length; i++) {
-				let room_options = curr_col_slot_childs[1].options;
-				optionValue = room_options[i].value;
-				if (optionValue == local_time_table_data[curr_day][curr_timeslot].class_id) {
-					// console.log(optionValue);
-					// console.log(local_time_table_data[curr_day][curr_timeslot].class_id);
-					room_options[i].selected = true;
-				}
-			}
 		}
-	}
 	}
 	else{
 		alert("Time Table Data not available")
 	}
 }
-const fetch_timetable = () => {
+const fetch_timetable =  () => {
 	let course = document.getElementById("course_option").value;
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
@@ -554,8 +554,19 @@ const fetch_timetable = () => {
 		.catch(error => console.error('Data unavailable:', error));
 }
 
-fetch_room_list();
+// fetch_room_list();
+// fetch_faculties_list();  
 // fetch_subject_list();
 // add_subjects_options_to_mytable(subjectdata);
 // add_rooms_options_to_mytable(room_list);
-setTimeout(fetch_timetable, 3000); // promises sekh le 
+// setTimeout(fetch_timetable, 3000); // promises sekh le 
+const initializePage = () => {
+    fetch_room_list()
+    .then(() => fetch_faculties_list())
+    .then(() => fetch_timetable())
+    .then(() => {
+        document.getElementById("save_tt_json").disabled = false;
+    })
+    .catch(error => console.error('Error during initialization:', error));
+};
+document.addEventListener('DOMContentLoaded', initializePage);

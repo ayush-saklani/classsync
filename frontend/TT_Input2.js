@@ -1,5 +1,5 @@
 add_select_box_to_mytable();    // add subject and room select boxes to all the table cells  
-fetch_faculties_list();                 // fetch faculty list from the server when the page loads 
+// fetch_faculties_list();                 // fetch faculty list from the server when the page loads 
 // fetch_room_list();                      // fetch Room list from the server when the page loads 
 
 // [ save TT JSON on DB button ]
