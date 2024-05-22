@@ -40,7 +40,7 @@ const save_table_func = () => {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify({
-			"type": "rooms",
+			"type": "faculties",
 			"data": res
 		})
 	})

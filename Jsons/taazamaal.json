@@ -1,4 +1,93 @@
 {
+    "0": {
+        "classname": "",
+        "schedule": {
+            "mon": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            },
+            "tue": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            },
+            "wed": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            },
+            "thu": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            },
+            "fri": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            },
+            "sat": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            },
+            "sun": {
+                "08-09": false,
+                "09-10": false,
+                "10-11": false,
+                "11-12": false,
+                "12-01": false,
+                "01-02": false,
+                "02-03": false,
+                "03-04": false,
+                "04-05": false,
+                "05-06": false
+            }
+        }
+    },
     "1": {
         "classname": "ULI",
         "schedule": {
