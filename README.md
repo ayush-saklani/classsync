@@ -1,8 +1,9 @@
-# **Class-Sync Timetable manager (beta)** <img src="asset/image/logo.png" height="100" align="left"/>
-
-<!-- **Indoor mapping solution for University campus.**  -->
-
-**_( currently in finalization phase )_**
+# **Class-Sync Timetable manager (γ)** <img src="asset/image/logo.png" height="110" align="left"/>
+**Designed and built with all the love and passion in the world by
+<a class="link-danger" href="https://github.com/ayush-saklani"><b>ayush-saklani</b></a>
+<b>X</b>
+<a class="link-primary" href="https://github.com/RawatDevanshu"><b>RawatDevanshu</b></a>.
+_( currently in finalization phase )_**
 
 # **Language and Tools**
 
@@ -13,8 +14,9 @@
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg"height="75"/>
 <img src="https://static-00.iconduck.com/assets.00/node-js-icon-454x512-nztofx17.png"height="75"/>
 <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Status_iucn_EX_icon_blank.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original-wordmark.svg" height="75"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original-wordmark.svg" height="75"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-plain.svg" height="75"/>
-<!-- <img src="https://camelot-py.readthedocs.io/en/master/_static/png/camelot-logo.png" height="75"/> -->
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg" height="75"/>
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" height="75"/>
 </div>
@@ -29,41 +31,26 @@
 - **`README.md`** README.md
 
 #
-
-# ==============================
+#
+#
+#
+#
 
 ## Things to work out right now _( kuch idea ya kaam hoga to list kardena neeche and ping me )_
 
-- [x] (/table/post-teachertable) + body will contain json
-      ~~**_1st api_** - post reqest to send the teacher subject relation data to the backend to save it to database~~
-- [x] (/table/get-timetable) old api
-      ~~**_2nd API_** - to fetch the same data through a GET API~~
+- [x] **_1st api_** - (/table/post-teachertable)
+      ~~post reqest to send the teacher subject relation data to the backend to save it to database~~
+- [x] **_2nd API_** - (/table/get-timetable)
+      ~~to fetch the same data through a GET API~~
 
 ~~_( idea being i will fetch the table when the page refreshes and if the data is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )_~~
-
-- [x] (/list/get-rooms)
-      ~~**_3rd API_** - show the room list~~
-- [x] (/list/get-faculties)
-      ~~**_4th API_** - to fetch the teacher~~
-
+- [x] **_3rd API_** - (/list/get-rooms)
+      ~~show the room list~~
+- [x] **_4th API_** - (/list/get-faculties)
+      ~~to fetch the teacher~~
+      
 ~~_( i want these two seperate get APIs to return the data with no request params)_~~
 
-- **5th api** - get request for fetching the subject list similar to `1st API` but this time include some details like below
-
-      [
-	      {
-	      	"subjectcode": "xcs601",
-	      	"subjectname":"career skills",
-	      	"weekly_hrs": 2,
-	      	"theory_practical":"theory"
-	      },
-	      {
-	      	"subjectcode": "pcs602",
-	      	"subjectname":"compiler lab",
-	      	"weekly_hrs": 2,
-	      	"theory_practical":"practical"
-	      }
-      ]
 # ==============================
 
 # Well Well Well Devanshu I did it AGAIN !! 
