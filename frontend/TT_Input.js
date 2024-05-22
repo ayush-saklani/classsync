@@ -107,10 +107,12 @@ const fixtime_firstphase = ()=>{
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		for(let j=1;j<=10;j++){
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-			let temp = timetable.schedule[currday][currslot].class_id;
-			if (temp in room_list) {
-                room_list[temp].schedule[currday][currslot] = false;
-            }
+			if(timetable){
+				let temp = timetable.schedule[currday][currslot].class_id;
+				if (temp in room_list) {
+					room_list[temp].schedule[currday][currslot] = false;
+				}
+			}
 		}
 	}
 } 
@@ -242,12 +244,8 @@ const save_table_func = () => {
 				}
 			});
 		})
-		.then(parsedData => {
-			fetch_room_list();
-			console.log(':::::  DATA SAVED SUCCESSFULLY  :::::', parsedData);
-		})
 		.then(()=>{
-			fetch_timetable();
+			initializePage();
 		})
 		.catch(error => {
 			console.error('::::: ERROR SAVING DATA :::::', error);
