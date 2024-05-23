@@ -153,7 +153,9 @@ const fixtime_firstphase = ()=>{
 			if(timetable){
 				let temp = timetable.schedule[currday][currslot].class_id;
 				if (temp in room_list) {
-					room_list[temp].schedule[currday][currslot] = false;
+					if(room_list[temp].schedule[currday][currslot] > 0){
+						room_list[temp].schedule[currday][currslot] -= 1;
+					}
 				}
 			}
 		}
@@ -167,7 +169,7 @@ const fixtime_secondphase = ()=>{
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
 			let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
 			if (curr_slot_room in room_list) {
-                room_list[curr_slot_room].schedule[currday][currslot] = true;
+                room_list[curr_slot_room].schedule[currday][currslot] += 1;
             }
 		}
 	}
@@ -374,8 +376,14 @@ const add_rooms_options_to_mytable = (room_list) => {
 				option.text = value.classname;
 				option.setAttribute("class","text");
 				// console.log(room_list);
-				if(room_list[key].schedule[currday][currslot] == true){
+				if(room_list[key].schedule[currday][currslot] == 1){
+					option.setAttribute("class","bg-warning bg-gradient text text-light fw-bold");
+				}
+				else if(room_list[key].schedule[currday][currslot] == 2){
 					option.setAttribute("class","bg-danger bg-gradient text text-light fw-bold");
+				}
+				else if(room_list[key].schedule[currday][currslot] > 2){
+					option.setAttribute("class","bg-success bg-dark text text-light fw-bold");
 				}
 				// console.log(option.value, option.text)
 				if (key == tempselectedvalue) {

@@ -65,6 +65,10 @@ const add_row_func = () => {
 const delete_row_func = () => {
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 	let rowCount = table.rows.length;
+	if (rowCount <= 1) {
+		float_error_card_func('Cannot delete row', `This Id and Name are required for the system to work properly. '0' id is reserved.`, 'danger');
+		return;
+	}
 	table.deleteRow(rowCount - 1);
 };
 //  function below calculate and construct the teacher list and send that to the backend via post request 
@@ -75,6 +79,18 @@ const save_table_func = () => {
 	for (let i = 0; i < tableBody.rows.length; i++) {
 		let id = tableBody.rows[i].cells[0].firstElementChild.value.trim();
 		let name = tableBody.rows[i].cells[1].firstElementChild.value;
+		if (id === "" || name === "" && id !== "0") {
+			float_error_card_func('Empty Field found', 'Please fill all the fields before saving the data', 'danger');
+			return;
+		}
+		else if (id in res) {
+			float_error_card_func('Duplicate ID found', 'ID cannot be duplicate 2 teacher with same IDs are detected', 'danger');
+			return;
+		}
+		else if (id.length > 10) {
+			float_error_card_func('ID too long', 'ID cannot be more than 10 digits', 'danger');
+			return;
+		}
 		res[id] = name;
 	}
 	console.log(res);
