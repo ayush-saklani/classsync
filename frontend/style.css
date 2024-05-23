@@ -258,3 +258,17 @@ body{
 .room_textinput{
     border-radius: 0% !important;
 }
+@keyframes rise {
+    0% {transform: translateY(100%);opacity: 0;}
+    100% {transform: translateY(0);opacity: 1;}
+}
+@keyframes sink {
+    0% {transform: translateY(0);opacity: 1;}
+    100% {transform: translateY(100%);opacity: 0;}
+}
+.rise {
+    animation: rise 1s forwards;
+}
+.sink {
+    animation: sink 1s forwards;
+}
