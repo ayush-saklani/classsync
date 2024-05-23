@@ -235,12 +235,16 @@ const letmeseeitbaby = () => {
 		.then(data => {
 			timetable = data.data;        // Do something with the response data here 
 			// console.log(data);
+			float_error_card_func("Timetable Loaded Successfully", "The timetable you are looking for is available and successfully fetched from database.", "success");
 			letmesee2(timetable);
 			// render_tables();
 		})
 		.then(() => {
 			if(flag === 1){
 				college_event_manager();
+				setTimeout(()=>{float_error_card_func("Events view On", "", "success")}, 2000);
+			}else{
+				setTimeout(()=>{float_error_card_func("Events view Off", "", "danger")}, 2000);
 			}
 		})
 		.catch(error => {
