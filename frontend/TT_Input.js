@@ -3,7 +3,50 @@ let faculty_data;
 let subjectdata;
 let room_list;
 let timetable;
+let messageCounter = 0;
+//  the function below creates a floating card with the success and warning message and then removes it after 5 seconds
+const float_error_card_func = (title, desc, color) => {
+	const uniqueId = `float_error_card_${messageCounter++}`;
 
+	let div = document.createElement('div');
+	div.className = `card text-bg-${color} position-fixed bottom-0 end-0 m-3`;
+	div.style.maxWidth = "25rem";
+	div.id = uniqueId;
+
+	let headerDiv = document.createElement('div');
+	headerDiv.className = "card-header fw-bold";
+	div.appendChild(headerDiv);
+
+	let bodyDiv = document.createElement('div');
+	bodyDiv.className = "card-body";
+
+	let h5 = document.createElement('h5');
+	h5.className = "card-title";
+	h5.textContent = title;
+	bodyDiv.appendChild(h5);
+
+	let p = document.createElement('p');
+	p.className = "card-text";
+	p.textContent = desc;
+	bodyDiv.appendChild(p);
+
+	div.appendChild(bodyDiv);
+	document.getElementById('message_container').appendChild(div);
+
+	if (color === "success") {
+		headerDiv.innerHTML = `Success <i class="bi bi-check-circle-fill"></i>`;
+	} else if (color === "danger") {
+		headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-triangle-fill"></i>`;
+	}
+	div.classList.add('rise');
+	setTimeout(() => {
+		div.classList.remove('rise');
+		div.classList.add('sink');
+		setTimeout(() => {
+			div.remove();
+		}, 1000);
+	}, 5000);
+}
 //  the function below updates the teacher subject table acc to the subject choosen 
 const update_detail_table = () => {
 	let tempteachersubjectdata = [];
@@ -214,8 +257,10 @@ const save_table_func = () => {
 	})
 		.then(response => {
 			if (response.ok) {
+				float_error_card_func("Timetable Saved Successfully", "Timetable saved to database successfully.", "success");
 				return response.json();
 			} else {
+				float_error_card_func("Timetable not Saved", "Timetable data not saved due to network error.", "danger");
 				throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 			}
 		})
@@ -238,16 +283,19 @@ const save_table_func = () => {
 			})
 			.then(response => {
 				if (response.ok) {
+					float_error_card_func("Room Data Saved Successfully", "Room data saved to database successfully.", "success");
 					return response.json();
 				} else {
+					float_error_card_func("Room Data not Saved", "Room data not saved due to network error.", "danger");
 					throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 				}
 			});
 		})
 		.then(()=>{
-			initializePage();
+			setTimeout(initializePage, 1000);
 		})
 		.catch(error => {
+			float_error_card_func("Timetable not Saved", "Error saving timetable data.", "danger");
 			console.error('::::: ERROR SAVING DATA :::::', error);
 		});
 };
@@ -521,7 +569,7 @@ const render_tables = () => {
 		}
 	}
 	else{
-		alert("Time Table Data not available")
+		float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
 	}
 }
 const fetch_timetable =  () => {
@@ -563,8 +611,12 @@ const initializePage = () => {
     .then(() => fetch_faculties_list())
     .then(() => fetch_timetable())
     .then(() => {
-        document.getElementById("save_tt_json").disabled = false;
+		document.getElementById("save_tt_json").disabled = false;
+		float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
     })
-    .catch(error => console.error('Error during initialization:', error));
+    .catch(error => {
+		float_error_card_func("Error during initialization", "Error during initialization.", "danger");
+		console.error('Error during initialization:', error)
+	});
 };
 document.addEventListener('DOMContentLoaded', initializePage);
