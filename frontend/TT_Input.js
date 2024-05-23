@@ -465,6 +465,7 @@ const fetch_subject_list = () => {
 const render_tables = () => {
 	// rendering the second table first
 	if(timetable){
+		float_error_card_func("Time Table Data available", "Time Table Data retrived from the DataBase and Rendered Successfully.", "success");
 		let localteacher_subject_data = timetable.teacher_subject_data;
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 		table.innerHTML = "";
@@ -597,7 +598,10 @@ const fetch_timetable =  () => {
 		.then(() => {
 			document.getElementById("save_tt_json").disabled=false;
 		})
-		.catch(error => console.error('Data unavailable:', error));
+		.catch(error => {
+			float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
+			console.error('Data unavailable:', error)
+		});
 }
 
 // fetch_room_list();

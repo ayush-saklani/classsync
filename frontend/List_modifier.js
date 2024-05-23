@@ -89,11 +89,11 @@ const save_table_func = () => {
 		})
 	})
 	.then(parsedData => {
-		float_error_card_func('Faculty Data Saved Successfully', 'Faculty Data Saved Successfully to the Database', 'success');
+		float_error_card_func('Faculty Data Saved Successfully', 'Faculty Data Sent and Saved Successfully to the Database', 'success');
 		console.log(':::::  TEACHER DATA SAVED SUCCESSFULLY  :::::', parsedData);
 	})
 	.catch(error => {
-		float_error_card_func('Faculty Data not saved', 'Faculty Data not saved due to probable server error', 'danger');
+		float_error_card_func('Faculty Data not saved', 'Faculty Data sent but not saved due to probable server error', 'danger');
 		console.error('::::: ERROR SAVING DATA :::::', error);
 	});
 };
