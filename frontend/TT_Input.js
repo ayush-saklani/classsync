@@ -382,13 +382,19 @@ const add_rooms_options_to_mytable = (room_list) => {
 				option.setAttribute("class","text");
 				// console.log(room_list);
 				if(room_list[key].schedule[currday][currslot] == 1){
-					option.setAttribute("class","bg-warning bg-gradient text text-light fw-bold");
+					option.setAttribute("class","bg-success text-light bg-gradient text fw-bold");
 				}
 				else if(room_list[key].schedule[currday][currslot] == 2){
-					option.setAttribute("class","bg-danger bg-gradient text text-light fw-bold");
+					option.setAttribute("class","bg-primary text-light bg-gradient text fw-bold");
 				}
-				else if(room_list[key].schedule[currday][currslot] > 2){
-					option.setAttribute("class","bg-success bg-dark text text-light fw-bold");
+				else if(room_list[key].schedule[currday][currslot] == 3){
+					option.setAttribute("class","bg-warning text-dark bg-gradient text fw-bold");
+				}
+				else if(room_list[key].schedule[currday][currslot] == 4){
+					option.setAttribute("class","bg-danger text-light bg-gradient text fw-bold");
+				}
+				else if(room_list[key].schedule[currday][currslot] > 4){
+					option.setAttribute("class","bg-dark text-light bg-gradient text fw-bold");
 				}
 				// console.log(option.value, option.text)
 				if (key == tempselectedvalue) {
