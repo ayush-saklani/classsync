@@ -141,6 +141,7 @@ const any_change_event_listner = () => {
 	}
 }
 
+//  this function removes all the classes and decrease the counter from the timetable data saved during initialization    
 const fixtime_firstphase = ()=>{
 	// console.log(':::::  FIRST PHASE start  :::::');
 	// console.log(room_list);
@@ -153,14 +154,15 @@ const fixtime_firstphase = ()=>{
 			if(timetable){
 				let temp = timetable.schedule[currday][currslot].class_id;
 				if (temp in room_list) {
-					if(room_list[temp].schedule[currday][currslot] > 0){
+					if(room_list[temp].schedule[currday][currslot] > 0 && temp != '0'){
 						room_list[temp].schedule[currday][currslot] -= 1;
 					}
 				}
 			}
 		}
 	}
-} 
+}
+//  this function adds all the current selected classes ( mytable ) and increase the counter  
 const fixtime_secondphase = ()=>{
 	let mytable = document.getElementById("mytable");
 	for(let i=1;i<=7;i++){
@@ -169,7 +171,9 @@ const fixtime_secondphase = ()=>{
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
 			let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
 			if (curr_slot_room in room_list) {
-                room_list[curr_slot_room].schedule[currday][currslot] += 1;
+				if(curr_slot_room != '0'){
+					room_list[curr_slot_room].schedule[currday][currslot] += 1;
+				}
             }
 		}
 	}
@@ -213,6 +217,7 @@ const save_table_func = () => {
 	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 	// Iterate over each row in the table body
 	for (let i = 0; i < tableBody.rows.length; i++) {
+		document.getElementById("save_tt_json").disabled = true;
 		let row = tableBody.rows[i];
 
 		let subjectname = row.cells[0].firstChild.innerHTML;
