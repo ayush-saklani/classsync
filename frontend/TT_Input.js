@@ -86,7 +86,8 @@ const update_detail_table = () => {
 	// any_change_event_listner();
 }
 
-//  this function creates a row of table for teacher-subject table dynamically and add the options to the subjects and faculty data 
+//  this function creates and delete a row of table for teacher-subject table dynamically 
+//  and add the options to the subjects and faculty data 
 // then calls the update detail table function
 const add_row_func = () => {
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
@@ -183,7 +184,6 @@ const fixtime_secondphase = ()=>{
 
 //  function below calculate and construct the main timetable table && teacher subject relation table json 
 // and send that to the backend via post request 
-// 	============================	[ post request pending ]	============================ 
 const save_table_func = () => {
 	let tempteachersubjectdata = [];
 
@@ -305,45 +305,6 @@ const save_table_func = () => {
 			float_error_card_func("Timetable not Saved", "Error saving timetable data.", "danger");
 			console.error('::::: ERROR SAVING DATA :::::', error);
 		});
-};
-
-const pass_second_table_to_first = () => {
-	let tempteachersubjectdata = [];
-
-	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-	// Iterate over each row in the table body
-	for (let i = 0; i < tableBody.rows.length; i++) {
-		let row = tableBody.rows[i];
-
-		let subjectname = row.cells[0].firstChild.innerHTML;
-		let teacherid = row.cells[1].firstChild.value;
-		let subjectid = row.cells[2].firstChild.innerHTML;
-		let weekly_hrs = row.cells[3].firstChild.innerHTML;
-		let theory_practical = row.cells[4].firstChild.innerHTML;
-		let teachername = faculty_data[teacherid];
-	
-
-		let rowData = {
-			"subjectcode": subjectid,
-			"teacherid": teacherid,
-			"weekly_hrs": weekly_hrs,
-			"teachername": teachername,
-			"subjectname": subjectname,
-			"theory_practical": theory_practical,
-		}
-		tempteachersubjectdata.push(rowData);
-	}
-
-	let testinglist = [];
-	tempteachersubjectdata.forEach(element => {
-		testinglist.push({
-			"subjectcode": element.subjectcode,
-			"subjectname": element.subjectname,
-			"weekly_hrs": element.weekly_hrs,
-			"theory_practical": element.theory_practical
-		});
-	});
-	add_subjects_options_to_mytable(testinglist);
 }
 
 //  this function below adds the select option field to each table cell in the table  and also give them appropriate classes 
@@ -461,21 +422,6 @@ const fetch_faculties_list = () => {
 			data = data.data.data;
 			faculty_data = data;
 			console.log(data)
-		})
-		.catch(error => console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error));
-};
-//  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
-const fetch_subject_list = () => {
-	fetch('http://127.0.0.1:3000/list/get-subjects', {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	})
-		.then(response => response.json())
-		.then(data => {
-			subjectdata = data.data;
-			// console.log(subjectdata)
 		})
 		.catch(error => console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error));
 };
@@ -610,9 +556,6 @@ const fetch_timetable =  () => {
 		})
 		.then(() => {
 			render_tables();
-			// add_select_box_to_mytable();
-			// fetch_faculties_list();
-			// fetch_room_list();
 		})
 		.then(() => {
 			document.getElementById("save_tt_json").disabled=false;
@@ -623,12 +566,7 @@ const fetch_timetable =  () => {
 		});
 }
 
-// fetch_room_list();
-// fetch_faculties_list();  
-// fetch_subject_list();
-// add_subjects_options_to_mytable(subjectdata);
-// add_rooms_options_to_mytable(room_list);
-// setTimeout(fetch_timetable, 3000); // promises sekh le 
+//  this function initializes the page by fetching the room list, faculty list and timetable data from the server
 const initializePage = () => {
     fetch_room_list()
     .then(() => fetch_faculties_list())
@@ -642,4 +580,11 @@ const initializePage = () => {
 		console.error('Error during initialization:', error)
 	});
 };
-document.addEventListener('DOMContentLoaded', initializePage);
+
+add_select_box_to_mytable();    // add subject and room select boxes to all the table cells  
+//  adding event listners to the buttons and select boxes
+document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
+document.getElementById('course_option').addEventListener('change', fetch_timetable);  	// [ course select box eventlistner ]
+document.getElementById('semester_option').addEventListener('change', fetch_timetable); // [ semester select box eventlistner ]
+document.getElementById('section_option').addEventListener('change', fetch_timetable);	// [ section select box eventlistner ]
+document.addEventListener('DOMContentLoaded', initializePage);							// [ initialize the page on load ]
