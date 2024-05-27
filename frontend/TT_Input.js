@@ -155,8 +155,15 @@ const fixtime_firstphase = ()=>{
 			if(timetable){
 				let temp = timetable.schedule[currday][currslot].class_id;
 				if (temp in room_list) {
-					if(room_list[temp].schedule[currday][currslot] > 0 && temp != '0'){
-						room_list[temp].schedule[currday][currslot] -= 1;
+					if(room_list[temp].schedule[currday][currslot].counter > 0 && temp != '0'){
+						if(room_list[temp].schedule[currday][currslot].counter == 1){
+							room_list[temp].schedule[currday][currslot].counter -= 1;
+							room_list[temp].schedule[currday][currslot].teacherid = "";
+							room_list[temp].schedule[currday][currslot].subjectcode = "";
+						}
+						else if(room_list[temp].schedule[currday][currslot].counter > 1){
+							room_list[temp].schedule[currday][currslot].counter -= 1;
+						}
 					}
 				}
 			}
@@ -173,7 +180,14 @@ const fixtime_secondphase = ()=>{
 			let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
 			if (curr_slot_room in room_list) {
 				if(curr_slot_room != '0'){
-					room_list[curr_slot_room].schedule[currday][currslot] += 1;
+					if(room_list[curr_slot_room].schedule[currday][currslot].counter == 0){
+						room_list[curr_slot_room].schedule[currday][currslot].counter += 1;
+						room_list[curr_slot_room].schedule[currday][currslot].teacherid = timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value)?.teacherid;
+						room_list[curr_slot_room].schedule[currday][currslot].subjectcode = mytable.rows[i].cells[j].childNodes[0].value;
+					}
+					else if(room_list[curr_slot_room].schedule[currday][currslot].counter > 0){
+						room_list[curr_slot_room].schedule[currday][currslot].counter += 1;
+					}
 				}
             }
 		}
@@ -181,6 +195,29 @@ const fixtime_secondphase = ()=>{
 	// console.log(room_list);
 	console.log(':::::  SECOND PHASE DONE  :::::');
 } 
+
+const validatesubject = () => {
+    let mytable = document.getElementById("mytable");
+    for (let i = 1; i <= 7; i++) {
+        let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+        for (let j = 1; j <= 10; j++) {
+            let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+            let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
+
+            if (curr_slot_room in room_list && curr_slot_room !== '0') {
+                if (room_list[curr_slot_room].schedule[currday][currslot].counter > 0) {
+                    if (room_list[curr_slot_room].schedule[currday][currslot].subjectcode !== mytable.rows[i].cells[j].childNodes[0].value) {
+                        // Subject mismatch error
+                        float_error_card_func(`Subject validation failed at ${currday.toUpperCase()} ${currslot} slot`, `Another class is alloted ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} as subject in this slot already`, "danger");
+                    } else if (room_list[curr_slot_room].schedule[currday][currslot].teacherid !== timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value)?.teacherid) {
+                        // Teacher mismatch error
+						float_error_card_func(`Teacher validation failed at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[room_list[curr_slot_room].schedule[currday][currslot].teacherid]} : ${room_list[curr_slot_room].schedule[currday][currslot].teacherid} is already alloted in this slot for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject`, "danger");
+                    }
+                }
+            }
+        }
+    }
+}
 
 //  function below calculate and construct the main timetable table && teacher subject relation table json 
 // and send that to the backend via post request 
@@ -342,19 +379,19 @@ const add_rooms_options_to_mytable = (room_list) => {
 				option.text = value.classname;
 				option.setAttribute("class","text");
 				// console.log(room_list);
-				if(room_list[key].schedule[currday][currslot] == 1){
+				if(room_list[key].schedule[currday][currslot].counter == 1){
 					option.setAttribute("class","bg-success text-light bg-gradient text fw-bold");
 				}
-				else if(room_list[key].schedule[currday][currslot] == 2){
+				else if(room_list[key].schedule[currday][currslot].counter == 2){
 					option.setAttribute("class","bg-primary text-light bg-gradient text fw-bold");
 				}
-				else if(room_list[key].schedule[currday][currslot] == 3){
+				else if(room_list[key].schedule[currday][currslot].counter == 3){
 					option.setAttribute("class","bg-warning text-dark bg-gradient text fw-bold");
 				}
-				else if(room_list[key].schedule[currday][currslot] == 4){
+				else if(room_list[key].schedule[currday][currslot].counter == 4){
 					option.setAttribute("class","bg-danger text-light bg-gradient text fw-bold");
 				}
-				else if(room_list[key].schedule[currday][currslot] > 4){
+				else if(room_list[key].schedule[currday][currslot].counter > 4){
 					option.setAttribute("class","bg-dark text-light bg-gradient text fw-bold");
 				}
 				// console.log(option.value, option.text)
@@ -580,6 +617,15 @@ const initializePage = () => {
 		console.error('Error during initialization:', error)
 	});
 };
+const reset_table = () => {
+	let mytable = document.getElementById("mytable");
+	for (let i = 1; i <= 7; i++) {
+		for (let j = 1; j <= 10; j++) {
+			mytable.rows[i].cells[j].childNodes[0].selectedIndex = 0;
+			mytable.rows[i].cells[j].childNodes[1].selectedIndex = 0;
+		}
+	}
+}
 
 add_select_box_to_mytable();    // add subject and room select boxes to all the table cells  
 //  adding event listners to the buttons and select boxes
@@ -587,4 +633,6 @@ document.getElementById("save_tt_json").addEventListener("click", save_table_fun
 document.getElementById('course_option').addEventListener('change', fetch_timetable);  	// [ course select box eventlistner ]
 document.getElementById('semester_option').addEventListener('change', fetch_timetable); // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', fetch_timetable);	// [ section select box eventlistner ]
-document.addEventListener('DOMContentLoaded', initializePage);							// [ initialize the page on load ]
+document.addEventListener('DOMContentLoaded', initializePage);
+document.getElementById("mytable").addEventListener("change",validatesubject);
+document.getElementById("reset_tt").addEventListener("click",reset_table);

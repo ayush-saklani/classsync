@@ -41,86 +41,11 @@ _( currently in finalization phase )_**
 
 #
 #
-#
-#
-#
 
-## Things to work out right now _( kuch idea ya kaam hoga to list kardena neeche and ping me )_
+## Things to work and figure out right now
+##  _( kuch idea ya kaam hoga to list kardena neeche and ping me )_
 
-- [x] **_1st api_** - (/table/post-teachertable)
-      ~~post reqest to send the teacher subject relation data to the backend to save it to database~~
-- [x] **_2nd API_** - (/table/get-timetable)
-      ~~to fetch the same data through a GET API~~
-
-~~_( idea being i will fetch the table when the page refreshes and if the data is there in the DB api will return the json and if not then not then we can edit the table according to our wish and phir post marunga **(1st api)** to save it this time )_~~
-- [x] **_3rd API_** - (/list/get-rooms)
-      ~~show the room list~~
-- [x] **_4th API_** - (/list/get-faculties)
-      ~~to fetch the teacher~~
-      
-~~_( i want these two seperate get APIs to return the data with no request params)_~~
-
-# ==============================
-
-# Well Well Well Devanshu I did it AGAIN !! 
-# I have a new DS for Time-Table storage 
-- i was working on techniques to load timetable when the page loads, i observed a huge mistake i did by seperating the subject-teacher relation table from the time table ***[ I will explain it when i meet you ]***
-- But for the time being 
-
-## This is the proposed new improved structure 
-***[ slot data is a not an optional field ]***
-
-		{
-            "course" : "btechcse",
-            "semester" : "6",
-            "section" : "A",
-            "schedule": {
-                "mon": {
-                    "08-09": { 
-                        "class_id" : "55",
-                        "subjectcode" : "XCS300", 
-                        "slotdata" : "XCS300\nCR304"
-                    },
-                    "09-10": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "10-11": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "11-12": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "12-01": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "01-02": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "02-03": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "03-04": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "04-05": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    "05-06": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  }
-                },
-                .
-                .
-                .
-                .
-                .
-                .
-                "sun": {
-                    "08-09": {  "class_id" : "",  "subjectcode" : "",  "slotdata" : ""  },
-                    .
-                    .
-                    .
-                    .
-                }
-            },
-            "teacher_subject_data":[
-                {
-                    "subjectcode" : "TCS601",
-                    "teacherid" : "21184220",
-                    "weekly_hrs" : "3",
-                    "teachername" : "DR ANKIT TOMAR",
-                    "subjectname" : "COMPILER DESIGN",
-                    "theory_practical" : "THEORY"
-                },
-                {
-                    "subjectcode" : "TCS602",
-                    "teacherid" : "21184221",
-                    "weekly_hrs" : "3",
-                    "teachername" : "DR ANKITA TOMAR",
-                    "subjectname" : "COMPILER DESIGN LAB",
-                    "theory_practical" : "PRACTICAL"
-                }
-            ]
-        }
+- [x] reset button
+- [x] room validation
+- [x] teacher validation
+- [ ] copy to side button ***[ jaise 2 hrs ki class hai tab on hover to copy data so the slot at right ] [ future feature ]***
