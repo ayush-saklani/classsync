@@ -247,6 +247,9 @@ const letmeseeitbaby = () => {
 				setTimeout(()=>{float_error_card_func("Events view Off", "", "danger")}, 2000);
 			}
 		})
+		.then(() => {
+			document.getElementById("loader").style.display = "none";
+		})
 		.catch(error => {
             float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
 			console.error('Data unavailable:', error)
