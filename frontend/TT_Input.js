@@ -213,7 +213,13 @@ const validatesubject = () => {
                         // Teacher mismatch error
 						float_error_card_func(`Teacher validation failed at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[room_list[curr_slot_room].schedule[currday][currslot].teacherid]} : ${room_list[curr_slot_room].schedule[currday][currslot].teacherid} is already alloted in this slot for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject`, "danger");
                     }
+					else{
+						float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `Validation Passed for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject in this slot`, "success");
+					}
                 }
+				else{
+					float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `room is empty`, "success");
+				}
             }
         }
     }
