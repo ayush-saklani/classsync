@@ -602,7 +602,6 @@ const fetch_timetable =  () => {
 			render_tables();
 		})
 		.then(() => {
-			validateTeacherSubject();
 			document.getElementById("save_tt_json").disabled=false;
 		})
 		.catch(error => {
@@ -644,3 +643,7 @@ document.getElementById('semester_option').addEventListener('change', fetch_time
 document.getElementById('section_option').addEventListener('change', fetch_timetable);	// [ section select box eventlistner ]
 document.getElementById("mytable").addEventListener("change",validateTeacherSubject);
 document.addEventListener('DOMContentLoaded', initializePage);
+
+setInterval(() => {
+	validateTeacherSubject();
+}, 5000);
