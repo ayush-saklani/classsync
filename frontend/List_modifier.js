@@ -132,7 +132,7 @@ const render_tables = () => {
 		cell_insert = document.createElement("input");
 		cell_insert.setAttribute("class", "form-control room_textinput text fw-medium");
 		cell_insert.setAttribute("type", "text");
-		cell_insert.value = value;
+		cell_insert.value = value.name;
 		cell.appendChild(cell_insert);
 		if (key == "0") {
 			cell_insert.disabled = true;
