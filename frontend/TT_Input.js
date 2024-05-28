@@ -196,7 +196,7 @@ const fixtime_secondphase = ()=>{
 	console.log(':::::  SECOND PHASE DONE  :::::');
 } 
 
-const validatesubject = () => {
+const validateTeacherSubject = () => {
     let mytable = document.getElementById("mytable");
     for (let i = 1; i <= 7; i++) {
         let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
@@ -208,17 +208,17 @@ const validatesubject = () => {
                 if (room_list[curr_slot_room].schedule[currday][currslot].counter > 0) {
                     if (room_list[curr_slot_room].schedule[currday][currslot].subjectcode !== mytable.rows[i].cells[j].childNodes[0].value) {
                         // Subject mismatch error
-                        float_error_card_func(`Subject validation failed at ${currday.toUpperCase()} ${currslot} slot`, `Another class is alloted ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} as subject in this slot already`, "danger");
+                        float_error_card_func(`Subject Conflict at ${currday.toUpperCase()} ${currslot} slot`, `Another class is alloted ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} as subject in this slot already`, "danger");
                     } else if (room_list[curr_slot_room].schedule[currday][currslot].teacherid !== timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value)?.teacherid) {
                         // Teacher mismatch error
-						float_error_card_func(`Teacher validation failed at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[room_list[curr_slot_room].schedule[currday][currslot].teacherid]} : ${room_list[curr_slot_room].schedule[currday][currslot].teacherid} is already alloted in this slot for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject`, "danger");
+						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[room_list[curr_slot_room].schedule[currday][currslot].teacherid]} [ ${room_list[curr_slot_room].schedule[currday][currslot].teacherid} ] is teaching ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
                     }
 					else{
-						float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `Validation Passed for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject in this slot`, "success");
+						// float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `Validation Passed for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject in this slot`, "success");
 					}
                 }
 				else{
-					float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `room is empty`, "success");
+					// float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `room is empty`, "success");
 				}
             }
         }
@@ -578,6 +578,7 @@ const render_tables = () => {
 		}
 	}
 	else{
+		reset_table();
 		float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
 	}
 }
@@ -601,6 +602,7 @@ const fetch_timetable =  () => {
 			render_tables();
 		})
 		.then(() => {
+			validateTeacherSubject();
 			document.getElementById("save_tt_json").disabled=false;
 		})
 		.catch(error => {
@@ -636,9 +638,9 @@ const reset_table = () => {
 add_select_box_to_mytable();    // add subject and room select boxes to all the table cells  
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
+document.getElementById("reset_tt").addEventListener("click",reset_table);
 document.getElementById('course_option').addEventListener('change', fetch_timetable);  	// [ course select box eventlistner ]
 document.getElementById('semester_option').addEventListener('change', fetch_timetable); // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', fetch_timetable);	// [ section select box eventlistner ]
+document.getElementById("mytable").addEventListener("change",validateTeacherSubject);
 document.addEventListener('DOMContentLoaded', initializePage);
-document.getElementById("mytable").addEventListener("change",validatesubject);
-document.getElementById("reset_tt").addEventListener("click",reset_table);
