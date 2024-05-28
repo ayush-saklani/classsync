@@ -58,7 +58,7 @@ const update_detail_table = () => {
 		let subjectname = row.cells[0].firstChild.innerHTML;
 		let teacherid = row.cells[1].firstChild.value;
 		let subjectid = row.cells[2].firstChild.innerHTML;
-		let teachername = faculty_data[teacherid];
+		let teachername = faculty_data[teacherid].name;
 		let weekly_hrs = row.cells[3].firstChild.innerHTML;
 		let theory_practical = row.cells[4].firstChild.innerHTML;
 	
@@ -112,7 +112,7 @@ const add_row_func = () => {
 	for (let code in faculty_data) {
 		let option = document.createElement("option");
 		option.value = code;
-		option.text = faculty_data[code];
+		option.text = faculty_data[code].name;
 		select.appendChild(option);
 	}
 	cell.appendChild(select);
@@ -211,7 +211,7 @@ const validateTeacherSubject = () => {
                         float_error_card_func(`Subject Conflict at ${currday.toUpperCase()} ${currslot} slot`, `Another class is alloted ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} as subject in this slot already`, "danger");
                     } else if (room_list[curr_slot_room].schedule[currday][currslot].teacherid !== timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value)?.teacherid) {
                         // Teacher mismatch error
-						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[room_list[curr_slot_room].schedule[currday][currslot].teacherid]} [ ${room_list[curr_slot_room].schedule[currday][currslot].teacherid} ] is teaching ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
+						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[room_list[curr_slot_room].schedule[currday][currslot].teacherid].name} [ ${room_list[curr_slot_room].schedule[currday][currslot].teacherid} ] is teaching ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
                     }
 					else{
 						// float_error_card_func(`Validation Passed at ${currday.toUpperCase()} ${currslot} slot`, `Validation Passed for ${room_list[curr_slot_room].schedule[currday][currslot].subjectcode} subject in this slot`, "success");
@@ -268,7 +268,7 @@ const save_table_func = () => {
 		let subjectid = row.cells[2].firstChild.innerHTML;
 		let weekly_hrs = row.cells[3].firstChild.innerHTML;
 		let theory_practical = row.cells[4].firstChild.innerHTML;
-		let teachername = faculty_data[teacherid];
+		let teachername = faculty_data[teacherid].name;
 	
 
 		let rowData = {
@@ -500,7 +500,7 @@ const render_tables = () => {
 			for (let ele in faculty_data) {
 				let option = document.createElement('option');
 				option.value = ele;
-				option.text = faculty_data[ele];
+				option.text = faculty_data[ele].name;
 				if (ele == localteacher_subject_data[i].teacherid) {
 					option.selected = true;
 					// console.log(ele)
