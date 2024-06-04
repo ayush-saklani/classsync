@@ -45,7 +45,18 @@ _( currently in finalization phase )_**
 ## Things to work and figure out right now
 ##  _( kuch idea ya kaam hoga to list kardena neeche and ping me )_
 
+## Version 1.5
 - [x] reset button
 - [x] room validation
-- [x] teacher validation
+- [ ] seperate website for admin and students 
+- [ ] resetting the code for new faculty data structure
+- [ ] teacher validation
+- [ ] relocating the assets and refactoring the website according to students , teacher and admin
+- [ ] Deployment of code [backend + frontend]  
+## Version 1.8
+- [ ] Login for students teacher and admin
+
+## Version 2.0
 - [ ] copy to side button ***[ jaise 2 hrs ki class hai tab on hover to copy data so the slot at right ] [ future feature ]***
+- [ ] faculty exchange of teaching slot permanently and temporarily
+- [ ] room ds change  
