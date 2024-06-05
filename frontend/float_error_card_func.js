@@ -33,7 +33,9 @@ const float_error_card_func = (title, desc, color) => {
 		headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-triangle-fill"></i>`;
 	}else if (color === "warning") {
         headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-octagon-fill"></i>`;
-    }
+    }else if (color === "info") {
+		headerDiv.innerHTML = `Info <i class="bi bi-info-circle-fill"></i>`;
+	}
 	div.classList.add('rise');
 	setTimeout(() => {
 		div.classList.remove('rise');

@@ -55,7 +55,7 @@ const letmesee2 = (temp_tt) => {
 			for (let k = 1; k <= 10; k++) {
 				row.cells[k].className = "";
 				row.cells[k].innerHTML = "";
-				row.cells[k].className = 'text bg-warning fw-bold text-dark-emphasis border-warning border-end-3 align-middle';
+				row.cells[k].className = 'text bg-warning fw-bold text-dark-emphasis border-warning border-3 align-middle';
 			}
 			// document.getElementById("mytable").rows[i].cells[1].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
 			document.getElementById("mytable").rows[i].cells[5].innerHTML = 'Holiday';
@@ -148,7 +148,7 @@ const college_event_manager = () => {
 			for (let j = 1; j <= 10; j++) {
 				row.cells[j].className = "";
 				row.cells[j].innerHTML = "";
-				row.cells[j].className = 'text bg-warning fw-bold text-dark border-warning border-end-3 align-middle';
+				row.cells[j].className = 'text bg-warning fw-bold text-dark border-warning border-3 align-middle';
 			}
 			
 			// Split the description into words
@@ -159,7 +159,7 @@ const college_event_manager = () => {
 				if (cellIndex < row.cells.length) {
 					row.cells[cellIndex].innerHTML = word;
 					row.cells[cellIndex].className = "";
-					row.cells[cellIndex].className = 'text bg-warning fw-bold text-dark border-warning border-end-3 align-middle';
+					row.cells[cellIndex].className = 'text bg-warning fw-bold text-dark border-warning border-3 align-middle';
 				}
 				cellIndex++;
 			}
