@@ -362,3 +362,4 @@ render_tables();
 document.getElementById("set_for_all").addEventListener("click", save_table_func);	// [ save TT JSON on DB button ]
 document.getElementById("add_row").addEventListener("click", add_row_func);	// [ + button ] add row at last when plus button is pressed 
 document.getElementById("delete_row").addEventListener("click", delete_row_func);	// [ - button ] delete row at last when plus button is pressed 
+document.getElementById("loader").style.display = "none";

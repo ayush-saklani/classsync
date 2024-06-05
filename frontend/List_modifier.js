@@ -147,6 +147,7 @@ const fetch_faculties_list = () => {
 			'Content-Type': 'application/json'
 		}
 	})
+		.then(()=>{document.getElementById("loader").style.display = "flex";})
 		.then(response => response.json())
 		.then(data => {
 			data = data.data.data;
@@ -157,10 +158,12 @@ const fetch_faculties_list = () => {
 			render_tables();
 		})
 		.then(() => {
+			document.getElementById("loader").style.display = "none";
 			document.getElementById("save_teacher_list_btn").disabled = false;
 			float_error_card_func('Faculty Data Fetched Successfully', 'Faculty Data Fetched Successfully from the Database', 'success');
 		})
 		.catch(error => {
+			document.getElementById("loader").style.display = "none"; // dekh lena baad mei
 			float_error_card_func('Faculty Data not available', 'Faculty Data not available due to probable server error', 'danger');
 			console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
 		});

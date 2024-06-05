@@ -350,8 +350,8 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    z-index: 1000;
-    backdrop-filter: blur(0.5px);
+    z-index: 500;
+    backdrop-filter: blur(50px);
     /* background : rgba(0,0,0,0.5);    */
     height: 100vh;
     width: 100vw;
@@ -369,5 +369,60 @@
 @media only screen and (max-width: 900px) {
     .loaderdiv{
         display: none;
+    }
+}
+#logo-loader{
+    position: absolute;
+    top: 15%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    position: fixed;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+logodiv{
+    width: 100vb;
+}
+logodiv>h1{
+    font-size: 3em;
+    /* color: white; */
+}
+logodiv > h1::before {
+    margin-left: auto;
+    content: '';
+    width: 8%;
+    height: 7px;
+    background: rgba(1, 106, 137, 0.827);
+    display: block;
+    margin-top: 10px;
+    animation: expandBefore 1s 2 alternate; /* 5 matlab 5 baar occilation */
+}
+logodiv > h1::after {
+    content: '';
+    width: 8%;
+    height: 7px;
+    background: #dc3545;
+    display: block;
+    margin-top: 5px;
+    animation: expandAfter 1s 2 alternate;
+}
+/* Keyframes for the before pseudo-element */
+@keyframes expandBefore {
+    20% {
+        width: 20%;
+    }
+    100% {
+        width: 90%;
+    }
+}
+/* Keyframes for the after pseudo-element */
+@keyframes expandAfter {
+    20% {
+        width: 20%;
+    }
+    100% {
+        width: 90%;
     }
 }

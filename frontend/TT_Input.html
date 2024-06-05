@@ -16,6 +16,7 @@
 	<!-- stylesheets end -->
 
 	<link rel="stylesheet" href="style.css" />
+	<link rel="stylesheet" href="loader.css" />
 	<link rel="icon" href="../asset/image/logo.png">
 </head>
 
@@ -262,7 +263,27 @@
 
 	<!-- footer div start -->
 	<footer class="bd-footer py-4 py-md-5">
-		<div class="position-fixed bottom-0 end-0 m-3" style="max-width: 25rem;" id="message_container"></div>
+		<div class="loaderdiv" id="loader">
+			<div aria-label="Orange and tan hamster running in a metal wheel" role="img" class="wheel-and-hamster">
+				<div class="wheel"></div>
+				<div class="hamster">
+					<div class="hamster__body">
+						<div class="hamster__head">
+							<div class="hamster__ear"></div>
+							<div class="hamster__eye"></div>
+							<div class="hamster__nose"></div>
+						</div>
+						<div class="hamster__limb hamster__limb--fr"></div>
+						<div class="hamster__limb hamster__limb--fl"></div>
+						<div class="hamster__limb hamster__limb--br"></div>
+						<div class="hamster__limb hamster__limb--bl"></div>
+						<div class="hamster__tail"></div>
+					</div>
+				</div>
+				<div class="spoke"></div>
+			</div>
+		</div>
+		<div class="position-fixed bottom-0 end-0 m-3" style="max-width: 25rem; z-index: 1000;" id="message_container"></div> <!-- this is float message-->
 		<div class="container py-4 py-md-5 px-4 px-md-3 text-body-secondary">
 			<a class="d-inline-flex align-items-center mb-2 text-body-emphasis text-decoration-none" href="/">
 				<img src="../asset/image/logo.png" height="75px" class="d-inline-block align-text-top">
@@ -297,6 +318,7 @@
 		integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
 		crossorigin="anonymous"></script>
 	<script src="TT_Input.js"></script>
+	<script src="float_error_card_func.js"></script>
 	<!--java scripts used end-->
 </body>
 

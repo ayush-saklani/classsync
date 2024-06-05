@@ -237,7 +237,6 @@ const letmeseeitbaby = () => {
 			// console.log(data);
 			float_error_card_func("Timetable Loaded Successfully", "The timetable you are looking for is available and successfully fetched from database.", "success");
 			letmesee2(timetable);
-			// render_tables();
 		})
 		.then(() => {
 			if(flag === 1){
@@ -248,7 +247,10 @@ const letmeseeitbaby = () => {
 			}
 		})
 		.then(() => {
-			document.getElementById("loader").style.display = "none";
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none";
+			}, 2000);
+			// document.getElementById("loader").style.display = "none";
 		})
 		.catch(error => {
             float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");

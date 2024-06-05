@@ -37745,51 +37745,7 @@ let subjectdata;
 let room_list;
 let timetable;
 let messageCounter = 0;
-//  the function below creates a floating card with the success and warning message and then removes it after 5 seconds
-const float_error_card_func = (title, desc, color) => {
-	const uniqueId = `float_error_card_${messageCounter++}`;
 
-	let div = document.createElement('div');
-	div.className = `card text-bg-${color} position-fixed bottom-0 end-0 m-3`;
-	div.style.maxWidth = "25rem";
-	div.id = uniqueId;
-
-	let headerDiv = document.createElement('div');
-	headerDiv.className = "card-header fw-bold";
-	div.appendChild(headerDiv);
-
-	let bodyDiv = document.createElement('div');
-	bodyDiv.className = "card-body";
-
-	let h5 = document.createElement('h5');
-	h5.className = "card-title";
-	h5.textContent = title;
-	bodyDiv.appendChild(h5);
-
-	let p = document.createElement('p');
-	p.className = "card-text";
-	p.textContent = desc;
-	bodyDiv.appendChild(p);
-
-	div.appendChild(bodyDiv);
-	document.getElementById('message_container').appendChild(div);
-
-	if (color === "success") {
-		headerDiv.innerHTML = `Success <i class="bi bi-check-circle-fill"></i>`;
-	} else if (color === "danger") {
-		headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-triangle-fill"></i>`;
-	}else if (color === "warning") {
-        headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-octagon-fill"></i>`;
-    }
-	div.classList.add('rise');
-	setTimeout(() => {
-		div.classList.remove('rise');
-		div.classList.add('sink');
-		setTimeout(() => {
-			div.remove();
-		}, 1000);
-	}, 5000);
-}
 //  the function below updates the teacher subject table acc to the subject choosen 
 const update_detail_table = () => {
 	let tempteachersubjectdata = [];
@@ -38382,12 +38338,25 @@ const fetch_timetable =  () => {
 
 //  this function initializes the page by fetching the room list, faculty list and timetable data from the server
 const initializePage = () => {
+    document.getElementById("loader").style.display = "flex";
+    document.getElementById("save_tt_json").disabled = true;
     fetch_room_list()
+    .then(() => {
+        document.getElementById("loader").style.display = "flex";
+        document.getElementById("save_tt_json").disabled = true;
+    })
     // .then(() => fetch_faculties_list())
     .then(() => fetch_timetable())
     .then(() => {
-		document.getElementById("save_tt_json").disabled = false;
-		float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
+        document.getElementById("loader").style.display = "none";
+        if (timetable) {
+            document.getElementById("save_tt_json").disabled = false;
+            float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
+        }
+        else{
+            document.getElementById("save_tt_json").disabled = true;
+            float_error_card_func("Initialization Failed", "Initialization was not completed successfully. Please try again.", "danger")
+        }
     })
     .catch(error => {
 		float_error_card_func("Error during initialization", "Error during initialization.", "danger");
@@ -38408,9 +38377,9 @@ add_select_box_to_mytable();    // add subject and room select boxes to all the 
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click",reset_table);
-document.getElementById('course_option').addEventListener('change', fetch_timetable);  	// [ course select box eventlistner ]
-document.getElementById('semester_option').addEventListener('change', fetch_timetable); // [ semester select box eventlistner ]
-document.getElementById('section_option').addEventListener('change', fetch_timetable);	// [ section select box eventlistner ]
+document.getElementById('course_option').addEventListener('change', initializePage);  	// [ course select box eventlistner ]
+document.getElementById('semester_option').addEventListener('change', initializePage); // [ semester select box eventlistner ]
+document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.getElementById("mytable").addEventListener("change",validateTeacherSubject);
 document.addEventListener('DOMContentLoaded', initializePage);
 
