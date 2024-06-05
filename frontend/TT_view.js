@@ -221,6 +221,7 @@ const college_event_manager = () => {
 };
 
 const letmeseeitbaby = () => {
+	document.getElementById("loader").style.display = "flex";
 	let course = document.getElementById("course_option").value;
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
@@ -250,7 +251,6 @@ const letmeseeitbaby = () => {
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 			}, 2000);
-			// document.getElementById("loader").style.display = "none";
 		})
 		.catch(error => {
             float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
