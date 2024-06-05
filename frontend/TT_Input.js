@@ -38304,7 +38304,6 @@ const render_tables = () => {
 		}
 	}
 	else{
-		reset_table();
 		float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
 	}
 }
@@ -38338,27 +38337,24 @@ const fetch_timetable =  () => {
 
 //  this function initializes the page by fetching the room list, faculty list and timetable data from the server
 const initializePage = () => {
-    document.getElementById("loader").style.display = "flex";
-    document.getElementById("save_tt_json").disabled = true;
     fetch_room_list()
-    .then(() => {
-        document.getElementById("loader").style.display = "flex";
-        document.getElementById("save_tt_json").disabled = true;
-    })
     // .then(() => fetch_faculties_list())
     .then(() => fetch_timetable())
     .then(() => {
-        document.getElementById("loader").style.display = "none";
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+        }, 1500);
         if (timetable) {
-            document.getElementById("save_tt_json").disabled = false;
             float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
         }
         else{
-            document.getElementById("save_tt_json").disabled = true;
             float_error_card_func("Initialization Failed", "Initialization was not completed successfully. Please try again.", "danger")
         }
     })
     .catch(error => {
+        setTimeout(() => {
+            document.getElementById("loader").style.display = "none";
+        }, 1500);
 		float_error_card_func("Error during initialization", "Error during initialization.", "danger");
 		console.error('Error during initialization:', error)
 	});

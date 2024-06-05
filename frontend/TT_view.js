@@ -1,69 +1,16 @@
 let timetable ;
 let flag=0;
 let events = {
-	//limit the description to and under 10 words
-	"2024-05-22": { "description": "Grafest DAY 1 DJchetas" },
-	"2024-05-23": { "description": "Grafest DAY 2 Divine" },
-	"2024-05-24": { "description": "Grafest DAY 3 Baadshah" },
-	// "2024-05-25": { "description": "2024-05-25 amet consectetur adipisicing elit Pariatur similique" },
-	//26 is missing so it is not rendering 
-	"2024-05-27": { "description": "2024-05-27 event testing adipisicing elit Pariatur similique" },
-	"2024-05-28": { "description": "2024-05-28 event testing adipisicing elit Pariatur similique" },
-	"2024-05-29": { "description": "2024-05-29 event testing adipisicing elit Pariatur similique" },
-	"2024-05-30": { "description": "2024-05-30 event testing adipisicing elit Pariatur similique" },
-	"2024-05-31": { "description": "2024-05-31 event testing adipisicing elit Pariatur similique" },
-	"2024-06-01": { "description": "2024-06-01 event testing adipisicing elit Pariatur similique" },
-	"2024-06-02": { "description": "2024-06-02 event testing adipisicing elit Pariatur similique" },
-	"2024-06-03": { "description": "2024-06-03 event testing adipisicing elit Pariatur similique" },
-	"2024-06-04": { "description": "2024-06-04 event testing adipisicing elit Pariatur similique" },
-	"2024-06-05": { "description": "2024-06-05 event testing adipisicing elit Pariatur similique" },
-	"2024-06-06": { "description": "2024-06-06 event testing adipisicing elit Pariatur similique" },
-	"2024-06-07": { "description": "2024-06-07 event testing adipisicing elit Pariatur similique" },
-	"2024-06-08": { "description": "2024-06-08 event testing adipisicing elit Pariatur similique" }
+	// "2024-06-01": { "description": "2024-06-01 event testing adipisicing elit Pariatur similique" },
+	// "2024-06-02": { "description": "2024-06-02 event testing adipisicing elit Pariatur similique" },
+	// "2024-06-03": { "description": "2024-06-03 event testing adipisicing elit Pariatur similique" },
+	// "2024-06-04": { "description": "2024-06-04 event testing adipisicing elit Pariatur similique" },
+	// "2024-06-05": { "description": "2024-06-05 event testing adipisicing elit Pariatur similique" },
+	"2024-06-06": { "description": "Software Enginneering (Practical)" },
+	"2024-06-19": { "description": "Theory Paper start" },
+	// "2024-06-08": { "description": "2024-06-08 event testing adipisicing elit Pariatur similique" }
 };  
 let messageCounter = 0;
-const float_error_card_func = (title, desc, color) => {
-	const uniqueId = `float_error_card_${messageCounter++}`;
-
-	let div = document.createElement('div');
-	div.className = `card text-bg-${color} position-fixed bottom-0 end-0 m-3`;
-	div.style.maxWidth = "25rem";
-	div.id = uniqueId;
-
-	let headerDiv = document.createElement('div');
-	headerDiv.className = "card-header fw-bold";
-	div.appendChild(headerDiv);
-
-	let bodyDiv = document.createElement('div');
-	bodyDiv.className = "card-body";
-
-	let h5 = document.createElement('h5');
-	h5.className = "card-title";
-	h5.textContent = title;
-	bodyDiv.appendChild(h5);
-
-	let p = document.createElement('p');
-	p.className = "card-text";
-	p.textContent = desc;
-	bodyDiv.appendChild(p);
-
-	div.appendChild(bodyDiv);
-	document.getElementById('message_container').appendChild(div);
-
-	if (color === "success") {
-		headerDiv.innerHTML = `Success <i class="bi bi-check-circle-fill"></i>`;
-	} else if (color === "danger") {
-		headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-triangle-fill"></i>`;
-	}
-	div.classList.add('rise');
-	setTimeout(() => {
-		div.classList.remove('rise');
-		div.classList.add('sink');
-		setTimeout(() => {
-			div.remove();
-		}, 1000);
-	}, 5000);
-}
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
 	for (let i = 1; i <= 7; i++) {
@@ -221,7 +168,7 @@ const college_event_manager = () => {
 };
 
 const letmeseeitbaby = () => {
-	document.getElementById("loader").style.display = "flex";
+	// document.getElementById("loader").style.display = "flex"; // uncomment this line to show the loader for every change
 	let course = document.getElementById("course_option").value;
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
@@ -250,9 +197,10 @@ const letmeseeitbaby = () => {
 		.then(() => {
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
-			}, 2000);
+			}, 1500);
 		})
 		.catch(error => {
+			document.getElementById("loader").style.display = "none";
             float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
 			console.error('Data unavailable:', error)
 		});
