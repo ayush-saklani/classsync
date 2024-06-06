@@ -54,7 +54,8 @@ _( currently in finalization phase )_**
 - [ ] relocating the assets and refactoring the website according to students , teacher and admin
 - [ ] Deployment of code [backend + frontend]  
 - [ ] collection or list for events and subject list.
-
+- [ ] before entering the timetable for sections, subject allocation and fixation should be done beforehand else teacher data will be resetted.
+ 
  ___subject (list) will store the subject course and semester wise.___ 
 
 ___events will be stored date wise[date as a primary key to match] in a collection(collection preferred because we want to extract 7 days of upcoming events).___
@@ -65,3 +66,4 @@ ___events will be stored date wise[date as a primary key to match] in a collecti
 - [ ] copy to side button ***[ jaise 2 hrs ki class hai tab on hover to copy data so the slot at right ] [ future feature ]***
 - [ ] faculty exchange of teaching slot permanently and temporarily
 - [ ] room ds change  
+- [ ] college events handling and holiday flashes [ save event get 7 event and get all events delete and update events all required accordingly  ]

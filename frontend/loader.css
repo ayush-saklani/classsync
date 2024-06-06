@@ -34,6 +34,7 @@ logodiv > h1::before {
     width: 8%;
     height: 7px;
     background: rgba(1, 106, 137, 0.827);
+    box-shadow: 3px 3px 5px  #000000;
     display: block;
     margin-top: 10px;
     animation: expandBefore 1s 8 alternate; /* 2 matlab 2 baar occilation */
@@ -43,6 +44,7 @@ logodiv > h1::after {
     width: 8%;
     height: 7px;
     background: #dc3545;
+    box-shadow: 3px 3px 5px  #000000;
     display: block;
     margin-top: 5px;
     animation: expandAfter 1s 8 alternate;
