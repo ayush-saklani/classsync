@@ -53,6 +53,11 @@ _( currently in finalization phase )_**
 - [ ] teacher validation
 - [ ] relocating the assets and refactoring the website according to students , teacher and admin
 - [ ] Deployment of code [backend + frontend]  
+- [ ] collection or list for events and subject list.
+
+ ___subject (list) will store the subject course and semester wise.___ 
+
+___events will be stored date wise[date as a primary key to match] in a collection(collection preferred because we want to extract 7 days of upcoming events).___
 ## Version 1.8
 - [ ] Login for students teacher and admin
 

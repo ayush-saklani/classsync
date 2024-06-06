@@ -1,15 +1,23 @@
 let timetable ;
 let flag=0;
 let events = {
-	// "2024-06-01": { "description": "2024-06-01 event testing adipisicing elit Pariatur similique" },
-	// "2024-06-02": { "description": "2024-06-02 event testing adipisicing elit Pariatur similique" },
-	// "2024-06-03": { "description": "2024-06-03 event testing adipisicing elit Pariatur similique" },
-	// "2024-06-04": { "description": "2024-06-04 event testing adipisicing elit Pariatur similique" },
-	// "2024-06-05": { "description": "2024-06-05 event testing adipisicing elit Pariatur similique" },
-	"2024-06-06": { "description": "Software Enginneering (Practical)" },
-	"2024-06-19": { "description": "Theory Paper start" },
-	// "2024-06-08": { "description": "2024-06-08 event testing adipisicing elit Pariatur similique" }
-};  
+	"2024-06-06": {
+		"description": "Software Enginneering (Practical)",
+		"color": "info" 
+	},
+	"2024-06-08": {
+		"description": "Farewell Party BTech CSE", 
+		"color": "warning" 
+	},
+	"2024-06-10": {
+		"description": "buddha purnima Example", 
+		"color": "danger" 
+	},
+	"2024-06-19": {
+		"description": "Theory Paper start", 
+		"color": "warning" 
+	},
+};
 let messageCounter = 0;
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
@@ -144,11 +152,12 @@ const college_event_manager = () => {
 		if (events[currentDateString]) {
 			let rowIndex = (startDayIndex + i) % 7 + 1;
 			let row = document.getElementById("mytable").rows[rowIndex];
+			let color = events[currentDateString].color || "warning"; 
 			
 			for (let j = 1; j <= 10; j++) {
 				row.cells[j].className = "";
 				row.cells[j].innerHTML = "";
-				row.cells[j].className = 'text bg-warning fw-bold text-dark border-warning border-3 align-middle';
+				row.cells[j].className = `text bg-${color} bg-gradient fw-bold text-dark border-${color} border-2 align-middle`;
 			}
 			
 			// Split the description into words
@@ -159,10 +168,10 @@ const college_event_manager = () => {
 				if (cellIndex < row.cells.length) {
 					row.cells[cellIndex].innerHTML = word;
 					row.cells[cellIndex].className = "";
-					row.cells[cellIndex].className = 'text bg-warning fw-bold text-dark border-warning border-3 align-middle';
+					row.cells[cellIndex].className = `text bg-${color} bg-gradient fw-bold text-dark border-${color} border-2 align-middle`;
 				}
 				cellIndex++;
-			}
+			} 
 		}
 	}	
 };

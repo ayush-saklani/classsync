@@ -11,6 +11,7 @@
     z-index: 500;
     backdrop-filter: blur(50px);
     background : rgba(0,0,0,0.5);   
+    /* background : linear-gradient( #dc354686,#2a819c94) ;    */
     height: 100vh;
     width: 100vw;
 }
@@ -25,6 +26,7 @@ logodiv{
 logodiv>h1{
     font-size: 3em;
     color: white;
+    text-shadow: 5px 5px 5px  #000;
 }
 logodiv > h1::before {
     margin-left: auto;
@@ -34,7 +36,7 @@ logodiv > h1::before {
     background: rgba(1, 106, 137, 0.827);
     display: block;
     margin-top: 10px;
-    animation: expandBefore 1s 2 alternate; /* 5 matlab 5 baar occilation */
+    animation: expandBefore 1s 8 alternate; /* 2 matlab 2 baar occilation */
 }
 logodiv > h1::after {
     content: '';
@@ -43,7 +45,7 @@ logodiv > h1::after {
     background: #dc3545;
     display: block;
     margin-top: 5px;
-    animation: expandAfter 1s 2 alternate;
+    animation: expandAfter 1s 8 alternate;
 }
 /* Keyframes for the before pseudo-element */
 @keyframes expandBefore {
@@ -63,3 +65,17 @@ logodiv > h1::after {
         width: 90%;
     }
 }
+/* scroll bar css start */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #f0f4f9;
+}
+::-webkit-scrollbar-thumb {
+    background: #555;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #414040;
+}
+/* scroll bar css end */
