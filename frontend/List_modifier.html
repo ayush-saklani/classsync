@@ -33,22 +33,22 @@
 
 	<!-- all content of page here below-->
 	<section class="container-fluid mt-5">
+		
 		<!-- heading and warning div start -->
 		<div class="container">
-			<h1 class="center text fw-bold text-danger py-3">Now Page is in order but,<br>API calls are missing so it will not work as intended <i class="bi bi-exclamation-triangle-fill"></i> </h1>
 			<h1 class="center text fw-bold">Teacher List Modifing Portal</h1>
 			<ul class="pt-3">
 				<h4 class="center text text-danger fw-bold">Warning <i class="bi bi-exclamation-triangle-fill"></i> </h1>
-				<li class="center text text-danger fw-bold">Use all CAPS for Teacher ID</li>
-				<li class="center text text-danger fw-bold">Don't use space in Teacher ID</li>
-				<li class="center text text-danger fw-bold">DONT USE THIS IF THE TEACHERS ARE ALREADY DECIDED AS IT WILL RESET TEACHER DATA</li>
-				<li class="center text text-danger fw-bold">Ensure Teacher ID is Unique for now as same id may result in Broken code and unexpected behaviours</li>
+				<li class="center text text-danger fw-bold">Use all CAPS for Teacher ID and don't use space in-between</li>
+				<li class="center text text-danger fw-bold">DONT USE THIS IF THE TEACHERS ARE ALREADY DECIDED AS IT WILL RESET TEACHERS SCHEDULE DATA</li>
+				<li class="center text text-danger fw-bold">Contact Developers for any query, help and support</li>
 			</ul>
 		</div>
 		<!-- heading and warning div end -->
 		
-		<!-- teacher list detail table div start-->
+		<!-- main content div start -->
 		<div class="container mt-5">
+			<!-- teacher render table start-->
 			<table class="table" id="teacher_table">
 				<thead>
 					<tr>
@@ -59,6 +59,8 @@
 				<tbody>
 				</tbody>
 			</table>
+			<!-- teacher render table start-->
+			<!-- add faculty div start-->
 			<div class="container row pt-2">
 				<h1 class="text fw-bold">Add faculty </h1>
 				<div class="col-5">
@@ -80,6 +82,8 @@
 					</button>
 				</div>
 			</div>
+			<!-- add faculty div ends -->
+			<!-- remove faculty div start-->
 			<div class="container row pt-2">
 				<h1 class="text fw-bold">Remove faculty </h1>
 				<div class="col-lg-9 col-md-8">
@@ -95,26 +99,9 @@
 					</button>
 				</div>
 			</div>
-
-			<!-- add and delete row button div start -->
-			<!-- <div class="container text-center">
-				<button type="button" class="btn my-2 p-0" id="add_row"><i class="h2 bi bi-plus-circle m-0"></i></button>
-				<button type="button" class="btn my-2 p-0" id="delete_row"><i class="h2 bi bi-dash-circle m-0"></i></button>
-			</div> -->
-			<!-- add and delete row button div end -->
-			
-			<!-- save button div  -->
-			<!-- <div class="container text-center">
-				<button disabled type="button" class="button" id="save_teacher_list_btn">
-					<div class="button-top-blue h4"><b>Save Teacher on DB <i class="bi bi-exclamation-triangle-fill text-warning"></i> </b></div>
-					<div class="button-bottom-blue"></div>
-				</button>
-			</div> -->
-			<!-- save button div end -->
-
+			<!-- remove faculty div ends -->
 		</div>
-		<!-- teacher list detail table div end-->
-
+		<!-- main content div start -->
 		
 	</section>
 	<!-- all content of page here above-->
@@ -156,7 +143,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
 	<script src="List_modifier.js"></script>
 	<script src="float_error_card_func.js"></script>
-
 	<!--java scripts used end-->
 
 </body>
