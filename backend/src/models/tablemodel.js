@@ -1,5 +1,14 @@
 import mongoose from "mongoose";
 
+const subjectSchema = new mongoose.Schema({
+    subjectcode: String,
+    teacherid: String,
+    weekly_hrs: String,
+    teachername: String,
+    subjectname: String,
+    theory_practical: String,
+});
+
 const slotSchema = new mongoose.Schema({
     class_id: String,
     subjectcode: String,
@@ -34,7 +43,7 @@ const tableSchema = new mongoose.Schema({
     semester: String,
     section: String,
     schedule: scheduleSchema,
-    teacher_subject_data: Array,
+    teacher_subject_data: [subjectSchema],
 });
 
 const Tables = new mongoose.model("Tables", tableSchema);
