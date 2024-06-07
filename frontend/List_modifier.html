@@ -35,14 +35,14 @@
 	<section class="container-fluid mt-5">
 		<!-- heading and warning div start -->
 		<div class="container">
-			<h1 class="center text fw-bold text-danger py-3">Don't press anything the page is out of order it will break the databse or code <i class="bi bi-exclamation-triangle-fill"></i> </h1>
+			<h1 class="center text fw-bold text-danger py-3">Now Page is in order but,<br>API calls are missing so it will not work as intended <i class="bi bi-exclamation-triangle-fill"></i> </h1>
 			<h1 class="center text fw-bold">Teacher List Modifing Portal</h1>
 			<ul class="pt-3">
 				<h4 class="center text text-danger fw-bold">Warning <i class="bi bi-exclamation-triangle-fill"></i> </h1>
 				<li class="center text text-danger fw-bold">Use all CAPS for Teacher ID</li>
 				<li class="center text text-danger fw-bold">Don't use space in Teacher ID</li>
 				<li class="center text text-danger fw-bold">DONT USE THIS IF THE TEACHERS ARE ALREADY DECIDED AS IT WILL RESET TEACHER DATA</li>
-				<li class="center text text-danger fw-bold">Ensure Teacher ID is Unique as same id may result in Broken code and unexpected behaviours</li>
+				<li class="center text text-danger fw-bold">Ensure Teacher ID is Unique for now as same id may result in Broken code and unexpected behaviours</li>
 			</ul>
 		</div>
 		<!-- heading and warning div end -->
@@ -59,21 +59,57 @@
 				<tbody>
 				</tbody>
 			</table>
+			<div class="container row pt-2">
+				<h1 class="text fw-bold">Add faculty </h1>
+				<div class="col-5">
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="add_faculty_id" placeholder="">
+						<label for="floatingInput">Teacher ID <b class="text-danger">*</b> </label>
+					</div>
+				</div>
+				<div class="col-5">
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="add_faculty_name" placeholder="">
+						<label for="floatingInput">Teacher Name <b class="text-danger">*</b> </label>
+					</div>
+				</div>
+				<div class="col-2">
+					<button type="button" class="button" id="add_faculty_button">
+						<div class="button-top-blue h4"><b>ADD <i class="bi bi-plus-circle" style="-webkit-text-stroke: 1px;"></i> </b></div>
+						<div class="button-bottom-blue"></div>
+					</button>
+				</div>
+			</div>
+			<div class="container row pt-2">
+				<h1 class="text fw-bold">Remove faculty </h1>
+				<div class="col-lg-9 col-md-8">
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="remove_faculty_id" placeholder="">
+						<label for="floatingInput">Teacher ID <b class="text-danger">*</b> </label>
+					</div>
+				</div>
+				<div class="col-lg-3 col-md-4">
+					<button type="button" class="button" id="remove_faculty_button">
+						<div class="button-top-red h4"><b>Remove <i class="bi bi-exclamation-triangle-fill text-warning"></i> </b></div>
+						<div class="button-bottom-red"></div>
+					</button>
+				</div>
+			</div>
 
 			<!-- add and delete row button div start -->
-			<div class="container text-center">
+			<!-- <div class="container text-center">
 				<button type="button" class="btn my-2 p-0" id="add_row"><i class="h2 bi bi-plus-circle m-0"></i></button>
 				<button type="button" class="btn my-2 p-0" id="delete_row"><i class="h2 bi bi-dash-circle m-0"></i></button>
-			</div>
+			</div> -->
 			<!-- add and delete row button div end -->
 			
 			<!-- save button div  -->
-			<div class="container text-center">
+			<!-- <div class="container text-center">
 				<button disabled type="button" class="button" id="save_teacher_list_btn">
 					<div class="button-top-blue h4"><b>Save Teacher on DB <i class="bi bi-exclamation-triangle-fill text-warning"></i> </b></div>
 					<div class="button-bottom-blue"></div>
 				</button>
-			</div>
+			</div> -->
 			<!-- save button div end -->
 
 		</div>

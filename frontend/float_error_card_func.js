@@ -16,12 +16,12 @@ const float_error_card_func = (title, desc, color) => {
 
 	let h5 = document.createElement('h5');
 	h5.className = "card-title";
-	h5.textContent = title;
+	h5.innerHTML = title;
 	bodyDiv.appendChild(h5);
 
 	let p = document.createElement('p');
 	p.className = "card-text";
-	p.textContent = desc;
+	p.innerHTML = desc;
 	bodyDiv.appendChild(p);
 
 	div.appendChild(bodyDiv);
