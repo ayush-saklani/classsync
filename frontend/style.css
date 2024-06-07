@@ -106,6 +106,19 @@ body{
     background-color: #ffc107 !important;
     color: black !important;
 }
+.flash{
+    animation: flash 1s infinite;
+}
+@keyframes flash {
+    0%, 100% {
+        color: red;
+        text-shadow: 0 0 10px rgb(255, 255, 255);
+    }
+    50% {
+        color: yellow;
+        text-shadow: 0 0 10px rgb(0, 0, 0);
+    }
+}
 /* 3d button start */
 .button {
     position: relative;

@@ -15,6 +15,16 @@
 	<link rel="stylesheet" href="loader.css">
 
 	<link rel="icon" href="/asset/image/logo.png">
+	<style>
+		/* css native to this page */
+		tr>td{
+			padding: 0 !important;
+		 	border: 2px solid rgba(0, 0, 0, 0.686) !important;
+		}
+		th{
+			border: 2px solid rgba(0, 0, 0, 0.686) !important;	 
+		}
+	</style>
 </head>
 
 <body>
@@ -28,19 +38,24 @@
 
 	<!-- all content of page here below-->
 	<section class="container-fluid mt-5">
+		<!-- warning and conditions div starts-->
 		<div class="container">
 			<h1 class="center text fw-bold">Timetable Editing Portal ( Sending Generic Data )</h1>
-			<ul class="pt-3">
-				<h4 class="center text text-danger fw-bold">Warning <i class="bi bi-exclamation-triangle-fill"></i> </h1>
-				<li class="center text text-danger"><b>Use all CAPS</b></li>
-				<li class="center text text-danger">Don't use space in Subject Code</li>
-				<li class="center text text-danger">Two different teacher can't teach same subject to same section so we
+			<h2 class="center text text-danger fw-bold pt-3">Warnings and Conditions <i class="bi bi-exclamation-triangle-fill flash"></i> </h1>
+			<ul>
+				<li class="center text text-danger fw-bold">Use all CAPS</li>
+				<li class="center text text-danger fw-bold">Don't use space in Subject Code</li>
+				<li class="center text text-danger fw-bold">Two different teacher can't teach same subject to same section so we
 					have to divide the subject</li>
 				<li type="none" class="center text text-danger">e.g <b>XCS601</b> (career skills) <i class="bi bi-arrow-right" style="-webkit-text-stroke: 2px;"></i> <b>XCS601Q</b> (career
 					skills Quant) && <b>XCS601V</b> (career skills Verbal)</li>
-				<li class="center text text-danger"><B>DONT USE THIS IF THE TEACHERS ARE ALREADY DECIDED AS IT WILL RESET TEACHER DATA</B></li>
+					<li class="center text text-danger fw-bold">Fill the data carefully and recheck it before resetting, as this do not have validation and may break the code </li>
+				<li class="center text text-danger fw-bold">DONT USE THIS IF THE TEACHERS ARE ALREADY DECIDED AS IT WILL RESET TEACHER DATA</li>
 			</ul>
 		</div>
+		<!-- warning and conditions div ends-->
+
+		<!-- course and semester selection div starts-->
 		<div class="container">
 			<div class="row mt-3">
 				<div class="col">
@@ -74,9 +89,11 @@
 				</div>
 			</div>
 		</div>
+		<!-- course and semester selection div ends-->
 
-		<!-- teacher detail table div -->
+		<!-- main content div start -->
 		<div class="container mt-3">
+			<!-- Render table start-->
 			<table class="table" id="teacher_table">
 				<thead>
 					<tr>
@@ -89,6 +106,7 @@
 				<tbody>
 				</tbody>
 			</table>
+			<!-- Render table ends-->
 
 			<!-- add and delete row button div start -->
 			<div class="container text-center">
@@ -99,18 +117,15 @@
 			
 			<!-- save button div  -->
 			<div class="container text-center">
-				<button disabled type="button" class="button" id="set_for_all">
-					<div class="button-top-blue h4"><b>Set subject for ALL <i class="bi bi-exclamation-triangle-fill text-warning"></i> </b></div>
+				<button disabled type="button" class="button" id="save_subject_list">
+					<div class="button-top-blue h4"><b>Save Subject List</b></div>
 					<div class="button-bottom-blue"></div>
 				</button>
-				<!-- <button type="button" class="btn btn-lg btn-info mt-2 mb-3" id="set_for_all"><b>Set subject for ALL</b></button> -->
 			</div>
 			<!-- save button div end -->
-
 		</div>
-			<!-- teacher detail table div end -->
+		<!-- main content div ends -->
 
-		
 	</section>
 	<!-- all content of page here above-->
 
@@ -145,7 +160,16 @@
 		</div>
 	</footer>
 	<!-- footer div end -->
-
+	
+	<!-- reset button div start --> 
+	<div class="container text-center pb-3">
+		<button disabled type="button" class="button" id="set_for_all">
+			<div class="button-top-blue h4"><b>SET ( SET FOR ALL ) <i class="bi bi-exclamation-triangle-fill text-warnin flash"></i> </b></div>
+			<div class="button-bottom-blue"></div>
+		</button>
+	</div>
+	<!-- reset button div ends -->
+	 
 	<!--java scripts used start-->
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
