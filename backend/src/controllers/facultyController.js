@@ -14,29 +14,40 @@ const getall = asyncHandler(async (req, res, next) => {
     }
 });
 
-const addfaculties = asyncHandler(async (req, res, next) => {
-    const facultyList = req.body.facultyList;
-    facultyList.forEach(async (faculty) => {
-        const check_faculty = await Faculties.findOne({
-            teacherid: faculty.teacherid,
-        });
-
-        if (check_faculty === null) {
-            const new_faculty = await Faculties.create({
-                teacherid: faculty.teacherid,
-                name: faculty.name,
-                schedule: GENERIC_TEACHER_SCHEDULE,
-            });
-            await new_faculty.save();
-        } else {
-            // TODO::-> if teacher already exists give a reponse
-            // of existing doc to user
-        }
+const addfaculty = asyncHandler(async (req, res, next) => {
+    const teacherid = req.query.teacherid;
+    const name = req.query.name;
+    const check_faculty = await Faculties.findOne({
+        teacherid: teacherid,
+        name: name,
     });
+
+    if (check_faculty === null) {
+        const new_faculty = await Faculties.create({
+            teacherid: teacherid,
+            name: name,
+            schedule: GENERIC_TEACHER_SCHEDULE,
+        });
+        await new_faculty.save();
+    } else {
+        throw new ApiError(403, "Teacher already exists");
+    }
 
     res.status(200).json({
         success: true,
-        message: "faculties added successfully",
+        message: "faculty added successfully",
+    });
+});
+
+const removefaculty = asyncHandler(async (req, res, next) => {
+    const teacherid = req.query.teacherid;
+
+    await Faculties.findOneAndDelete({
+        teacherid: teacherid,
+    });
+    res.status(200).json({
+        success: true,
+        message: "faculty deleted successfully",
     });
 });
 
@@ -44,13 +55,11 @@ const updatefaculties = asyncHandler(async (req, res, next) => {
     const facultyList = req.body.facultyList;
 
     facultyList.forEach(async (faculty) => {
-        const faculty_name = faculty.name;
         const faculty_id = faculty.teacherid;
         const schedule = faculty.schedule;
 
         await Faculties.findOneAndUpdate(
             {
-                name: faculty_name,
                 teacherid: faculty_id,
             },
             {
@@ -66,4 +75,4 @@ const updatefaculties = asyncHandler(async (req, res, next) => {
     });
 });
 
-export { getall, addfaculties, updatefaculties };
+export { getall, addfaculty, removefaculty, updatefaculties };

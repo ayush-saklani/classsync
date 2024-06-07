@@ -1,14 +1,16 @@
 import { Router } from "express";
 import {
     getall,
-    addfaculties,
+    addfaculty,
+    removefaculty,
     updatefaculties,
 } from "../controllers/facultyController.js";
 
 const router = Router();
 
 router.get("/getall", getall);
-router.post("/add", addfaculties);
+router.get("/add", addfaculty);
+router.delete("/remove", removefaculty);
 router.post("/update", updatefaculties);
 
 export default router;
