@@ -26,6 +26,13 @@ nav>h2:hover::after, nav>h2:hover::before {
 body{
     background-color: rgb(240, 244, 249);
 }
+.card>a>img{
+    transition: 0.2s;
+}
+.card>a>img:hover{
+    transform: scale(1.05);
+    transition: 0.2s;
+}
 .signinbox{
     border-radius: 30px;
     width: 75%;
