@@ -244,10 +244,15 @@ const initializePage = () => {                          //  this function initia
 const reset_table = () => {                             //  this function resets the table to the initial state by removing all the data from the table
     let mytable = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
     for (let i = 0; i < mytable.rows.length; i++) {
-        mytable.rows[i].cells[1].childNodes[0].selectedIndex = 0;
+        for (let j = 0; j < mytable.rows[i].cells[1].childNodes[0].options.length; j++) {
+            if (mytable.rows[i].cells[1].childNodes[0].options[j].value === "0") {
+                mytable.rows[i].cells[1].childNodes[0].selectedIndex = j;
+                break;
+            }
+        }
     }
 };
-
+document.getElementById("loader").style.display = "none";
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click", reset_table);

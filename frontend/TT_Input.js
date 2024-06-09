@@ -1,103 +1,577 @@
 // Sample data for generating dropdowns will be fetched from apis and database
-let faculty_data ;
+let faculty_data =[
+    {
+        "_id": "6662af7994cfaafbcb00d4c3",
+        "teacherid": "2118510",
+        "name": "Dr. Susheela Dahiya",
+        "schedule": {
+            "mon": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            },
+            "tue": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            },
+            "wed": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            },
+            "thu": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            },
+            "fri": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            },
+            "sat": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            },
+            "sun": {
+                "08-09": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "09-10": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "10-11": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "11-12": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "12-01": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "01-02": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "02-03": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "03-04": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "04-05": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                },
+                "05-06": {
+                    "course": "",
+                    "semester": "",
+                    "section": [],
+                    "roomid": [],
+                    "subjectcode": ""
+                }
+            }
+        }
+    }
+]
 let subjectdata;
 let room_list;
 let timetable;
 let local_faculty_data; 
 let messageCounter = 0;
-
-const update_detail_table = () => {                     //  the function below updates the teacher subject table acc to the subject choosen 
-	let tempteachersubjectdata = [];
-	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-	// Iterate over each row in the table body
-	for (let i = 0; i < tableBody.rows.length; i++) {
-		let row = tableBody.rows[i];
-
-		let subjectname = row.cells[0].firstChild.innerHTML;
-		let teachername = row.cells[1].firstChild.innerHTML;
-		let teacherid = row.cells[2].firstChild.value;
-		let subjectid = row.cells[3].firstChild.innerHTML;
-		let weekly_hrs = row.cells[4].firstChild.innerHTML;
-		let theory_practical = row.cells[5].firstChild.innerHTML;
-	
-
-		let rowData = {
-			"subjectcode": subjectid,
-			"teacherid": teacherid,
-			"weekly_hrs": weekly_hrs,
-			"teachername": teachername,
-			"subjectname": subjectname,
-			"theory_practical": theory_practical,
-		}
-		tempteachersubjectdata.push(rowData);
-	}
-	let testinglist = [];
-	tempteachersubjectdata.forEach(element => {
-		testinglist.push({
-			"subjectcode": element.subjectcode,
-			"subjectname": element.subjectname,
-			"weekly_hrs": element.weekly_hrs,
-			"theory_practical": element.theory_practical
-		});
-	});
-	add_subjects_options_to_mytable(testinglist);
-	// any_change_event_listner();
-}
-const any_change_event_listner = () => {                // add eventlistner to all the select box that updates the rows and data on content change in all selectboxs
-	let selectors = document.getElementsByClassName("form-select");
-	for (let i = 0; i < selectors.length; i++) {
-		selectors[i].addEventListener("change", ()=>{
-			update_detail_table()
-		});
-	}
-}
 const fixtime_firstphase = ()=>{                        //  this function removes all the classes and decrease the counter(section.length) from the timetable data saved during initialization
 	let mytable = document.getElementById("mytable");
 	for(let i=1;i<=7;i++){
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
-		for(let j=1;j<=10;j++){
+		for (let j = 1; j <= 10; j++) {
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-			if(timetable){
-				let temp_roomid = timetable.schedule[currday][currslot].class_id;
-				if (temp_roomid in room_list) {
-					if(room_list[temp_roomid].schedule[currday][currslot].section.length > 0 && temp_roomid != '0'){
-						let jiss_room_ki_abhi_baat_hori = room_list[temp_roomid].schedule[currday][currslot];
-                        if(jiss_room_ki_abhi_baat_hori.section.length == 1){
-							jiss_room_ki_abhi_baat_hori.course = "";
-							jiss_room_ki_abhi_baat_hori.semester = "";
-							jiss_room_ki_abhi_baat_hori.subjectcode = "";
-							jiss_room_ki_abhi_baat_hori.teacherid = "";
-                            jiss_room_ki_abhi_baat_hori.section = [];
-						}
-						else if(jiss_room_ki_abhi_baat_hori.section.length > 1){
-							jiss_room_ki_abhi_baat_hori.section.pop(document.getElementById("section_option").value)
-						}
-                        let jiss_faculty_ki_abhi_baat_hori = faculty_data[timetable.teacher_subject_data.find(x => x.subjectcode === timetable.schedule[currday][currslot].subjectcode)?.teacherid].schedule[currday][currslot];
-						if(jiss_faculty_ki_abhi_baat_hori.section.length == 1 || timetable.teacher_subject_data.find(x => x.subjectcode === timetable.schedule[currday][currslot].subjectcode)?.teacherid == "0"){
-							jiss_faculty_ki_abhi_baat_hori.section = [];
-                            jiss_faculty_ki_abhi_baat_hori.subjectcode = "";
-                            jiss_faculty_ki_abhi_baat_hori.course = "";
-                            jiss_faculty_ki_abhi_baat_hori.semester = "";
-                            jiss_faculty_ki_abhi_baat_hori.roomid = "";
-                        }
-                        else if(jiss_faculty_ki_abhi_baat_hori.section.length>1){
-                            jiss_faculty_ki_abhi_baat_hori.section.pop(document.getElementById("section_option").value);
-                        }
+
+			let temp_roomid = timetable.schedule[currday][currslot].class_id;
+			if (temp_roomid in room_list  && temp_roomid != '0') {
+				let temproom = room_list[temp_roomid].schedule[currday][currslot];
+				if (temproom.section.length > 0) {
+					if (temproom.section.length == 1) {
+						temproom.course = "";
+						temproom.semester = "";
+						temproom.subjectcode = "";
+						temproom.teacherid = "";
+						temproom.section = [];
 					}
-					else{
-						room_list[temp_roomid].schedule[currday][currslot].course = "";
-						room_list[temp_roomid].schedule[currday][currslot].semester = "";
-						room_list[temp_roomid].schedule[currday][currslot].subjectcode = "";
-						room_list[temp_roomid].schedule[currday][currslot].teacherid = "";
-						room_list[temp_roomid].schedule[currday][currslot].section = [];
-						let jiss_faculty_ki_abhi_baat_hori = faculty_data[timetable.teacher_subject_data.find(x => x.subjectcode === timetable.schedule[currday][currslot].subjectcode)?.teacherid].schedule[currday][currslot] || faculty_data["0"].schedule[currday][currslot];
-						if(jiss_faculty_ki_abhi_baat_hori.section.length == 0 || timetable.teacher_subject_data.find(x => x.subjectcode === timetable.schedule[currday][currslot].subjectcode)?.teacherid == "0"){
-							jiss_faculty_ki_abhi_baat_hori.section = [];
-                            jiss_faculty_ki_abhi_baat_hori.subjectcode = "";
-                            jiss_faculty_ki_abhi_baat_hori.course = "";
-                            jiss_faculty_ki_abhi_baat_hori.semester = "";
-                            jiss_faculty_ki_abhi_baat_hori.roomid = "";
+					else if (temproom.section.length > 1) {
+						temproom.section.pop(document.getElementById("section_option").value)
+					}
+				}
+				else {
+					temproom.course = "";
+					temproom.semester = "";
+					temproom.subjectcode = "";
+					temproom.teacherid = "";
+					temproom.section = [];
+				}
+			}
+
+			// let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
+			let temp_subject = timetable.schedule[currday][currslot].subjectcode;
+			if (temp_subject != '') {
+				let temp_facultyid = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherId;
+				if (temp_facultyid in faculty_data) {
+					let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
+					if (temp_faculty.section.length > 0) {
+						if (temp_faculty.section.length == 1 ) {
+							temp_faculty.section = [];
+							temp_faculty.subjectcode = "";
+							temp_faculty.course = "";
+							temp_faculty.semester = "";
+							temp_faculty.roomid = "";
 						}
+						else if (temp_faculty.section.length > 1) {
+							temp_faculty.section.pop(document.getElementById("section_option").value);
+						}
+					}
+					else if (temp_faculty.section.length == 0 ) {
+						temp_faculty.section = [];
+						temp_faculty.subjectcode = "";
+						temp_faculty.course = "";
+						temp_faculty.semester = "";
+						temp_faculty.roomid = "";
 					}
 				}
 			}
@@ -110,32 +584,39 @@ const fixtime_secondphase = ()=>{                       //  this function adds a
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		for(let j=1;j<=10;j++){
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-			let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
-			if (curr_slot_room in room_list) {
-				if(curr_slot_room != '0'){
-					if(room_list[curr_slot_room].schedule[currday][currslot].section.length == 0){
-						let jiss_faculty_ki_abhi_baat_hori = faculty_data[timetable.teacher_subject_data.find(x => x.subjectcode === timetable.schedule[currday][currslot].subjectcode)?.teacherid].schedule[currday][currslot];
-						if(jiss_faculty_ki_abhi_baat_hori.section.length == 0){
-							jiss_faculty_ki_abhi_baat_hori.section.push(document.getElementById("section_option").value);	
-							jiss_faculty_ki_abhi_baat_hori.subjectcode = mytable.rows[i].cells[j].childNodes[0].value
-							jiss_faculty_ki_abhi_baat_hori.course = document.getElementById("course_option").value;
-							jiss_faculty_ki_abhi_baat_hori.semester = document.getElementById("semester_option").value;
-							jiss_faculty_ki_abhi_baat_hori.roomid = document.getElementById("teacher_table").getElementsByTagName('tbody')[0].rows[i].cells[j].childNodes[1].value;
-						}
-						room_list[curr_slot_room].schedule[currday][currslot].teacherid = timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value)?.teacherid;
-						room_list[curr_slot_room].schedule[currday][currslot].subjectcode = mytable.rows[i].cells[j].childNodes[0].value;
-						room_list[curr_slot_room].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
-						room_list[curr_slot_room].schedule[currday][currslot].semester = document.getElementById("semester_option").value;
-						room_list[curr_slot_room].schedule[currday][currslot].course = document.getElementById("course_option").value;
-					}
-					else if(room_list[curr_slot_room].schedule[currday][currslot].section.length > 0){
-						if(jiss_faculty_ki_abhi_baat_hori.section.length>0){
-							jiss_faculty_ki_abhi_baat_hori.section.push(document.getElementById("section_option").value);
-						}
-						room_list[curr_slot_room].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
-					}
+
+			let temp_roomid = mytable.rows[i].cells[j].childNodes[1].value;
+			if (temp_roomid in room_list && temp_roomid != '0') {
+				let temproom = room_list[temp_roomid].schedule[currday][currslot];
+				if (temproom.section.length == 0) {
+					temproom.teacherid = timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value).teacherid;
+					temproom.subjectcode = mytable.rows[i].cells[j].childNodes[0].value;
+					temproom.section.push(document.getElementById("section_option").value);
+					temproom.semester = document.getElementById("semester_option").value;
+					temproom.course = document.getElementById("course_option").value;
+				}
+				else if(room_list[curr_slot_room].schedule[currday][currslot].section.length > 0) {
+					room_list[temp_roomid].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
 				}
             }
+
+			let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
+			if (temp_subject != '') {
+				let temp_facultyid = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherId;
+				if (temp_facultyid in faculty_data) {
+					let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
+					if (temp_faculty.section.length > 0) {
+						temp_faculty.section.push(document.getElementById("section_option").value);
+					}
+					else if (temp_faculty.section.length == 0 ) {
+						temp_faculty.section = document.getElementById("section_option").value;
+						temp_faculty.subjectcode = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
+						temp_faculty.course = document.getElementById("course_option").value;
+						temp_faculty.semester = document.getElementById("semester_option").value;
+						temp_faculty.roomid = document.getElementById("mytable").rows[i].cells[j].childNodes[1].value;
+					}
+				}
+			}
 		}
 	}
 	// console.log(room_list);
@@ -223,7 +704,6 @@ const validateTeacherSubject = () => {
     return isValid;
 };
 
-
 const save_table_func = () => {                         //  function below calculate and construct the timetable json and send that to the backend 
 	if( true ){
         let tempteachersubjectdata = [];
@@ -262,7 +742,7 @@ const save_table_func = () => {                         //  function below calcu
 
             let subjectname = row.cells[0].firstChild.innerHTML;
             let teachername = row.cells[1].firstChild.innerHTML;
-            let teacherid = row.cells[2].firstChild.value;
+            let teacherid = row.cells[2].firstChild.innerHTML;
             let subjectid = row.cells[3].firstChild.innerHTML;
             let weekly_hrs = row.cells[4].firstChild.innerHTML;
             let theory_practical = row.cells[5].firstChild.innerHTML;
@@ -351,7 +831,6 @@ const save_table_func = () => {                         //  function below calcu
     }
 }
 
-  
 const add_select_box_to_mytable = () => {               //  this function below adds the select option field to each table cell in the table  
 	let mytable = document.getElementById("mytable");
 	for (let i = 1; i < mytable.rows.length; i++) {
@@ -368,7 +847,6 @@ const add_select_box_to_mytable = () => {               //  this function below 
 		}
 	}
 }
-
 const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to room select box in the main table dynamically with the data obtained from mongoDB
 	for (let i = 1; i <= 7; i++) {
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
@@ -382,7 +860,7 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 				option.value = key;
 				option.text = value.classname;
 				option.setAttribute("class","text");
-				console.log(room_list[key].schedule[currday][currslot].section);
+				// console.log(room_list[key].schedule[currday][currslot].section.length);
 				if(room_list[key].schedule[currday][currslot].section.length == 1){
 					option.setAttribute("class","bg-success text-light bg-gradient text fw-bold");
 				}
@@ -450,25 +928,33 @@ const fetch_room_list = () => {                         //  this function fetche
 		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
 };
 const fetch_faculties_list = () => {                    //  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
-	return fetch('http://127.0.0.1:3000/faculty/getall',{
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
+	if(timetable){
+		let teacher_subject_data = timetable.teacher_subject_data;
+		let teacher_query_list = [];
+		for (let i = 0; i < teacher_subject_data.length; i++) {
+			if(teacher_subject_data[i].teacherid != "0"){
+				teacher_query_list.push(teacher_subject_data[i].teacherid);
+			}
 		}
-	})
+		// console.log(teacher_query_list);
+	
+		fetch('http://127.0.0.1:3000/faculty/get', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"facultyList": teacher_query_list})
+        })
 		.then(response => response.json())
 		.then(data => {
 			data = data.data;
-			console.log(data);
 			faculty_data = data;
-		})
-        .then(() => {
-			float_error_card_func('Faculty Data Fetched Successfully', 'Faculty Data Fetched Successfully from the Database', 'success');
+			console.log(faculty_data);			
 		})
         .catch(error => {
-			float_error_card_func('Faculty Data not available', 'Faculty Data not available due to probable server error', 'danger');
 			console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
 		});
+	}
 };
 const render_tables = () => {                           // renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 	// rendering the second table first
@@ -536,7 +1022,6 @@ const render_tables = () => {                           // renders the timetable
 			cell.appendChild(cell_insert);
 			cell.setAttribute("class", "border-dark border-3");
 		}
-		update_detail_table();
 		add_subjects_options_to_mytable(localteacher_subject_data)
 
 		// rendering the first main table now 
@@ -585,7 +1070,7 @@ const fetch_timetable =  () => {                        //  this function fetche
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
 
-	fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
+	return fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -609,8 +1094,8 @@ const fetch_timetable =  () => {                        //  this function fetche
 }
 const initializePage = () => {                          //  this function initializes the page by fetching the room list, faculty list and timetable data from the server
     fetch_room_list()
-    .then(() => fetch_faculties_list())
     .then(() => fetch_timetable())
+    .then(() => fetch_faculties_list())
     .then(() => {
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
@@ -635,9 +1120,10 @@ const reset_table = () => {                             //  this function resets
 	}
 };
 
+document.getElementById("loader").style.display = "none";
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
-document.getElementById("reset_tt").addEventListener("click",reset_table);
+document.getElementById("reset_tt").addEventListener("click",reset_table);				// [ reset TT button eventlistner ]
 document.getElementById('course_option').addEventListener('change', initializePage);  	// [ course select box eventlistner ]
 document.getElementById('semester_option').addEventListener('change', initializePage);  // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
