@@ -595,8 +595,8 @@ const fixtime_secondphase = ()=>{                       //  this function adds a
 					temproom.semester = document.getElementById("semester_option").value;
 					temproom.course = document.getElementById("course_option").value;
 				}
-				else if(room_list[curr_slot_room].schedule[currday][currslot].section.length > 0) {
-					room_list[temp_roomid].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
+				else if(temproom.section.length > 0) {
+					temproom.section.push(document.getElementById("section_option").value);
 				}
             }
 
@@ -628,21 +628,21 @@ const validateTeacherSubject = () => {
 
     for (let i = 1; i <= 7; i++) {
         let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
-
         for (let j = 1; j <= 10; j++) {
             let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+
             let curr_slot_room = mytable.rows[i].cells[j].childNodes[1].value;
             let subjectCode = mytable.rows[i].cells[j].childNodes[0].value;
 
             // Skip room with ID '0'
-            if (curr_slot_room === '0') {
+            if (curr_slot_room === '0' || subjectCode === '') {
                 continue;
             }
 
             // Validate if the room exists in room_list
             if (curr_slot_room in room_list) {
                 let roomSchedule = room_list[curr_slot_room].schedule[currday][currslot];
-                let teacherId = timetable.teacher_subject_data.find(x => x.subjectcode === subjectCode)?.teacherid;
+                let teacherId = timetable.teacher_subject_data.find(x => x.subjectcode === subjectCode).teacherid;
 
                 // Skip teacher with ID '0'
                 if (!teacherId || teacherId === '0') {
@@ -653,48 +653,44 @@ const validateTeacherSubject = () => {
                 if (roomSchedule.section.length > 0) {
                     // Subject mismatch check
                     if (roomSchedule.subjectcode !== subjectCode) {
-                        float_error_card_func(
-                            `Subject Conflict at ${currday.toUpperCase()} ${currslot} slot`,
-                            `Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.`,
-                            "danger"
-                        );
+                        float_error_card_func(`Subject Conflict at ${currday.toUpperCase()} ${currslot} slot`,`Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.`,"danger");
                         isValid = false;
                     }
-
                     // Teacher mismatch check
                     if (roomSchedule.teacherid !== teacherId) {
-                        float_error_card_func(
-                            `Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,
-                            `${faculty_data[roomSchedule.teacherid].name} [ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,
-                            "danger"
-                        );
+                        float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[roomSchedule.teacherid].name} [ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
                         isValid = false;
                     }
                 }
-
                 // Validate the teacher's schedule
                 if (teacherId in faculty_data) {
                     let teacherSchedule = faculty_data[teacherId].schedule[currday][currslot];
 
                     // If the teacher is assigned in the same slot
                     if (teacherSchedule.subjectcode === subjectCode) {
-                        float_error_card_func(
-                            `Possible Merge at ${currday.toUpperCase()} ${currslot} slot`,
-                            `The teacher is assigned to the same subject code in this slot.`,
-                            "warning"
-                        );
+                        float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`,`The teacher is assigned to the same subject code in this slot.`,"warning");
                         isValid = false;
                     }
 
                     // If the teacher is teaching a different subject in the same slot
                     if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
-                        float_error_card_func(
-                            `Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,
-                            `${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,
-                            "danger"
-                        );
+                        float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
                         isValid = false;
                     }
+					if(teacherSchedule.section.length > 0){
+						if(teacherSchedule.section.includes(document.getElementById("section_option").value)){
+							float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+							isValid = false;
+						}
+					}
+					if(teacherSchedule.subjectCode !== "" && teacherSchedule.subjectCode !== subjectCode){
+						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+						isValid = false;
+					}
+					if(teacherSchedule.roomid !== "" && teacherSchedule.roomid !== curr_slot_room){
+						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+						isValid = false;
+					}
                 }
             }
         }
@@ -703,7 +699,6 @@ const validateTeacherSubject = () => {
     console.log('::::: VALIDATION COMPLETE :::::');
     return isValid;
 };
-
 const save_table_func = () => {                         //  function below calculate and construct the timetable json and send that to the backend 
 	if( true ){
         let tempteachersubjectdata = [];
@@ -1120,7 +1115,7 @@ const reset_table = () => {                             //  this function resets
 	}
 };
 
-document.getElementById("loader").style.display = "none";
+document.getElementById("loader").style.display = "none"; 			//  hiding the loader on the page load
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click",reset_table);				// [ reset TT button eventlistner ]
