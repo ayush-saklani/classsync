@@ -14,11 +14,11 @@ const update_detail_table = () => {                     //  the function below u
 		let row = tableBody.rows[i];
 
 		let subjectname = row.cells[0].firstChild.innerHTML;
-		let teacherid = row.cells[1].firstChild.value;
-		let subjectid = row.cells[2].firstChild.innerHTML;
-		let teachername = row.cells[1].firstChild.options[row.cells[1].firstChild.selectedIndex].text;
-		let weekly_hrs = row.cells[3].firstChild.innerHTML;
-		let theory_practical = row.cells[4].firstChild.innerHTML;
+		let teachername = row.cells[1].firstChild.innerHTML;
+		let teacherid = row.cells[2].firstChild.value;
+		let subjectid = row.cells[3].firstChild.innerHTML;
+		let weekly_hrs = row.cells[4].firstChild.innerHTML;
+		let theory_practical = row.cells[5].firstChild.innerHTML;
 	
 
 		let rowData = {
@@ -261,11 +261,11 @@ const save_table_func = () => {                         //  function below calcu
             let row = tableBody.rows[i];
 
             let subjectname = row.cells[0].firstChild.innerHTML;
-            let teacherid = row.cells[1].firstChild.value;
-            let subjectid = row.cells[2].firstChild.innerHTML;
-            let weekly_hrs = row.cells[3].firstChild.innerHTML;
-            let theory_practical = row.cells[4].firstChild.innerHTML;
-            let teachername = row.cells[1].firstChild.options[row.cells[1].firstChild.selectedIndex].textContent;
+            let teachername = row.cells[1].firstChild.innerHTML;
+            let teacherid = row.cells[2].firstChild.value;
+            let subjectid = row.cells[3].firstChild.innerHTML;
+            let weekly_hrs = row.cells[4].firstChild.innerHTML;
+            let theory_practical = row.cells[5].firstChild.innerHTML;
 
 
             let rowData = {
@@ -493,21 +493,20 @@ const render_tables = () => {                           // renders the timetable
 			cell.setAttribute("class", "border-dark border-3");
 
 			// teacher select box render
-			cell = newRow.insertCell();
-			select = document.createElement('select');
-			select.setAttribute('class', 'form-select text');
-			cell.appendChild(select);
-			for (let ele in faculty_data) {
-				let option = document.createElement('option');
-				option.value = faculty_data[ele].teacherid;
-				option.text = faculty_data[ele].name;
-				if (faculty_data[ele].teacherid == localteacher_subject_data[i].teacherid) {
-					option.selected = true;
-					// console.log(ele)
-				}
-				select.appendChild(option);
-			}
-			cell.setAttribute("class", "border-dark border-3 p-0");
+            cell = newRow.insertCell();
+            cell_insert = document.createElement('span');
+            cell_insert.setAttribute("class", "text");
+            cell_insert.innerHTML = localteacher_subject_data[i].teachername;
+            cell.appendChild(cell_insert);
+            cell.setAttribute("class", "border-dark border-3");
+
+			// teacher select box render
+            cell = newRow.insertCell();
+            cell_insert = document.createElement('span');
+            cell_insert.setAttribute("class", "text");
+            cell_insert.innerHTML = localteacher_subject_data[i].teacherid;
+            cell.appendChild(cell_insert);
+            cell.setAttribute("class", "border-dark border-3");
 
 			cell = newRow.insertCell();
 			cell_insert = document.createElement("span");
