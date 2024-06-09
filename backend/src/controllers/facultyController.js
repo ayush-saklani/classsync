@@ -4,6 +4,34 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 import { GENERIC_TEACHER_SCHEDULE } from "../constants.js";
 
+const getspecified = asyncHandler(async (req, res, next) => {
+    const facultyList = req.body.facultyList;
+    if (facultyList === undefined) {
+        throw new ApiError(400, "Missing required facultyList parameter");
+    }
+
+    const aggregationPipeline = [
+        {
+            $match: {
+                teacherid: { $in: facultyList },
+            },
+        },
+    ];
+
+    const result = await Faculties.aggregate(aggregationPipeline);
+    if (result.length === 0) {
+        throw new ApiError(404, "No teachers found");
+    }
+
+    res.status(200).json(
+        new ApiResponse(
+            200,
+            result,
+            `${result.length} teacher(s) found and returned successfully!`
+        )
+    );
+});
+
 const getall = asyncHandler(async (req, res, next) => {
     const allfacultylist = await Faculties.find();
 
@@ -75,4 +103,4 @@ const updatefaculties = asyncHandler(async (req, res, next) => {
     });
 });
 
-export { getall, addfaculty, removefaculty, updatefaculties };
+export { getall, addfaculty, removefaculty, updatefaculties, getspecified };
