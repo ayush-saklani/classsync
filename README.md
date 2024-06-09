@@ -1,4 +1,4 @@
-# **Class-Sync Timetable manager (γ)** <img src="asset/image/logo.png" height="110" align="left"/>
+# **Class-Sync Timetable manager (γ)** <img src="frontend/assets/image/logo.png" height="110" align="left"/>
 **Designed and built with all the love and passion in the world by
 <a class="link-danger" href="https://github.com/ayush-saklani"><b>ayush-saklani</b></a>
 <b>X</b>
