@@ -159,6 +159,7 @@ const letmeseeitbaby = () => {
 		.then(() => {
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
+				document.getElementById("toggle_event").disabled = false;
 			}, 1500);
 			float_error_card_func("Faculty Data Available", "Faculty Data is available for the selected teacher. timetable has been rendered successfully.", "success");
 		})

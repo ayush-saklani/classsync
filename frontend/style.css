@@ -283,6 +283,10 @@ table>tbody>tr{
 .toggle-input:checked+.toggle .toggle-icon.off {
     fill: var(--active-color);
 }
+.toggle-input:disabled+.toggle .toggle-background {
+    fill: #717171;
+    transition: 1s;
+}
 /* toggle switch end */
 .form-select{
     border-radius: 0% !important;
