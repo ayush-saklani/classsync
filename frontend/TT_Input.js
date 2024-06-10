@@ -152,12 +152,16 @@ const validateTeacherSubject = () => {
                 if (roomSchedule.section.length > 0) {
                     // Subject mismatch check
                     if (roomSchedule.subjectcode !== subjectCode) {
-						float_error_card_func(`Subject Conflict at ${currday.toUpperCase()} ${currslot} slot`,`Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.`,"danger");
+						setTimeout(() => {
+							float_error_card_func(`Type 1 - Room conflict <br>Subject Conflicted at ${currday.toUpperCase()} ${currslot} slot`    ,`Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`,"primary");
+						}, 1000);
                         isValid = false;
                     }
                     // Teacher mismatch check
                     if (roomSchedule.teacherid !== teacherId) {
-						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[roomSchedule.teacherid].name} [ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+						setTimeout(() => {
+							float_error_card_func(`Type 2 - Room conflict <br>Teacher Conflicted at ${currday.toUpperCase()} ${currslot} slot`    ,`[ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. <br>[ Choose another class if the teacher is diffrent ]`,"info");
+						}, 2000);
                         isValid = false;
                     }
                 }
@@ -201,7 +205,7 @@ const validateTeacherSubject = () => {
     return isValid;
 };
 const save_table_func = () => {                         //  function below calculate and construct the timetable json and send that to the backend 
-	if( true ){
+	if( validateTeacherSubject() ){
 		blocking();
         let tempteachersubjectdata = [];
         let scheduleslot = {}
@@ -343,6 +347,11 @@ const save_table_func = () => {                         //  function below calcu
                 console.error('::::: ERROR SAVING DATA :::::', error);
             });
     }
+	else{
+		setTimeout(() => {
+			float_error_card_func("Validation Failed <br>Timetable Not saved", "Validation Error. Please check the errors and try again.", "warning");
+		}, 1000);
+	}
 }
 
 const add_select_box_to_mytable = () => {               //  this function below adds the select option field to each table cell in the table  
