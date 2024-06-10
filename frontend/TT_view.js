@@ -186,7 +186,7 @@ const letmeseeitbaby = () => {
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
 
-	fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
+	fetch('https://classsync-25hj.onrender.com/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
