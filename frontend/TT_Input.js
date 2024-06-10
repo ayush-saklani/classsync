@@ -161,35 +161,37 @@ const validateTeacherSubject = () => {
                     }
                 }
                 // Validate the teacher's schedule
-                if (teacherId in faculty_data) {
-                    let teacherSchedule = faculty_data[teacherId].schedule[currday][currslot];
+                for (element in faculty_data) {
+					if (faculty_data[element].teacherid === teacherId){
+                    	let teacherSchedule = faculty_data[element].schedule[currday][currslot];
 
-                    // If the teacher is assigned in the same slot
-                    if (teacherSchedule.subjectcode === subjectCode) {
-                        float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`,`The teacher is assigned to the same subject code in this slot.`,"warning");
-                        isValid = false;
-                    }
+                    	// If the teacher is assigned in the same slot
+                    	if (teacherSchedule.subjectcode === subjectCode) {
+                    	    float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`,`The teacher is assigned to the same subject code in this slot.`,"warning");
+                    	    isValid = false;
+                    	}
 
-                    // If the teacher is teaching a different subject in the same slot
-                    if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
-                        float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
-                        isValid = false;
-                    }
-					if(teacherSchedule.section.length > 0){
-						if(teacherSchedule.section.includes(document.getElementById("section_option").value)){
-							float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+                    	// If the teacher is teaching a different subject in the same slot
+                    	if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
+                    	    float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+                    	    isValid = false;
+                    	}
+						if(teacherSchedule.section.length > 0){
+							if(teacherSchedule.section.includes(document.getElementById("section_option").value)){
+								float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+								isValid = false;
+							}
+						}
+						if(teacherSchedule.subjectCode !== "" && teacherSchedule.subjectCode !== subjectCode){
+							float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
 							isValid = false;
 						}
-					}
-					if(teacherSchedule.subjectCode !== "" && teacherSchedule.subjectCode !== subjectCode){
-						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
-						isValid = false;
-					}
-					if(teacherSchedule.roomid !== "" && teacherSchedule.roomid !== curr_slot_room){
-						float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[teacherId].name} [ ${teacherId} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
-						isValid = false;
-					}
-                }
+						if(teacherSchedule.roomid !== "" && teacherSchedule.roomid !== curr_slot_room){
+							float_error_card_func(`Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`,`${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`,"danger");
+							isValid = false;
+						}
+                	}
+				}
             }
         }
     }
@@ -294,7 +296,7 @@ const save_table_func = () => {                         //  function below calcu
                 fixtime_secondphase();
             })
             .then(() => {
-                return fetch('http://127.0.0.1:3000/list/save-list', {
+                fetch('http://127.0.0.1:3000/list/save-list', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -315,7 +317,7 @@ const save_table_func = () => {                         //  function below calcu
                     });
             })
 			.then(() => {
-				return fetch('http://127.0.0.1:3000/faculty/update', {
+				fetch('http://127.0.0.1:3000/faculty/update', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
@@ -604,9 +606,9 @@ const fetch_timetable =  () => {                        //  this function fetche
 		});
 }
 const initializePage = () => {                          //  this function initializes the page by fetching the room list, faculty list and timetable data from the server
-    fetch_room_list()
-    .then(() => fetch_timetable())
+	fetch_timetable()
     .then(() => fetch_faculties_list())
+    .then(() => fetch_room_list())
     .then(() => {
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
