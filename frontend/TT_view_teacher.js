@@ -110,7 +110,7 @@ const college_event_manager = () => {
 	}
 };
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
-	return fetch('http://127.0.0.1:3000/list/get-list?type=rooms', {
+	return fetch('https://classsync-25hj.onrender.com/list/get-list?type=rooms', {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -130,7 +130,7 @@ const letmeseeitbaby = () => {
 
 	// console.log(teacher_query_list);
 
-	fetch('http://127.0.0.1:3000/faculty/get', {
+	fetch('https://classsync-25hj.onrender.com/faculty/get', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
