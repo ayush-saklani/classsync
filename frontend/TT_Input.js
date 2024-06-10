@@ -350,7 +350,7 @@ const save_table_func = () => {                         //  function below calcu
 	else{
 		setTimeout(() => {
 			float_error_card_func("Validation Failed <br>Timetable Not saved", "Validation Error. Please check the errors and try again.", "warning");
-		}, 1000);
+		}, 3000);
 	}
 }
 
