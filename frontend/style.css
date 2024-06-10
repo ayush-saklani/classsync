@@ -160,6 +160,9 @@ body{
 table>tbody>tr{
     border: 3px solid black !important;
 }
+#teacher_detail>tbody>tr{
+    border-bottom: 0px !important;
+}
 .button-top-blue::after, .button-top-red::after {
     content: '';
     position: absolute;

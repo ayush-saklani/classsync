@@ -11,7 +11,6 @@ let events = {
 	"2024-06-19": {"description": "Theory Paper start",					"color": "warning"
 	},
 };
-document.getElementById("loader").style.display = "none";
 let messageCounter = 0;
 const letmesee2 = () => {
 	document.getElementById("teacher_detail").rows[0].cells[0].innerHTML = faculty_data.name;
@@ -33,11 +32,15 @@ const letmesee2 = () => {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border-dark border-3");
 			if (faculty_data && faculty_data.schedule && faculty_data.schedule[currrow] && faculty_data.schedule[currrow][currcol] && faculty_data.schedule[currrow][currcol].subjectcode){
+				let message = "N.A.";
+				if(room_list && room_list[faculty_data.schedule[currrow][currcol].roomid].classname){
+					message = room_list[faculty_data.schedule[currrow][currcol].roomid].classname;
+				}
 				document.getElementById("mytable").rows[i].cells[j].innerHTML = `
 							${faculty_data.schedule[currrow][currcol].subjectcode}<br>
 							${faculty_data.schedule[currrow][currcol].course}<br>
 							Sem : ${faculty_data.schedule[currrow][currcol].semester}<br>
-							Room : ${room_list[faculty_data.schedule[currrow][currcol].roomid].classname}<br>
+							Room : ${message}<br>
 							Section : ${faculty_data.schedule[currrow][currcol].section}<br>`;
 			}
 			else {
@@ -121,14 +124,15 @@ const fetch_room_list = () => {                         	//  this function fetch
 			room_list = data.data.data;
 			console.log(room_list)
 		})
-		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
+		.catch(error => {
+			console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
+			float_error_card_func("Room Data not available", "Room Data is not available.<br><b>Room data might not show in the timetable.</b>", "danger");
+		});
 };
 const letmeseeitbaby = () => {
 	// document.getElementById("loader").style.display = "flex"; // uncomment this line to show the loader for every change
 	let teacher_query_list = [];
 	teacher_query_list.push(document.getElementById("teacher_option").value);
-
-	// console.log(teacher_query_list);
 
 	fetch('https://classsync-25hj.onrender.com/faculty/get', {
 		method: 'POST',
@@ -147,18 +151,21 @@ const letmeseeitbaby = () => {
 		.then(() => {
 			if (flag === 1) {
 				college_event_manager();
-				setTimeout(() => { float_error_card_func("Events view On", "", "success") }, 2000);
+				setTimeout(() => { float_error_card_func("Events view On", "", "success") }, 3000);
 			} else {
-				setTimeout(() => { float_error_card_func("Events view Off", "", "danger") }, 2000);
+				setTimeout(() => { float_error_card_func("Events view Off", "", "danger") }, 3000);
 			}
 		})
 		.then(() => {
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 			}, 1500);
+			float_error_card_func("Faculty Data Available", "Faculty Data is available for the selected teacher. timetable has been rendered successfully.", "success");
 		})
 		.catch(error => {
-			document.getElementById("loader").style.display = "none";
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none";
+			}, 1500);
 			float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
 			console.error('Data unavailable:', error)
 		});
