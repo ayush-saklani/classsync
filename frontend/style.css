@@ -157,6 +157,9 @@ body{
 .button:disabled .button-top-blue ,.button:disabled .button-top-red {
     transform: translateY(6px);
 }
+table>tbody>tr{
+    border: 3px solid black !important;
+}
 .button-top-blue::after, .button-top-red::after {
     content: '';
     position: absolute;

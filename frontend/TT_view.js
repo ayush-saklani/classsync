@@ -63,10 +63,17 @@ const letmesee2 = (temp_tt) => {
 			for (let k = 1; k <= 10; k++) {
 				row.cells[k].className = "";
 				row.cells[k].innerHTML = "";
-				row.cells[k].className = 'text bg-warning fw-bold text-dark-emphasis border-warning border-3 align-middle';
+				row.cells[k].className = 'text text-dark bg-warning fw-bold text-dark border-warning border-2 align-middle h5 py-2';
 			}
-			// document.getElementById("mytable").rows[i].cells[1].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
-			document.getElementById("mytable").rows[i].cells[5].innerHTML = 'Holiday';
+			let words = 'No Class Today'.split(' ');
+			let cellIndex = Math.floor((10 - words.length) / 2) + 1 // Start updating from the second cell (first is for day label)
+
+			for (let word of words) {
+				if (cellIndex < row.cells.length) {
+					row.cells[cellIndex].innerHTML = word;
+				}
+				cellIndex++;
+			}
 		}
 	}
 	if(temp_tt && temp_tt.teacher_subject_data){
@@ -139,9 +146,6 @@ const letmesee2 = (temp_tt) => {
 
 const college_event_manager = () => {  
 	let today = new Date();
-    // let todayString = today.toISOString().split('T')[0];
-    
-    // const weekdays = ["MON", "TUE", "WED", "THU", "FRI", "SAT","SUN"];
     let startDayIndex = today.getDay()-1;
     console.log(startDayIndex);
     for (let i = 0; i < 7; i++) {
@@ -157,7 +161,7 @@ const college_event_manager = () => {
 			for (let j = 1; j <= 10; j++) {
 				row.cells[j].className = "";
 				row.cells[j].innerHTML = "";
-				row.cells[j].className = `text bg-${color} bg-gradient fw-bold text-dark border-${color} border-2 align-middle`;
+				row.cells[j].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle`;
 			}
 			
 			// Split the description into words
@@ -168,7 +172,7 @@ const college_event_manager = () => {
 				if (cellIndex < row.cells.length) {
 					row.cells[cellIndex].innerHTML = word;
 					row.cells[cellIndex].className = "";
-					row.cells[cellIndex].className = `text bg-${color} bg-gradient fw-bold text-dark border-${color} border-2 align-middle`;
+					row.cells[cellIndex].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle h5 py-2`;
 				}
 				cellIndex++;
 			} 
