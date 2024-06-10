@@ -5,6 +5,7 @@ let room_list;
 let timetable;
 let local_faculty_data; 
 let messageCounter = 0;
+document.getElementById("loader").style.display = "none";
 const fixtime_firstphase = ()=>{                        //  this function removes all the classes and decrease the counter(section.length) from the timetable data saved during initialization
 	let mytable = document.getElementById("mytable");
 	for(let i=1;i<=7;i++){
@@ -201,6 +202,7 @@ const validateTeacherSubject = () => {
 };
 const save_table_func = () => {                         //  function below calculate and construct the timetable json and send that to the backend 
 	if( true ){
+		blocking();
         let tempteachersubjectdata = [];
         let scheduleslot = {}
         for (let i = 1; i <= 7; i++) {
@@ -232,7 +234,6 @@ const save_table_func = () => {                         //  function below calcu
         let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
         // Iterate over each row in the table body
         for (let i = 0; i < tableBody.rows.length; i++) {
-            document.getElementById("save_tt_json").disabled = true;
             let row = tableBody.rows[i];
 
             let subjectname = row.cells[0].firstChild.innerHTML;
@@ -597,25 +598,26 @@ const fetch_timetable =  () => {                        //  this function fetche
 		.then(() => {
 			render_tables();
 		})
-		.then(() => {
-			document.getElementById("save_tt_json").disabled=false;
-		})
 		.catch(error => {
 			float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
 			console.error('Data unavailable:', error)
 		});
 }
 const initializePage = () => {                          //  this function initializes the page by fetching the room list, faculty list and timetable data from the server
+	// document.getElementById("loader").style.display = "";
+	blocking();
 	fetch_timetable()
     .then(() => fetch_faculties_list())
     .then(() => fetch_room_list())
     .then(() => {
+		unblocking();
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
         }, 1500);
 		float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
     })
     .catch(error => {
+		unblocking();
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
         }, 1500);
@@ -632,7 +634,34 @@ const reset_table = () => {                             //  this function resets
 		}
 	}
 };
-
+const blocking = () => {
+	document.getElementById("save_tt_json").disabled = true;
+	document.getElementById("reset_tt").disabled = true;
+	document.getElementById("course_option").disabled = true;
+	document.getElementById("semester_option").disabled = true;
+	document.getElementById("section_option").disabled = true;
+	let table = document.getElementById("mytable");
+	for (let i = 1; i < table.rows.length; i++) {
+		for (let j = 1; j < table.rows[1].cells.length; j++) {
+			table.rows[i].cells[j].childNodes[0].disabled = true;
+			table.rows[i].cells[j].childNodes[1].disabled = true;
+		}
+	}
+}
+const unblocking = () => {
+	document.getElementById("save_tt_json").disabled = false;
+	document.getElementById("reset_tt").disabled = false;
+	document.getElementById("course_option").disabled = false;
+	document.getElementById("semester_option").disabled = false;
+	document.getElementById("section_option").disabled = false;
+	let table = document.getElementById("mytable");
+	for (let i = 1; i < table.rows.length; i++) {
+		for (let j = 1; j < table.rows[1].cells.length; j++) {
+			table.rows[i].cells[j].childNodes[0].disabled = false;
+			table.rows[i].cells[j].childNodes[1].disabled = false;
+		}
+	}
+}
 document.getElementById("loader").style.display = "none"; 			//  hiding the loader on the page load
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]

@@ -153,7 +153,8 @@ body{
     -webkit-user-select: none;
     user-select: none;
 }
-.button:active .button-top-blue ,.button:active .button-top-red {
+.button:active .button-top-blue ,.button:active .button-top-red,
+.button:disabled .button-top-blue ,.button:disabled .button-top-red {
     transform: translateY(6px);
 }
 .button-top-blue::after, .button-top-red::after {
@@ -187,9 +188,15 @@ body{
     transition-property: border-radius, padding-top;
     transition-duration: .2s;
 }
-.button:active .button-bottom-blue, .button:active .button-bottom-red  {
+.button:active .button-bottom-blue, .button:active .button-bottom-red ,
+.button:disabled .button-bottom-blue, .button:disabled .button-bottom-red  {
     border-radius: 10px 10px 8px 8px / 8px;
     padding-top: 0;
+}
+.button:disabled .button-top-blue, .button:disabled .button-top-red {
+    color: #b6b6b6;
+    text-shadow: none;
+    transition: ease-in-out 0.5s;
 }
 /* red color below and blue color + red color above */
 .button-top-red::after {
