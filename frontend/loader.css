@@ -9,9 +9,10 @@
     align-items: center;
     flex-direction: column;
     z-index: 500;
-    backdrop-filter: blur(50px);
-    background : rgba(0,0,0,0.5);   
-    /* background : linear-gradient( #dc354686,#2a819c94) ;    */
+    /* backdrop-filter: blur(5px); */
+    background : rgba(0, 0, 0, 0.69);
+    background : rgba(0, 0, 0, 0.804);  
+    zoom: 1.1;   
     height: 100vh;
     width: 100vw;
 }
