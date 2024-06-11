@@ -52,7 +52,7 @@ const letmesee2 = () => {
 			if( currrow === day_slot ){
 				day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
 			}
-			if (currcol === time_slot && today.getHours() < 19) { 				// color the time and day and period slots 
+			if (currcol === time_slot && currrow === day_slot && today.getHours() < 19) { 				// color the time and day and period slots 
 				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
 				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
 			}
