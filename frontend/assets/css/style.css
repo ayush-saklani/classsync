@@ -67,16 +67,62 @@ body{
     border-color: rgb(103, 103, 103);
 }
 .bus-dep{
-    border-right-style: dotted !important;
-    border-right-width: 10px !important;
-    border-right-color: rgb(255, 162, 1) !important;
-    border-right-color: #ff384c !important;
+    position: relative;
+    /* old design - bus arrival and departure border*/
+    /* border-right-style: dotted !important; */    
+    /* border-right-width: 10px !important; */
+    /* border-right-color: rgb(255, 162, 1) !important; */
+    /* border-right-color: #ff384c !important; */
 }
 .bus-arr{
-    border-right-style: dotted !important; 
-    border-right-width: 10px !important;
-    border-right-color: rgb(0, 113, 165) !important;
-    border-right-color: #3385ff !important;
+    position: relative;
+    /* border-right-style: dotted !important;  */
+    /* border-right-width: 10px !important; */
+    /* border-right-color: rgb(0, 113, 165) !important; */
+    /* border-right-color: #3385ff !important; */
+}
+.bus-arr::after, .bus-dep::after{ 
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10px;
+}
+.bus-arr::after {
+    background: #3385ff;
+    animation: wavedown 3s ease-in-out infinite;
+}
+.bus-dep::after {
+    background: #ff384c;
+    animation: waveup 3s ease-in-out infinite;
+}
+@keyframes wavedown {
+    0% {
+        opacity: 1;
+        height: 30%;
+    }
+    90% {
+        opacity: 1;
+        height: 100%;
+    }
+    100% {
+        opacity: 0;
+        height: 100%;
+    }
+}
+@keyframes waveup {
+    0%{
+        opacity: 0;
+        height: 100%;
+    }
+    10% {
+        opacity: 1;
+        height: 100%;
+    }
+    100% {
+        opacity: 1;
+        height: 30%;
+    }    
 }
 /* removes the margin but it looks bad in viewing portal as it uses same css in between might seperate it in future */
 #mytable td {
