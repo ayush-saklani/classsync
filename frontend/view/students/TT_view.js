@@ -1,22 +1,14 @@
 let timetable ;
 let flag=0;
 let events = {
-	"2024-06-06": {
-		"description": "Software Enginneering (Practical)",
-		"color": "info" 
-	},
-	"2024-06-08": {
-		"description": "Farewell Party BTech CSE", 
-		"color": "warning" 
-	},
-	"2024-06-10": {
-		"description": "buddha purnima Example", 
-		"color": "danger" 
-	},
-	"2024-06-19": {
-		"description": "Theory Paper start", 
-		"color": "warning" 
-	},
+	"2024-06-06": {"description": "Software Enginneering (Practical)","color": "info" },
+	"2024-06-08": {"description": "Farewell Party BTech CSE","color": "warning" },
+	"2024-06-19": {"description": "End Term- Compiler Design","color": "warning" },
+	"2024-06-21": {"description": "End Term- Software engineering","color": "warning" },
+	"2024-06-24": {"description": "End Term- Computer network(I)","color": "warning" },
+	"2024-06-26": {"description": "End Term- Fullstack web-dev","color": "warning" },
+	"2024-06-28": {"description": "End Term- Generative AI","color": "warning" },
+	"2024-07-01": {"description": "End Term- Career skills","color": "warning" },
 };
 let messageCounter = 0;
 const letmesee2 = (temp_tt) => {
@@ -51,9 +43,10 @@ const letmesee2 = (temp_tt) => {
 				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
 				document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
 			}
-			
-			if (currcol === time_slot && currrow === day_slot && today.getHours()<19) { // color the time and day and period slots 
+			if(currrow === day_slot){
 				day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
+			}
+			if (currcol === time_slot && currrow === day_slot && today.getHours()<19) { // color the time and day and period slots 
 				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
 				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
 			}
