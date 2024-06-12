@@ -81,20 +81,22 @@ body{
     /* border-right-color: rgb(0, 113, 165) !important; */
     /* border-right-color: #3385ff !important; */
 }
-.bus-arr::after, .bus-dep::after{ 
+.bus-arr::after, .bus-dep::before{ 
     content: "";
     position: absolute;
-    top: 0;
-    right: 0;
     width: 10px;
 }
 .bus-arr::after {
+    top: 0;
+    left: 0;
     background: #3385ff;
-    animation: wavedown 3s ease-in-out infinite;
+    animation: wavedown 2s ease-in-out infinite;
 }
-.bus-dep::after {
+.bus-dep::before {
+    bottom: 0;
+    right: 0;
     background: #ff384c;
-    animation: waveup 3s ease-in-out infinite;
+    animation: waveup 2s ease-in-out infinite;
 }
 @keyframes wavedown {
     0% {
@@ -111,17 +113,17 @@ body{
     }
 }
 @keyframes waveup {
-    0%{
-        opacity: 0;
-        height: 100%;
+    0% {
+        opacity: 1;
+        height: 30%;
     }
-    10% {
+    90% {
         opacity: 1;
         height: 100%;
     }
     100% {
-        opacity: 1;
-        height: 30%;
+        opacity: 0;
+        height: 100%;
     }    
 }
 /* removes the margin but it looks bad in viewing portal as it uses same css in between might seperate it in future */

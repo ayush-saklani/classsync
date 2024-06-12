@@ -5,7 +5,7 @@ const bus_arrival = ()=> {
 	for(let i=1; i<=10; i++){
 		let cell = row.cells[i].innerText.split("-");
 		if(arr.includes(cell[0])){
-			row.cells[i-1].classList.add("bus-arr");
+			row.cells[i].classList.add("bus-arr");
 		}if(dep.includes(cell[1])){
 			row.cells[i].classList.add("bus-dep");
 		}
