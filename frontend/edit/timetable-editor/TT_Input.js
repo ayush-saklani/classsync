@@ -622,14 +622,19 @@ const initializePage = () => {                          	//  this function initi
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 			}, 1500);
-			float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
+			if (timetable) {
+				float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
+			}
+			else {
+				float_error_card_func("Initialization Failed", "Initialization Failed due to network or server error.", "danger");
+			}
 		})
 		.catch(error => {
 			unblocking();
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 			}, 1500);
-			float_error_card_func("Error during initialization", "Error during initialization.", "danger");
+			float_error_card_func("Error during initialization", "Error during initialization. probably due to network or server error.", "danger");
 			console.error('Error during initialization:', error)
 		});
 };
@@ -642,34 +647,6 @@ const reset_table = () => {                             	//  this function reset
 		}
 	}
 };
-const blocking = () => {									//  this function blocks the table and select boxes for the user to prevent any changes
-	document.getElementById("save_tt_json").disabled = true;
-	document.getElementById("reset_tt").disabled = true;
-	document.getElementById("course_option").disabled = true;
-	document.getElementById("semester_option").disabled = true;
-	document.getElementById("section_option").disabled = true;
-	let table = document.getElementById("mytable");
-	for (let i = 1; i < table.rows.length; i++) {
-		for (let j = 1; j < table.rows[1].cells.length; j++) {
-			table.rows[i].cells[j].childNodes[0].disabled = true;
-			table.rows[i].cells[j].childNodes[1].disabled = true;
-		}
-	}
-}
-const unblocking = () => {									//  this function unblocks the table and select boxes for the user to make changes
-	document.getElementById("save_tt_json").disabled = false;
-	document.getElementById("reset_tt").disabled = false;
-	document.getElementById("course_option").disabled = false;
-	document.getElementById("semester_option").disabled = false;
-	document.getElementById("section_option").disabled = false;
-	let table = document.getElementById("mytable");
-	for (let i = 1; i < table.rows.length; i++) {
-		for (let j = 1; j < table.rows[1].cells.length; j++) {
-			table.rows[i].cells[j].childNodes[0].disabled = false;
-			table.rows[i].cells[j].childNodes[1].disabled = false;
-		}
-	}
-}
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click", reset_table);				// [ reset TT button eventlistner ]
