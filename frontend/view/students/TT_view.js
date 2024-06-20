@@ -11,6 +11,9 @@ let events = {
 	"2024-07-01": {"description": "End Term- Career skills","color": "warning" },
 };
 let messageCounter = 0;
+document.getElementById('course_option').value = document.cookie.split('; ').find(row => row.startsWith('course=')).split('=')[1];
+document.getElementById('semester_option').value = document.cookie.split('; ').find(row => row.startsWith('semester=')).split('=')[1];
+document.getElementById('section_option').value = document.cookie.split('; ').find(row => row.startsWith('section=')).split('=')[1];
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
 	for (let i = 1; i <= 7; i++) {
@@ -178,6 +181,9 @@ const letmeseeitbaby = () => {
 	let course = document.getElementById("course_option").value;
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
+	document.cookie = `course=${course};`
+	document.cookie = `semester=${semester};`
+	document.cookie = `section=${section};`
 
 	fetch('https://classsync-25hj.onrender.com/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
 		method: 'GET',
