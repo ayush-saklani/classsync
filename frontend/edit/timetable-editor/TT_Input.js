@@ -180,12 +180,12 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 							float_error_card_func(`Type 11 tester- Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${teacherSchedule.subjectcode} as subject in this slot already.`, "danger");
 							isValid = false;
 						}
-						if (teacherSchedule.section.length > 0) {
-							if (teacherSchedule.section.includes(document.getElementById("section_option").value)) {
-								float_error_card_func(`Type 22 tester - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
-								isValid = false;
-							}
-						}
+						// if (teacherSchedule.section.length > 0) {
+						// 	if (teacherSchedule.section.includes(document.getElementById("section_option").value)) {
+						// 		float_error_card_func(`Type 22 tester - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
+						// 		isValid = false;
+						// 	}
+						// }
 						if (teacherSchedule.subjectcode !== "" && teacherSchedule.subjectcode !== subjectCode) {
 							float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time. <br><b>[ choose another slot ]</b>`, "danger");
 							isValid = false;

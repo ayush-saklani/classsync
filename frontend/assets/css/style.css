@@ -89,7 +89,7 @@ body{
 .bus-arr::after {
     top: 0;
     left: 0;
-    background: #3385ff;
+    background: rgba(0, 125, 163, 0.827) ;
     animation: wavedown 2s ease-in-out infinite;
 }
 .bus-dep::before {
