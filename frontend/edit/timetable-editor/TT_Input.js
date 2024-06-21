@@ -120,7 +120,43 @@ const fixtime_secondphase = () => {                       	//  this function add
 	// console.log(room_list);
 	console.log(':::::  SECOND PHASE DONE  :::::');
 }
+const updateCounter = () => {                            	//  this function updates the counter of currently allocated classes in the timetable data
+	let mytable = document.getElementById("mytable");
+	let teacher_subject_table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+	for (let k = 0; k < teacher_subject_table.rows.length; k++) {
+		teacher_subject_table.rows[k].cells[6].firstChild.innerHTML = 0;
+	}
+	for (let i = 1; i <= 7; i++) {
+		for (let j = 1; j <= 10; j++) {
+			let sl_subjectcode = mytable.rows[i].cells[j].childNodes[0].value;
+			if (sl_subjectcode == '') {
+				continue;
+			}
+			if (teacher_subject_table.rows) {
+				for (let k = 0; k < teacher_subject_table.rows.length; k++) {
+					if (teacher_subject_table.rows[k].cells[3].firstChild.innerHTML === sl_subjectcode) {
+						teacher_subject_table.rows[k].cells[6].firstChild.innerHTML = parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) + 1;
+					}
+					if (parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) < parseInt(teacher_subject_table.rows[k].cells[4].firstChild.innerHTML)) {
+						let column = teacher_subject_table.rows[k].cells[6].firstChild;
+						column.classList = ("text", "text-warning","more_lectures");
+
+					}
+					else if (parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) == parseInt(teacher_subject_table.rows[k].cells[4].firstChild.innerHTML)) {
+						let column = teacher_subject_table.rows[k].cells[6].firstChild;
+						column.classList = ("text", "text-success");
+					}
+					else if (parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) > parseInt(teacher_subject_table.rows[k].cells[4].firstChild.innerHTML)) {
+						let column = teacher_subject_table.rows[k].cells[6].firstChild;
+						column.classList = ("text","text-danger","less_lectures");
+					}
+				}
+			}
+		}
+	}
+}
 const validateTeacherSubject = () => {						//  this function validates the teacher and subject data in the table and returns true if the data is valid else false
+	updateCounter();
 	let mytable = document.getElementById("mytable");
 	let isValid = true;
 
@@ -529,7 +565,7 @@ const render_tables = () => {                           	// renders the timetabl
 			cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
 			cell_insert.setAttribute("class", "text");
 			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3");
+			cell.setAttribute("class", "border-dark border-3 h5 fw-bold");
 
 			cell = newRow.insertCell();
 			cell_insert = document.createElement("span");
@@ -543,7 +579,7 @@ const render_tables = () => {                           	// renders the timetabl
 			cell_insert.innerHTML = 0;
 			cell_insert.setAttribute("class", "text");
 			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3");
+			cell.setAttribute("class", "border-dark border-3 h4 fw-bold");
 		}
 		add_subjects_options_to_mytable(localteacher_subject_data)
 
@@ -606,6 +642,9 @@ const fetch_timetable = () => {                        	//  this function fetche
 		})
 		.then(() => {
 			render_tables();
+		})
+		.then(() => {
+			updateCounter();
 		})
 		.catch(error => {
 			float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");

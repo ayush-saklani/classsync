@@ -126,6 +126,41 @@ body{
         height: 100%;
     }    
 }
+.more_lectures{
+    color: orange;
+}
+.less_lectures{
+    color: red;
+}
+.correct_lectures{
+    color: green;
+}
+.more_lectures::after{
+    content: "\25B2";
+    color: orange;
+    padding-left: 5px;
+    animation: fade 2s ease-in-out infinite;
+}
+.correct_lectures::after{
+    content: "\2B24";
+    color: green;
+    padding-left: 5px;
+    animation: fade 2s ease-in-out infinite;
+}
+.less_lectures::after{
+    content: "\25BC";
+    color: red;
+    padding-left: 5px;
+    animation: fade 2s ease-in-out infinite;
+}
+@keyframes fade {
+    0%,100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
 /* removes the margin but it looks bad in viewing portal as it uses same css in between might seperate it in future */
 #mytable td {
     padding: 0px;

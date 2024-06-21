@@ -55,6 +55,7 @@ _( currently in finalization phase )_**
 - [x] UI improvements.
  
 ## Version 1.8 *( under development )*
+- [x] Feature to check the number of lectures allocated out of total required lectures in a week.
 - [ ] Login for students teacher and admin
 
 ## Version 2.0 *( proposed )*
