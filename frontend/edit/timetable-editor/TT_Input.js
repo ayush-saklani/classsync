@@ -208,6 +208,7 @@ const save_table_func = () => {                         	//  function below calc
 		blocking();
 		let tempteachersubjectdata = [];
 		let scheduleslot = {}
+		let mytable = document.getElementById("mytable");
 		for (let i = 1; i <= 7; i++) {
 			let currrow = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 			let tempdayslot = {}
