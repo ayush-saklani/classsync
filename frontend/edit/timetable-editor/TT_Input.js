@@ -50,7 +50,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 								faculty_data[temp_facultyid].schedule[currday][currslot].subjectcode = "";
 								faculty_data[temp_facultyid].schedule[currday][currslot].course = "";
 								faculty_data[temp_facultyid].schedule[currday][currslot].semester = "";
-								faculty_data[temp_facultyid].schedule[currday][currslot].roomid = "";
+								faculty_data[temp_facultyid].schedule[currday][currslot].roomid = [];
 							}
 							else if (temp_faculty.section.length > 1) {
 								faculty_data[temp_facultyid].schedule[currday][currslot].section.pop(document.getElementById("section_option").value);
@@ -61,7 +61,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 							temp_faculty.subjectcode = "";
 							temp_faculty.course = "";
 							temp_faculty.semester = "";
-							temp_faculty.roomid = "";
+							temp_faculty.roomid = [];
 						}
 					}
 				}
@@ -103,11 +103,11 @@ const fixtime_secondphase = () => {                       	//  this function add
 							faculty_data[temp_facultyid].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
 						}
 						else if (temp_faculty.section.length == 0) {
-							faculty_data[temp_facultyid].schedule[currday][currslot].section = document.getElementById("section_option").value;
+							faculty_data[temp_facultyid].schedule[currday][currslot].section = [document.getElementById("section_option").value];
 							faculty_data[temp_facultyid].schedule[currday][currslot].subjectcode = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
 							faculty_data[temp_facultyid].schedule[currday][currslot].course = document.getElementById("course_option").value;
 							faculty_data[temp_facultyid].schedule[currday][currslot].semester = document.getElementById("semester_option").value;
-							faculty_data[temp_facultyid].schedule[currday][currslot].roomid = document.getElementById("mytable").rows[i].cells[j].childNodes[1].value;
+							faculty_data[temp_facultyid].schedule[currday][currslot].roomid = [document.getElementById("mytable").rows[i].cells[j].childNodes[1].value];
 						}
 						// console.log(faculty_data[temp_facultyid])
 					}
@@ -227,6 +227,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 							isValid = false;
 						}
 						if (teacherSchedule.roomid.length != 0 && teacherSchedule.roomid[0] !== curr_slot_room) {
+							console.log(room_list[teacherSchedule.roomid])
 							float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time. <br><b>[ choose another slot ]</b>`, "danger");
 							isValid = false;
 						}
