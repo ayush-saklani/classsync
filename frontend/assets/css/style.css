@@ -204,6 +204,11 @@ body{
         text-shadow: 0 0 10px rgb(0, 0, 0);
     }
 }
+#profile_img{
+    border: 1px solid rgba(138, 138, 138, 0.162) !important;
+    height: 50px;
+    width: 50px;
+}
 /* 3d button start */
 .button {
     position: relative;
