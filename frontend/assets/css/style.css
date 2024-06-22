@@ -33,7 +33,7 @@ body{
     transform: scale(1.05);
     transition: 0.2s;
 }
-.signinbox{
+.signinbox, .signupbox{
     border-radius: 30px;
     width: 75%;
     background-color: rgb(255, 255, 255);
@@ -42,11 +42,6 @@ body{
     left: 50%;
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-}
-.signupbox{
-    border-radius: 30px;
-    width: 75%;
-    background-color: rgb(255, 255, 255);
 }
 #signin_button,#signup_button{
     background-color: #DC3545;
