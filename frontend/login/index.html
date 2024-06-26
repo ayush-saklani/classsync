@@ -52,33 +52,38 @@
     
     <script>
         // document.getElementById("signin_error").style.display = "none";
-        let display_error = (message) => {
+        let display_error = (message) => {  // wrong username or password
             document.getElementById("signin_email").style.border = "2px solid #dc3545";
             document.getElementById("signin_InputPassword").style.border = "2px solid rgba(1, 106, 137, 0.827)";
             let error = document.getElementById("signin_error");
             error.innerHTML = (message || "Wrong username or password") + " *";
-            // error.style.display = "block";
         }
-        // display_error();
-        // display_error("User not found");
-        document.getElementById("login").addEventListener("click",()=>{
-            display_error("Backend Server is down")
-        });
-
-        
-        // let button = document.getElementById("login")
-        // let func1 = ()=> {
-        //     let button = document.getElementById("login")
-        //     button.childNodes[1].classList = "button-top-blue h5";
-        //     button.childNodes[3].classList = "button-bottom-blue";
-        // }
-        // let func2 = ()=> {
-        //     let button = document.getElementById("login")
-        //     button.childNodes[1].classList = "button-top-red h5";
-        //     button.childNodes[3].classList = "button-bottom-red";
-        // }
-        // button.addEventListener("mouseover", func1); 
-        // button.addEventListener("mouseout", func2); 
+        let reverse_display_error = (message) => {  // wrong username or password
+            document.getElementById("signin_email").style.border = ""
+            document.getElementById("signin_InputPassword").style.border = "";
+            let error = document.getElementById("signin_error");
+            error.innerHTML = "";    
+        }
+        const login_check = () => {
+            let email = document.getElementById("signin_email").value;             // send these to server and check then get the uuid
+            let password = document.getElementById("signin_InputPassword").value;  // send these to server and check then get the uuid
+            let admin_email = "admin";                              // this will happen in server
+            let admin_pass = "admin";                               // this will happen in server
+            let validate = (email == admin_email && password == admin_pass);    // get this from server
+            let uuid = "1234567890";                                            // get this from server
+            
+            if (validate) {
+                document.cookie = `uuid=${uuid}; path=/;`;
+                window.location.href = "/edit/";
+            } else {
+                display_error("Email or password is incorrect");
+                // display_error();
+                // display_error("User not found");
+            }
+        }
+        document.getElementById("login").addEventListener("click", login_check);
+        document.getElementById("signin_email").addEventListener("change", reverse_display_error);
+        document.getElementById("signin_InputPassword").addEventListener("change", reverse_display_error);
 
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"crossorigin="anonymous"></script>
