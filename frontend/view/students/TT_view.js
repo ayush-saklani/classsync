@@ -12,9 +12,9 @@ let events = {
 };
 let messageCounter = 0;
 if (document.cookie){
-	document.getElementById('course_option').value = document.cookie.split('; ').find(row => row.startsWith('course=')).split('=')[1];
-	document.getElementById('semester_option').value = document.cookie.split('; ').find(row => row.startsWith('semester=')).split('=')[1];
-	document.getElementById('section_option').value = document.cookie.split('; ').find(row => row.startsWith('section=')).split('=')[1];
+	document.getElementById('course_option').value = document.cookie.split('; ').find(row => row.startsWith('course=')).split('=')[1]??"B.Tech";
+	document.getElementById('semester_option').value = document.cookie.split('; ').find(row => row.startsWith('semester=')).split('=')[1]??"6";
+	document.getElementById('section_option').value = document.cookie.split('; ').find(row => row.startsWith('section=')).split('=')[1]??"A";
 }
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
