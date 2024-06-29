@@ -1,0 +1,14 @@
+@media only screen and (max-width: 900px) {
+    body>div , body>section{
+        display: none;
+    }
+    footer::before{
+        content: "This App is made Exclusive for Desktop";
+        font-size: xx-large;
+        font-weight: bolder;
+        padding: 30px;
+        display: flex;
+        justify-content: center;        
+        text-align: center;        
+    }
+}

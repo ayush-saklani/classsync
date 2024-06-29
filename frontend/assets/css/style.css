@@ -168,19 +168,6 @@ body{
     border-width: 5px;
     border-color: rgb(0, 0, 0);
 }
-@media only screen and (max-width: 900px) {
-    body>div , body>section{
-    display: none;
-    }
-    footer::before{
-        content: "This App is made Exclusive for Desktop";
-        font-size: xx-large;
-        font-weight: bolder;
-        padding: 30px;
-        display: flex;
-        justify-content: center;        
-    }
-}
 .bg-primary {
     background-color: rgba(1, 106, 137, 0.827) !important;
 }
@@ -295,80 +282,62 @@ table>tbody>tr{
     background-color: #9f1d2a; 
 }
 /* 3d button end */
+
 /* toggle switch start */
-.toggle-container {
-    --active-color: rgba(1, 106, 137, 0.827);
-    --inactive-color: #dc3545;
+.switch {
+    --input-focus: #2d8cf0;
+    --font-color: #323232;
+    --font-color-sub: #666;
+    --bg-color: #fff;
+    --bg-color-alt: #666;
+    --main-color: #323232;
     position: relative;
-    aspect-ratio: 292 / 142;
-    padding-top: 5px;
-    height: 3em;
-}
-.toggle-input {
-    appearance: none;
-    margin: 0;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 50px;
+    height: 20px;
 }
 .toggle {
-    width: 100%;
-    height: 100%;
-    overflow: visible;
+    opacity: 0;
+    width: 0;
+    height: 0;
 }
-.toggle-background {
-    fill: var(--inactive-color);
-    transition: fill .4s;
+.slider {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--bg-colorcolor);
+    transition: 0.3s;
 }
-.toggle-input:checked+.toggle .toggle-background {
-    fill: var(--active-color);
+.slider:before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    left: -2px;
+    bottom: 2px;
+    background-color: var(--bg-color);
+    box-shadow: 0 3px 0 var(--main-color);
+    transition: 0.3s;
 }
-.toggle-circle-center {
-    transform-origin: center;
-    transition: transform .6s;
+.toggle:checked+.slider {
+    background-color: var(--input-focus);
 }
-.toggle-input:checked+.toggle .toggle-circle-center {
-    transform: translateX(150px);
-}
-.toggle-circle {
-    transform-origin: center;
-    transition: transform .45s;
-    backface-visibility: hidden;
-}
-.toggle-circle.left {
-    transform: scale(1);
-}
-.toggle-input:checked+.toggle .toggle-circle.left {
-    transform: scale(0);
-}
-.toggle-circle.right {
-    transform: scale(0);
-}
-.toggle-input:checked+.toggle .toggle-circle.right {
-    transform: scale(1);
-}
-.toggle-icon {
-    transition: fill .4s;
-}
-.toggle-icon.on {
-    fill: var(--inactive-color);
-}
-.toggle-input:checked+.toggle .toggle-icon.on {
-    fill: #fff;
-}
-.toggle-icon.off {
-    fill: #eaeaec;
-}
-.toggle-input:checked+.toggle .toggle-icon.off {
-    fill: var(--active-color);
-}
-.toggle-input:disabled+.toggle .toggle-background {
-    fill: #717171;
-    transition: 1s;
+.toggle:checked+.slider:before {
+    transform: translateX(30px);
 }
 /* toggle switch end */
 .form-select{
