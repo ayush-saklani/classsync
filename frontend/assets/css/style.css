@@ -367,3 +367,7 @@ table>tbody>tr{
     animation: sink 1s forwards;
 }
 /* rise and sink animation end*/
+::-webkit-scrollbar {
+    height: 10px; /* Height for horizontal scrollbar */
+    width: 10px; /*Width for vertical scrollbar*/
+}
