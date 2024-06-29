@@ -339,6 +339,10 @@ table>tbody>tr{
 .toggle:checked+.slider:before {
     transform: translateX(30px);
 }
+.toggle:disabled + .slider {
+    opacity: 0.5;
+    background-color: grey;
+}
 /* toggle switch end */
 .form-select{
     border-radius: 0% !important;

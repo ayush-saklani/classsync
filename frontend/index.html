@@ -5,17 +5,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Class-Sync | Home</title>
-	<script>
-		let fileName = location.href.split("/")[2]
-		console.log(fileName)
-		if (fileName == "gehutimetable.vercel.app") {
-			window.location.href = "/view/"; // redirecting to view page automatically
-		}
-		else if (fileName == "classsync.vercel.app"){
-			window.location.href = "/edit/"; 
-		}
-		// window.location.href = "/view/"; // redirecting to view page automatically
-	</script>
+	<script src="/assets/js/redirection.js"></script>
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
@@ -31,10 +21,6 @@
 	<nav class="navbar navbar-expand mx-3">
 		<img src="./assets/image/logo.png" height="75px" class="d-inline-block align-text-top ">
 		<h2 class="mx-3 my-3 heading-text">Class-Sync Timetable Manager</h2>
-		<div class="ms-auto">
-			<button class="ms-auto fw-bold h4 px-4 btn btn-lg btn-secondary rounded-pill" id="login_button" onclick="window.location.href = '/login/';">Login</button>
-		</div>
-		<!-- this page is currently testing the login logout issues and is begin redirected thankyou -->
 	</nav>
 
 	<section class="container mt-5">
@@ -99,7 +85,6 @@
 	</footer>
 	<!-- footer div end -->
 
-	<script src="./assets/js/userlogin.js"></script>
 	<script src="./assets/js/loader.js"></script>
 	<script src="./assets/js/float_error_card_func.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>

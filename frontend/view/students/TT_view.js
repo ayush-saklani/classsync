@@ -180,6 +180,7 @@ const college_event_manager = () => {
 
 const letmeseeitbaby = () => {
 	// document.getElementById("loader").style.display = "flex"; // uncomment this line to show the loader for every change
+	blocking();
 	let course = document.getElementById("course_option").value;
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
@@ -209,11 +210,13 @@ const letmeseeitbaby = () => {
 			}
 		})
 		.then(() => {
+			unblocking();
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 			}, 1500);
 		})
 		.catch(error => {
+			unblocking();
 			document.getElementById("loader").style.display = "none";
             float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
 			console.error('Data unavailable:', error)

@@ -1,10 +1,10 @@
 // window.location = "/view/";
 const delete_cookie = () => {       // logout function
-    document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/edit;";
     window.location.reload();
 }
 const validate_cookie = (sessionId) => {
-    document.cookie = "uuid=2117421; path=/;";                               //temp remove this line
+    document.cookie = "uuid=2117421; path=/edit;";                               //temp remove this line
     let butt = document.createElement("button");                             //temp remove this line
     butt.className = "fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill";   //temp remove this line
     butt.id = "logout_button";                                               //temp remove this line
@@ -36,7 +36,7 @@ const validate_cookie = (sessionId) => {
         })
         .catch(error => {
             console.error('Error:', error);
-            // document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";   //uncomment this line
+            // document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/edit;";   //uncomment this line
             // window.location.href = '/login';                                             //uncomment this line
         });
 }
@@ -46,7 +46,7 @@ const login = () => {
         return;
     }
     else {
-        document.cookie = "uuid=2117421; path=/;";      //temp remove this line
+        document.cookie = "uuid=2117421; path=/edit;";      //temp remove this line
         fetch('http://localhost:3000/logindata/login', {
             method: 'POST',
             headers: {
@@ -58,11 +58,11 @@ const login = () => {
                 if (!response.ok) {
                     throw new Error('Invalid UUID');
                 }
-                document.cookie = `uuid=${response.json().uuid};path=/;`;
+                document.cookie = `uuid=${response.json().uuid};path=/edit;`;
                 return response.json();
             })
             .then(data => {
-                document.cookie = `uuid=${data.uuid};path=/;`;
+                document.cookie = `uuid=${data.uuid};path=/edit;`;
                 if (data.valid) {
                     let butt = document.createElement("button");
                     butt.className = "fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill";
@@ -71,13 +71,13 @@ const login = () => {
                     butt.addEventListener("click", delete_cookie);
                     document.getElementById("login_button").replaceWith(butt);
                 } else {
-                    document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                    document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/edit;";
                     window.location = "/login/";
                 }
             })
             .catch(error => {
                 console.error('Error:', error);
-                document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+                document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/edit;";
                 window.location = "/login/";
             });
     }
