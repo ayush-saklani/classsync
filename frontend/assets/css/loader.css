@@ -16,11 +16,6 @@
     height: 100vh;
     width: 100vw;
 }
-@media only screen and (max-width: 900px) {
-    .loaderdiv{
-        display: none;
-    }
-}
 logodiv{
     width: 100vb;
 }
@@ -88,3 +83,46 @@ logodiv > h1::after {
     background: #414040;
 }
 /* scroll bar css end */
+@media only screen and (max-width: 900px) {
+    logodiv>h1{
+        font-size: 2em;
+    }
+    logodiv>h5{
+        position: absolute;
+        bottom: 35vh;
+        font-size: 0.9em;
+    }
+    logodiv > h1::before ,logodiv > h1::after {
+        height: 7px;
+        box-shadow: 1px 1px 7px  #000000;
+    }
+}
+@media only screen and (max-width: 600px) {
+    logodiv>h1{
+        font-size: 1.5em;
+    }
+    logodiv>h5{
+        position: absolute;
+        bottom: 38vh;
+        font-size: 0.7em;
+    }
+    logodiv > h1::before ,logodiv > h1::after {
+        height: 6px;
+    }
+}
+@media only screen and (max-width: 460px) {
+    logodiv>h1{
+        font-size: 1.2em;
+    }
+    logodiv>h5{
+        font-size: 0.6em;
+    }
+    logodiv > h1::before ,logodiv > h1::after {
+        height: 5px;
+    }
+}
+@media only screen and (max-width: 350px) {
+    .loaderdiv{
+        display: none;
+    }
+}

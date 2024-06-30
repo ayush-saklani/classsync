@@ -154,17 +154,16 @@ const letmeseeitbaby = () => {
 			}
 		})
 		.then(() => {
-			unblocking();
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
-				document.getElementById("toggle_event").disabled = false;
+				unblocking();
 			}, 1500);
 			float_error_card_func("Faculty Data Available", "Faculty Data is available for the selected teacher. timetable has been rendered successfully.", "success");
 		})
 		.catch(error => {
-			unblocking();
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
+				unblocking();
 			}, 1500);
 			float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
 			console.error('Data unavailable:', error)
