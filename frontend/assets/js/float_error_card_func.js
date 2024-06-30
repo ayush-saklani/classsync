@@ -1,4 +1,5 @@
 //  the function below creates a floating card with the success and warning message and then removes it after 5 seconds
+
 const float_error_card_func = (title, desc, color) => {
 	const uniqueId = `float_error_card_${messageCounter++}`;
 
@@ -10,6 +11,22 @@ const float_error_card_func = (title, desc, color) => {
 	let headerDiv = document.createElement('div');
 	headerDiv.className = "card-header fw-bold";
 	div.appendChild(headerDiv);
+
+	let headerText = document.createElement('span');
+	headerDiv.appendChild(headerText);
+
+	let dismissButton = document.createElement('button');
+	dismissButton.innerHTML = `<i class="bi bi-x-circle h5"></i>`;
+	dismissButton.style.webkitTextStrokeWidth = "1px";
+	dismissButton.className = "btn float-end p-0 m-0 card-header";
+	dismissButton.addEventListener('click', () => {
+		div.classList.add('sink');
+		setTimeout(() => {
+			div.remove();
+		}, 1000);
+	});
+	headerDiv.appendChild(dismissButton);
+
 
 	let bodyDiv = document.createElement('div');
 	bodyDiv.className = "card-body";
@@ -28,15 +45,15 @@ const float_error_card_func = (title, desc, color) => {
 	document.getElementById('message_container').appendChild(div);
 
 	if (color === "success") {
-		headerDiv.innerHTML = `Success <i class="bi bi-check-circle-fill"></i>`;
+		headerText.innerHTML = `Success <i class="bi bi-check-circle-fill"></i>`;
 	} else if (color === "danger") {
-		headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-triangle-fill"></i>`;
-	}else if (color === "warning") {
-        headerDiv.innerHTML = `Warning <i class="bi bi-exclamation-octagon-fill"></i>`;
-    }else if (color === "info") {
-		headerDiv.innerHTML = `Info <i class="bi bi-info-circle-fill"></i>`;
-	}else if (color === "primary") {
-		headerDiv.innerHTML = `Info <i class="bi bi-info-circle-fill"></i>`;
+		headerText.innerHTML = `Warning <i class="bi bi-exclamation-triangle-fill"></i>`;
+	} else if (color === "warning") {
+		headerText.innerHTML = `Warning <i class="bi bi-exclamation-octagon-fill"></i>`;
+	} else if (color === "info") {
+		headerText.innerHTML = `Info <i class="bi bi-info-circle-fill"></i>`;
+	} else if (color === "primary") {
+		headerText.innerHTML = `Info <i class="bi bi-info-circle-fill"></i>`;
 	}
 	div.classList.add('rise');
 	setTimeout(() => {
@@ -45,5 +62,5 @@ const float_error_card_func = (title, desc, color) => {
 		setTimeout(() => {
 			div.remove();
 		}, 1000);
-	}, 5000);
+	}, 7000);
 }
