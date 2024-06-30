@@ -1,20 +1,20 @@
-let timetable ;
-let flag=0;
+let timetable;
+let flag = 0;
 let events = {
-	"2024-06-06": {"description": "Software Enginneering (Practical)","color": "info" },
-	"2024-06-08": {"description": "Farewell Party BTech CSE","color": "warning" },
-	"2024-06-19": {"description": "End Term- Compiler Design","color": "warning" },
-	"2024-06-21": {"description": "End Term- Software engineering","color": "warning" },
-	"2024-06-24": {"description": "End Term- Computer network(I)","color": "warning" },
-	"2024-06-26": {"description": "End Term- Fullstack web-dev","color": "warning" },
-	"2024-06-28": {"description": "End Term- Generative AI","color": "warning" },
-	"2024-07-01": {"description": "End Term- Career skills","color": "warning" },
+	"2024-06-06": { "description": "Software Enginneering (Practical)", "color": "info" },
+	"2024-06-08": { "description": "Farewell Party BTech CSE", "color": "warning" },
+	"2024-06-19": { "description": "End Term- Compiler Design", "color": "warning" },
+	"2024-06-21": { "description": "End Term- Software engineering", "color": "warning" },
+	"2024-06-24": { "description": "End Term- Computer network(I)", "color": "warning" },
+	"2024-06-26": { "description": "End Term- Fullstack web-dev", "color": "warning" },
+	"2024-06-28": { "description": "End Term- Generative AI", "color": "warning" },
+	"2024-07-01": { "description": "End Term- Career skills", "color": "warning" },
 };
 let messageCounter = 0;
-if (document.cookie){
-	document.getElementById('course_option').value = document.cookie.split('; ').find(row => row.startsWith('course=')).split('=')[1]??"B.Tech";
-	document.getElementById('semester_option').value = document.cookie.split('; ').find(row => row.startsWith('semester=')).split('=')[1]??"6";
-	document.getElementById('section_option').value = document.cookie.split('; ').find(row => row.startsWith('section=')).split('=')[1]??"A";
+if (document.cookie) {
+	document.getElementById('course_option').value = document.cookie.split('; ').find(row => row.startsWith('course=')).split('=')[1] ?? "B.Tech";
+	document.getElementById('semester_option').value = document.cookie.split('; ').find(row => row.startsWith('semester=')).split('=')[1] ?? "6";
+	document.getElementById('section_option').value = document.cookie.split('; ').find(row => row.startsWith('section=')).split('=')[1] ?? "A";
 }
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
@@ -24,7 +24,7 @@ const letmesee2 = (temp_tt) => {
 		// document.getElementById("render-semester-detail").innerHTML = "Semester : " + document.getElementById("semester_option").value;
 		// document.getElementById("render-section-detail").innerHTML =  "Section : " + document.getElementById("section_option").value;
 		// =================================================================================================================================== 
-		
+
 		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
 		let day_row_border_adding = document.getElementById("mytable").rows[i];
 		let today = new Date();
@@ -48,15 +48,15 @@ const letmesee2 = (temp_tt) => {
 				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
 				document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
 			}
-			if(currrow === day_slot){
+			if (currrow === day_slot) {
 				day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
 			}
-			if (currcol === time_slot && currrow === day_slot && today.getHours()<19) { // color the time and day and period slots 
+			if (currcol === time_slot && currrow === day_slot && today.getHours() < 19) { // color the time and day and period slots 
 				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
 				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
 			}
 		}
-		if(holidaychecker === 10){
+		if (holidaychecker === 10) {
 			let row = document.getElementById("mytable").rows[i];
 			for (let k = 1; k <= 10; k++) {
 				row.cells[k].className = "";
@@ -74,38 +74,38 @@ const letmesee2 = (temp_tt) => {
 			}
 		}
 	}
-	if(temp_tt && temp_tt.teacher_subject_data){
+	if (temp_tt && temp_tt.teacher_subject_data) {
 		// populate the subject teacher table with the data
 		let localteacher_subject_data = temp_tt.teacher_subject_data;
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 		table.innerHTML = "";
 		for (let i = 0; i < localteacher_subject_data.length; i++) {
 			let newRow = table.insertRow(table.rows.length);
-			
+
 			let cell = newRow.insertCell();
 			cell.setAttribute("class", "table-light text border-dark border-3");
 			let select = document.createElement('span');
 			select.innerText = localteacher_subject_data[i].subjectname;
 			cell.appendChild(select);
-			
+
 			cell = newRow.insertCell();
 			cell.setAttribute("class", "table-light text border-dark border-3");
 			select = document.createElement('span');
 			select.innerText = localteacher_subject_data[i].teachername;
 			cell.appendChild(select);
-			
+
 			cell = newRow.insertCell();
 			cell.setAttribute("class", "table-light text border-dark border-3");
 			select = document.createElement('span');
 			select.innerText = localteacher_subject_data[i].subjectcode;
 			cell.appendChild(select);
-			
+
 			cell = newRow.insertCell();
 			cell.setAttribute("class", "table-light text border-dark border-3");
 			select = document.createElement('span');
 			select.innerText = localteacher_subject_data[i].weekly_hrs;
 			cell.appendChild(select);
-			
+
 			cell = newRow.insertCell();
 			cell.setAttribute("class", "table-light text border-dark border-3");
 			select = document.createElement('span');
@@ -113,14 +113,14 @@ const letmesee2 = (temp_tt) => {
 			cell.appendChild(select);
 		}
 	}
-	else{
+	else {
 		float_error_card_func("Timetable not found", "The timetable you are looking for is not available. Please try again later or contact admin.", "danger");
 		//empty the table and color the cells
 		let temp_teachertable = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-		temp_teachertable.innerHTML = "";	
+		temp_teachertable.innerHTML = "";
 		const table = document.getElementById("mytable");
 		const rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-		
+
 		for (let i = 0; i < rows.length; i++) {
 			const cells = rows[i].getElementsByTagName("td");
 			for (let j = 0; j < cells.length; j++) {
@@ -137,35 +137,35 @@ const letmesee2 = (temp_tt) => {
 					cell.classList.add('bg-primary');
 				}
 			}
-		}		
+		}
 	}
 };
 // letmesee2(temp_tt)
 
-const college_event_manager = () => {  
+const college_event_manager = () => {
 	let today = new Date();
-    let startDayIndex = today.getDay()-1;
-    console.log(startDayIndex);
-    for (let i = 0; i < 7; i++) {
+	let startDayIndex = today.getDay() - 1;
+	console.log(startDayIndex);
+	for (let i = 0; i < 7; i++) {
 		let currentDate = new Date();
 		currentDate.setDate(today.getDate() + i);
 		let currentDateString = currentDate.toISOString().split('T')[0];
-		console.log(currentDateString);	
+		console.log(currentDateString);
 		if (events[currentDateString]) {
 			let rowIndex = (startDayIndex + i) % 7 + 1;
 			let row = document.getElementById("mytable").rows[rowIndex];
-			let color = events[currentDateString].color || "warning"; 
-			
+			let color = events[currentDateString].color || "warning";
+
 			for (let j = 1; j <= 10; j++) {
 				row.cells[j].className = "";
 				row.cells[j].innerHTML = "";
 				row.cells[j].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle`;
 			}
-			
+
 			// Split the description into words
 			let words = events[currentDateString].description.split(' ');
-			let cellIndex = Math.floor((10-words.length)/2)+1 // Start updating from the second cell (first is for day label)
-			
+			let cellIndex = Math.floor((10 - words.length) / 2) + 1 // Start updating from the second cell (first is for day label)
+
 			for (let word of words) {
 				if (cellIndex < row.cells.length) {
 					row.cells[cellIndex].innerHTML = word;
@@ -173,9 +173,9 @@ const college_event_manager = () => {
 					row.cells[cellIndex].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle h5 py-2`;
 				}
 				cellIndex++;
-			} 
+			}
 		}
-	}	
+	}
 };
 
 const letmeseeitbaby = () => {
@@ -202,11 +202,11 @@ const letmeseeitbaby = () => {
 			letmesee2(timetable);
 		})
 		.then(() => {
-			if(flag === 1){
+			if (flag === 1) {
 				college_event_manager();
-				setTimeout(()=>{float_error_card_func("Events view On", "", "success")}, 2000);
-			}else{
-				setTimeout(()=>{float_error_card_func("Events view Off", "", "danger")}, 2000);
+				setTimeout(() => { float_error_card_func("Events view On", "", "success") }, 2000);
+			} else {
+				setTimeout(() => { float_error_card_func("Events view Off", "", "danger") }, 2000);
 			}
 		})
 		.then(() => {
@@ -218,7 +218,7 @@ const letmeseeitbaby = () => {
 		.catch(error => {
 			unblocking();
 			document.getElementById("loader").style.display = "none";
-            float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
+			float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
 			console.error('Data unavailable:', error)
 		});
 }
@@ -238,11 +238,11 @@ document.getElementById('section_option').addEventListener('change', letmeseeitb
 //         html2canvas: { scale: 2 }, // Optional - set the scale for html2canvas
 //         jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' } // Optional - set PDF format and orientation
 //     };
-	
+
 //     html2pdf().from(element).set(opt).save();
 // });
 // =================================================================================================================================== 
-document.getElementById("toggle_event").addEventListener("click", function() {
+document.getElementById("toggle_event").addEventListener("click", function () {
 	flag = flag === 1 ? 0 : 1;
 	letmeseeitbaby();
 });
