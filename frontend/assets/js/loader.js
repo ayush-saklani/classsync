@@ -6,7 +6,7 @@ const loader_loading = ()=>{
     let delay_warning = document.createElement('h5');
     delay_warning.classList.add('mx-3', 'my-3', 'heading-text');
     delay_warning.style.display = 'none';
-    delay_warning.innerHTML = `Server is probably doing a cold Starting, Please Wait...`;
+    delay_warning.innerHTML = `Server is probably doing a cold Restart, Please Wait...`;
     document.getElementById("loader").appendChild(delay_warning);
 }
 loader_loading();
