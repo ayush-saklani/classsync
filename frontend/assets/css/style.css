@@ -47,9 +47,8 @@ body{
     background-color: rgba(0, 0, 0, 0.4);
     transition: 0.2s;
 }
-.card-img-overlay h5{
-    font-weight: bold;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.596);
+.card-img-overlay p{
+    color: rgb(219, 218, 218) !important;
 }
 .signinbox, .signupbox{
     border-radius: 30px;

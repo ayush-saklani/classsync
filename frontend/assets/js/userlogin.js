@@ -5,11 +5,11 @@ const delete_cookie = () => {       // logout function
 }
 const validate_cookie = (sessionId) => {
     let butt = document.createElement("button");                             /////////////////////  temp remove this line
-    butt.className = "fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill";   /////////////////////  temp remove this line
+    butt.className = "ms-auto fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill float-end";   /////////////////////  temp remove this line
     butt.id = "logout_button";                                               /////////////////////  temp remove this line
     butt.innerHTML = "Logout";                                               /////////////////////  temp remove this line
     butt.addEventListener("click", delete_cookie);                           /////////////////////  temp remove this line
-    document.getElementById("login_button").replaceWith(butt);               /////////////////////  temp remove this line
+    document.getElementsByTagName('nav')[0].appendChild(butt);
     return                                                                   /////////////////////  temp remove this line           
        
     fetch('http://localhost:3000/logindata/login_uuid_validate', {
@@ -41,6 +41,18 @@ const validate_cookie = (sessionId) => {
             console.error('Error:', error);
         });
 }
+// this is the code for the login button currently not in use and logout button is inserted if cookie is there else redirected to login page
+// const addLoginButton = () => {
+//     let butt = document.createElement("button");
+//     butt.className = "ms-auto fw-bold h4 px-4 btn btn-lg btn-secondary rounded-pill float-end";
+//     butt.id = "login_button";
+//     butt.innerHTML = "Login";
+//     butt.addEventListener("click", () => {
+//         window.location.href = '/login';
+//     });
+//     document.getElementsByTagName('nav')[0].appendChild(butt);
+// }
+// addLoginButton();
 document.addEventListener('DOMContentLoaded', ()=>{
     if (document.cookie.includes("uuid=")) {
         validate_cookie(document.cookie.split("=")[1]);
