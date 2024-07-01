@@ -7,7 +7,7 @@ let display_error = (message) => {  // wrong username or password
     let error = document.getElementById("signin_error");
     error.innerHTML = (message || "Wrong username or password") + " *";
 }
-let reverse_display_error = (message) => {  // wrong username or password
+let reverse_display_error = () => {  // wrong username or password
     document.getElementById("signin_email").style.border = ""
     document.getElementById("signin_InputPassword").style.border = "";
     let error = document.getElementById("signin_error");
