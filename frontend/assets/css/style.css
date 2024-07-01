@@ -20,6 +20,18 @@ nav>h2::before {
 nav>h2:hover::after, nav>h2:hover::before {
     width: 90%;
 }
+nav> .btn{
+    box-shadow: 1px 1px 7px  #000000;
+    transition: 0.2s;
+}
+nav> .btn:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+nav> .btn:active{
+    transform: scale(1.00);
+    transition: 0.2s;
+}
 .text{
     font-family:"Montserrat", sans-serif;
 }
