@@ -26,12 +26,30 @@ nav>h2:hover::after, nav>h2:hover::before {
 body{
     background-color: rgb(240, 244, 249);
 }
-.card>a>img{
+.card{
     transition: 0.2s;
 }
-.card>a>img:hover{
+.card:hover{
     transform: scale(1.05);
     transition: 0.2s;
+}
+.card-img-overlay{
+    /* background-color: rgba(0, 0, 0, 0.596); */
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));    
+    color: white;
+    justify-content: flex-end;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px !;
+    transition: 0.2s;
+}
+.card-img-overlay:hover{
+    background-color: rgba(0, 0, 0, 0.4);
+    transition: 0.2s;
+}
+.card-img-overlay h5{
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.596);
 }
 .signinbox, .signupbox{
     border-radius: 30px;
