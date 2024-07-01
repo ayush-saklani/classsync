@@ -388,3 +388,20 @@ table>tbody>tr{
     height: 10px; /* Height for horizontal scrollbar */
     width: 10px; /*Width for vertical scrollbar*/
 }
+.under-development {
+    position: relative;
+}
+.under-development::before {
+    content: "";        
+    position: absolute; 
+    top: 0;
+    left: 0;
+    width: 100%;                                 
+    height: 100%;
+    background-color: rgba(161, 161, 161, 0.199);      
+    background-image: url('/assets/image/under-development.png');     
+    background-size:contain ;                   
+    background-position: center ;               
+    background-repeat: no-repeat;
+    z-index: 3; 
+}
