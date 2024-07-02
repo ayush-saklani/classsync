@@ -12,8 +12,12 @@ const app = express();
 
 app.use(
     cors({
-        origin: "*",
-        methods: ["GET", "PATCH", "POST", "DELETE", "PUT"],
+        origin: [
+            "http://localhost:5500",
+            "https://classsync.vercel.app/",
+            "https://gehutimetable.vercel.app/",
+            "http://projectclasssync.vercel.app/",
+        ],
         credentials: true,
     })
 );
