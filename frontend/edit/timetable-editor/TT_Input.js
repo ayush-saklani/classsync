@@ -312,7 +312,7 @@ const save_table_func = () => {                         	//  function below calc
 		const jsonDataString = JSON.stringify(jsonData, null, 4);
 
 		// Create a POST request
-		fetch('http://127.0.0.1:3000/table/save-timetable', {
+		fetch(`${localhost}/table/save-timetable`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -338,7 +338,7 @@ const save_table_func = () => {                         	//  function below calc
 				fixtime_secondphase();
 			})
 			.then(() => {
-				fetch('http://127.0.0.1:3000/list/save-list', {
+				fetch(`${localhost}/list/save-list`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
@@ -359,7 +359,7 @@ const save_table_func = () => {                         	//  function below calc
 					});
 			})
 			.then(() => {
-				fetch('http://127.0.0.1:3000/faculty/update', {
+				fetch(`${localhost}/faculty/update`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
@@ -473,7 +473,7 @@ const add_subjects_options_to_mytable = (subject_list) => { // 	this add options
 };
 
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
-	return fetch('http://127.0.0.1:3000/list/get-list?type=rooms', {
+	return fetch(`${localhost}/list/get-list?type=rooms`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -498,7 +498,7 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 		}
 		// console.log(teacher_query_list);
 
-		fetch('http://127.0.0.1:3000/faculty/get', {
+		fetch(`${localhost}/faculty/get`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -630,7 +630,7 @@ const fetch_timetable = () => {                        	//  this function fetche
 	let semester = document.getElementById("semester_option").value;
 	let section = document.getElementById("section_option").value;
 
-	return fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
+	return fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

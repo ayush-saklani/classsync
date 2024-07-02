@@ -65,7 +65,7 @@ const save_table_func = () => {                         //  function below calcu
     const jsonDataString = JSON.stringify(jsonData, null, 4);
     console.log(jsonData);
 
-    fetch('http://127.0.0.1:3000/table/save-timetable', {
+    fetch(`${localhost}/table/save-timetable`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -157,7 +157,7 @@ const render_tables = () => {                           // renders the table [ u
 }
 
 const fetch_faculties_list = () => {                    //  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
-    return fetch('http://127.0.0.1:3000/faculty/getall', {
+    return fetch(`${localhost}/faculty/getall`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -182,7 +182,7 @@ const fetch_timetable = () => {                        //  this function fetches
     let semester = document.getElementById("semester_option").value;
     let section = document.getElementById("section_option").value;
 
-    fetch('http://127.0.0.1:3000/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
+    fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -196,7 +196,7 @@ const fetch_timetable = () => {                        //  this function fetches
             }
             else {
                 console.log(data.message);
-                fetch('http://127.0.0.1:3000/subjecttable/get?' + new URLSearchParams({ course: course, semester: semester }), {
+                fetch(`${localhost}/subjecttable/get?` + new URLSearchParams({ course: course, semester: semester }), {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json'

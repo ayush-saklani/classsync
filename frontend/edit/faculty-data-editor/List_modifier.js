@@ -1,5 +1,6 @@
 let faculty_data;
 let messageCounter = 0;
+
 const save_table_func = () => {				//  function below calculate and construct the teacher list and send that to the backend via post request 
 	let res = {}
 	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
@@ -22,7 +23,7 @@ const save_table_func = () => {				//  function below calculate and construct th
 		res[id] = name;
 	}
 	console.log(res);
-	fetch('http://127.0.0.1:3000/list/save-list', {
+	fetch(`${localhost}/list/save-list`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -70,7 +71,7 @@ const render_tables = () => {				// renders the tables
 };
 const fetch_faculties_list = () => {		// fetches the faculty list from the server
 	// document.getElementById("loader").style.display = "flex";
-	fetch('http://127.0.0.1:3000/faculty/getall', {
+	fetch(`${localhost}/faculty/getall`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -116,7 +117,7 @@ const addfaculty = () => {					// function to add faculty
 		document.getElementById("add_faculty_button").disabled = false;
 		return;
 	}
-	fetch('http://localhost:3000/faculty/add?teacherid=' + id + '&name=' + name, {
+	fetch(`${localhost}/faculty/add?teacherid=` + id + '&name=' + name, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -157,7 +158,7 @@ const removefaculty = () => {				// function to remove faculty
 		float_error_card_func('Empty Field Error', 'Please fill all the fields before saving the data ( ID and Name are required )', 'warning');
 		return;
 	}
-	fetch('http://localhost:3000/faculty/remove?teacherid=' + id,{
+	fetch(`${localhost}/faculty/remove?teacherid=` + id,{
 		method: 'DELETE',
 		headers: {
 			'Content-Type': 'application/json'

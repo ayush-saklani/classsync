@@ -11,10 +11,11 @@ let events = {
 	"2024-07-01": { "description": "End Term- Career skills", "color": "warning" },
 };
 let messageCounter = 0;
-if (document.cookie) {
-	document.getElementById('course_option').value = document.cookie.split('; ').find(row => row.startsWith('course=')).split('=')[1] ?? "B.Tech";
-	document.getElementById('semester_option').value = document.cookie.split('; ').find(row => row.startsWith('semester=')).split('=')[1] ?? "6";
-	document.getElementById('section_option').value = document.cookie.split('; ').find(row => row.startsWith('section=')).split('=')[1] ?? "A";
+let cookieVar = document.cookie.split(';');
+if (cookieVar.find(row => row.startsWith('course='))  && cookieVar.find(row => row.startsWith('semester=')) && cookieVar.find(row => row.startsWith('section=')) ) {
+	document.getElementById('course_option').value = cookieVar.find(row => row.startsWith('course=')).split('=')[1] ?? "B.Tech";
+	document.getElementById('semester_option').value = cookieVar.find(row => row.startsWith('semester=')).split('=')[1] ?? "6";
+	document.getElementById('section_option').value = cookieVar.find(row => row.startsWith('section=')).split('=')[1] ?? "A";
 }
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
@@ -194,7 +195,7 @@ const letmeseeitbaby = () => {
 	document.cookie = `semester=${semester};`
 	document.cookie = `section=${section};`
 
-	fetch('https://classsync-25hj.onrender.com/table/get-timetable?' + new URLSearchParams({ course: course, semester: semester, section: section }), {
+	fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

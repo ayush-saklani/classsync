@@ -89,7 +89,7 @@ const save_table_func = () => {			//  calculate and construct the subject table 
 	console.log(jsonDataString);
 
 	// Create a POST request
-	fetch('http://127.0.0.1:3000/subjecttable/save', {
+	fetch(`${localhost}/subjecttable/save`, {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -185,7 +185,7 @@ const fetch_course_data = () => {		// fetches the course data from the server
 	let course_option = document.getElementById("course_option").value;
 	let semester_option = document.getElementById("semester_option").value;
 	console.log(course_option, semester_option);
-	fetch(`http://localhost:3000/subjecttable/get?course=${course_option}&semester=${semester_option}`, {
+	fetch(`${localhost}/subjecttable/get?course=${course_option}&semester=${semester_option}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
@@ -227,7 +227,7 @@ const set_for_all = () => {			// reset the data for all the courses and semester
 	// document.getElementById("loader").style.display = "flex"; // dekh lena baad mei 
 	let course_option = document.getElementById("course_option").value;
 	let semester_option = document.getElementById("semester_option").value;
-	fetch(`http://localhost:3000/subjecttable/update?course=${course_option}&semester=${semester_option}`, {
+	fetch(`${localhost}/subjecttable/update?course=${course_option}&semester=${semester_option}`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'

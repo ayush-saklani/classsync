@@ -2,15 +2,9 @@
 const delete_cookie = () => {       // logout function
     document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    window.location.reload();
 }
 const validate_cookie = (refreshToken) => {
-    let butt = document.createElement("button");                             /////////////////////  temp remove this line
-    butt.className = "ms-auto fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill float-end";   /////////////////////  temp remove this line
-    butt.id = "logout_button";                                               /////////////////////  temp remove this line
-    butt.innerHTML = "Logout";                                               /////////////////////  temp remove this line
-    butt.addEventListener("click", delete_cookie);                           /////////////////////  temp remove this line
-    document.getElementsByTagName('nav')[0].appendChild(butt);
-    return                                                                   /////////////////////  temp remove this line           
     if(!document.cookie.includes("accessToken")){
         fetch('http://localhost:3000/user/refresh-token', {
             method: 'POST',
