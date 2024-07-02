@@ -74,7 +74,6 @@ const loginUser = asyncHandler(async (req, res, next) => {
     const options = {
         httpOnly: true,
         secure: true,
-        domain: "classsync.vercel.app",
     };
 
     return res
