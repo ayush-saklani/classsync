@@ -40,8 +40,14 @@ const letmesee2 = (temp_tt) => {
 		for (let j = 1; j <= 10; j++) {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			if (temp_tt && temp_tt.schedule && temp_tt.schedule[currrow] && temp_tt.schedule[currrow][currcol] && temp_tt.schedule[currrow][currcol].slotdata) {
+				if(temp_tt.schedule[currrow][currcol].slotdata[0].toLowerCase()=='p'){
+				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-success  text-white heading-text border-dark border-3");
+				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
+				}
+				else{
 				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger  text-white heading-text border-dark border-3");
 				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
+				}
 			}
 			else {
 				holidaychecker++;

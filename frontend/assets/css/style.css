@@ -1,3 +1,63 @@
+:root{
+    --brand-red : #dc3545;
+    --brand-cyan : #016a89d3;
+
+    --bg-transparent : rgba(0, 0, 0, 0);
+    --bg-primary : #4c9599;
+    --bg-secondary : #83a598;
+    --bg-success : #98971a;
+    --bg-danger : #cc2412;
+    --bg-warning : #d79921;
+    --bg-info : rgb(0, 76, 255);
+    --bg-light : rgb(218, 216, 216);
+    --bg-dark : rgb(35, 35, 35);
+    --bg-black : black;
+    --bg-white : rgb(255, 255, 255);
+    --bg-background : rgb(240, 244, 249);;
+    
+    --bs-text-primary : black;
+    --bs-text-secondary : black;
+    --bs-text-success : black;
+    --bs-text-danger : black;
+    --bs-text-warning : black;
+    --bs-text-info : black;
+    --bs-text-light : black;
+    --bs-text-dark : black;
+    --bs-text-body : black;
+    --bs-text-body-secondary : black;
+    --bs-text-body-tertiary : black;
+    --bs-text-black : black;
+    --bs-text-white : black;
+
+    --Red : #fb4934;
+    --Green : #b8bb26;
+    --Yellow : #fabd2f;
+    --Blue : #83a598;
+    --Purple : #d3869b;
+    --Aqua : #8ec07c;
+    --Orange : #fe8019;
+    --Gray : #928374;
+    --Dim-Red : #cc2412;
+    --Dim-Green : #98971a;
+    --Dim-Yellow : #d79921;
+    --Dim-Blue : #458588;
+    --Dim-Purple : #b16286;
+    --Dim-Aqua : #699d6a;
+    --Dim-Orange : #d65d0e;
+    --Dim-Gray : #a89984;
+    --Hard-Background : #1d2021;
+    --Medium-Background : #282828;
+    --Soft-Background : #323027;
+    --Background-1 : #3c3836;
+    --Background-2 : #504945;
+    --Background-3 : #665c54;
+    --Background-4 : #7c6764;
+    --Foreground : #fbf1c7;
+    --Foreground-1 : #ebdbb2;
+    --Foreground-2 : #d5c4a1;
+    --Foreground-3 : #bdae93;
+    --Foreground-4 : #a89984;
+}
 .heading-text{
     font-family:"Montserrat", sans-serif;
     font-weight: bold;
@@ -9,13 +69,13 @@ nav>h2::after,nav>h2::before {
     content: '';
     width: 8%;
     height: 4px;
-    background: #dc3545;
+    background: var(--brand-red);
     display: block;
     transition: 2s;
     margin-top: 5px;
 }
 nav>h2::before {
-    background: rgba(1, 106, 137, 0.827);
+    background: var(--brand-cyan);
 }
 nav>h2:hover::after, nav>h2:hover::before {
     width: 90%;
@@ -36,7 +96,7 @@ nav> .btn:active{
     font-family:"Montserrat", sans-serif;
 }
 body{
-    background-color: rgb(240, 244, 249);
+    background-color: var(--bg-background);
 }
 .card{
     transition: 0.2s;
@@ -47,7 +107,7 @@ body{
 }
 .card-img-overlay{
     /* background-color: rgba(0, 0, 0, 0.596); */
-    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 1));    
+    background: linear-gradient(var(--bg-transparent), rgba(0, 0, 0, 1));    
     color: white;
     justify-content: flex-end;
     display: flex;
@@ -73,15 +133,15 @@ body{
     transform: translate(-50%, -50%);
 }
 #signin_button,#signup_button{
-    background-color: #DC3545;
+    background-color: var(--brand-red);
     transition: ease-in 0.5s;
 }
 #signin_button:hover,#signup_button:hover{
-    background-color: #0D6EFD;
+    background-color: var(--brand-cyan);
     transition: ease-out 0.5s;
 }
 #add_row, #delete_row{
-    background-color: rgba(255, 255, 255, 0);
+    background-color: var(--bg-transparent);
     height: 45px; 
     width: 45px; 
 }
@@ -92,18 +152,9 @@ body{
 }
 .bus-dep{
     position: relative;
-    /* old design - bus arrival and departure border*/
-    /* border-right-style: dotted !important; */    
-    /* border-right-width: 10px !important; */
-    /* border-right-color: rgb(255, 162, 1) !important; */
-    /* border-right-color: #ff384c !important; */
 }
 .bus-arr{
     position: relative;
-    /* border-right-style: dotted !important;  */
-    /* border-right-width: 10px !important; */
-    /* border-right-color: rgb(0, 113, 165) !important; */
-    /* border-right-color: #3385ff !important; */
 }
 .bus-arr::after, .bus-dep::before{ 
     content: "";
@@ -113,13 +164,13 @@ body{
 .bus-arr::after {
     top: 0;
     left: 0;
-    background: rgba(0, 125, 163, 0.827) ;
+    background: var(--brand-cyan) ;
     animation: wavedown 2s ease-in-out infinite;
 }
 .bus-dep::before {
     bottom: 0;
     right: 0;
-    background: #ff384c;
+    background: var(--brand-red);
     animation: waveup 2s ease-in-out infinite;
 }
 @keyframes wavedown {
@@ -198,10 +249,10 @@ body{
     border-color: rgb(0, 0, 0);
 }
 .bg-primary {
-    background-color: rgba(1, 106, 137, 0.827) !important;
+    background-color: var(--brand-cyan) !important;
 }
 .bg-danger {
-    background-color: #dc3545 !important;
+    background-color: var(--brand-red) !important;
 }
 .bg-peela{
     background-color: #ffc107 !important;
@@ -314,7 +365,7 @@ table>tbody>tr{
 
 /* toggle switch start */
 .switch {
-    --input-focus: #2d8cf0;
+    --input-focus: var(--brand-cyan);
     --font-color: #323232;
     --font-color-sub: #666;
     --bg-color: #fff;
@@ -417,3 +468,14 @@ table>tbody>tr{
     background-repeat: no-repeat;
     z-index: 3; 
 }
+.bg-primary{}
+.bg-secondary{}
+.bg-success{}
+.bg-danger{}
+.bg-warning,.bg-peela{}
+.bg-info{}
+.bg-light{}
+.bg-dark{}
+.bg-black{}
+.bg-white{}
+.border-warning{}

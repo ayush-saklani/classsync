@@ -7,7 +7,7 @@ let display_error = (message) => {  // wrong username or password
     let error = document.getElementById("signin_error");
     error.innerHTML = (message || "Wrong username or password") + " *";
 }
-let reverse_display_error = () => {  // wrong username or password
+let revert_display_error = () => {  // wrong username or password revert function
     document.getElementById("signin_email").style.border = ""
     document.getElementById("signin_InputPassword").style.border = "";
     let error = document.getElementById("signin_error");
@@ -29,12 +29,12 @@ const login = () => {
         return                                                      //////////////temp remove this line
     }
 
-    fetch('http://localhost:3000/logindata/login', {
+    fetch('http://localhost:3000/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ uid: email, password: password })
+        body: JSON.stringify({ name: email, password: password })
     })
         .then(response => {
             if (!response.ok) {
@@ -55,5 +55,10 @@ const login = () => {
         });
 }
 document.getElementById("login").addEventListener("click", login);
-document.getElementById("signin_email").addEventListener("change", reverse_display_error);
-document.getElementById("signin_InputPassword").addEventListener("change", reverse_display_error);
+document.getElementById("signin_email").addEventListener("change", revert_display_error);
+document.getElementById("signin_InputPassword").addEventListener("change", revert_display_error);
+
+// 4 end points(/user):-
+// (POST)/login - login (body - name,password) - gives token as cookies in return
+// (POST)/logout - removes already set cookies
+// (POST)/refresh-token - called on access token expiry (picks refresh token from cookie) - gives new access token
