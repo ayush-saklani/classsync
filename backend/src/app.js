@@ -4,6 +4,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import routes from "./routes/index.js";
 import mongosanitize from "express-mongo-sanitize";
+import cookieParser from "cookie-parser";
 
 dotenv.config({ path: "./.env" });
 
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 }
 
+app.use(cookieParser());
 app.use(express.json({ limit: "1MB" }));
 app.use(express.urlencoded({ limit: "16kb", extended: true }));
 app.use(mongosanitize());
