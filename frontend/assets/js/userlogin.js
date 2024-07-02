@@ -1,7 +1,12 @@
 // window.location = "/view/";
 const delete_cookie = () => {       // logout function
-    document.cookie = "uuid=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/edit ;";
-    window.location.reload();
+    fetch('http://localhost:3000/logindata/login_uuid_validate', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ sessionId })
+    })
 }
 const validate_cookie = (sessionId) => {
     let butt = document.createElement("button");                             /////////////////////  temp remove this line
@@ -58,6 +63,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         validate_cookie(document.cookie.split("=")[1]);
     }
     else{
-        window.location.href = '/login';
+        // window.location.href = '/login';
     }
 });

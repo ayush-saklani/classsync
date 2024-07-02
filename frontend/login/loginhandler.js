@@ -15,25 +15,14 @@ let revert_display_error = () => {  // wrong username or password revert functio
 }
 const login = () => {
     let email = document.getElementById("signin_email").value;             
-    let password = document.getElementById("signin_InputPassword").value;  
-
-    if(email == "admin" && password == "admin"){
-        document.cookie = "uuid=2117421; path=/edit ;";             //////////////temp remove this line
-        float_error_card_func("Login Successful", "", "success");   //////////////temp remove this line
-        setInterval(() => {                                         //////////////temp remove this line
-            window.location.href = '/edit';                         //////////////temp remove this line
-        }, 2000);                                                   //////////////temp remove this line
-        return                                                      //////////////temp remove this line
-    }else{                                                          //////////////temp remove this line                                   
-        display_error("Email or password is incorrect");            //////////////temp remove this line
-        return                                                      //////////////temp remove this line
-    }
+    let password = document.getElementById("signin_InputPassword").value; 
 
     fetch('http://localhost:3000/user/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
+        // credentials: 'include', 
         body: JSON.stringify({ name: email, password: password })
     })
         .then(response => {
@@ -41,15 +30,20 @@ const login = () => {
                 throw new Error('Invalid UUID');
             }
             else {
+                console.log(response);
                 return response.json();
             }
         })
         .then(data => {
-            document.cookie = `uuid=${data.data.uid};path=/edit ;`;
             float_error_card_func("Login Successful", "", "success");
-            document.cookie = `uuid=${data.uuid};path=/edit ;`;
+            console.log('==xx==');
+            console.log(data.data);
+            console.log('==xx==');
+            // document.cookie = `refreshToken=${data.data.refreshToken};path=/edit;`;
+            // document.cookie = `accessToken=${data.data.accessToken};path=/edit;`;
         })
         .catch(error => {
+            float_error_card_func("Login Failed", "", "danger");
             display_error("Email or password is incorrect");
             console.error('Error:', error);
         });
