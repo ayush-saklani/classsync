@@ -1,0 +1,15 @@
+.bg-holiday,.border-holiday {
+    background-color: #F1C40F !important;
+    border: #F1C40F !important;
+}
+.bg-period {
+    background-color: #193E4E !important;
+    color: #fff !important;
+}
+.bg-practical {
+    background-color: #2B7483 !important;
+    color: #fff !important;
+}
+.bg-empty {
+    background-color: #81B3BA !important;
+}

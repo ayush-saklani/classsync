@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class-Sync | Timetable Viewer - Student</title>
+    <script src="/assets/js/redirection.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/assets/css/style.css" />
+    <link rel="stylesheet" href="/assets/css/loader.css" />
+    <link rel="stylesheet" href="/assets/css/responsive_block_view.css" />
+    <link rel="icon" href="/assets/image/logo.png">
+    <style>
+        .colorpallet{
+            display: flex;
+            margin-left: 10px;
+        }
+        .colorpallet div{
+            width: 50px;
+            height: 50px;
+            /* background: linear-gradient(90deg, #FFC0CB 0%, #FF1493 100%); */
+        }
+        .colorpicker-picker{
+            width: 50px;
+        }
+        .colorpicker-picker-checkbox{
+            background-color: #a0a0a0;
+        }
+    </style>
+</head>
+
+<body id="body">
+    <!-- header start -->
+    <nav class="navbar navbar-expand mx-3">
+        <img src="../../assets/image/logo.png" height="75px" class="d-inline-block align-text-top ">
+        <h2 class="mx-3 my-3 heading-text">Class-Sync Timetable Manager</h2>
+        <button class="ms-auto fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill float-end" id="logout_button">Logout</button>
+    </nav>
+    <!-- header end -->
+    <style>
+        .menu {
+            width: fit-content;
+        }
+        .menu a {
+            text-decoration: none;
+            color: var(--brand-cyan);
+        }
+        .menu .link {
+            position: relative;
+            display: flex;
+            padding: 12px 36px;
+            transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .menu .link::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--brand-cyan);
+            z-index: -1;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .menu .link svg {
+            width: 14px;
+            height: 14px;
+            fill: #000000;
+            transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .menu .item {
+            position: relative;
+        }
+
+        .menu .item .submenu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: absolute;
+            width: 100%;
+            overflow: hidden;
+            border: 1px solid #cccccc;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-12px);
+            transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+            z-index: 1;
+            pointer-events: none;
+            list-style: none;
+        }
+
+        .menu .item:hover .submenu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+            pointer-events: auto;
+            border-top: transparent;
+            border-color: var(--brand-cyan);
+        }
+
+        .menu .item:hover .link {
+            color: #ffffff;
+        }
+
+        .menu .item:hover .link::after {
+            transform: scaleX(1);
+            transform-origin: right;
+        }
+
+        .submenu .submenu-item {
+            width: 100%;
+            transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .submenu .submenu-link {
+            display: block;
+            padding: 12px 24px;
+            width: 100%;
+            position: relative;
+            text-align: center;
+            background-color: #ffffff;
+            color: var(--brand-cyan);
+            transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+
+        .submenu .submenu-item:last-child .submenu-link {
+            border-bottom: none;
+        }
+
+        .submenu .submenu-link:hover {
+            color: #ffffff;
+            background-color: var(--brand-cyan);
+        }
+    </style>
+    <div class="menu float-end mt-2 mx-2" id="sidebar">
+        <div class="item">
+            <a class="link text fw-bold"><span class="text-dar">Menu <i class="bi bi-list" style="-webkit-text-stroke-width: 1px;"></i></span></a>
+            <div class="submenu">
+                <div class="submenu-item"><a href="/edit/timetable-editor/" class="submenu-link"> Editor </a></div>
+                <div class="submenu-item"><a href="/edit/subject-data-editor/" class="submenu-link"> Set Subject </a></div>
+                <div class="submenu-item"><a href="/edit/faculty-data-editor/" class="submenu-link"> Edit Faculty </a></div>
+                <div class="submenu-item"><a href="/edit/faculty-data-set/" class="submenu-link"> Set Faculty </a></div>
+                <div class="submenu-item"><a href="/edit/misc/" class="submenu-link"> Misc </a></div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row colorpallet-master">
+        <div class="col-3">
+            <div class="colorpallet">
+                <div style="background-color: #a0a0a0;" class="fw-bold h4 p-2 text-center">1</div>
+                <div style="background-color: #ffffff;"></div>
+                <div style="background-color: #F1C40F  ;"></div>
+                <div style="background-color: #2C3E50  ;"></div>
+                <div style="background-color: #18A387  ;"></div>
+                <div style="background-color: #458588  ;"></div>
+            </div>
+            <div class="colorpallet">
+                <div style="background-color: #a0a0a0;" class="fw-bold h4 p-2 text-center">2</div>
+                <div style="background-color: #000;"></div>
+                <div style="background-color: #FFF2CB ;"></div>
+                <div style="background-color: #B6D7A8 ;"></div>
+                <div style="background-color: #E6B8AF ;"></div>
+                <div style="background-color: #9FC5E8 ;"></div>
+            </div>
+            <div class="colorpallet">
+                <div style="background-color: #a0a0a0;" class="fw-bold h4 p-2 text-center">3</div>
+                <div style="background-color: #000;"></div>
+                <div style="background-color: #EEBD35 ;"></div>
+                <div style="background-color: #FB4934 ;"></div>
+                <div style="background-color: #689D6A ;"></div>
+                <div style="background-color: #458588 ;"></div>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="colorpallet">
+                <div style="background-color: #a0a0a0;" class="fw-bold h4 p-2 text-center">4</div>
+                <div style="background-color: #000;"></div>
+                <div style="background-color: #FFD580 ;"></div>
+                <div style="background-color: #add8e6 ;"></div>
+                <div style="background-color: #e4b454 ;"></div>
+                <div style="background-color: #f1edb8 ;"></div>
+            </div>
+            <div class="colorpallet">
+                <div style="background-color: #a0a0a0;" class="fw-bold h4 p-2 text-center">5</div>
+                <div style="background-color: #fff;"></div>
+                <div style="background-color: #F1C40F ;"></div>
+                <div style="background-color: #193E4E ;"></div>
+                <div style="background-color: #2B7483 ;"></div>
+                <div style="background-color: #81B3BA ;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- course sem year detail div start -->
+    <div class="container-fluid mt-5">
+        <div class="container">
+            <h1 class="center text fw-bold">Timetable Labrat Page - Theme Maker </h1>
+        </div>
+
+        <!-- course sem year details start -->
+        <div class="container">
+            <div class="row mt-3">
+                <div class="col-md-4">
+                    <div class="col-sm-12 form-floating">
+                        <select class="form-select mb-3 text" name="course" id="course_option" disabled>
+                            <option selected value="btechcse">BTech CSE</option>
+                        </select>
+                        <label for="course_option" class="heading-text">Course</label>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="form-floating">
+                        <select class="form-select mb-3 text" name="semester" id="semester_option">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                        </select>
+                        <label for="semester_option" class="heading-text">CSS theme</label>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6">
+                    <div class="form-floating">
+                        <select class="form-select mb-3 text" name="section" id="section_option" disabled>
+                            <option selected value="A">A</option>
+                            <option value="B">B</option>
+                        </select>
+                        <label for="section_option" class="heading-text">Section</label>
+                    </div>
+                </div>
+                <div class="col-md-1 text-center d-flex align-items-center justify-content-center">
+                    <div class="text-center">
+                        <label class="switch">
+                            <input class="toggle" type="checkbox" id="toggle_event" disabled>
+                            <span class="slider round"></span>
+                            <span class="card-side"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- course sem year details end -->
+    </div>
+    <!-- course sem year detail div end -->
+
+    <!-- main table div start -->
+    <div class="container-fluid" id="ttdiv">
+        <div class="container">
+            <input type="color" class="colorpicker-picker" id="colorpicker-text" value="#ffffff">
+            <input type="color" class="colorpicker-picker" id="colorpicker-holiday" value="#F1C40F">
+            <input type="color" class="colorpicker-picker" id="colorpicker-period" value="#2C3E50">
+            <input type="color" class="colorpicker-picker" id="colorpicker-practical" value="#18A387">
+            <input type="color" class="colorpicker-picker" id="colorpicker-empty" value="#458588">
+            <input type="checkbox" class="colorpicker-picker-checkbox" checked id="goforit">
+        </div>
+        <!-- main table div start -->
+        <div class="container-fluid mt-3 scrollablecontainer">
+            <div class="container-fluid mt-3 scrollablecontainer">
+                <table class="table text-center align-middle" id="mytable">
+                    <thead>
+                        <tr>
+                            <th class="text table-light border-dark border-3" scope="col">X</th>
+                            <th class="text table-light border-dark border-3 bus-arr" scope="col">08-09</th>
+                            <th class="text table-light border-dark border-3" scope="col">09-10</th>
+                            <th class="text table-light border-dark border-3" scope="col">10-11</th>
+                            <th class="text table-light border-dark border-3" scope="col">11-12</th>
+                            <th class="text table-light border-dark border-3 bus-arr bus-dep" scope="col">12-01</th>
+                            <th class="text table-light border-dark border-3" scope="col">01-02</th>
+                            <th class="text table-light border-dark border-3" scope="col">02-03</th>
+                            <th class="text table-light border-dark border-3 bus-dep" scope="col">03-04</th>
+                            <th class="text table-light border-dark border-3" scope="col">04-05</th>
+                            <th class="text table-light border-dark border-3 bus-dep" scope="col">05-06</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th class="table-light border-dark border-3" scope="row">MON</th>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">XCS601V<br>LT301</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">XCS601Q<br>LT302</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-light border-dark border-3" scope="row">TUE</th>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS693<br>LT201</td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS604<br>LT302</td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS604<br>LT302</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-light border-dark border-3 bg-holiday" scope="row">WED</th>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS693<br>LT201</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS693<br>LAB1</td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS693<br>LAB1</td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-light border-dark border-3" scope="row">THU</th>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS693<br>LT301</td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PXCS601<br>Boschlab</td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PXCS601<br>Boschlab</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-light border-dark border-3" scope="row">FRI</th>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS601<br>LAB3</td>
+                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS601<br>LAB3</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-light border-dark border-3" scope="row">SAT</th>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">No</td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Class</td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Today</td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                        </tr>
+                        <tr>
+                            <th class="table-light border-dark border-3" scope="row">SUN</th>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">No</td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Class</td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Today</td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- main table div end -->
+    
+    <link rel="stylesheet" href="css1.css" id="csss">
+    <script>
+        document.getElementById("semester_option").addEventListener("change", () => {
+            document.getElementById("csss").href = `css${document.getElementById("semester_option").value}.css`;
+        });
+        document.getElementById("body").addEventListener("change", () => {
+            if (document.getElementById("goforit").checked) {
+                document.getElementById("csss").href = ``;
+                let a = document.getElementsByClassName("bg-period");
+                Array.from(a).forEach((element) => {
+                    element.style.backgroundColor = document.getElementById("colorpicker-period").value;
+                });
+                let b = document.getElementsByClassName("bg-practical");
+                Array.from(b).forEach((element) => {
+                    element.style.backgroundColor = document.getElementById("colorpicker-practical").value;
+                });
+                let c = document.getElementsByClassName("bg-empty");
+                Array.from(c).forEach((element) => {
+                    element.style.backgroundColor = document.getElementById("colorpicker-empty").value;
+                });
+                let d = document.getElementsByClassName("bg-holiday");
+                Array.from(d).forEach((element) => {
+                    element.style.backgroundColor = document.getElementById("colorpicker-holiday").value;
+                });
+                let e = document.getElementsByClassName("bg-text");
+                Array.from(e).forEach((element) => {
+                    element.style.backgroundColor = document.getElementById("colorpicker-text").value;
+                });
+                let f = document.getElementsByClassName("border-holiday");
+                Array.from(f).forEach((element) => {
+                    element.style.border = document.getElementById("colorpicker-holiday").value;
+                });
+            }
+            else{
+                document.getElementById("csss").href = `css${document.getElementById("semester_option").value}.css`;
+            }
+        });
+    </script>
+    <script src="/assets/js/bus_timing.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"crossorigin="anonymous"></script>
+
+</body>
+
+</html>
