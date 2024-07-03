@@ -27,7 +27,8 @@
             /* background: linear-gradient(90deg, #FFC0CB 0%, #FF1493 100%); */
         }
         .colorpicker-picker{
-            width: 50px;
+            width: 27px;
+            padding: 0px;
         }
         .colorpicker-picker-checkbox{
             background-color: #a0a0a0;
@@ -145,13 +146,14 @@
     </style>
     <div class="menu float-end mt-2 mx-2" id="sidebar">
         <div class="item">
-            <a class="link text fw-bold"><span class="text-dar">Menu <i class="bi bi-list" style="-webkit-text-stroke-width: 1px;"></i></span></a>
+            <a class="link text fw-bold"><span class="text-dar">Direct Links <i class="bi bi-list" style="-webkit-text-stroke-width: 1px;"></i></span></a>
             <div class="submenu">
-                <div class="submenu-item"><a href="/edit/timetable-editor/" class="submenu-link"> Editor </a></div>
-                <div class="submenu-item"><a href="/edit/subject-data-editor/" class="submenu-link"> Set Subject </a></div>
-                <div class="submenu-item"><a href="/edit/faculty-data-editor/" class="submenu-link"> Edit Faculty </a></div>
-                <div class="submenu-item"><a href="/edit/faculty-data-set/" class="submenu-link"> Set Faculty </a></div>
-                <div class="submenu-item"><a href="/edit/misc/" class="submenu-link"> Misc </a></div>
+                <div class="submenu-item"><a href="/edit/timetable-editor/" class="submenu-link text fw-bold"> Editor <i class="bi bi-pencil-fill"></i></a></div>
+                <div class="submenu-item"><a href="/edit/subject-data-editor/" class="submenu-link text fw-bold"> Set Subject <i class="bi bi-book" style="-webkit-text-stroke-width: 1px;"></i> </a></div>
+                <div class="submenu-item"><a href="/edit/faculty-data-editor/" class="submenu-link text fw-bold"> Edit Faculty <i class="bi bi-person-fill-add"></i> </a></div>
+                <div class="submenu-item"><a href="/edit/faculty-data-set/" class="submenu-link text fw-bold"> Set Faculty  <i class="bi bi-person-fill"></i> </a></div>
+                <div class="submenu-item"><a href="/edit/misc/" class="submenu-link text fw-bold"> Misc <i class="bi bi-xbox"></i> </a></div>
+                <div class="submenu-item"><a href="/edit/reset/" class="submenu-link text fw-bold"> Reset <i class="bi bi-exclamation-triangle-fill"></i> </a></div>
             </div>
         </div>
     </div>
@@ -261,12 +263,14 @@
 
     <!-- main table div start -->
     <div class="container-fluid" id="ttdiv">
-        <div class="container">
-            <input type="color" class="colorpicker-picker" id="colorpicker-text" value="#ffffff">
-            <input type="color" class="colorpicker-picker" id="colorpicker-holiday" value="#F1C40F">
-            <input type="color" class="colorpicker-picker" id="colorpicker-period" value="#2C3E50">
-            <input type="color" class="colorpicker-picker" id="colorpicker-practical" value="#18A387">
-            <input type="color" class="colorpicker-picker" id="colorpicker-empty" value="#458588">
+        <div class="container" id="palletchoosing">
+            <input type="color" class="colorpicker-picker" style="margin-right: 0px; padding-right: 0px;" id="colorpicker-holiday" value="#F1C40F">
+            <input type="color" class="colorpicker-picker" style="margin-left: 0px; padding-left: 0px;" id="colorpicker-holidaytext" value="#000000">
+            <input type="color" class="colorpicker-picker" style="margin-right: 0px; padding-right: 0px; margin-left: 12px;" id="colorpicker-period" value="#2C3E50">
+            <input type="color" class="colorpicker-picker" style="margin-left: 0px; padding-left: 0px;" id="colorpicker-periodtext" value="#ffffff">
+            <input type="color" class="colorpicker-picker" style="margin-right: 0px; padding-right: 0px; margin-left: 12px;" id="colorpicker-practical" value="#18A387">
+            <input type="color" class="colorpicker-picker" style="margin-left: 0px; padding-left: 0px; margin-right: 12px;" id="colorpicker-practicaltext" value="#000000">
+            <input type="color" class="colorpicker-picker" style="width:50px;" id="colorpicker-empty" value="#458588">
             <input type="checkbox" class="colorpicker-picker-checkbox" checked id="goforit">
             <span id="currcolor" class="fw-bold h6 ps-5">Current Selected Colors : </span><br>
             <span class="fw-bold h6">( If you come up with better theme design send colorcode and screenshot to Admin )</span>
@@ -293,94 +297,94 @@
                     <tbody>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">MON</th>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">XCS601V<br>LT301</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">XCS601Q<br>LT302</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-period heading-text border-dark border-3">XCS601V<br>LT301</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-period heading-text border-dark border-3">XCS601Q<br>LT302</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">TUE</th>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS693<br>LT201</td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS604<br>LT302</td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS604<br>LT302</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS693<br>LT201</td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS604<br>LT302</td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS604<br>LT302</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3 bg-holiday" scope="row">WED</th>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS693<br>LT201</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS693<br>LAB1</td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS693<br>LAB1</td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS601<br>LT302</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS693<br>LT201</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-practical heading-text border-dark border-3">PCS693<br>LAB1</td>
+                            <td class="text bg-practical heading-text border-dark border-3">PCS693<br>LAB1</td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">THU</th>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS693<br>LT301</td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PXCS601<br>Boschlab</td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PXCS601<br>Boschlab</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS693<br>LT301</td>
+                            <td class="text bg-practical heading-text border-dark border-3">PXCS601<br>Boschlab</td>
+                            <td class="text bg-practical heading-text border-dark border-3">PXCS601<br>Boschlab</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">FRI</th>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS601<br>LAB3</td>
-                            <td class="text bg-practical  text-white heading-text border-dark border-3">PCS601<br>LAB3</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS601<br>LT302</td>
-                            <td class="text bg-period  text-white heading-text border-dark border-3">TCS601<br>LT302</td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
-                            <td class="text bg-empty  text-white heading-text border-dark border-3"></td>
+                            <td class="text bg-practical heading-text border-dark border-3">PCS601<br>LAB3</td>
+                            <td class="text bg-practical heading-text border-dark border-3">PCS601<br>LAB3</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">SAT</th>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">No</td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Class</td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Today</td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">No</td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Class</td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Today</td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">SUN</th>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">No</td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Class</td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2">Today</td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">No</td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Class</td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Today</td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -394,16 +398,18 @@
         document.getElementById("semester_option").addEventListener("change", () => {
             document.getElementById("csss").href = `/ztester/css${document.getElementById("semester_option").value}.css`;
         });
-        document.getElementById("body").addEventListener("change", () => {
+        const kuchkar = () => {
             if (document.getElementById("goforit").checked) {
                 document.getElementById("csss").href = ``;
                 let a = document.getElementsByClassName("bg-period");
                 Array.from(a).forEach((element) => {
+                    element.style.color = document.getElementById("colorpicker-periodtext").value;
                     element.style.backgroundColor = document.getElementById("colorpicker-period").value;
                 });
                 let b = document.getElementsByClassName("bg-practical");
                 Array.from(b).forEach((element) => {
                     element.style.backgroundColor = document.getElementById("colorpicker-practical").value;
+                    element.style.color = document.getElementById("colorpicker-practicaltext").value;
                 });
                 let c = document.getElementsByClassName("bg-empty");
                 Array.from(c).forEach((element) => {
@@ -411,27 +417,21 @@
                 });
                 let d = document.getElementsByClassName("bg-holiday");
                 Array.from(d).forEach((element) => {
+                    element.style.color = document.getElementById("colorpicker-holidaytext").value;
                     element.style.backgroundColor = document.getElementById("colorpicker-holiday").value;
-                });
-                let e = document.getElementsByClassName("bg-text");
-                Array.from(e).forEach((element) => {
-                    element.style.backgroundColor = document.getElementById("colorpicker-text").value;
                 });
                 let f = document.getElementsByClassName("border-holiday");
                 Array.from(f).forEach((element) => {
                     element.style.border = document.getElementById("colorpicker-holiday").value;
                 });
-                document.getElementById("currcolor").innerHTML = `Current Selected Colors : 
-                    ${document.getElementById("colorpicker-text").value} ;
-                    ${document.getElementById("colorpicker-holiday").value} ;
-                    ${document.getElementById("colorpicker-period").value} ;
-                    ${document.getElementById("colorpicker-practical").value} ;
-                    ${document.getElementById("colorpicker-empty").value}`;
+                document.getElementById("currcolor").innerHTML = `Current Selected Colors : ${document.getElementById("colorpicker-holiday").value} ; ${document.getElementById("colorpicker-period").value} ; ${document.getElementById("colorpicker-practical").value} ; ${document.getElementById("colorpicker-empty").value}`;
             }
             else{
                 document.getElementById("csss").href = `/ztester/css${document.getElementById("semester_option").value}.css`;
             }
-        });
+        }
+        document.getElementById("goforit").addEventListener("change",kuchkar);
+        document.getElementById("palletchoosing").addEventListener("change",kuchkar);
     </script>
     <script src="/assets/js/bus_timing.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"crossorigin="anonymous"></script>
