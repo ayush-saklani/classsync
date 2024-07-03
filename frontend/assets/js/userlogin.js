@@ -54,6 +54,6 @@ document.addEventListener('DOMContentLoaded', () => {
         validate_cookie(document.cookie.split(";").find(ele => ele.trim().startsWith("refreshToken")).split("=")[1]);
     }
     else {
-        // window.location.href = '/login';
+        window.location.href = '/login';
     }
 });

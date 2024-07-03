@@ -33,8 +33,8 @@ const login = () => {
         })
         .then(data => {
             float_error_card_func("Login Successful", "", "success");
-            console.log(data.data);
-            // window.location = "/edit/";
+            // console.log(data.data);
+            window.location = "/edit/";
         })
         .catch(error => {
             float_error_card_func("Login Failed", "", "danger");
@@ -45,11 +45,11 @@ const login = () => {
 document.getElementById("login").addEventListener("click", login);
 document.getElementById("signin_email").addEventListener("change", revert_display_error);
 document.getElementById("signin_InputPassword").addEventListener("change", revert_display_error);
-// document.addEventListener('DOMContentLoaded', () => {
-//     if (document.cookie.includes("refreshToken") && document.cookie.includes("accessToken")) {
-//         window.location.href = '/edit/';
-//     }
-// });
+document.addEventListener('DOMContentLoaded', () => {
+    if (document.cookie.includes("refreshToken") && document.cookie.includes("accessToken")) {
+        window.location.href = '/edit/';
+    }
+});
 // 4 end points(/user):-
 // (POST)/login - login (body - name,password) - gives token as cookies in return
 // (POST)/logout - removes already set cookies
