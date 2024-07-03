@@ -12,7 +12,12 @@ document.addEventListener('keydown', (e) => {
         { ctrlKey: true, shiftKey: true, key: 'C' },    // Ctrl+Shift+C
         { ctrlKey: true, shiftKey: true, key: 'J' },    // Ctrl+Shift+J
         { ctrlKey: true, key: 'U' },                    // Ctrl+U
-        { ctrlKey: true, key: 'S' }                     // Ctrl+S (optional, "Save as")
+        { ctrlKey: true, key: 'S' },                    // Ctrl+S (optional, "Save as")
+        { ctrlKey: true, shiftKey: true, key: 'i' },    // Ctrl+Shift+i
+        { ctrlKey: true, shiftKey: true, key: 'c' },    // Ctrl+Shift+c
+        { ctrlKey: true, shiftKey: true, key: 'j' },    // Ctrl+Shift+j
+        { ctrlKey: true, key: 'u' },                    // Ctrl+u
+        { ctrlKey: true, key: 's' }                     // Ctrl+s (optional, "Save as")
     ];
     // Check if the pressed key combination is in the forbidden list
     const keyCombination = forbiddenKeys.some(k => {
