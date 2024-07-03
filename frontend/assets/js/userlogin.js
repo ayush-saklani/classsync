@@ -5,16 +5,16 @@ const delete_cookie = () => {       // logout function
     window.location.reload();
 }
 const validate_cookie = (refreshToken) => {
-    let butt = document.createElement("button");
-    butt.className = "ms-auto fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill float-end";
-    butt.id = "logout_button";
-    butt.innerHTML = "Logout";
-    butt.addEventListener("click", delete_cookie);
-    document.getElementsByTagName('nav')[0].appendChild(butt);
-    return;
+    // let butt = document.createElement("button");
+    // butt.className = "ms-auto fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill float-end";
+    // butt.id = "logout_button";
+    // butt.innerHTML = "Logout";
+    // butt.addEventListener("click", delete_cookie);
+    // document.getElementsByTagName('nav')[0].appendChild(butt);
+    // return;
 
     if(!document.cookie.includes("accessToken")){
-        fetch(`${localhost}/user/refresh-token`, {
+        fetch(`https://classsync-25hj.onrender.com/user/refresh-token`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -36,6 +36,7 @@ const validate_cookie = (refreshToken) => {
             document.getElementsByTagName('nav')[0].appendChild(butt);        
         })
         .catch(error => {
+            window.location.href = '/login/';
             display_error("Email or password is incorrect");
             console.error('Error:', error);
         });
@@ -50,10 +51,5 @@ const validate_cookie = (refreshToken) => {
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
-    if (document.cookie.includes("refreshToken")) {
-        validate_cookie(document.cookie.split(";").find(ele => ele.trim().startsWith("refreshToken")).split("=")[1]);
-    }
-    else {
-        window.location.href = '/login';
-    }
+        validate_cookie();
 });
