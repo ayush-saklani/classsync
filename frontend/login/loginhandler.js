@@ -33,7 +33,10 @@ const login = () => {
         })
         .then(data => {
             float_error_card_func("Login Successful", "", "success");
-            // console.log(data.data);
+            document.cookie = `accessToken=${data.data.accessToken}; path=/; SameSite=none; Secure`;
+            document.cookie = `refreshToken=${data.data.refreshToken}; path=/; SameSite=none; Secure`;
+            document.cookie = `name=${data.data.user.name}; path=/; SameSite=none; Secure`;
+            document.cookie = `role=${data.data.user.role}; path=/; SameSite=none; Secure`;
             window.location = "/edit/";
         })
         .catch(error => {

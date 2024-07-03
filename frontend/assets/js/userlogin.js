@@ -2,6 +2,8 @@
 const delete_cookie = () => {       // logout function
     document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     window.location.reload();
 }
 const validate_cookie = (refreshToken) => {
