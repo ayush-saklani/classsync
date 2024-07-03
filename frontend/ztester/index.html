@@ -268,6 +268,8 @@
             <input type="color" class="colorpicker-picker" id="colorpicker-practical" value="#18A387">
             <input type="color" class="colorpicker-picker" id="colorpicker-empty" value="#458588">
             <input type="checkbox" class="colorpicker-picker-checkbox" checked id="goforit">
+            <span id="currcolor" class="fw-bold h6 ps-5">Current Selected Colors : </span><br>
+            <span class="fw-bold h6">( If you come up with better theme design send colorcode and screenshot to Admin )</span>
         </div>
         <!-- main table div start -->
         <div class="container-fluid mt-3 scrollablecontainer">
@@ -387,10 +389,10 @@
     </div>
     <!-- main table div end -->
     
-    <link rel="stylesheet" href="css1.css" id="csss">
+    <link rel="stylesheet" href="/ztester/css1.css" id="csss">
     <script>
         document.getElementById("semester_option").addEventListener("change", () => {
-            document.getElementById("csss").href = `css${document.getElementById("semester_option").value}.css`;
+            document.getElementById("csss").href = `/ztester/css${document.getElementById("semester_option").value}.css`;
         });
         document.getElementById("body").addEventListener("change", () => {
             if (document.getElementById("goforit").checked) {
@@ -419,9 +421,15 @@
                 Array.from(f).forEach((element) => {
                     element.style.border = document.getElementById("colorpicker-holiday").value;
                 });
+                document.getElementById("currcolor").innerHTML = `Current Selected Colors : 
+                    ${document.getElementById("colorpicker-text").value} ;
+                    ${document.getElementById("colorpicker-holiday").value} ;
+                    ${document.getElementById("colorpicker-period").value} ;
+                    ${document.getElementById("colorpicker-practical").value} ;
+                    ${document.getElementById("colorpicker-empty").value}`;
             }
             else{
-                document.getElementById("csss").href = `css${document.getElementById("semester_option").value}.css`;
+                document.getElementById("csss").href = `/ztester/css${document.getElementById("semester_option").value}.css`;
             }
         });
     </script>
