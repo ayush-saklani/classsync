@@ -213,6 +213,11 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 									float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
 								}, 500);
 							}
+							if(!teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length == 1) {
+								setTimeout(() => {
+									float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
+								}, 500);
+							}
 							// isValid = false;
 						}
 
@@ -228,12 +233,12 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 						// 	}
 						// }
 						if (teacherSchedule.subjectcode !== "" && teacherSchedule.subjectcode !== subjectCode) {
-							float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time. <br><b>[ choose another slot ]</b>`, "danger");
+							float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time.`, "danger");
 							isValid = false;
 						}
 						if (teacherSchedule.roomid.length != 0 && teacherSchedule.roomid[0] !== curr_slot_room) {
 							console.log(room_list[teacherSchedule.roomid])
-							float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time. <br><b>[ choose another slot ]</b>`, "danger");
+							float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time.`, "danger");
 							isValid = false;
 						}
 					}
@@ -326,10 +331,10 @@ const save_table_func = () => {                         	//  function below calc
 		})
 			.then(response => {
 				if (response.ok) {
-					float_error_card_func("Timetable Saved Successfully", "Timetable saved to database successfully.", "success");
+					float_error_card_func("Timetable Saved Successfully", "", "success");
 					return response.json();
 				} else {
-					float_error_card_func("Timetable not Saved", "Timetable data not saved due to network error.", "danger");
+					float_error_card_func("Timetable Not Saved", "", "danger");
 					throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 				}
 			})
@@ -355,10 +360,10 @@ const save_table_func = () => {                         	//  function below calc
 				})
 					.then(response => {
 						if (response.ok) {
-							float_error_card_func("Room Data Saved Successfully", "Room data saved to database successfully.", "success");
+							float_error_card_func("Room Data Saved", "", "success");
 							return response.json();
 						} else {
-							float_error_card_func("Room Data not Saved", "Room data not saved due to network error.", "danger");
+							float_error_card_func("Room Data Not Saved", "", "danger");
 							throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 						}
 					});
@@ -373,10 +378,10 @@ const save_table_func = () => {                         	//  function below calc
 				})
 					.then(response => {
 						if (response.ok) {
-							float_error_card_func("Faculty data Saved Successfully", "Faculty data saved to database successfully.", "success");
+							float_error_card_func("Faculty data Saved", "", "success");
 							return response.json();
 						} else {
-							float_error_card_func("Faculty Data not Saved", "Faculty data not saved due to network error.", "danger");
+							float_error_card_func("Faculty Data Not Saved", "", "danger");
 							throw new Error(':::::  FACULTY DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 						}
 					});
@@ -385,13 +390,13 @@ const save_table_func = () => {                         	//  function below calc
 				setTimeout(initializePage, 1000);
 			})
 			.catch(error => {
-				float_error_card_func("Timetable not Saved", "Error saving timetable data.", "danger");
+				float_error_card_func("Timetable Not Saved <br>Server Error", "", "danger");
 				console.error('::::: ERROR SAVING DATA :::::', error);
 			});
 	}
 	else {
 		setTimeout(() => {
-			float_error_card_func("Validation Failed <br>Timetable Not saved", "Validation Error. Please check the errors and try again.", "warning");
+			float_error_card_func("Validation Failed <br>Timetable Not saved", "", "warning");
 		}, 3000);
 	}
 }
@@ -428,23 +433,23 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 				// console.log(room_list[key].schedule[currday][currslot].section.length);
 				if (room_list[key].schedule[currday][currslot].section.length == 1) {
 					option.setAttribute("class", "bg-success text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length == 2) {
 					option.setAttribute("class", "bg-primary text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length == 3) {
 					option.setAttribute("class", "bg-warning text-dark bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length == 4) {
 					option.setAttribute("class", "bg-danger text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length > 4) {
 					option.setAttribute("class", "bg-dark text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
 				// console.log(option.value, option.text)
 				if (key == tempselectedvalue) {
@@ -529,7 +534,7 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 const render_tables = () => {                           	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 	// rendering the second table first
 	if (timetable) {
-		float_error_card_func("Time Table Data available", "Time Table Data retrived from the DataBase and Rendered Successfully.", "success");
+		// float_error_card_func("Timetable Available", "", "success");
 		let localteacher_subject_data = timetable.teacher_subject_data;
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 		table.innerHTML = "";
@@ -635,7 +640,7 @@ const render_tables = () => {                           	// renders the timetabl
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 		table.innerHTML = "";
 		reset_table();
-		float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
+		// float_error_card_func("Timetable Not Available", "", "danger");
 	}
 }
 const fetch_timetable = () => {                        	//  this function fetches the timetable data form the server [ database ] and store the variable to the local variable for future use
@@ -661,7 +666,7 @@ const fetch_timetable = () => {                        	//  this function fetche
 			updateCounter();
 		})
 		.catch(error => {
-			float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
+			float_error_card_func("TimeTable - Server Error", "", "danger");
 			console.error('Data unavailable:', error)
 		});
 }
@@ -677,10 +682,10 @@ const initializePage = () => {                          	//  this function initi
 				document.getElementById("loader").style.display = "none";
 			}, 1500);
 			if (timetable) {
-				float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
+				float_error_card_func("Initialization Successful", "", "success");
 			}
 			else {
-				float_error_card_func("Initialization Failed", "Initialization Failed due to network or server error.", "danger");
+				float_error_card_func("Initialization Failed", "", "danger");
 			}
 		})
 		.catch(error => {
@@ -688,7 +693,7 @@ const initializePage = () => {                          	//  this function initi
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 			}, 1500);
-			float_error_card_func("Error during initialization", "Error during initialization. probably due to network or server error.", "danger");
+			float_error_card_func("Initialization Failed <br> Server Error", "", "danger");
 			console.error('Error during initialization:', error)
 		});
 };
