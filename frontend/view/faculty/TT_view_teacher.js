@@ -136,7 +136,7 @@ const fetch_room_list = () => {                         	//  this function fetch
 		})
 		.catch(error => {
 			console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
-			float_error_card_func("Room Data not available", "Room Data is not available.<br><b>Room data might not show in the timetable.</b>", "danger");
+			float_error_card_func("Room Data Unavailable", "", "danger");
 		});
 };
 const letmeseeitbaby = () => {
@@ -162,9 +162,9 @@ const letmeseeitbaby = () => {
 		.then(() => {
 			if (flag === 1) {
 				college_event_manager();
-				setTimeout(() => { float_error_card_func("Events view On", "", "success") }, 3000);
+				// setTimeout(() => { float_error_card_func("Events view On", "", "success") }, 3000);
 			} else {
-				setTimeout(() => { float_error_card_func("Events view Off", "", "danger") }, 3000);
+				// setTimeout(() => { float_error_card_func("Events view Off", "", "danger") }, 3000);
 			}
 		})
 		.then(() => {
@@ -172,14 +172,14 @@ const letmeseeitbaby = () => {
 				document.getElementById("loader").style.display = "none";
 				unblocking();
 			}, 1500);
-			float_error_card_func("Faculty Data Available", "Faculty Data is available for the selected teacher. timetable has been rendered successfully.", "success");
+			float_error_card_func("Faculty Data Found", "", "success");
 		})
 		.catch(error => {
 			setTimeout(() => {
 				document.getElementById("loader").style.display = "none";
 				unblocking();
 			}, 1500);
-			float_error_card_func("Timetable not found", "The timetable you are looking for is not found. Please try again later.", "danger");
+			float_error_card_func("Faculty Not Found", "", "danger");
 			console.error('Data unavailable:', error)
 		});
 }
