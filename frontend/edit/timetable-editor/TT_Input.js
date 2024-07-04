@@ -207,7 +207,12 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 
 						// If the teacher is assigned in the same slot
 						if (teacherSchedule.subjectcode === subjectCode && teacherSchedule.section.length >0) { // review this condition
-							float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
+							if(teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length > 1) {
+								setTimeout(() => {
+									// float_error_card_func(`${teacherSchedule.section.includes(document.getElementById("section_option").value)} && ${teacherSchedule.section} ${currday} ${currslot}`,"","info")
+									float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
+								}, 500);
+							}
 							// isValid = false;
 						}
 
@@ -627,6 +632,9 @@ const render_tables = () => {                           	// renders the timetabl
 		}
 	}
 	else {
+		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+		table.innerHTML = "";
+		reset_table();
 		float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
 	}
 }
