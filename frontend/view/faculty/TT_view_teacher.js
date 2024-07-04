@@ -11,6 +11,7 @@ let messageCounter = 0;
 const letmesee2 = () => {
 	document.getElementById("teacher_detail").rows[0].cells[0].innerHTML = faculty_data.name;
 	document.getElementById("teacher_detail").rows[0].cells[1].innerHTML = faculty_data.teacherid;
+	let total_hours = 0;
 	for (let i = 1; i <= 7; i++) {
 		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
 		let day_row_border_adding = document.getElementById("mytable").rows[i];
@@ -28,6 +29,7 @@ const letmesee2 = () => {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger text-white heading-text border-dark border-3");
 			if (faculty_data && faculty_data.schedule && faculty_data.schedule[currrow] && faculty_data.schedule[currrow][currcol] && faculty_data.schedule[currrow][currcol].subjectcode) {
+				total_hours++;
 				let message = "N.A.";
 				if (room_list && room_list[faculty_data.schedule[currrow][currcol].roomid].classname) {
 					message = room_list[faculty_data.schedule[currrow][currcol].roomid].classname;
@@ -71,6 +73,7 @@ const letmesee2 = () => {
 			}
 		}
 	}
+	document.getElementById("teacher_detail").rows[0].cells[2].innerHTML = total_hours + " hours";
 };
 
 const college_event_manager = () => {

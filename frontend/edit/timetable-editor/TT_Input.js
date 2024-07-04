@@ -46,11 +46,11 @@ const fixtime_firstphase = () => {                        	//  this function rem
 						let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
 						if (temp_faculty.section.length > 0) {
 							if (temp_faculty.section.length == 1) {
-								faculty_data[temp_facultyid].schedule[currday][currslot].section = [];
-								faculty_data[temp_facultyid].schedule[currday][currslot].subjectcode = "";
-								faculty_data[temp_facultyid].schedule[currday][currslot].course = "";
-								faculty_data[temp_facultyid].schedule[currday][currslot].semester = "";
-								faculty_data[temp_facultyid].schedule[currday][currslot].roomid = [];
+								temp_faculty.section = [];
+								temp_faculty.subjectcode = "";
+								temp_faculty.course = "";
+								temp_faculty.semester = "";
+								temp_faculty.roomid = [];
 							}
 							else if (temp_faculty.section.length > 1) {
 								faculty_data[temp_facultyid].schedule[currday][currslot].section.pop(document.getElementById("section_option").value);
@@ -188,7 +188,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 					// Subject mismatch check
 					if (roomSchedule.subjectcode !== subjectCode) {
 						setTimeout(() => {
-							float_error_card_func(`Type 1 - Room conflict <br>Subject Conflicted at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`, "primary");
+							float_error_card_func(`Type 1 - Room conflict <br>Diffrent Subject Conflicted at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`, "primary");
 						}, 1000);
 						isValid = false;
 					}
@@ -206,7 +206,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 						let teacherSchedule = faculty_data[element].schedule[currday][currslot];
 
 						// If the teacher is assigned in the same slot
-						if (teacherSchedule.subjectcode === subjectCode) {
+						if (teacherSchedule.subjectcode === subjectCode && teacherSchedule.section.length >0) { // review this condition
 							float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
 							// isValid = false;
 						}
@@ -423,18 +423,23 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 				// console.log(room_list[key].schedule[currday][currslot].section.length);
 				if (room_list[key].schedule[currday][currslot].section.length == 1) {
 					option.setAttribute("class", "bg-success text-light bg-gradient text fw-bold");
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length == 2) {
 					option.setAttribute("class", "bg-primary text-light bg-gradient text fw-bold");
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length == 3) {
 					option.setAttribute("class", "bg-warning text-dark bg-gradient text fw-bold");
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length == 4) {
 					option.setAttribute("class", "bg-danger text-light bg-gradient text fw-bold");
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
 				}
 				else if (room_list[key].schedule[currday][currslot].section.length > 4) {
 					option.setAttribute("class", "bg-dark text-light bg-gradient text fw-bold");
+					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section} ]`;
 				}
 				// console.log(option.value, option.text)
 				if (key == tempselectedvalue) {
