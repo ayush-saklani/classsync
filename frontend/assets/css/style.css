@@ -493,17 +493,6 @@ table>tbody>tr{
     background-repeat: no-repeat;
     z-index: 3; 
 }
-.bg-primary{}
-.bg-secondary{}
-.bg-success{}
-.bg-danger{}
-.bg-warning,.bg-peela{}
-.bg-info{}
-.bg-light{}
-.bg-dark{}
-.bg-black{}
-.bg-white{}
-.border-warning{}
 .bg-practical{
     background-color: var(--Dim-Aqua) !important;
     color: black !important;
