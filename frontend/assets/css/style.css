@@ -504,3 +504,55 @@ table>tbody>tr{
 .bg-black{}
 .bg-white{}
 .border-warning{}
+.bg-practical{
+    background-color: var(--Dim-Aqua) !important;
+    color: black !important;
+}
+.bg-holiday{
+    background-color: var(--Dim-Yellow) !important;
+    color: black !important;
+}
+.border-holiday{
+    border-color: var(--Dim-Yellow) !important;
+    color: black !important;
+}
+.bg-indicator{
+    background-color: var(--Yellow) !important;
+    color: black !important;
+}
+.bg-theory{
+    background-color: var(--Dim-Red) !important;
+    color: white !important; 
+}
+.bg-empty{
+    background-color: var(--Dim-Blue) !important;
+    color: var() !important;
+}
+
+
+/* ///////////////////////////////////////////// */
+
+.bg-practical{
+    background-color: #18a387 !important;
+    color: black !important;
+}
+.bg-holiday{
+    background-color: #f1c40f !important;
+    color: black !important;
+}
+.border-holiday{
+    border-color: #f1c40f !important;
+    color: black !important;
+}
+.bg-indicator{
+    background-color: #f1c40f !important;
+    color: black !important;
+}
+.bg-theory{
+    background-color: #2c3e50 !important;
+    color: white !important; 
+}
+.bg-empty{
+    background-color: #458588 !important;
+    color: var() !important;
+}

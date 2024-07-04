@@ -2,13 +2,15 @@ let timetable;
 let flag = 0;
 let events = {
 	"2024-06-06": { "description": "Software Enginneering (Practical)", "color": "info" },
-	"2024-06-08": { "description": "Farewell Party BTech CSE", "color": "warning" },
-	"2024-06-19": { "description": "End Term- Compiler Design", "color": "warning" },
-	"2024-06-21": { "description": "End Term- Software engineering", "color": "warning" },
-	"2024-06-24": { "description": "End Term- Computer network(I)", "color": "warning" },
-	"2024-06-26": { "description": "End Term- Fullstack web-dev", "color": "warning" },
-	"2024-06-28": { "description": "End Term- Generative AI", "color": "warning" },
-	"2024-07-01": { "description": "End Term- Career skills", "color": "warning" },
+	"2024-06-08": { "description": "Farewell Party BTech CSE", "color": "holiday" },
+	"2024-06-19": { "description": "End Term- Compiler Design", "color": "holiday" },
+	"2024-06-21": { "description": "End Term- Software engineering", "color": "holiday" },
+	"2024-06-24": { "description": "End Term- Computer network(I)", "color": "holiday" },
+	"2024-06-26": { "description": "End Term- Fullstack web-dev", "color": "holiday" },
+	"2024-06-28": { "description": "End Term- Generative AI", "color": "holiday" },
+	"2024-07-01": { "description": "End Term- Career skills", "color": "holiday" },
+	"2024-07-04": { "description": "End Term- Career skills", "color": "holiday" },
+	"2024-07-05": { "description": "End Term- Career skills", "color": "info" },
 };
 let messageCounter = 0;
 let cookieVar = document.cookie.split(';');
@@ -19,13 +21,8 @@ if (cookieVar.find(row => row.startsWith('course='))  && cookieVar.find(row => r
 }
 const letmesee2 = (temp_tt) => {
 	// main timetable rendering function
+	if(temp_tt){
 	for (let i = 1; i <= 7; i++) {
-		// ======================================== will be used in download optin [ future feature ] ======================================== 
-		// document.getElementById("render-course-detail").innerHTML =   "Course : " + document.getElementById("course_option").options[document.getElementById("course_option").selectedIndex].textContent;;
-		// document.getElementById("render-semester-detail").innerHTML = "Semester : " + document.getElementById("semester_option").value;
-		// document.getElementById("render-section-detail").innerHTML =  "Section : " + document.getElementById("section_option").value;
-		// =================================================================================================================================== 
-
 		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
 		let day_row_border_adding = document.getElementById("mytable").rows[i];
 		let today = new Date();
@@ -41,26 +38,28 @@ const letmesee2 = (temp_tt) => {
 		for (let j = 1; j <= 10; j++) {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			if (temp_tt && temp_tt.schedule && temp_tt.schedule[currrow] && temp_tt.schedule[currrow][currcol] && temp_tt.schedule[currrow][currcol].slotdata) {
+				let currcelltb = document.getElementById("mytable").rows[i].cells[j];
 				if(temp_tt.schedule[currrow][currcol].slotdata[0].toLowerCase()=='p'){
-				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-success  text-white heading-text border-dark border-3");
-				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
+					currcelltb.setAttribute("class","text bg-practical bg-gradient heading-text border-dark border-3");
+					currcelltb.innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
 				}
 				else{
-				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-danger  text-white heading-text border-dark border-3");
-				document.getElementById("mytable").rows[i].cells[j].innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
+					currcelltb.setAttribute("class", "text bg-theory bg-gradient heading-text border-dark border-3");
+					currcelltb.innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
 				}
 			}
 			else {
+				let currcelltb = document.getElementById("mytable").rows[i].cells[j];
 				holidaychecker++;
-				document.getElementById("mytable").rows[i].cells[j].setAttribute("class", "text bg-primary bg-gradient text-white heading-text border-dark border-3");
-				document.getElementById("mytable").rows[i].cells[j].innerHTML = '';
+				currcelltb.setAttribute("class", "text bg-empty bg-gradient heading-text border-dark border-3");
+				currcelltb.innerHTML = '';
 			}
 			if (currrow === day_slot) {
-				day_row_border_adding.cells[0].classList.add("bg-warning");							//dayslot color
+				day_row_border_adding.cells[0].classList.add("bg-indicator");							//dayslot color
 			}
 			if (currcol === time_slot && currrow === day_slot && today.getHours() < 19) { // color the time and day and period slots 
-				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-warning");	//timeslot color
-				document.getElementById("mytable").rows[i].cells[j].classList.add("bg-peela");		// day-time	slot color
+				document.getElementById("mytable").rows[0].cells[j].classList.add("bg-indicator");	//timeslot color
+				document.getElementById("mytable").rows[i].cells[j].classList = ("text bg-indicator bg-gradient heading-text border-dark border-3");		// day-time	slot color
 			}
 		}
 		if (holidaychecker === 10) {
@@ -68,7 +67,7 @@ const letmesee2 = (temp_tt) => {
 			for (let k = 1; k <= 10; k++) {
 				row.cells[k].className = "";
 				row.cells[k].innerHTML = "";
-				row.cells[k].className = 'text text-dark bg-warning fw-bold text-dark border-warning border-2 align-middle h5 py-2';
+				row.cells[k].className = 'text text-dark bg-holiday fw-bold text-dark border-holiday border-2 align-middle h5 py-2';
 			}
 			let words = 'No Class Today'.split(' ');
 			let cellIndex = Math.floor((10 - words.length) / 2) + 1 // Start updating from the second cell (first is for day label)
@@ -80,6 +79,7 @@ const letmesee2 = (temp_tt) => {
 				cellIndex++;
 			}
 		}
+	}
 	}
 	if (temp_tt && temp_tt.teacher_subject_data) {
 		// populate the subject teacher table with the data
@@ -132,16 +132,20 @@ const letmesee2 = (temp_tt) => {
 			const cells = rows[i].getElementsByTagName("td");
 			for (let j = 0; j < cells.length; j++) {
 				const cell = cells[j];
-				cell.classList.remove('bg-primary');
-				cell.classList.remove('bg-gradient');
+				cell.innerHTML = '';
+				cell.classList = '';
 				if (i === 0 || i === 1) {
-					cell.classList.add('bg-success');
+					cell.classList.add('bg-practical');
+					cell.classList.add('bg-gradient');
 				} else if (i === 2 || i === 3) {
-					cell.classList.add('bg-warning');
+					cell.classList.add('bg-holiday');
+					cell.classList.add('bg-gradient');
 				} else if (i === 4 || i === 5) {
-					cell.classList.add('bg-danger');
+					cell.classList.add('bg-theory');
+					cell.classList.add('bg-gradient');
 				} else if (i === 6) {
-					cell.classList.add('bg-primary');
+					cell.classList.add('bg-empty');
+					cell.classList.add('bg-gradient');
 				}
 			}
 		}
@@ -161,7 +165,7 @@ const college_event_manager = () => {
 		if (events[currentDateString]) {
 			let rowIndex = (startDayIndex + i) % 7 + 1;
 			let row = document.getElementById("mytable").rows[rowIndex];
-			let color = events[currentDateString].color || "warning";
+			let color = events[currentDateString].color || "holiday";
 
 			for (let j = 1; j <= 10; j++) {
 				row.cells[j].className = "";
@@ -235,20 +239,6 @@ document.getElementById('course_option').addEventListener('change', letmeseeitba
 document.getElementById('semester_option').addEventListener('change', letmeseeitbaby);
 document.getElementById('section_option').addEventListener('change', letmeseeitbaby);
 
-// ======================================== will be used in download optin [ future feature ] ======================================== 
-// document.getElementById("download").addEventListener("click", function() {
-// 	const element = document.getElementById("ttdiv"); // Get the HTML element to convert to PDF
-//     const opt = {
-// 		margin: [0,0.5], // Optional - set the margin (in inches)
-//         filename: 'timetable.pdf', // Optional - set the filename of the PDF
-//         image: { type: 'jpeg', quality: 1 }, // Optional - set image quality
-//         html2canvas: { scale: 2 }, // Optional - set the scale for html2canvas
-//         jsPDF: { unit: 'in', format: 'a4', orientation: 'landscape' } // Optional - set PDF format and orientation
-//     };
-
-//     html2pdf().from(element).set(opt).save();
-// });
-// =================================================================================================================================== 
 document.getElementById("toggle_event").addEventListener("click", function () {
 	flag = flag === 1 ? 0 : 1;
 	letmeseeitbaby();
