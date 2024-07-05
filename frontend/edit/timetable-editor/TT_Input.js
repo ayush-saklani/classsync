@@ -203,7 +203,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 				}
 				// Validate the teacher's schedule
 				for (element in faculty_data) {
-					if (faculty_data[element].teacherid === teacherId) {
+					if (faculty_data[element].teacherid === teacherId) { // the teacher who is teaching the subject
 						let teacherSchedule = faculty_data[element].schedule[currday][currslot];
 
 						// If the teacher is assigned in the same slot
