@@ -74,10 +74,10 @@ const save_table_func = () => {                         //  function below calcu
     })
         .then(response => {
             if (response.ok) {
-                float_error_card_func("Faculty Data Saved Successfully", "Faculty Data saved to database successfully.", "success");
+                float_error_card_func("Faculty Data Saved Successfully", "", "success");
                 return response.json();
             } else {
-                float_error_card_func("Faculty Data not Saved", "Faculty data not saved due to network error.", "danger");
+                float_error_card_func("Faculty Data Not Saved<br>Server Error", "", "danger");
                 throw new Error(':::::  FACULTY DATA NOT SAVED DUE TO NETWORK ERROR :::::');
             }
         })
@@ -85,13 +85,13 @@ const save_table_func = () => {                         //  function below calcu
             setTimeout(initializePage, 1000);
         })
         .catch(error => {
-            float_error_card_func("Faculty Data not Saved", "Error while saving faculty data to database.", "danger");
+            float_error_card_func("Faculty Data Not Saved<br>Server Error", "", "danger");
             console.error('::::: FACULTY ERROR SAVING DATA :::::', error);
         });
 }
 const render_tables = () => {                           // renders the table [ uses the same strucute of JSON as it POST to the backend]
     if (timetable) {
-        float_error_card_func("Section Data available", "Section Data retrived from the DataBase and Rendered Successfully.", "success");
+        float_error_card_func("Section Data Available", "", "success");
         let localteacher_subject_data = timetable.teacher_subject_data;
         let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
         table.innerHTML = "";
@@ -115,11 +115,12 @@ const render_tables = () => {                           // renders the table [ u
             select = document.createElement('select');
             select.setAttribute('class', 'form-select text');
             cell.appendChild(select);
+            let tempTeacherID = localteacher_subject_data[i].teacherid ? localteacher_subject_data[i].teacherid : "0";
             for (let ele in faculty_data) {
                 let option = document.createElement('option');
                 option.value = faculty_data[ele].teacherid;
                 option.text = faculty_data[ele].name;
-                if (faculty_data[ele].teacherid == localteacher_subject_data[i].teacherid) {
+                if (faculty_data[ele].teacherid == tempTeacherID) {
                     option.selected = true;
                     // console.log(ele)
                 }
@@ -152,7 +153,7 @@ const render_tables = () => {                           // renders the table [ u
     else {
         let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
         table.innerHTML = "";
-        float_error_card_func("Section Data not available", "Section Data not available. Please create a new Time Table.", "danger");
+        float_error_card_func("Section Data Unavailable", "", "danger");
     }
 }
 
@@ -170,10 +171,10 @@ const fetch_faculties_list = () => {                    //  this function fetche
             faculty_data = data;
         })
         .then(() => {
-            float_error_card_func('Faculty Data Fetched Successfully', 'Faculty Data Fetched Successfully from the Database', 'success');
+            float_error_card_func('Faculty Data Fetched Successfully', '', 'success');
         })
         .catch(error => {
-            float_error_card_func('Faculty Data not available', 'Faculty Data not available due to probable server error', 'danger');
+            float_error_card_func('Faculty Data Unavailable<br>Server Error', '', 'danger');
             console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
         });
 };
@@ -220,7 +221,7 @@ const fetch_timetable = () => {                        //  this function fetches
             document.getElementById("save_tt_json").disabled = false;
         })
         .catch(error => {
-            float_error_card_func("Time Table Data not available", "Time Table Data not available. Please create a new Time Table.", "danger");
+            float_error_card_func("Timetable Unavailable<br>Server Error", "", "danger");
             console.error('Data unavailable:', error)
         });
 }
@@ -231,13 +232,13 @@ const initializePage = () => {                          //  this function initia
             setTimeout(() => {
                 document.getElementById("loader").style.display = "none";
             }, 2000);
-            float_error_card_func("Initialization Successful", "Initialization was completed successfully and all the data was loaded.", "success");
+            float_error_card_func("Initialization Successful", "", "success");
         })
         .catch(error => {
             setTimeout(() => {
                 document.getElementById("loader").style.display = "none";
             }, 2000);
-            float_error_card_func("Error during initialization", "Error during initialization.", "danger");
+            float_error_card_func("Initialization Failed<br>Server Error", "", "danger");
             console.error('Error during initialization:', error)
         });
 };
@@ -252,7 +253,7 @@ const reset_table = () => {                             //  this function resets
         }
     }
 };
-document.getElementById("loader").style.display = "none";
+// document.getElementById("loader").style.display = "none";
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click", reset_table);
