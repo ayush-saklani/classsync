@@ -15,6 +15,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 			let temp_roomid = timetable.schedule[currday][currslot].class_id;
 			if (temp_roomid in room_list && temp_roomid != '0') {
 				let temproom = room_list[temp_roomid].schedule[currday][currslot];
+				// temproom.section = temproom.section.filter((item, index) => temproom.section.indexOf(item) === index);	// remove duplicates from the array ( for debugging )
 				if (temproom.section.length > 0) {
 					if (temproom.section.length == 1) {
 						temproom.course = "";
@@ -210,12 +211,12 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 							if(teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length > 1) {
 								setTimeout(() => {
 									// float_error_card_func(`${teacherSchedule.section.includes(document.getElementById("section_option").value)} && ${teacherSchedule.section} ${currday} ${currslot}`,"","info")
-									float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
+									float_error_card_func(`Merge at ${currday.toUpperCase()} ${currslot}`, ``, "warning");
 								}, 500);
 							}
 							if(!teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length == 1) {
 								setTimeout(() => {
-									float_error_card_func(`Possible Merge at ${currday.toUpperCase()} ${currslot} slot`, `The teacher is assigned to the same subject code in this slot.`, "warning");
+									float_error_card_func(`Merge at ${currday.toUpperCase()} ${currslot}`, ``, "warning");
 								}, 500);
 							}
 							// isValid = false;
@@ -328,73 +329,68 @@ const save_table_func = () => {                         	//  function below calc
 				'Content-Type': 'application/json'
 			},
 			body: jsonDataString
-		})
-			.then(response => {
+		}).then(response => {
+			if (response.ok) {
+				float_error_card_func("Timetable Saved Successfully", "", "success");
+				return response.json();
+			} else {
+				float_error_card_func("Timetable Not Saved", "", "danger");
+				throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
+			}
+		}).then(() => {
+			fixtime_firstphase();
+		}).then(() => {
+			timetable = jsonData;
+		}).then(() => {
+			fixtime_secondphase();
+		}).then(() => {
+			fetch(`${localhost}/list/save-list`, {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify({
+					"type": "rooms",
+					"data": room_list
+				})
+			}).then(response => {
 				if (response.ok) {
-					float_error_card_func("Timetable Saved Successfully", "", "success");
+					float_error_card_func("Room Data Saved", "", "success");
 					return response.json();
 				} else {
-					float_error_card_func("Timetable Not Saved", "", "danger");
+					float_error_card_func("Room Data Not Saved", "", "danger");
 					throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 				}
-			})
-			.then(() => {
-				fixtime_firstphase();
-			})
-			.then(() => {
-				timetable = jsonData;
-			})
-			.then(() => {
-				fixtime_secondphase();
-			})
-			.then(() => {
-				fetch(`${localhost}/list/save-list`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify({
-						"type": "rooms",
-						"data": room_list
-					})
-				})
-					.then(response => {
-						if (response.ok) {
-							float_error_card_func("Room Data Saved", "", "success");
-							return response.json();
-						} else {
-							float_error_card_func("Room Data Not Saved", "", "danger");
-							throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
-						}
-					});
-			})
-			.then(() => {
+			}).then(() => {
 				fetch(`${localhost}/faculty/update`, {
 					method: 'POST',
 					headers: {
 						'Content-Type': 'application/json'
 					},
 					body: JSON.stringify({ "facultyList": faculty_data })
-				})
-					.then(response => {
-						if (response.ok) {
-							float_error_card_func("Faculty data Saved", "", "success");
-							return response.json();
-						} else {
-							float_error_card_func("Faculty Data Not Saved", "", "danger");
-							throw new Error(':::::  FACULTY DATA NOT SAVED DUE TO NETWORK ERROR :::::');
-						}
-					});
-			})
-			.then(() => {
-				setTimeout(initializePage, 1000);
-			})
-			.catch(error => {
-				float_error_card_func("Timetable Not Saved <br>Server Error", "", "danger");
+				}).then(response => {
+					if (response.ok) {
+						float_error_card_func("Faculty data Saved", "", "success");
+						return response.json();
+					} else {
+						float_error_card_func("Faculty Data Not Saved", "", "danger");
+						throw new Error(':::::  FACULTY DATA NOT SAVED DUE TO NETWORK ERROR :::::');
+					}
+				}).then(() => {
+					setTimeout(initializePage, 1000);
+				}).catch(error => {
+					float_error_card_func("Faculty Data Not Saved <br>Server Error", "", "danger");
+					console.error('::::: ERROR SAVING DATA :::::', error);
+				});
+			}).catch(error => {
+				float_error_card_func("Room Data Not Saved <br>Server Error", "", "danger");
 				console.error('::::: ERROR SAVING DATA :::::', error);
 			});
-	}
-	else {
+		}).catch(error => {
+			float_error_card_func("Timetable Not Saved <br>Server Error", "", "danger");
+			console.error('::::: ERROR SAVING DATA :::::', error);
+		});
+	}else{
 		setTimeout(() => {
 			float_error_card_func("Validation Failed <br>Timetable Not saved", "", "warning");
 		}, 3000);
