@@ -25,7 +25,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 						temproom.section = [];
 					}
 					else if (temproom.section.length > 1) {
-						temproom.section.pop(document.getElementById("section_option").value)
+						temproom.section = temproom.section.filter(section => section !== document.getElementById("section_option").value);
 					}
 				}
 				else {
@@ -54,7 +54,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 								temp_faculty.roomid = [];
 							}
 							else if (temp_faculty.section.length > 1) {
-								faculty_data[temp_facultyid].schedule[currday][currslot].section.pop(document.getElementById("section_option").value);
+								faculty_data[temp_facultyid].schedule[currday][currslot].section = faculty_data[temp_facultyid].schedule[currday][currslot].section.filter(section => section !== document.getElementById("section_option").value);
 							}
 						}
 						else if (temp_faculty.section.length == 0) {
