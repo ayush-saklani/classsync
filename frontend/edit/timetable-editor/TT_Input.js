@@ -422,9 +422,9 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		for (let j = 1; j <= 10; j++) {
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-			let currslotroom = mytable.rows[i].cells[j].childNodes[1];
+			
+			mytable.rows[i].cells[j].childNodes[1].innerHTML = "";
 			let tempselectedvalue = timetable.schedule[currday][currslot].class_id;
-			currslotroom.innerHTML = "";
 			Object.entries(room_list).forEach(([key, value]) => {
 				let option = document.createElement("option");
 				option.value = key;
@@ -455,7 +455,7 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 				if (key == tempselectedvalue) {
 					option.selected = true;
 				}
-				currslotroom.appendChild(option);
+				mytable.rows[i].cells[j].childNodes[1].appendChild(option);
 			});
 		}
 	}
@@ -498,7 +498,7 @@ const fetch_room_list = () => {                         	//  this function fetch
 		.then(data => {
 			room_list = data.data.data;
 			console.log(room_list)
-			add_rooms_options_to_mytable(room_list);
+			// add_rooms_options_to_mytable(room_list);
 		})
 		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
 };
@@ -676,6 +676,7 @@ const initializePage = () => {                          	//  this function initi
 	fetch_timetable()
 		.then(() => fetch_faculties_list())
 		.then(() => fetch_room_list())
+		.then(() => add_rooms_options_to_mytable(room_list))
 		.then(() => {
 			unblocking();
 			setTimeout(() => {
