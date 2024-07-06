@@ -487,6 +487,24 @@ table>tbody>tr{
     background-repeat: no-repeat;
     z-index: 3; 
 }
+.new-feature {
+    position: relative;
+}
+.new-feature::before {
+    content: "New";        
+    position: absolute;
+    font-size: large;
+    font-weight: bolder;
+    top: 0;
+    right: 0;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.555);
+    padding: 2px 15px;
+    margin-right: 18px;
+    margin-top: 6px;
+    border-radius: 10px;
+    z-index: 50;
+}
 .bg-practical{
     background-color: var(--Dim-Aqua) !important;
     color: black !important;
