@@ -97,5 +97,21 @@ const save_timetable = asyncHandler(async (req, res, next) => {
         );
     }
 });
+const removetable = asyncHandler(async (req, res, next) => {
+    const course_name = req.body.course;
+    const semester = req.body.semester;
+    const section = req.body.section;
 
-export { get_timetable, post_teachertable, save_timetable };
+    await Tables.findOneAndDelete({
+        course: course_name,
+        semester: semester,
+        section: section,
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "faculty deleted successfully",
+    });
+});
+
+export { get_timetable, post_teachertable, save_timetable, removetable };
