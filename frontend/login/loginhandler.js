@@ -24,26 +24,29 @@ const login = () => {
         },
         credentials: 'include',
         body: JSON.stringify({ name: email, password: password })
-    })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Invalid UUID');
-            }
-            return response.json();
-        })
-        .then(data => {
-            float_error_card_func("Login Successful", "", "success");
-            document.cookie = `accessToken=${data.data.accessToken}; path=/; SameSite=none; Secure`;
-            document.cookie = `refreshToken=${data.data.refreshToken}; path=/; SameSite=none; Secure`;
-            document.cookie = `name=${data.data.user.name}; path=/; SameSite=none; Secure`;
-            document.cookie = `role=${data.data.user.role}; path=/; SameSite=none; Secure`;
-            window.location = "/edit/";
-        })
-        .catch(error => {
-            float_error_card_func("Login Failed", "", "danger");
-            display_error("Email or password is incorrect");
-            console.error('Error:', error);
-        });
+    }).then(response => {
+        if (!response.ok) {
+            throw new Error('Invalid UUID');
+        }
+        return response.json();
+    }).then(data => {
+        float_error_card_func("Login Successful", "", "success");
+        let date = new Date();
+        let date2 = new Date(date);
+        date2.setDate(date2.getDate() + 2); // Set expiration to 2 days from now
+        let date10 = new Date(date);
+        date10.setDate(date10.getDate() + 10); // Set expiration to 10 days from now
+        
+        document.cookie = `accessToken=${data.data.accessToken}; path=/; SameSite=none; Secure; expires=${date2.toUTCString()}`;
+        document.cookie = `refreshToken=${data.data.refreshToken}; path=/; SameSite=none; Secure; expires=${date10.toUTCString()}`;
+        document.cookie = `name=${data.data.user.name}; path=/; SameSite=none; Secure; expires=${date10.toUTCString()}`;
+        document.cookie = `role=${data.data.user.role}; path=/; SameSite=none; Secure; expires=${date10.toUTCString()}`;
+        window.location = "/edit/";
+    }).catch(error => {
+        float_error_card_func("Login Failed", "", "danger");
+        display_error("Email or password is incorrect");
+        console.error('Error:', error);
+    });
 }
 document.getElementById("login").addEventListener("click", login);
 document.getElementById("signin_email").addEventListener("change", revert_display_error);
