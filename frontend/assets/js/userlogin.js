@@ -42,7 +42,7 @@ const validate_cookie = (refreshToken) => {
 
     //::::::::::::::::::::::: update after the process is done ( domain name is aquired):::::::::::::::::::::::
 
-    if (!document.cookie.includes("refreshToken")) {
+    if (document.cookie.includes("refreshToken")) {
         if (!document.cookie.includes("accessToken")) {
             fetch(`https://classsync-25hj.onrender.com/user/refresh-token`, {
                 method: 'POST',
@@ -76,6 +76,10 @@ const validate_cookie = (refreshToken) => {
             butt.addEventListener("click", delete_cookie);
             document.getElementsByTagName('nav')[0].appendChild(butt);
         }
+    }
+    else{
+        delete_cookie();
+        window.location.href = '/login/';
     }
 }
 document.addEventListener('DOMContentLoaded', () => {
