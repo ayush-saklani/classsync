@@ -5,6 +5,11 @@ let room_list;
 let timetable;
 let local_faculty_data;
 let messageCounter = 0;
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
 const fixtime_firstphase = () => {                        	//  this function removes all the classes and decrease the counter(section.length) from the timetable data saved during initialization
 	let mytable = document.getElementById("mytable");
 	for (let i = 1; i <= 7; i++) {
@@ -326,7 +331,8 @@ const save_table_func = () => {                         	//  function below calc
 		fetch(`${localhost}/table/save-timetable`, {
 			method: 'POST',
 			headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${getCookie('accessToken')}`
 			},
 			body: jsonDataString
 		}).then(response => {
@@ -347,7 +353,8 @@ const save_table_func = () => {                         	//  function below calc
 			fetch(`${localhost}/list/save-list`, {
 				method: 'POST',
 				headers: {
-					'Content-Type': 'application/json'
+					'Content-Type': 'application/json',
+					'Authorization': `Bearer ${getCookie('accessToken')}`
 				},
 				body: JSON.stringify({
 					"type": "rooms",
@@ -365,7 +372,8 @@ const save_table_func = () => {                         	//  function below calc
 				fetch(`${localhost}/faculty/update`, {
 					method: 'POST',
 					headers: {
-						'Content-Type': 'application/json'
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${getCookie('accessToken')}`
 					},
 					body: JSON.stringify({ "facultyList": faculty_data })
 				}).then(response => {
