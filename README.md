@@ -1,4 +1,4 @@
-# **Class-Sync Timetable manager (v1.5)** <img src="frontend/assets/image/logo.png" height="110" align="left"/>
+# **Class-Sync Timetable manager (v1.8)** <img src="frontend/assets/image/logo.png" height="110" align="left"/>
 **Designed and built with all the love and passion in the world by
 <a class="link-danger" href="https://github.com/ayush-saklani"><b>ayush-saklani</b></a>
 <b>X</b>
@@ -54,11 +54,11 @@ _( currently in finalization phase )_**
 - [x] Deployment of code ___[backend ( 50% ) + frontend].___
 - [x] UI improvements.
  
-## Version 1.8 *( under development )*
+## Version 1.8 ✅
 - [x] Feature to check the number of lectures allocated out of total required lectures in a week.
-- [ ] Login for students teacher and admin
+- [x] Login for admin
 
-## Version 2.0 *( proposed )*
+## Version 2.0 *( under development )*
 - [ ] copy to side button ***[ jaise 2 hrs ki class hai tab on hover to copy data so the slot at right ] [ future feature ]***
 - [ ] Faculty exchange of teaching slot permanently and temporarily.
 - [ ] Teacher absent status introduced.

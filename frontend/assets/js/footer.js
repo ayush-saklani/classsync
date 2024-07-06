@@ -10,7 +10,7 @@ const createFooter = () => {
 				<li class="text mb-2">Designed and built with all the love and passion in the world by <a
 						class="link-danger" href="https://github.com/ayush-saklani"><b>ayush-saklani</b></a> <b>X</b> <a
 						class="link-primary" href="https://github.com/RawatDevanshu"><b>RawatDevanshu</b></a>.</li>
-				<li class="text mb-2">Currently v1.5.0.</li>
+				<li class="text mb-2">Currently v1.8.0.</li>
 			</ul>
 			<ul class="h4 list-unstyled d-flex">
 				<a target="_blank" href="https://www.linkedin.com/in/devanshurawat/" class="mx-1"><i
