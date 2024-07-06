@@ -6,13 +6,16 @@ import {
     updatefaculties,
     getspecified,
 } from "../controllers/facultyController.js";
+import { verifyJWT } from "../middleware/authmiddleware.js";
 
 const router = Router();
 
 router.post("/get", getspecified);
 router.get("/getall", getall);
-router.get("/add", addfaculty);
-router.delete("/remove", removefaculty);
-router.post("/update", updatefaculties);
+
+// secured routes
+router.get("/add", verifyJWT, addfaculty);
+router.delete("/remove", verifyJWT, removefaculty);
+router.post("/update", verifyJWT, updatefaculties);
 
 export default router;
