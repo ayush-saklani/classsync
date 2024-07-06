@@ -3,8 +3,8 @@ import {
     get_subjecttable,
     save_subjecttable,
     update_subjecttable,
-} from "../controllers/subjecttableController.js";
-import { verifyJWT } from "../middleware/authmiddleware.js";
+} from "../controllers/subjecttable.controller.js";
+import { verifyJWT } from "../middleware/auth.middleware.js";
 
 const router = Router();
 

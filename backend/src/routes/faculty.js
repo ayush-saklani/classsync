@@ -5,8 +5,8 @@ import {
     removefaculty,
     updatefaculties,
     getspecified,
-} from "../controllers/facultyController.js";
-import { verifyJWT } from "../middleware/authmiddleware.js";
+} from "../controllers/faculty.controller.js";
+import { verifyJWT } from "../middleware/auth.middleware.js";
 
 const router = Router();
 
