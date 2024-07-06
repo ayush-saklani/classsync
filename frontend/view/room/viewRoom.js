@@ -15,7 +15,7 @@ let events = {
 	"2024-07-07": { "description": "Holiday Reason 2024-07-07", "color": "holiday" },
 };
 let messageCounter = 0;
-const letmesee2 = async (currroom) => {
+const letmesee2 = (currroom) => {
 	document.getElementById("teacher_detail").rows[0].cells[0].innerHTML = room_list[currroom].classname;
 	let total_hours = 0;
 	for (let i = 1; i <= 7; i++) {
@@ -35,15 +35,14 @@ const letmesee2 = async (currroom) => {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			if (room_list[currroom] && room_list[currroom].schedule && room_list[currroom].schedule[currrow] && room_list[currroom].schedule[currrow][currcol] && room_list[currroom].schedule[currrow][currcol].subjectcode) {
 				total_hours++;
-				let message = (room_list[currroom] && room_list[currroom][room_list[currroom].schedule[currrow][currcol].roomid].classname)? room_list[currroom][room_list[currroom].schedule[currrow][currcol].roomid].classname : "Room : N.A";
 				let currcelltb = document.getElementById("mytable").rows[i].cells[j]
 				currcelltb.innerHTML = `
-						${room_list[currroom].schedule[currrow][currcol].course}<br>
-						${room_list[currroom].schedule[currrow][currcol].section} 
-						${room_list[currroom].schedule[currrow][currcol].semester} 
-						${room_list[currroom].schedule[currrow][currcol].subjectcode} 
-						${room_list[currroom].schedule[currrow][currcol].teacherid}<br>
-						${message}<br>`;
+						${room_list[currroom].schedule[currrow][currcol].course}
+						${room_list[currroom].schedule[currrow][currcol].semester}<br> 
+						${room_list[currroom].schedule[currrow][currcol].subjectcode}<br> 
+						Sec:${room_list[currroom].schedule[currrow][currcol].section}<br>
+						`;
+						// ${room_list[currroom].schedule[currrow][currcol].teacherid}<br>
 					currcelltb.setAttribute("class", "text bg-practical bg-gradient heading-text border-dark border-3");
 				
 					// add type of class in the DS and change the color here 
@@ -87,6 +86,9 @@ const letmesee2 = async (currroom) => {
 		}
 	}
 	document.getElementById("teacher_detail").rows[0].cells[1].innerHTML = (total_hours/50)*100 + "%";
+	if (flag === 1) {
+		college_event_manager();
+	}
 };
 
 const college_event_manager = () => {
@@ -132,51 +134,35 @@ const fetch_room_list = () => {                         	//  this function fetch
 	}).then(response => response.json())
 	.then(data => {
 		room_list = data.data.data;
-		// console.log(room_list)
+		console.log(room_list)
+		float_error_card_func("Room Data Available", "", "success");
 	}).then(() => {
 		for(room in room_list){
 			if(room_list[room].classname == ''){
 				continue;
 			}
-			// console.log(room_list[room]);
+			console.log(room_list[room].schedule.mon["08-09"]);
 			// console.log(room);
 			let option = document.createElement("option");
 			option.text = room_list[room].classname;
 			option.value = room;
 			document.getElementById("room_options").add(option);
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none";
+			});
 		}
+		letmesee2(document.getElementById("room_options").value);
 	}).catch(error => {
 		console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
 		float_error_card_func("Room Data Unavailable<br>Server Error", "", "danger");
 	});
 };
 const letmeseeitbaby = () => {
-	blocking();
-	letmesee2(document.getElementById("room_options").value)
-	.then(() => {
-		if (flag === 1) {
-			college_event_manager();
-		}
-	}).then(() => {
-		setTimeout(() => {
-			document.getElementById("loader").style.display = "none";
-			unblocking();
-		}, 1500);
-		float_error_card_func("Room Data Found", "", "success");
-	}).catch(error => {
-		setTimeout(() => {
-			document.getElementById("loader").style.display = "none";
-			unblocking();
-		}, 1500);
-		float_error_card_func("Room Not Found<br>Server Error", "", "danger");
-		console.error('Data unavailable:', error)
-	});		
+	let currroom = document.getElementById("room_options").value;
+	letmesee2(currroom)
 }
 document.addEventListener('DOMContentLoaded', () => {
 	fetch_room_list()
-	.then(() => {
-		letmeseeitbaby();
-	})
 });
 document.getElementById('room_options').addEventListener('change', letmeseeitbaby);
 document.getElementById("toggle_event").addEventListener("click", () => {
