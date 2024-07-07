@@ -85,7 +85,7 @@ const letmesee2 = (currroom) => {
 			}
 		}
 	}
-	document.getElementById("teacher_detail").rows[0].cells[1].innerHTML = (total_hours/50)*100 + "%";
+	document.getElementById("teacher_detail").rows[0].cells[1].innerHTML = ((total_hours/60)*100).toFixed(2) + "%";
 	if (flag === 1) {
 		college_event_manager();
 	}
