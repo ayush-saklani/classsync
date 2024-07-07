@@ -16,7 +16,7 @@ let revert_display_error = () => {  // wrong username or password revert functio
 const login = () => {
     let email = document.getElementById("signin_email").value;
     let password = document.getElementById("signin_InputPassword").value;
-
+    document.getElementById("message_container").innerHTML = `<div class="spinner-border text-secondary" role="status"></div>`
     fetch(`${localhost}/user/login`, {
         method: 'POST',
         headers: {
@@ -25,12 +25,16 @@ const login = () => {
         credentials: 'include',
         body: JSON.stringify({ name: email, password: password })
     }).then(response => {
+        console.log(response.status);
         if (!response.ok) {
-            throw new Error('Invalid UUID');
+            if(response.status === 401) {
+                throw new Error('Invalid email or password');
+            }
+            throw new Error('Invalid Access');
         }
         return response.json();
     }).then(data => {
-        float_error_card_func("Login Successful", "", "success");
+        document.getElementById("message_container").innerHTML = `<div class="spinner-border" role="status" style="color:var(--brand-cyan)"></div>`
         let date = new Date();
         let date2 = new Date(date);
         date2.setDate(date2.getDate() + 2); // Set expiration to 2 days from now
@@ -41,11 +45,21 @@ const login = () => {
         document.cookie = `refreshToken=${data.data.refreshToken}; path=/; SameSite=none; Secure; expires=${date10.toUTCString()}`;
         document.cookie = `name=${data.data.user.name}; path=/; SameSite=none; Secure; expires=${date10.toUTCString()}`;
         document.cookie = `role=${data.data.user.role}; path=/; SameSite=none; Secure; expires=${date10.toUTCString()}`;
-        window.location = "/edit/";
+        setTimeout(() => {  
+            window.location = "/edit/";
+        }, 2000);
     }).catch(error => {
-        float_error_card_func("Login Failed", "", "danger");
-        display_error("Email or password is incorrect");
+        document.getElementById("message_container").innerHTML = `<div class="spinner-border" role="status" style="color:var(--brand-red)"></div>`
+        if(error.message === 'Invalid email or password') {
+            display_error("Invalid email or password");
+        }
+        else {
+            display_error("Server error");
+        }
         console.error('Error:', error);
+        setTimeout(() => {
+            document.getElementById("message_container").innerHTML = ``
+        }, 3000);
     });
 }
 document.getElementById("login").addEventListener("click", login);
