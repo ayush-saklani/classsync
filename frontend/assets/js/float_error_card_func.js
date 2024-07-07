@@ -39,6 +39,8 @@ const float_error_card_func = (title, desc, color) => {
 		headerText.innerHTML = `<i class="bi bi-info-circle-fill"></i> ${title}`;
 	} else if (color === "primary") {
 		headerText.innerHTML = `<i class="bi bi-info-circle-fill"></i> ${title}`;
+	}else{
+		headerText.innerHTML = `<i class="bi bi-question-circle-fill"></i> ${title}`;
 	}
 	// headerText.innerHTML = `${title}`;
 	headerDiv.appendChild(headerText);
