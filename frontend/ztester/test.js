@@ -692,9 +692,10 @@ const fetch_timetable = () => {
 };
 const initializePage = async () => {                          	//  this function initializes the page by fetching the room list, faculty list and timetable data from the server
 	try {
-		await fetch_timetable();
-		await fetch_room_list();
-		await fetch_faculties_list();
+		await fetch_timetable().catch(error => { throw error; });
+		await fetch_faculties_list().catch(error => { throw error; });
+		await fetch_room_list().catch(error => { throw error; });
+		add_rooms_options_to_mytable(room_list);
 		unblocking();
 		setTimeout(() => {
 			document.getElementById("loader").style.display = "none";
