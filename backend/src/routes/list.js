@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { get_list, save_list } from "../controllers/listController.js";
-import { verifyJWT } from "../middleware/authmiddleware.js";
+import { get_list, save_list } from "../controllers/list.controller.js";
+import { verifyJWT } from "../middleware/auth.middleware.js";
 
 const router = Router();
 

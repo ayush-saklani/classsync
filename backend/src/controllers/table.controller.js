@@ -1,4 +1,4 @@
-import Tables from "../models/tablemodel.js";
+import Tables from "../models/table.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
@@ -97,5 +97,21 @@ const save_timetable = asyncHandler(async (req, res, next) => {
         );
     }
 });
+const removetable = asyncHandler(async (req, res, next) => {
+    const course_name = req.body.course;
+    const semester = req.body.semester;
+    const section = req.body.section;
 
-export { get_timetable, post_teachertable, save_timetable };
+    await Tables.findOneAndDelete({
+        course: course_name,
+        semester: semester,
+        section: section,
+    });
+
+    res.status(200).json({
+        success: true,
+        message: "faculty deleted successfully",
+    });
+});
+
+export { get_timetable, post_teachertable, save_timetable, removetable };

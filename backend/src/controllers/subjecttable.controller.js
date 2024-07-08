@@ -1,5 +1,5 @@
-import Tables from "../models/tablemodel.js";
-import SubjectTable from "../models/subjecttablemodel.js";
+import Tables from "../models/table.model.js";
+import SubjectTable from "../models/subjecttable.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
