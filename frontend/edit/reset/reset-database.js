@@ -288,6 +288,19 @@ const remove_timetable_data = () => {
 }
 //////////////////////////  NOT IMPLEMENTED YET  //////////////////////////
 
-document.getElementById('reset_faculty_data_button').addEventListener('click', fetch_faculties_list);
-document.getElementById('reset_room_occupancy_data_button').addEventListener('click', fetch_room_list);
+document.getElementById('reset_faculty_data_button').addEventListener('click', ()=>{
+    if(window.confirm('Are you sure you want to reset the faculty data?')){
+        if(window.confirm('This action is irreversible. Are you sure you want to continue?')){
+            fetch_faculties_list()
+        }
+    }
+
+});
+document.getElementById('reset_room_occupancy_data_button').addEventListener('click', ()=>{
+    if(window.confirm('Are you sure you want to reset the room data?')){
+        if(window.confirm('This action is irreversible. Are you sure you want to continue?')){
+            fetch_room_list()
+        }
+    }
+});
 // document.getElementById('remove_timetable_data').addEventListener('click', remove_timetable_data_button);

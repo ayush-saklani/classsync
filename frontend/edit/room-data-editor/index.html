@@ -37,71 +37,41 @@
 
 	<!-- all content of page here below-->
 	<section class="container-fluid mt-5">
-		
 		<!-- heading and warning div start -->
 		<div class="container">
 			<h1 class="center text fw-bold">Room Data Editing Portal</h1>
-			<!-- <ul class="pt-3">
+			<ul class="pt-3">
 				<h4 class="center text text-danger fw-bold">Warning <i class="bi bi-exclamation-triangle-fill"></i> </h1>
+				<li class="center text text-danger fw-bold">Naming schema can be find here <a href="/assets/doc/room-schema.pdf" target="_blank"><i class="bi bi-box-arrow-up-right" style="-webkit-text-stroke-width: 1px;"></i></a></li>
 				<li class="center text text-danger fw-bold">Contact Developers for any query, help and support</li>
-			</ul> -->
+			</ul>
 		</div>
 		<!-- heading and warning div end -->
 		
 		<!-- main content div start -->
 		<div class="container mt-5">
-			<!-- teacher render table start-->
-			<table class="table" id="teacher_table">
+			<table class="table" id="room_table">
 				<thead>
 					<tr>
-						<th class="table-light text border-dark border-2" scope="col">Teacher ID</th>
-						<th class="table-light text border-dark border-2" scope="col">Teacher Name</th>
+						<th class="table-light text border-dark border-2 col-2" scope="col">Room ID</th>
+						<th class="table-light text border-dark border-2 col-6" scope="col">Room Name</th>
+						<th class="table-light text border-dark border-2 col-2" scope="col">Capacity</th>
+						<th class="table-light text border-dark border-2 col-2" scope="col">Room Type</th>
 					</tr>
 				</thead>
 				<tbody>
 				</tbody>
 			</table>
-			<!-- teacher render table start-->
-			<!-- add faculty div start-->
-			<div class="container row pt-2">
-				<h1 class="text fw-bold">Add Room </h1>
-				<div class="col-5">
-					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="add_room_id" placeholder="">
-						<label for="add_room_id">Teacher ID <b class="text-danger">*</b> </label>
-					</div>
-				</div>
-				<div class="col-5">
-					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="add_room_name" placeholder="">
-						<label for="add_room_name">Teacher Name <b class="text-danger">*</b> </label>
-					</div>
-				</div>
-				<div class="col-2">
-					<button type="button" class="button" id="add_room_button">
-						<div class="button-top-blue h4"><b>ADD <i class="bi bi-plus-circle" style="-webkit-text-stroke: 1px;"></i> </b></div>
-						<div class="button-bottom-blue"></div>
-					</button>
-				</div>
+			<div class="container text-center">
+				<button type="button" class="btn my-2 p-0" id="add_row"><i class="h2 bi bi-plus-circle m-0"></i></button>
+				<button type="button" class="btn my-2 p-0" id="delete_row"><i class="h2 bi bi-dash-circle m-0"></i></button>
 			</div>
-			<!-- add faculty div ends -->
-			<!-- remove faculty div start-->
-			<div class="container row pt-2">
-				<h1 class="text fw-bold">Remove Room</h1>
-				<div class="col-lg-9 col-md-8">
-					<div class="form-floating mb-3">
-						<input type="text" class="form-control" id="remove_room_id" placeholder="">
-						<label for="remove_room_id">Teacher ID <b class="text-danger">*</b> </label>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-4">
-					<button type="button" class="button" id="remove_room_button">
-						<div class="button-top-red h4"><b>Remove <i class="bi bi-exclamation-triangle-fill text-warning"></i> </b></div>
-						<div class="button-bottom-red"></div>
-					</button>
-				</div>
+			<div class="container text-center">
+				<button disabled type="button" class="button" id="save_room_list">
+					<div class="button-top-blue h4"><b>Save Room Data</b></div>
+					<div class="button-bottom-blue"></div>
+				</button>
 			</div>
-			<!-- remove faculty div ends -->
 		</div>
 		<!-- main content div start -->
 		
@@ -123,7 +93,7 @@
 	<script src="/assets/js/float_error_card_func.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-	<!-- <script src="List_modifier.js"></script> -->
+	<script src="index.js"></script>
 	<script>
 		document.getElementById("loader").style.display = "none";
 	</script>
