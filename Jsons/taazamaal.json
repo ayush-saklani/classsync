@@ -1,9 +1,10 @@
-{
-    "0": {
+[
+    {
+        "classid":"0",
         "classname": "",
         "capacity": "",
         "type":"",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -88,13 +89,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1": {
+    {
+        "classid":"1",
         "classname": "ULI",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -179,13 +181,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3": {
+    {
+        "classid":"3",
         "classname": "ULII",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -270,13 +273,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "33": {
+    {
+        "classid":"33",
         "classname": "Bosch lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -361,13 +365,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "6": {
+    {
+        "classid":"6",
         "classname": "Mac lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -452,13 +457,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "31": {
+    {
+        "classid":"31",
         "classname": "Seminar Hall",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -543,13 +549,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "36": {
+    {
+        "classid":"36",
         "classname": "CR101",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -634,13 +641,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "41": {
+    {
+        "classid":"41",
         "classname": "meeting hall",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -725,13 +733,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "54": {
+    {
+        "classid":"54",
         "classname": "Open Auditorium",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -816,13 +825,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "57": {
+    {
+        "classid":"57",
         "classname": "Staff room G1",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -907,13 +917,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "56": {
+    {
+        "classid":"56",
         "classname": "Staff room G2",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -998,13 +1009,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "69": {
+    {
+        "classid":"69",
         "classname": "LAB1",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1089,13 +1101,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "101": {
+    {
+        "classid":"101",
         "classname": "LAB9",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1180,13 +1193,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "75": {
+    {
+        "classid":"75",
         "classname": "CR102",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1271,13 +1285,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "71": {
+    {
+        "classid":"71",
         "classname": "CR103",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1362,13 +1377,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "85": {
+    {
+        "classid":"85",
         "classname": "CR104",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1453,13 +1469,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "87": {
+    {
+        "classid":"87",
         "classname": "CR105",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1544,13 +1561,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "89": {
+    {
+        "classid":"89",
         "classname": "CR106",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1635,13 +1653,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "6191": {
+    {
+        "classid":"6191",
         "classname": "workshop",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1726,13 +1745,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1119": {
+    {
+        "classid":"1119",
         "classname": "Main Library",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1817,13 +1837,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1001": {
+    {
+        "classid":"1001",
         "classname": "Round Room R",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1908,13 +1929,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1003": {
+    {
+        "classid":"1003",
         "classname": "Round Room L",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1999,13 +2021,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1122": {
+    {
+        "classid":"1122",
         "classname": "CR209",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2090,13 +2113,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1017": {
+    {
+        "classid":"1017",
         "classname": "CR211",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2181,13 +2205,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1031": {
+    {
+        "classid":"1031",
         "classname": "LT202",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2272,13 +2297,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1033": {
+    {
+        "classid":"1033",
         "classname": "CR206",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2363,13 +2389,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1036": {
+    {
+        "classid":"1036",
         "classname": "CR207",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2454,13 +2481,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1041": {
+    {
+        "classid":"1041",
         "classname": "LT201",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2545,13 +2573,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1069": {
+    {
+        "classid":"1069",
         "classname": "Lab 2",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2636,13 +2665,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1101": {
+    {
+        "classid":"1101",
         "classname": "Lab 8",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2727,13 +2757,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1075": {
+    {
+        "classid":"1075",
         "classname": "CR201",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2818,13 +2849,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1071": {
+    {
+        "classid":"1071",
         "classname": "CR202",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2909,13 +2941,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1085": {
+    {
+        "classid":"1085",
         "classname": "CR203",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3000,13 +3033,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1087": {
+    {
+        "classid":"1087",
         "classname": "CR204",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3091,13 +3125,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1089": {
+    {
+        "classid":"1089",
         "classname": "CR205",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3182,13 +3217,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "1127": {
+    {
+        "classid":"1127",
         "classname": "Gate no 3 ke upar",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3273,13 +3309,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2119": {
+    {
+        "classid":"2119",
         "classname": "Department of Fine Arts",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3364,13 +3401,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2001": {
+    {
+        "classid":"2001",
         "classname": "Department of visual Art",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3455,13 +3493,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2006": {
+    {
+        "classid":"2006",
         "classname": "CR304",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3546,13 +3585,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2017": {
+    {
+        "classid":"2017",
         "classname": "CR302",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3637,13 +3677,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2122": {
+    {
+        "classid":"2122",
         "classname": "New Hall",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3728,13 +3769,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2025": {
+    {
+        "classid":"2025",
         "classname": "CR303",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3819,13 +3861,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2031": {
+    {
+        "classid":"2031",
         "classname": "LT302",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3910,13 +3953,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2033": {
+    {
+        "classid":"2033",
         "classname": "CR301",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4001,13 +4045,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2036": {
+    {
+        "classid":"2036",
         "classname": "CR305",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4092,13 +4137,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2041": {
+    {
+        "classid":"2041",
         "classname": "LT301",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4183,13 +4229,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2069": {
+    {
+        "classid":"2069",
         "classname": "LAB3",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4274,13 +4321,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2101": {
+    {
+        "classid":"2101",
         "classname": "Lab 7",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4365,13 +4413,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2075": {
+    {
+        "classid":"2075",
         "classname": "Pharmaceutical Analysis Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4456,13 +4505,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2071": {
+    {
+        "classid":"2071",
         "classname": "Pharmaceutical chemistry I Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4547,13 +4597,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2087": {
+    {
+        "classid":"2087",
         "classname": "Pharmaceutics I Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4638,13 +4689,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "2089": {
+    {
+        "classid":"2089",
         "classname": "Pharmacognosy I Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4729,13 +4781,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3002": {
+    {
+        "classid":"3002",
         "classname": "Department of english",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4820,13 +4873,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3006": {
+    {
+        "classid":"3006",
         "classname": "CR405",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4911,13 +4965,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3025": {
+    {
+        "classid":"3025",
         "classname": "CR404",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5002,13 +5057,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3033": {
+    {
+        "classid":"3033",
         "classname": "CR403",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5093,13 +5149,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3036": {
+    {
+        "classid":"3036",
         "classname": "CR406",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5184,13 +5241,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3031": {
+    {
+        "classid":"3031",
         "classname": "LT401",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5275,13 +5333,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3041": {
+    {
+        "classid":"3041",
         "classname": "LT402",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5366,13 +5425,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3122": {
+    {
+        "classid":"3122",
         "classname": "Conference Hall",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5457,13 +5517,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3069": {
+    {
+        "classid":"3069",
         "classname": "Lab 4",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5548,13 +5609,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3101": {
+    {
+        "classid":"3101",
         "classname": "IOT Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5639,13 +5701,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3073": {
+    {
+        "classid":"3073",
         "classname": "Department of Mathematics",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5730,13 +5793,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3075": {
+    {
+        "classid":"3075",
         "classname": "CR401",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5821,13 +5885,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3071": {
+    {
+        "classid":"3071",
         "classname": "Electronic engg Lab I",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5912,13 +5977,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3085": {
+    {
+        "classid":"3085",
         "classname": "Logic Design Microprocessor Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6003,13 +6069,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3087": {
+    {
+        "classid":"3087",
         "classname": "Electronic engg Lab II",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6094,13 +6161,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "3089": {
+    {
+        "classid":"3089",
         "classname": "CR402",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6185,13 +6253,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4006": {
+    {
+        "classid":"4006",
         "classname": "Fashion class I",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6276,13 +6345,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4025": {
+    {
+        "classid":"4025",
         "classname": "Fashion class II",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6367,13 +6437,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4017": {
+    {
+        "classid":"4017",
         "classname": "Fashion Studio",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6458,13 +6529,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4031": {
+    {
+        "classid":"4031",
         "classname": "LT501",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6549,13 +6621,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4041": {
+    {
+        "classid":"4041",
         "classname": "LT502",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6640,13 +6713,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4033": {
+    {
+        "classid":"4033",
         "classname": "CR503",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6731,13 +6805,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4036": {
+    {
+        "classid":"4036",
         "classname": "CR504",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6822,13 +6897,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4075": {
+    {
+        "classid":"4075",
         "classname": "CR501",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6913,13 +6989,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4085": {
+    {
+        "classid":"4085",
         "classname": "Physics Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7004,13 +7081,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4087": {
+    {
+        "classid":"4087",
         "classname": "IAPT asian physics olypiyad lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7095,13 +7173,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4089": {
+    {
+        "classid":"4089",
         "classname": "CR502",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7186,13 +7265,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4069": {
+    {
+        "classid":"4069",
         "classname": "Lab 5",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7277,13 +7357,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4101": {
+    {
+        "classid":"4101",
         "classname": "chemistry Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7368,13 +7449,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4057": {
+    {
+        "classid":"4057",
         "classname": "Staff room 51",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7459,13 +7541,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "4056": {
+    {
+        "classid":"4056",
         "classname": "Staff room 52",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7550,13 +7633,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5119": {
+    {
+        "classid":"5119",
         "classname": "Manual Drawing lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7641,13 +7725,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5003": {
+    {
+        "classid":"5003",
         "classname": "Dr K P Nautiyal Auditorium",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7732,13 +7817,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5006": {
+    {
+        "classid":"5006",
         "classname": "reachers scholer room (room beside audi)",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7823,13 +7909,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5017": {
+    {
+        "classid":"5017",
         "classname": "moot court",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7914,13 +8001,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5031": {
+    {
+        "classid":"5031",
         "classname": "LT601",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8005,13 +8093,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5041": {
+    {
+        "classid":"5041",
         "classname": "LT602",
         "capacity": 4,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8096,13 +8185,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5033": {
+    {
+        "classid":"5033",
         "classname": "CR605",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8187,13 +8277,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5075": {
+    {
+        "classid":"5075",
         "classname": "CR601",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8278,13 +8369,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5071": {
+    {
+        "classid":"5071",
         "classname": "CR602",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8369,13 +8461,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5085": {
+    {
+        "classid":"5085",
         "classname": "CR603",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8460,13 +8553,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5087": {
+    {
+        "classid":"5087",
         "classname": "Fashion Design (studio and theory room)",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8551,13 +8645,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5089": {
+    {
+        "classid":"5089",
         "classname": "CR604",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8642,13 +8737,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5069": {
+    {
+        "classid":"5069",
         "classname": "Lab 6",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8733,13 +8829,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "5101": {
+    {
+        "classid":"5101",
         "classname": "Library II(Top floor)",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8824,13 +8921,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "6118": {
+    {
+        "classid":"6118",
         "classname": "Basement Class",
         "capacity": 1,
         "type":"class",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8915,13 +9013,14 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     },
-    "6190": {
+    {
+        "classid":"6190",
         "classname": "Civil Engineering Lab",
         "capacity": 1,
         "type":"lab",
-        "schedule": {
+        "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -9006,6 +9105,6 @@
                 "04-05": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
                 "05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
             }
-        }
+        } 
     }
-}
+]
