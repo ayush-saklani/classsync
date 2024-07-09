@@ -9,11 +9,11 @@ const getAll = asyncHandler(async (req, res, next) => {
 });
 
 const getSpecified = asyncHandler(async (req, res, next) => {
-    const classname = req.query.classname;
-    if (!classname) {
+    const roomid = req.query.roomid;
+    if (!roomid) {
         throw new ApiError(400, "Missing required parameter 'classname'");
     }
-    const room = await Rooms.findOne({ classname: classname });
+    const room = await Rooms.findOne({ roomid: roomid });
     if (!room) {
         throw new ApiError(404, "Room not found");
     }
@@ -21,18 +21,19 @@ const getSpecified = asyncHandler(async (req, res, next) => {
 });
 
 const saveRoom = asyncHandler(async (req, res, next) => {
-    const { classname, type, capacity, schedule } = req.body;
+    const { roomid, name, type, capacity, schedule } = req.body;
 
-    if (!classname || !type || !capacity || !schedule) {
+    if (!roomid || !name || !type || !capacity || !schedule) {
         throw new ApiError(400, "Missing required parameters");
     }
 
-    const roomExists = await Rooms.findOne({ classname: classname });
+    const roomExists = await Rooms.findOne({ roomid: roomid });
     if (roomExists) {
         await Rooms.findOneAndUpdate(
-            { classname: classname },
+            { roomid: roomid },
             {
                 $set: {
+                    name: name,
                     type: type,
                     capacity: capacity,
                     schedule: schedule,
@@ -44,7 +45,8 @@ const saveRoom = asyncHandler(async (req, res, next) => {
         );
     } else {
         const newRoom = await Rooms.create({
-            classname: classname,
+            roomid: roomid,
+            name: name,
             type: type,
             capacity: capacity,
             schedule: schedule,
@@ -57,15 +59,15 @@ const saveRoom = asyncHandler(async (req, res, next) => {
 });
 
 const removeRoom = asyncHandler(async (req, res, next) => {
-    const classname = req.query.classname;
-    if (!classname) {
+    const roomid = req.query.roomid;
+    if (!roomid) {
         throw new ApiError(400, "Missing required parameter 'classname'");
     }
-    const room = await Rooms.findOne({ classname: classname });
+    const room = await Rooms.findOne({ roomid: roomid });
     if (!room) {
         throw new ApiError(404, "Room not found");
     }
-    await Rooms.deleteOne({ classname: classname });
+    await Rooms.deleteOne({ roomid: roomid });
     res.status(200).json(new ApiResponse(200, "Room deleted successfully"));
 });
 

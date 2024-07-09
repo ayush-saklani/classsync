@@ -32,7 +32,8 @@ const scheduleSchema = new mongoose.Schema({
 });
 
 const roomSchema = new mongoose.Schema({
-    classname: String,
+    roomid: String,
+    name: String,
     type: String,
     capacity: Number,
     schedule: scheduleSchema,
