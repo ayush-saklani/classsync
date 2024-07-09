@@ -2,7 +2,7 @@ let room_list;
 let messageCounter = 0;
 
 const save_table_func = () => {				//  function below calculate and construct the room list and send that to the backend via post request 
-	let res = {}
+	let res = [];
 	let tableBody = document.getElementById("room_table").getElementsByTagName('tbody')[0];
 	// Iterate over each row in the table body
 	for (let i = 0; i < tableBody.rows.length; i++) {
@@ -22,11 +22,20 @@ const save_table_func = () => {				//  function below calculate and construct th
 			float_error_card_func('ID too long (10 digits Max)', '', 'danger');
 			return;
 		}
-		res[id] = {
-			"classname": name,
+		let schedule;
+		for(element in room_list){
+			if(room_list[element].roomid == id){
+				schedule = room_list[element].schedule;
+			}
+		}
+		// console.log(room_list[id]);
+		res.push({
+			"roomid": id,
+			"name": name,
 			"capacity": capacity,
 			"type": type,
-			"schedule": room_list[id].schedule || {
+			"schedule":  schedule ||
+			 {
 				"mon": {
 					"08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
 					"09-10": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -112,26 +121,26 @@ const save_table_func = () => {				//  function below calculate and construct th
 					"05-06": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""}
 				}
 			}
-		}
+		});
 	}
 	console.log(res);
-	fetch(`${localhost}/list/save-list`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			"type": "faculties",
-			"data": res
-		}),
-		credentials: 'include'
-	}).then(parsedData => {
-		float_error_card_func('Room Data Saved Success', '', 'success');
-		console.log(':::::  Room Data Saved Successfully  :::::', parsedData);
-	}).catch(error => {
-		float_error_card_func('Room Data Saving Failed', '', 'danger');
-		console.error('::::: Error Saving Data (Server Error) :::::', error);
-	});
+	// fetch(`${localhost}/room/save-list`, {
+	// 	method: 'POST',
+	// 	headers: {
+	// 		'Content-Type': 'application/json'
+	// 	},
+	// 	body: JSON.stringify({
+	// 		"type": "faculties",
+	// 		"data": res
+	// 	}),
+	// 	credentials: 'include'
+	// }).then(parsedData => {
+	// 	float_error_card_func('Room Data Saved Success', '', 'success');
+	// 	console.log(':::::  Room Data Saved Successfully  :::::', parsedData);
+	// }).catch(error => {
+	// 	float_error_card_func('Room Data Saving Failed', '', 'danger');
+	// 	console.error('::::: Error Saving Data (Server Error) :::::', error);
+	// });
 };
 const render_tables = () => {				// renders the tables
 	let table = document.getElementById("room_table").getElementsByTagName('tbody')[0];
@@ -143,7 +152,7 @@ const render_tables = () => {				// renders the tables
 		let cell_insert = document.createElement("input");
 		cell_insert.setAttribute("class", "form-control text text fw-bold");
 		cell_insert.setAttribute("type", "text");
-		cell_insert.value = element;
+		cell_insert.value = room_list[element].roomid;
 		if (element == "0") {
 			cell_insert.disabled = true;
 			cell_insert.classList.add("text-danger");
@@ -154,7 +163,7 @@ const render_tables = () => {				// renders the tables
 		cell_insert = document.createElement("input");
 		cell_insert.setAttribute("class", "form-control text fw-medium");
 		cell_insert.setAttribute("type", "text");
-		cell_insert.value = room_list[element].classname;
+		cell_insert.value = room_list[element].name;
 		if (element == "0") {
 			cell_insert.disabled = true;
 			cell_insert.classList.add("text-danger");
@@ -171,7 +180,7 @@ const render_tables = () => {				// renders the tables
 			option.value = option.text = i;
 			select.appendChild(option);
 		}
-		select.value = room_list[element].capacity || 1;
+		select.value = room_list[element].capacity;
 		if(element == "0"){
 			select.disabled = true;
 			select.classList.add("text-danger");
@@ -188,7 +197,7 @@ const render_tables = () => {				// renders the tables
 			option.value = option.text = options[i];
 			select.appendChild(option);
 		}
-		select.value = room_list[element].type || "class";
+		select.value = room_list[element].type;
 		if(element == "0"){
 			select.disabled = true;
 			select.classList.add("text-danger");
