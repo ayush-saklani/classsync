@@ -276,6 +276,55 @@
             <span class="fw-bold h6">( If you come up with better theme design send colorcode and screenshot to Admin )</span>
         </div>
         <!-- main table div start -->
+         <a href="https://claude.ai/chat/3c54d17f-20f5-4f38-9862-95c266c87941">claude AI</a>
+        <style>
+            .custom-popover {
+                position: relative;
+            }            
+            .custom-popover .popover-content {
+                position: absolute;
+                bottom: 100%;
+                left: 50%;
+                transform: translateX(-50%);
+                visibility: hidden;
+                opacity: 0;
+                /* background-color: #333; */
+                padding: 0px;
+                color: white;
+                width: max-content;
+                margin-bottom: 5px;
+                transition: opacity , visibility 1s;
+            }
+            
+            .custom-popover:hover .popover-content {
+                visibility: visible;
+                opacity: 1;
+                transition: opacity , visibility , 1s;
+            }
+            .popover-button{
+                box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+            }
+            .popover-button:hover{
+                scale: 1.1;
+            }
+            
+        </style>
+        
+        <table>
+            <th class="custom-popover">dasdjaskl</th>
+        </table>
+        <script>
+            document.addEventListener("DOMContentLoaded",()=>{
+                Array.from(document.getElementsByClassName("custom-popover")).forEach((element) => {
+                    const existingContent = element.innerHTML;
+                    element.innerHTML = `${existingContent}
+                    <div class='popover-content'>
+                        <button class='copy-left popover-button btn btn-primary rounded-start-pill p-1 me-0'><i class="bi bi-arrow-bar-left" style="-webkit-text-stroke-width: 1px;"></i><i class="bi bi-clipboard-data-fill"></i></button>
+                        <button class='copy-right popover-button btn btn-danger rounded-end-pill p-1 ms-0'><i class="bi bi-clipboard-data-fill"></i><i class="bi bi-arrow-bar-right" style="-webkit-text-stroke-width: 1px;"></i></button>
+                    </div>`;
+                });            
+            })
+        </script>
         <div class="container-fluid mt-3 scrollablecontainer">
             <div class="container-fluid mt-3 scrollablecontainer">
                 <table class="table text-center align-middle" id="mytable">
@@ -297,94 +346,94 @@
                     <tbody>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">MON</th>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-period heading-text border-dark border-3">XCS601V<br>LT301</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-period heading-text border-dark border-3">XCS601Q<br>LT302</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">XCS601V<br>LT301</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">XCS601Q<br>LT302</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">TUE</th>
-                            <td class="text bg-period heading-text border-dark border-3">TCS693<br>LT201</td>
-                            <td class="text bg-period heading-text border-dark border-3">TCS604<br>LT302</td>
-                            <td class="text bg-period heading-text border-dark border-3">TCS604<br>LT302</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS693<br>LT201</td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS604<br>LT302</td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS604<br>LT302</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3 bg-holiday" scope="row">WED</th>
-                            <td class="text bg-period heading-text border-dark border-3">TCS693<br>LT201</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-practical heading-text border-dark border-3">PCS693<br>LAB1</td>
-                            <td class="text bg-practical heading-text border-dark border-3">PCS693<br>LAB1</td>
-                            <td class="text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS693<br>LT201</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PLCEP<br>LT202</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PCS693<br>LAB1</td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PCS693<br>LAB1</td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">THU</th>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-period heading-text border-dark border-3">TCS693<br>LT301</td>
-                            <td class="text bg-practical heading-text border-dark border-3">PXCS601<br>Boschlab</td>
-                            <td class="text bg-practical heading-text border-dark border-3">PXCS601<br>Boschlab</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS693<br>LT301</td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PXCS601<br>Boschlab</td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PXCS601<br>Boschlab</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">FRI</th>
-                            <td class="text bg-practical heading-text border-dark border-3">PCS601<br>LAB3</td>
-                            <td class="text bg-practical heading-text border-dark border-3">PCS601<br>LAB3</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
-                            <td class="text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
-                            <td class="text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PCS601<br>LAB3</td>
+                            <td class="custom-popover text bg-practical heading-text border-dark border-3">PCS601<br>LAB3</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="custom-popover text bg-period heading-text border-dark border-3">TCS601<br>LT302</td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
+                            <td class="custom-popover text bg-empty heading-text border-dark border-3"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">SAT</th>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">No</td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Class</td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Today</td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">No</td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Class</td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Today</td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
                         </tr>
                         <tr>
                             <th class="table-light border-dark border-3" scope="row">SUN</th>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">No</td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Class</td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Today</td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
-                            <td class="text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">No</td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Class</td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2">Today</td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
+                            <td class="custom-popover text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-2"></td>
                         </tr>
                     </tbody>
                 </table>
