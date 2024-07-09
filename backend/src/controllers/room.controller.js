@@ -21,9 +21,9 @@ const getSpecified = asyncHandler(async (req, res, next) => {
 });
 
 const saveRoom = asyncHandler(async (req, res, next) => {
-    const { classname, limit, schedule } = req.body;
+    const { classname, type, capacity, schedule } = req.body;
 
-    if (!classname || !limit || !schedule) {
+    if (!classname || !type || !capacity || !schedule) {
         throw new ApiError(400, "Missing required parameters");
     }
 
@@ -33,7 +33,8 @@ const saveRoom = asyncHandler(async (req, res, next) => {
             { classname: classname },
             {
                 $set: {
-                    limit: limit,
+                    type: type,
+                    capacity: capacity,
                     schedule: schedule,
                 },
             }
@@ -44,7 +45,8 @@ const saveRoom = asyncHandler(async (req, res, next) => {
     } else {
         const newRoom = await Rooms.create({
             classname: classname,
-            limit: limit,
+            type: type,
+            capacity: capacity,
             schedule: schedule,
         });
         await newRoom.save();

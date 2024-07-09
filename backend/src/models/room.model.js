@@ -33,7 +33,8 @@ const scheduleSchema = new mongoose.Schema({
 
 const roomSchema = new mongoose.Schema({
     classname: String,
-    limit: Number,
+    type: String,
+    capacity: Number,
     schedule: scheduleSchema,
 });
 
