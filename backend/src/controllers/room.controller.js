@@ -8,18 +8,6 @@ const getAll = asyncHandler(async (req, res, next) => {
     res.status(200).json(new ApiResponse(200, rooms));
 });
 
-const getSpecified = asyncHandler(async (req, res, next) => {
-    const roomid = req.query.roomid;
-    if (!roomid) {
-        throw new ApiError(400, "Missing required parameter 'classname'");
-    }
-    const room = await Rooms.findOne({ roomid: roomid });
-    if (!room) {
-        throw new ApiError(404, "Room not found");
-    }
-    res.status(200).json(new ApiResponse(200, room));
-});
-
 const saveRoom = asyncHandler(async (req, res, next) => {
     const { roomid, name, type, capacity, schedule } = req.body;
 
@@ -58,6 +46,16 @@ const saveRoom = asyncHandler(async (req, res, next) => {
     }
 });
 
+const saveMultipleRooms = asyncHandler(async (req, res, next) => {
+    const rooms = req.body.data;
+    if (!rooms) {
+        throw new ApiError(400, "Missing required parameters");
+    }
+
+    await Rooms.insertMany(rooms);
+    res.status(200).json(new ApiResponse(200, "Rooms created successfully"));
+});
+
 const removeRoom = asyncHandler(async (req, res, next) => {
     const roomid = req.query.roomid;
     if (!roomid) {
@@ -71,4 +69,11 @@ const removeRoom = asyncHandler(async (req, res, next) => {
     res.status(200).json(new ApiResponse(200, "Room deleted successfully"));
 });
 
-export { getAll, getSpecified, saveRoom, removeRoom };
+const removeAllRooms = asyncHandler(async (req, res, next) => {
+    await Rooms.deleteMany({});
+    res.status(200).json(
+        new ApiResponse(200, "All rooms deleted successfully")
+    );
+});
+
+export { getAll, saveRoom, saveMultipleRooms, removeRoom, removeAllRooms };
