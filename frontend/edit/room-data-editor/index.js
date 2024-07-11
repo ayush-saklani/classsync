@@ -124,23 +124,24 @@ const save_table_func = () => {				//  function below calculate and construct th
 		});
 	}
 	console.log(res);
-	// fetch(`${localhost}/room/save-list`, {
-	// 	method: 'POST',
-	// 	headers: {
-	// 		'Content-Type': 'application/json'
-	// 	},
-	// 	body: JSON.stringify({
-	// 		"type": "faculties",
-	// 		"data": res
-	// 	}),
-	// 	credentials: 'include'
-	// }).then(parsedData => {
-	// 	float_error_card_func('Room Data Saved Success', '', 'success');
-	// 	console.log(':::::  Room Data Saved Successfully  :::::', parsedData);
-	// }).catch(error => {
-	// 	float_error_card_func('Room Data Saving Failed', '', 'danger');
-	// 	console.error('::::: Error Saving Data (Server Error) :::::', error);
-	// });
+	fetch(`${localhost}/room/savemultiple`, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
+		},
+		body: JSON.stringify({
+			"type": "faculties",
+			"data": res
+		}),
+		credentials: 'include'
+	}).then(parsedData => {
+		float_error_card_func('Room Data Saved Success', '', 'success');
+		console.log(':::::  Room Data Saved Successfully  :::::', parsedData);
+	}).catch(error => {
+		float_error_card_func('Room Data Saving Failed', '', 'danger');
+		console.error('::::: Error Saving Data (Server Error) :::::', error);
+	});
 };
 const render_tables = () => {				// renders the tables
 	let table = document.getElementById("room_table").getElementsByTagName('tbody')[0];

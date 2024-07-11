@@ -1,7 +1,6 @@
 let faculty_data;
 let room_list;
 let messageCounter = 0;
-document.getElementById('loader').style.display = 'none';
 
 const update_faculty_list = () => {		    // updates the faculty list to the server
     // document.getElementById("loader").style.display = "flex";
@@ -281,20 +280,50 @@ const fetch_room_list = () => {             //  this function fetches the room l
             console.error('Room Data not available [ SERVER ERROR ] :::: ', error)
         ));
 };
+const delete_room_data = () => {            //  this function Deletes the room data from the server 	
+    document.getElementById("loader").style.display = "flex";
+    fetch(`${localhost}/room/removeall`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getCookie('accessToken')}`
+        }
+    }).then(response => response.json())
+    .then(data => {
+        if(data.success){
+            float_error_card_func('Room Data Deleted Successfully', '', 'success');
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+            }, 2000);
+        }
+        else{
+            throw new Error(`:::::  DATA NOT DELETED ${data.message} :::::`);
+        }
+    })
+    .catch(error => (
+        float_error_card_func('Room Data not Deleted<br>Server Error', '', 'danger'),
+        console.error('Room Data not Deleted [ SERVER ERROR ] :::: ', error)
+    ));
+};
 
 //////////////////////////  NOT IMPLEMENTED YET  //////////////////////////
 //////////////////////  API ENDPOINT NOT AVAILABLE  //////////////////////
 const remove_timetable_data = () => {
 }
 //////////////////////////  NOT IMPLEMENTED YET  //////////////////////////
-
+const confirm_2times = (message1,callbackfunc) => {         // this function is used to confirm the action twice (not implemented yet)
+    if(window.confirm(message1)){
+        if(window.confirm('This action is irreversible. Are you sure you want to continue?')){
+            callbackfunc();
+        }
+    }
+}
 document.getElementById('reset_faculty_data_button').addEventListener('click', ()=>{
     if(window.confirm('Are you sure you want to reset the faculty data?')){
         if(window.confirm('This action is irreversible. Are you sure you want to continue?')){
             fetch_faculties_list()
         }
     }
-
 });
 document.getElementById('reset_room_occupancy_data_button').addEventListener('click', ()=>{
     if(window.confirm('Are you sure you want to reset the room data?')){
@@ -303,4 +332,17 @@ document.getElementById('reset_room_occupancy_data_button').addEventListener('cl
         }
     }
 });
+document.getElementById('remove_room_data_button').addEventListener('click', ()=>{
+    if(window.confirm('Are you sure you want to Delete the room data?')){
+        if(window.confirm('This action is irreversible. Are you sure you want to continue?')){
+            delete_room_data()
+        }
+    }
+});
 // document.getElementById('remove_timetable_data').addEventListener('click', remove_timetable_data_button);
+
+document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+        document.getElementById("loader").style.display = "none";
+    }, 2000);
+});
