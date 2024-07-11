@@ -16,7 +16,8 @@ app.use(
             "http://localhost:5500",
             "https://classsync.vercel.app",
             "https://gehutimetable.vercel.app",
-            "http://projectclasssync.vercel.app",
+            "https://projectclasssync.vercel.app",
+            "https://navit.vercel.app/",
         ],
         credentials: true,
     })
