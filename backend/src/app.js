@@ -17,7 +17,7 @@ app.use(
             "https://classsync.vercel.app",
             "https://gehutimetable.vercel.app",
             "https://projectclasssync.vercel.app",
-            "https://navit.vercel.app/",
+            "https://navit.vercel.app",
         ],
         credentials: true,
     })
