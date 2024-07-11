@@ -92,7 +92,7 @@
         } 
     },
     {
-        "roomid":"1",
+        "roomid":"1001",
         "name": "ULI",
         "capacity": 1,
         "type":"class",
@@ -184,7 +184,7 @@
         } 
     },
     {
-        "roomid":"3",
+        "roomid":"1003",
         "name": "ULII",
         "capacity": 1,
         "type":"class",
@@ -276,7 +276,7 @@
         } 
     },
     {
-        "roomid":"33",
+        "roomid":"1033",
         "name": "Bosch lab",
         "capacity": 1,
         "type":"lab",
@@ -368,7 +368,7 @@
         } 
     },
     {
-        "roomid":"6",
+        "roomid":"1006",
         "name": "Mac lab",
         "capacity": 1,
         "type":"lab",
@@ -460,7 +460,7 @@
         } 
     },
     {
-        "roomid":"31",
+        "roomid":"1031",
         "name": "Seminar Hall",
         "capacity": 1,
         "type":"class",
@@ -552,7 +552,7 @@
         } 
     },
     {
-        "roomid":"36",
+        "roomid":"1036",
         "name": "CR101",
         "capacity": 1,
         "type":"class",
@@ -644,7 +644,7 @@
         } 
     },
     {
-        "roomid":"41",
+        "roomid":"1041",
         "name": "meeting hall",
         "capacity": 1,
         "type":"class",
@@ -736,7 +736,7 @@
         } 
     },
     {
-        "roomid":"54",
+        "roomid":"1054",
         "name": "Open Auditorium",
         "capacity": 1,
         "type":"class",
@@ -828,7 +828,7 @@
         } 
     },
     {
-        "roomid":"57",
+        "roomid":"1057",
         "name": "Staff room G1",
         "capacity": 1,
         "type":"class",
@@ -920,7 +920,7 @@
         } 
     },
     {
-        "roomid":"56",
+        "roomid":"1056",
         "name": "Staff room G2",
         "capacity": 1,
         "type":"class",
@@ -1012,7 +1012,7 @@
         } 
     },
     {
-        "roomid":"69",
+        "roomid":"1069",
         "name": "LAB1",
         "capacity": 1,
         "type":"lab",
@@ -1104,7 +1104,7 @@
         } 
     },
     {
-        "roomid":"101",
+        "roomid":"1101",
         "name": "LAB9",
         "capacity": 1,
         "type":"lab",
@@ -1196,7 +1196,7 @@
         } 
     },
     {
-        "roomid":"75",
+        "roomid":"1075",
         "name": "CR102",
         "capacity": 1,
         "type":"class",
@@ -1288,7 +1288,7 @@
         } 
     },
     {
-        "roomid":"71",
+        "roomid":"1071",
         "name": "CR103",
         "capacity": 1,
         "type":"class",
@@ -1380,7 +1380,7 @@
         } 
     },
     {
-        "roomid":"85",
+        "roomid":"1085",
         "name": "CR104",
         "capacity": 1,
         "type":"class",
@@ -1472,7 +1472,7 @@
         } 
     },
     {
-        "roomid":"87",
+        "roomid":"1087",
         "name": "CR105",
         "capacity": 1,
         "type":"class",
@@ -1564,7 +1564,7 @@
         } 
     },
     {
-        "roomid":"89",
+        "roomid":"1089",
         "name": "CR106",
         "capacity": 1,
         "type":"class",
@@ -1656,7 +1656,7 @@
         } 
     },
     {
-        "roomid":"6191",
+        "roomid":"191",
         "name": "workshop",
         "capacity": 1,
         "type":"class",
@@ -1748,7 +1748,7 @@
         } 
     },
     {
-        "roomid":"1119",
+        "roomid":"2119",
         "name": "Main Library",
         "capacity": 1,
         "type":"class",
@@ -1840,7 +1840,7 @@
         } 
     },
     {
-        "roomid":"1001",
+        "roomid":"2001",
         "name": "Round Room R",
         "capacity": 1,
         "type":"class",
@@ -1932,7 +1932,7 @@
         } 
     },
     {
-        "roomid":"1003",
+        "roomid":"2003",
         "name": "Round Room L",
         "capacity": 1,
         "type":"class",
@@ -2024,7 +2024,7 @@
         } 
     },
     {
-        "roomid":"1122",
+        "roomid":"2122",
         "name": "CR209",
         "capacity": 1,
         "type":"class",
@@ -2116,7 +2116,7 @@
         } 
     },
     {
-        "roomid":"1017",
+        "roomid":"2017",
         "name": "CR211",
         "capacity": 1,
         "type":"class",
@@ -2208,7 +2208,7 @@
         } 
     },
     {
-        "roomid":"1031",
+        "roomid":"2031",
         "name": "LT202",
         "capacity": 4,
         "type":"class",
@@ -2300,7 +2300,7 @@
         } 
     },
     {
-        "roomid":"1033",
+        "roomid":"2033",
         "name": "CR206",
         "capacity": 1,
         "type":"class",
@@ -2392,7 +2392,7 @@
         } 
     },
     {
-        "roomid":"1036",
+        "roomid":"2036",
         "name": "CR207",
         "capacity": 1,
         "type":"class",
@@ -2484,7 +2484,7 @@
         } 
     },
     {
-        "roomid":"1041",
+        "roomid":"2041",
         "name": "LT201",
         "capacity": 4,
         "type":"class",
@@ -2576,7 +2576,7 @@
         } 
     },
     {
-        "roomid":"1069",
+        "roomid":"2069",
         "name": "Lab 2",
         "capacity": 1,
         "type":"lab",
@@ -2668,7 +2668,7 @@
         } 
     },
     {
-        "roomid":"1101",
+        "roomid":"2101",
         "name": "Lab 8",
         "capacity": 1,
         "type":"lab",
@@ -2760,7 +2760,7 @@
         } 
     },
     {
-        "roomid":"1075",
+        "roomid":"2075",
         "name": "CR201",
         "capacity": 1,
         "type":"class",
@@ -2852,7 +2852,7 @@
         } 
     },
     {
-        "roomid":"1071",
+        "roomid":"2071",
         "name": "CR202",
         "capacity": 1,
         "type":"class",
@@ -2944,7 +2944,7 @@
         } 
     },
     {
-        "roomid":"1085",
+        "roomid":"2085",
         "name": "CR203",
         "capacity": 1,
         "type":"class",
@@ -3036,7 +3036,7 @@
         } 
     },
     {
-        "roomid":"1087",
+        "roomid":"2087",
         "name": "CR204",
         "capacity": 1,
         "type":"class",
@@ -3128,7 +3128,7 @@
         } 
     },
     {
-        "roomid":"1089",
+        "roomid":"2089",
         "name": "CR205",
         "capacity": 1,
         "type":"class",
@@ -3220,7 +3220,7 @@
         } 
     },
     {
-        "roomid":"1127",
+        "roomid":"2127",
         "name": "Gate no 3 ke upar",
         "capacity": 1,
         "type":"class",
@@ -3312,7 +3312,7 @@
         } 
     },
     {
-        "roomid":"2119",
+        "roomid":"3119",
         "name": "Department of Fine Arts",
         "capacity": 1,
         "type":"class",
@@ -3404,7 +3404,7 @@
         } 
     },
     {
-        "roomid":"2001",
+        "roomid":"3001",
         "name": "Department of visual Art",
         "capacity": 1,
         "type":"class",
@@ -3496,7 +3496,7 @@
         } 
     },
     {
-        "roomid":"2006",
+        "roomid":"3006",
         "name": "CR304",
         "capacity": 1,
         "type":"class",
@@ -3588,7 +3588,7 @@
         } 
     },
     {
-        "roomid":"2017",
+        "roomid":"3017",
         "name": "CR302",
         "capacity": 1,
         "type":"class",
@@ -3680,7 +3680,7 @@
         } 
     },
     {
-        "roomid":"2122",
+        "roomid":"3122",
         "name": "New Hall",
         "capacity": 1,
         "type":"class",
@@ -3772,7 +3772,7 @@
         } 
     },
     {
-        "roomid":"2025",
+        "roomid":"3025",
         "name": "CR303",
         "capacity": 1,
         "type":"class",
@@ -3864,7 +3864,7 @@
         } 
     },
     {
-        "roomid":"2031",
+        "roomid":"3031",
         "name": "LT302",
         "capacity": 4,
         "type":"class",
@@ -3956,7 +3956,7 @@
         } 
     },
     {
-        "roomid":"2033",
+        "roomid":"3033",
         "name": "CR301",
         "capacity": 1,
         "type":"class",
@@ -4048,7 +4048,7 @@
         } 
     },
     {
-        "roomid":"2036",
+        "roomid":"3036",
         "name": "CR305",
         "capacity": 1,
         "type":"class",
@@ -4140,7 +4140,7 @@
         } 
     },
     {
-        "roomid":"2041",
+        "roomid":"3041",
         "name": "LT301",
         "capacity": 4,
         "type":"class",
@@ -4232,7 +4232,7 @@
         } 
     },
     {
-        "roomid":"2069",
+        "roomid":"3069",
         "name": "LAB3",
         "capacity": 1,
         "type":"lab",
@@ -4324,7 +4324,7 @@
         } 
     },
     {
-        "roomid":"2101",
+        "roomid":"3101",
         "name": "Lab 7",
         "capacity": 1,
         "type":"lab",
@@ -4416,7 +4416,7 @@
         } 
     },
     {
-        "roomid":"2075",
+        "roomid":"3075",
         "name": "Pharmaceutical Analysis Lab",
         "capacity": 1,
         "type":"lab",
@@ -4508,7 +4508,7 @@
         } 
     },
     {
-        "roomid":"2071",
+        "roomid":"3071",
         "name": "Pharmaceutical chemistry I Lab",
         "capacity": 1,
         "type":"lab",
@@ -4600,7 +4600,7 @@
         } 
     },
     {
-        "roomid":"2087",
+        "roomid":"3087",
         "name": "Pharmaceutics I Lab",
         "capacity": 1,
         "type":"lab",
@@ -4692,7 +4692,7 @@
         } 
     },
     {
-        "roomid":"2089",
+        "roomid":"3089",
         "name": "Pharmacognosy I Lab",
         "capacity": 1,
         "type":"lab",
@@ -4784,7 +4784,7 @@
         } 
     },
     {
-        "roomid":"3002",
+        "roomid":"4002",
         "name": "Department of english",
         "capacity": 1,
         "type":"class",
@@ -4876,7 +4876,7 @@
         } 
     },
     {
-        "roomid":"3006",
+        "roomid":"4006",
         "name": "CR405",
         "capacity": 1,
         "type":"class",
@@ -4968,7 +4968,7 @@
         } 
     },
     {
-        "roomid":"3025",
+        "roomid":"4025",
         "name": "CR404",
         "capacity": 1,
         "type":"class",
@@ -5060,7 +5060,7 @@
         } 
     },
     {
-        "roomid":"3033",
+        "roomid":"4033",
         "name": "CR403",
         "capacity": 1,
         "type":"class",
@@ -5152,7 +5152,7 @@
         } 
     },
     {
-        "roomid":"3036",
+        "roomid":"4036",
         "name": "CR406",
         "capacity": 1,
         "type":"class",
@@ -5244,7 +5244,7 @@
         } 
     },
     {
-        "roomid":"3031",
+        "roomid":"4031",
         "name": "LT401",
         "capacity": 4,
         "type":"class",
@@ -5336,7 +5336,7 @@
         } 
     },
     {
-        "roomid":"3041",
+        "roomid":"4041",
         "name": "LT402",
         "capacity": 4,
         "type":"class",
@@ -5428,7 +5428,7 @@
         } 
     },
     {
-        "roomid":"3122",
+        "roomid":"4122",
         "name": "Conference Hall",
         "capacity": 1,
         "type":"class",
@@ -5520,7 +5520,7 @@
         } 
     },
     {
-        "roomid":"3069",
+        "roomid":"4069",
         "name": "Lab 4",
         "capacity": 1,
         "type":"lab",
@@ -5612,7 +5612,7 @@
         } 
     },
     {
-        "roomid":"3101",
+        "roomid":"4101",
         "name": "IOT Lab",
         "capacity": 1,
         "type":"lab",
@@ -5704,7 +5704,7 @@
         } 
     },
     {
-        "roomid":"3073",
+        "roomid":"4073",
         "name": "Department of Mathematics",
         "capacity": 1,
         "type":"class",
@@ -5796,7 +5796,7 @@
         } 
     },
     {
-        "roomid":"3075",
+        "roomid":"4075",
         "name": "CR401",
         "capacity": 1,
         "type":"class",
@@ -5888,7 +5888,7 @@
         } 
     },
     {
-        "roomid":"3071",
+        "roomid":"4071",
         "name": "Electronic engg Lab I",
         "capacity": 1,
         "type":"lab",
@@ -5980,7 +5980,7 @@
         } 
     },
     {
-        "roomid":"3085",
+        "roomid":"4085",
         "name": "Logic Design Microprocessor Lab",
         "capacity": 1,
         "type":"lab",
@@ -6072,7 +6072,7 @@
         } 
     },
     {
-        "roomid":"3087",
+        "roomid":"4087",
         "name": "Electronic engg Lab II",
         "capacity": 1,
         "type":"lab",
@@ -6164,7 +6164,7 @@
         } 
     },
     {
-        "roomid":"3089",
+        "roomid":"4089",
         "name": "CR402",
         "capacity": 1,
         "type":"class",
@@ -6256,7 +6256,7 @@
         } 
     },
     {
-        "roomid":"4006",
+        "roomid":"5006",
         "name": "Fashion class I",
         "capacity": 1,
         "type":"class",
@@ -6348,7 +6348,7 @@
         } 
     },
     {
-        "roomid":"4025",
+        "roomid":"5025",
         "name": "Fashion class II",
         "capacity": 1,
         "type":"class",
@@ -6440,7 +6440,7 @@
         } 
     },
     {
-        "roomid":"4017",
+        "roomid":"5017",
         "name": "Fashion Studio",
         "capacity": 1,
         "type":"class",
@@ -6532,7 +6532,7 @@
         } 
     },
     {
-        "roomid":"4031",
+        "roomid":"5031",
         "name": "LT501",
         "capacity": 4,
         "type":"class",
@@ -6624,7 +6624,7 @@
         } 
     },
     {
-        "roomid":"4041",
+        "roomid":"5041",
         "name": "LT502",
         "capacity": 4,
         "type":"class",
@@ -6716,7 +6716,7 @@
         } 
     },
     {
-        "roomid":"4033",
+        "roomid":"5033",
         "name": "CR503",
         "capacity": 1,
         "type":"class",
@@ -6808,7 +6808,7 @@
         } 
     },
     {
-        "roomid":"4036",
+        "roomid":"5036",
         "name": "CR504",
         "capacity": 1,
         "type":"class",
@@ -6900,7 +6900,7 @@
         } 
     },
     {
-        "roomid":"4075",
+        "roomid":"5075",
         "name": "CR501",
         "capacity": 1,
         "type":"class",
@@ -6992,7 +6992,7 @@
         } 
     },
     {
-        "roomid":"4085",
+        "roomid":"5085",
         "name": "Physics Lab",
         "capacity": 1,
         "type":"lab",
@@ -7084,7 +7084,7 @@
         } 
     },
     {
-        "roomid":"4087",
+        "roomid":"5087",
         "name": "IAPT asian physics olypiyad lab",
         "capacity": 1,
         "type":"lab",
@@ -7176,7 +7176,7 @@
         } 
     },
     {
-        "roomid":"4089",
+        "roomid":"5089",
         "name": "CR502",
         "capacity": 1,
         "type":"class",
@@ -7268,7 +7268,7 @@
         } 
     },
     {
-        "roomid":"4069",
+        "roomid":"5069",
         "name": "Lab 5",
         "capacity": 1,
         "type":"lab",
@@ -7360,7 +7360,7 @@
         } 
     },
     {
-        "roomid":"4101",
+        "roomid":"5101",
         "name": "chemistry Lab",
         "capacity": 1,
         "type":"lab",
@@ -7452,7 +7452,7 @@
         } 
     },
     {
-        "roomid":"4057",
+        "roomid":"5057",
         "name": "Staff room 51",
         "capacity": 1,
         "type":"class",
@@ -7544,7 +7544,7 @@
         } 
     },
     {
-        "roomid":"4056",
+        "roomid":"5056",
         "name": "Staff room 52",
         "capacity": 1,
         "type":"class",
@@ -7636,7 +7636,7 @@
         } 
     },
     {
-        "roomid":"5119",
+        "roomid":"6119",
         "name": "Manual Drawing lab",
         "capacity": 1,
         "type":"lab",
@@ -7728,7 +7728,7 @@
         } 
     },
     {
-        "roomid":"5003",
+        "roomid":"6003",
         "name": "Dr K P Nautiyal Auditorium",
         "capacity": 1,
         "type":"class",
@@ -7820,7 +7820,7 @@
         } 
     },
     {
-        "roomid":"5006",
+        "roomid":"6006",
         "name": "reachers scholer room (room beside audi)",
         "capacity": 1,
         "type":"class",
@@ -7912,7 +7912,7 @@
         } 
     },
     {
-        "roomid":"5017",
+        "roomid":"6017",
         "name": "moot court",
         "capacity": 1,
         "type":"class",
@@ -8004,7 +8004,7 @@
         } 
     },
     {
-        "roomid":"5031",
+        "roomid":"6031",
         "name": "LT601",
         "capacity": 4,
         "type":"class",
@@ -8096,7 +8096,7 @@
         } 
     },
     {
-        "roomid":"5041",
+        "roomid":"6041",
         "name": "LT602",
         "capacity": 4,
         "type":"class",
@@ -8188,7 +8188,7 @@
         } 
     },
     {
-        "roomid":"5033",
+        "roomid":"6033",
         "name": "CR605",
         "capacity": 1,
         "type":"class",
@@ -8280,7 +8280,7 @@
         } 
     },
     {
-        "roomid":"5075",
+        "roomid":"6075",
         "name": "CR601",
         "capacity": 1,
         "type":"class",
@@ -8372,7 +8372,7 @@
         } 
     },
     {
-        "roomid":"5071",
+        "roomid":"6071",
         "name": "CR602",
         "capacity": 1,
         "type":"class",
@@ -8464,7 +8464,7 @@
         } 
     },
     {
-        "roomid":"5085",
+        "roomid":"6085",
         "name": "CR603",
         "capacity": 1,
         "type":"class",
@@ -8556,7 +8556,7 @@
         } 
     },
     {
-        "roomid":"5087",
+        "roomid":"6087",
         "name": "Fashion Design (studio and theory room)",
         "capacity": 1,
         "type":"class",
@@ -8648,7 +8648,7 @@
         } 
     },
     {
-        "roomid":"5089",
+        "roomid":"6089",
         "name": "CR604",
         "capacity": 1,
         "type":"class",
@@ -8740,7 +8740,7 @@
         } 
     },
     {
-        "roomid":"5069",
+        "roomid":"6069",
         "name": "Lab 6",
         "capacity": 1,
         "type":"lab",
@@ -8832,7 +8832,7 @@
         } 
     },
     {
-        "roomid":"5101",
+        "roomid":"6101",
         "name": "Library II(Top floor)",
         "capacity": 1,
         "type":"class",
@@ -8924,7 +8924,7 @@
         } 
     },
     {
-        "roomid":"6118",
+        "roomid":"118",
         "name": "Basement Class",
         "capacity": 1,
         "type":"class",
@@ -9016,7 +9016,7 @@
         } 
     },
     {
-        "roomid":"6190",
+        "roomid":"190",
         "name": "Civil Engineering Lab",
         "capacity": 1,
         "type":"lab",
