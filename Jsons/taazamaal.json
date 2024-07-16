@@ -4,6 +4,7 @@
         "name": "",
         "capacity": "",
         "type":"",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -96,6 +97,7 @@
         "name": "ULI",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -188,6 +190,7 @@
         "name": "ULII",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -280,6 +283,7 @@
         "name": "Bosch lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -372,6 +376,7 @@
         "name": "Mac lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -464,6 +469,7 @@
         "name": "Seminar Hall",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -556,6 +562,7 @@
         "name": "CR101",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -648,6 +655,7 @@
         "name": "meeting hall",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -740,6 +748,7 @@
         "name": "Open Auditorium",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -832,6 +841,7 @@
         "name": "Staff room G1",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -924,6 +934,7 @@
         "name": "Staff room G2",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1016,6 +1027,7 @@
         "name": "LAB1",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1108,6 +1120,7 @@
         "name": "LAB9",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1200,6 +1213,7 @@
         "name": "CR102",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1292,6 +1306,7 @@
         "name": "CR103",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1384,6 +1399,7 @@
         "name": "CR104",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1476,6 +1492,7 @@
         "name": "CR105",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1568,6 +1585,7 @@
         "name": "CR106",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1660,6 +1678,7 @@
         "name": "workshop",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1752,6 +1771,7 @@
         "name": "Main Library",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1844,6 +1864,7 @@
         "name": "Round Room R",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -1936,6 +1957,7 @@
         "name": "Round Room L",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2028,6 +2050,7 @@
         "name": "CR209",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2120,6 +2143,7 @@
         "name": "CR211",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2212,6 +2236,7 @@
         "name": "LT202",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2304,6 +2329,7 @@
         "name": "CR206",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2396,6 +2422,7 @@
         "name": "CR207",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2488,6 +2515,7 @@
         "name": "LT201",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2580,6 +2608,7 @@
         "name": "Lab 2",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2672,6 +2701,7 @@
         "name": "Lab 8",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2764,6 +2794,7 @@
         "name": "CR201",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2856,6 +2887,7 @@
         "name": "CR202",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -2948,6 +2980,7 @@
         "name": "CR203",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3040,6 +3073,7 @@
         "name": "CR204",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3132,6 +3166,7 @@
         "name": "CR205",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3224,6 +3259,7 @@
         "name": "Gate no 3 ke upar",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3316,6 +3352,7 @@
         "name": "Department of Fine Arts",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3408,6 +3445,7 @@
         "name": "Department of visual Art",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3500,6 +3538,7 @@
         "name": "CR304",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3592,6 +3631,7 @@
         "name": "CR302",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3684,6 +3724,7 @@
         "name": "New Hall",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3776,6 +3817,7 @@
         "name": "CR303",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3868,6 +3910,7 @@
         "name": "LT302",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -3960,6 +4003,7 @@
         "name": "CR301",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4052,6 +4096,7 @@
         "name": "CR305",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4144,6 +4189,7 @@
         "name": "LT301",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4236,6 +4282,7 @@
         "name": "LAB3",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4328,6 +4375,7 @@
         "name": "Lab 7",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4420,6 +4468,7 @@
         "name": "Pharmaceutical Analysis Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4512,6 +4561,7 @@
         "name": "Pharmaceutical chemistry I Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4604,6 +4654,7 @@
         "name": "Pharmaceutics I Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4696,6 +4747,7 @@
         "name": "Pharmacognosy I Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4788,6 +4840,7 @@
         "name": "Department of english",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4880,6 +4933,7 @@
         "name": "CR405",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -4972,6 +5026,7 @@
         "name": "CR404",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5064,6 +5119,7 @@
         "name": "CR403",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5156,6 +5212,7 @@
         "name": "CR406",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5248,6 +5305,7 @@
         "name": "LT401",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5340,6 +5398,7 @@
         "name": "LT402",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5432,6 +5491,7 @@
         "name": "Conference Hall",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5524,6 +5584,7 @@
         "name": "Lab 4",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5616,6 +5677,7 @@
         "name": "IOT Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5708,6 +5770,7 @@
         "name": "Department of Mathematics",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5800,6 +5863,7 @@
         "name": "CR401",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5892,6 +5956,7 @@
         "name": "Electronic engg Lab I",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -5984,6 +6049,7 @@
         "name": "Logic Design Microprocessor Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6076,6 +6142,7 @@
         "name": "Electronic engg Lab II",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6168,6 +6235,7 @@
         "name": "CR402",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6260,6 +6328,7 @@
         "name": "Fashion class I",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6352,6 +6421,7 @@
         "name": "Fashion class II",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6444,6 +6514,7 @@
         "name": "Fashion Studio",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6536,6 +6607,7 @@
         "name": "LT501",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6628,6 +6700,7 @@
         "name": "LT502",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6720,6 +6793,7 @@
         "name": "CR503",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6812,6 +6886,7 @@
         "name": "CR504",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6904,6 +6979,7 @@
         "name": "CR501",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -6996,6 +7072,7 @@
         "name": "Physics Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7088,6 +7165,7 @@
         "name": "IAPT asian physics olypiyad lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7180,6 +7258,7 @@
         "name": "CR502",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7272,6 +7351,7 @@
         "name": "Lab 5",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7364,6 +7444,7 @@
         "name": "chemistry Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7456,6 +7537,7 @@
         "name": "Staff room 51",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7548,6 +7630,7 @@
         "name": "Staff room 52",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7640,6 +7723,7 @@
         "name": "Manual Drawing lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7732,6 +7816,7 @@
         "name": "Dr K P Nautiyal Auditorium",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7824,6 +7909,7 @@
         "name": "reachers scholer room (room beside audi)",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -7916,6 +8002,7 @@
         "name": "moot court",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8008,6 +8095,7 @@
         "name": "LT601",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8100,6 +8188,7 @@
         "name": "LT602",
         "capacity": 4,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8192,6 +8281,7 @@
         "name": "CR605",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8284,6 +8374,7 @@
         "name": "CR601",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8376,6 +8467,7 @@
         "name": "CR602",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8468,6 +8560,7 @@
         "name": "CR603",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8560,6 +8653,7 @@
         "name": "Fashion Design (studio and theory room)",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8652,6 +8746,7 @@
         "name": "CR604",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8744,6 +8839,7 @@
         "name": "Lab 6",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8836,6 +8932,7 @@
         "name": "Library II(Top floor)",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -8928,6 +9025,7 @@
         "name": "Basement Class",
         "capacity": 1,
         "type":"class",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
@@ -9020,6 +9118,7 @@
         "name": "Civil Engineering Lab",
         "capacity": 1,
         "type":"lab",
+        "allowed_course":[],
         "schedule":{
             "mon": {
                 "08-09": {"course":"","semester":"","section":[],"teacherid": "","subjectcode": ""},
