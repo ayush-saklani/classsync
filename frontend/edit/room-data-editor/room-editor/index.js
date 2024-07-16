@@ -231,6 +231,17 @@ const render_tables = () => {				// renders the tables
 			select.value = "class";
 		}
 		cell.appendChild(select);
+
+		cell = newRow.insertCell();
+		cell_insert = document.createElement("span");
+		cell_insert.setAttribute("class", "form-control text fw-medium");
+		cell_insert.innerHTML = (room_list[element].allowed_course).toString();
+		if (room_list[element].roomid == "0") {
+			cell_insert.classList.add("text-danger");
+			cell_insert.classList.add("fw-bold");
+			cell_insert.innerHTML = "Reserved by Admin";
+		}
+		cell.appendChild(cell_insert);
 	}
 };
 const fetch_room_list = () => {		// fetches the room list from the server
