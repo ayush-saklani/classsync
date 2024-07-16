@@ -4,12 +4,21 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
 
 const getAll = asyncHandler(async (req, res, next) => {
-    const rooms = await Rooms.find();
-    res.status(200).json(new ApiResponse(200, rooms));
+    const allowed_course = req.query.allowed_course;
+    console.log(allowed_course);
+    if (allowed_course) {
+        const rooms = await Rooms.find({
+            allowed_course: { $all: allowed_course },
+        });
+        res.status(200).json(new ApiResponse(200, rooms));
+    } else {
+        const rooms = await Rooms.find();
+        res.status(200).json(new ApiResponse(200, rooms));
+    }
 });
 
 const saveRoom = asyncHandler(async (req, res, next) => {
-    const { roomid, name, type, capacity, schedule } = req.body;
+    const { roomid, name, type, capacity, schedule, allowed_course } = req.body;
 
     if (!roomid || !name || !type || !capacity || !schedule) {
         throw new ApiError(400, "Missing required parameters");
@@ -25,6 +34,7 @@ const saveRoom = asyncHandler(async (req, res, next) => {
                     type: type,
                     capacity: capacity,
                     schedule: schedule,
+                    allowed_course: allowed_course,
                 },
             }
         );
@@ -38,6 +48,7 @@ const saveRoom = asyncHandler(async (req, res, next) => {
             type: type,
             capacity: capacity,
             schedule: schedule,
+            allowed_course: allowed_course,
         });
         await newRoom.save();
         res.status(200).json(
