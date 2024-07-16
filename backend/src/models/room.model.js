@@ -36,6 +36,7 @@ const roomSchema = new mongoose.Schema({
     name: String,
     type: String,
     capacity: Number,
+    allowed_course: Array,
     schedule: scheduleSchema,
 });
 
