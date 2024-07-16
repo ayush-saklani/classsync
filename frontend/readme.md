@@ -1,4 +1,4 @@
-# **Class-Sync Timetable manager (v1.5)** <img src="assets/image/logo.png" height="110" align="left"/>
+# **Class-Sync Timetable manager (v1.8)** <img src="assets/image/logo.png" height="110" align="left"/>
 
 **Designed and built with all the love and passion in the world by
 <a class="link-danger" href="https://github.com/ayush-saklani"><b>ayush-saklani</b></a>
@@ -6,34 +6,50 @@
 <a class="link-primary" href="https://github.com/RawatDevanshu"><b>RawatDevanshu</b></a>.
 _( currently in finalization phase )_**
 
-## File Structure
+# File Structure 
 
 ```
 frontend
 ├───assets
-│   ├───image       ---------------Global image assets
-│   ├───js       ------------------Global JS files
-│   └───css       -----------------Global CSS File
+│   ├───image       --------------------------Global image assets
+│   ├───js       -----------------------------Global JS files
+│   │	├───block-unblocking.js       -----------JS for blocking all inputs between 2 api request to avoid overload and data loss
+│   │	├───bus_timing.js       -----------------JS for reflecting custom bus timing on the timtable
+│   │	├───disableInspectCode.js       ---------JS for Disabling the code inspection for added saftey (WDL)
+│   │	├───float_error_card_func.js       ------JS for error showing card popping up and down 
+│   │	├───footer.js       ---------------------JS for adding footer (common static element)
+│   │	├───loader.js       ---------------------JS for Loader
+│   │	├───redirection.js       ----------------JS for restricting domains into views and editing 
+│   │	├───serverLocation.js       -------------JS for switching between localhost and render.com server (common static element)
+│   │	└───userlogin.js       ------------------JS for handling the userlogin in /edit pages 
+│   │
+│	└───CSS       ----------------------------Global CSS File
+│   	├───loader.css       --------------------CSS for Loader
+│   	├───responsive_block_edit.css       -----CSS for dynamic sizing and blocking view access (editing) (Restricted to desktop)
+│   	├───responsive_block_view.css       -----CSS for dynamic sizing (Viewing) (dynamic for all devices)
+│   	└───style.css       ---------------------CSS for Common Style (All Pages) 
+│
 ├───edit
-│   ├───faculty-data-editor       -Edit Faculty Data (add/remove faculty)
-│   ├───faculty-data-set       ----Set Faculty Data for diffrent Sections
-│   ├───subject-data-editor       -Set Subject Data (Syllabus) for Semesters
-│   ├───timetable-editor       ----Main :: Timetable Editor or Timetable Maker
-│   ├───misc       ----------------Miscellanious Support functions
-│   └───reset       ---------------Reset :: Reset Database
+│   ├───faculty-data-editor       ------------Edit Faculty Data (add/remove faculty)
+│   ├───faculty-data-set       ---------------Set Faculty Data for diffrent Sections
+│   ├───subject-data-editor       ------------Set Subject Data (Syllabus) for Semesters
+│   ├───timetable-editor       ---------------Main :: Timetable Editor or Timetable Maker
+│   ├───misc       ---------------------------Miscellanious Support functions
+│   └───reset       --------------------------Reset :: Reset Database
+│
 ├───view
-│   ├───faculty       -------------Viewing page for faculty
-│   ├───students       ------------Viewing page for Students
-│   └───room       ----------------Viewing page for Room Occupancy
+│   ├───faculty       ------------------------Viewing page for faculty
+│   ├───students       -----------------------Viewing page for Students
+│   └───room       ---------------------------Viewing page for Room Occupancy
 |
-├───login       -------------------Handle Login and Cookie Setting
-└───ztester       -----------------Contain files for testing future features
+├───login       ------------------------------Handle Login and Cookie Setting
+└───ztester       ----------------------------Contain files for testing future features
 ```
-## Timetable Structure
+# Timetable Structure
 
 <table align="center">
 	<thead>
-		<tr><th></th>
+		<tr><th>(0,0)</th>
 			<th>08-09</th>
 			<th>09-10</th>
 			<th>10-11</th>
