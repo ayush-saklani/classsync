@@ -23,7 +23,7 @@ frontend
 │   │	├───serverLocation.js       -------------JS for switching between localhost and render.com server (common static element)
 │   │	└───userlogin.js       ------------------JS for handling the userlogin in /edit pages 
 │   │
-│	└───CSS       ----------------------------Global CSS File 
+│   └───CSS       ----------------------------Global CSS File 
 │   	├───loader.css       --------------------CSS for Loader
 │   	├───responsive_block_edit.css       -----CSS for dynamic sizing and blocking view access (editing) (Restricted to desktop)
 │   	├───responsive_block_view.css       -----CSS for dynamic sizing (Viewing) (dynamic for all devices)
