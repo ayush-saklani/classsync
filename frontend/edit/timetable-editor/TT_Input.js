@@ -456,23 +456,23 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 				// console.log(room_list[key].schedule[currday][currslot].section.length);
 				if (room_list[ele].schedule[currday][currslot].section.length == 1) {
 					option.setAttribute("class", "bg-success text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
+					option.innerHTML = `${room_list[ele].name} ${room_list[ele].schedule[currday][currslot].semester} [ ${room_list[ele].schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[ele].schedule[currday][currslot].section.length == 2) {
 					option.setAttribute("class", "bg-primary text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
+					option.innerHTML = `${room_list[ele].name} ${room_list[ele].schedule[currday][currslot].semester} [ ${room_list[ele].schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[ele].schedule[currday][currslot].section.length == 3) {
 					option.setAttribute("class", "bg-warning text-dark bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
+					option.innerHTML = `${room_list[ele].name} ${room_list[ele].schedule[currday][currslot].semester} [ ${room_list[ele].schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[ele].schedule[currday][currslot].section.length == 4) {
 					option.setAttribute("class", "bg-danger text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
+					option.innerHTML = `${room_list[ele].name} ${room_list[ele].schedule[currday][currslot].semester} [ ${room_list[ele].schedule[currday][currslot].section.sort()} ]`;
 				}
 				else if (room_list[ele].schedule[currday][currslot].section.length > 4) {
 					option.setAttribute("class", "bg-dark text-light bg-gradient text fw-bold");
-					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
+					option.innerHTML = `${room_list[ele].name} ${room_list[ele].schedule[currday][currslot].semester} [ ${room_list[ele].schedule[currday][currslot].section.sort()} ]`;
 				}
 				// console.log(option.value, option.text)
 				if (room_list[ele].roomid == tempselectedvalue) {
@@ -513,8 +513,8 @@ const add_subjects_options_to_mytable = (subject_list) => { // 	this add options
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
 	return new Promise((resolve, reject) => {
 		try {
-			// fetch(`${localhost}/room/getall?allowed_course=${document.getElementById('course_option').value}`, {
-			fetch(`${localhost}/room/getall`, {
+			fetch(`${localhost}/room/getall?allowed_course=${document.getElementById('course_option').value}`, {
+			// fetch(`${localhost}/room/getall`, {
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
