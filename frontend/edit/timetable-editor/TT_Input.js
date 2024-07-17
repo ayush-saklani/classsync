@@ -272,7 +272,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 	console.log('::::: VALIDATION COMPLETE :::::');
 	return isValid;
 };
-const save_room_list = () => {
+const save_room_list = () => {	 	// save_timetable_func helper functions	//  this function saves the room list data to the server [ database ] and returns the promise
 	return new Promise((resolve, reject) => {
 		fetch(`${localhost}/room/savemultiple`, {
 			method: 'POST',
@@ -300,10 +300,7 @@ const save_room_list = () => {
 		});
 	});	
 }
-setTimeout(() => {
-	save_room_list();
-}, 3000);
-const save_faculty_list = () => {
+const save_faculty_list = () => { 	// save_timetable_func helper functions	//  this function saves the faculty list data to the server [ database ] and returns the promise
 	return new Promise((resolve, reject) => {
 		fetch(`${localhost}/faculty/update`, {
 			method: 'POST',
@@ -323,7 +320,7 @@ const save_faculty_list = () => {
 		});
 	});
 }
-const save_table_func = () => {                         	//  function below calculate and construct the timetable json and send that to the backend 
+const save_timetable_func = () => {                         	//  function below calculate and construct the timetable json and send that to the backend 
 	if (validateTeacherSubject()) {
 		blocking();
 		let tempteachersubjectdata = [];
@@ -420,7 +417,7 @@ const save_table_func = () => {                         	//  function below calc
 	}
 }
 
-const add_select_box_to_mytable = () => {               	//  this function below adds the select option field to each table cell in the table  
+const add_select_box_to_mytable = () => {               	//  this function below adds 2 select option fields to each table cell in the table  
 	let mytable = document.getElementById("mytable");
 	for (let i = 1; i < mytable.rows.length; i++) {
 		for (let j = 1; j < mytable.rows[1].cells.length; j++) {
@@ -514,7 +511,7 @@ const fetch_room_list = () => {                         	//  this function fetch
 	return new Promise((resolve, reject) => {
 		try {
 			fetch(`${localhost}/room/getall?allowed_course=${document.getElementById('course_option').value}`, {
-			// fetch(`${localhost}/room/getall`, {
+			// fetch(`${localhost}/room/getall`, {	// for testing get all rooms
 					method: 'GET',
 					headers: {
 						'Content-Type': 'application/json'
@@ -685,7 +682,7 @@ const render_tables = () => {                           	// renders the timetabl
 		// float_error_card_func("Timetable Not Available", "", "danger");
 	}
 }
-const fetch_timetable = () => {                        	//  this function fetches the timetable data form the server [ database ] and store the variable to the local variable for future use
+const fetch_timetable = () => {                        		//  this function fetches the timetable data form the server [ database ] and store the variable to the local variable for future use
 	return new Promise((resolve, reject) => {
 		try {
 			let course = document.getElementById("course_option").value;
@@ -716,7 +713,7 @@ const fetch_timetable = () => {                        	//  this function fetche
 		}
 	});
 }
-const initializePage = async () => {                          	//  this function initializes the page by fetching the room list, faculty list and timetable data from the server
+const initializePage = async () => {                        //  this function initializes the page by fetching the room list, faculty list and timetable data from the server
 	try {
 		blocking();
 		await fetch_timetable();
@@ -751,7 +748,7 @@ const reset_table = () => {                             	//  this function reset
 	}
 };
 //  adding event listners to the buttons and select boxes
-document.getElementById("save_tt_json").addEventListener("click", save_table_func); 	// [ save TT JSON on DB button eventlistner ]
+document.getElementById("save_tt_json").addEventListener("click", save_timetable_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click", reset_table);				// [ reset TT button eventlistner ]
 document.getElementById('course_option').addEventListener('change', initializePage);  	// [ course select box eventlistner ]
 document.getElementById('semester_option').addEventListener('change', initializePage);  // [ semester select box eventlistner ]
