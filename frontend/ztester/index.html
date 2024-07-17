@@ -277,37 +277,38 @@
         </div>
         <!-- main table div start -->
          <a href="https://claude.ai/chat/3c54d17f-20f5-4f38-9862-95c266c87941">claude AI</a>
-        <style>
+         <style>
             .custom-popover {
                 position: relative;
             }            
             .custom-popover .popover-content {
                 position: absolute;
-                bottom: 100%;
+                top: 0%;
                 left: 50%;
                 transform: translateX(-50%);
                 visibility: hidden;
-                opacity: 0;
-                /* background-color: #333; */
                 padding: 0px;
                 color: white;
                 width: max-content;
                 margin-bottom: 5px;
-                transition: opacity , visibility 1s;
             }
             
             .custom-popover:hover .popover-content {
-                visibility: visible;
-                opacity: 1;
-                transition: opacity , visibility , 1s;
-            }
-            .popover-button{
-                box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
-            }
-            .popover-button:hover{
-                scale: 1.1;
+                animation: showPopover 0s 2s forwards;    
             }
             
+            @keyframes showPopover {
+                to {
+                    visibility: visible;
+                }
+            }
+            
+            .popover-button {
+                box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+            }
+            .popover-button:hover {
+                scale: 1.1;
+            }
         </style>
         
         <table>
