@@ -62,8 +62,9 @@ const saveMultipleRooms = asyncHandler(async (req, res, next) => {
     if (!rooms) {
         throw new ApiError(400, "Missing required parameters");
     }
-
+    
     await Rooms.insertMany(rooms);
+    console.log("here");
     res.status(200).json(new ApiResponse(200, "Rooms created successfully"));
 });
 

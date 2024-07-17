@@ -6,120 +6,141 @@ let timetable;
 let local_faculty_data;
 let messageCounter = 0;
 const fixtime_firstphase = () => {                        	//  this function removes all the classes and decrease the counter(section.length) from the timetable data saved during initialization
-	let mytable = document.getElementById("mytable");
-	for (let i = 1; i <= 7; i++) {
-		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
-		for (let j = 1; j <= 10; j++) {
-			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-
-			let temp_roomid = timetable.schedule[currday][currslot].class_id;
-			if (temp_roomid in room_list && temp_roomid != '0') {
-				let temproom = room_list[temp_roomid].schedule[currday][currslot];
-				// temproom.section = temproom.section.filter((item, index) => temproom.section.indexOf(item) === index);	// remove duplicates from the array ( for debugging )
-				if (temproom.section.length > 0) {
-					if (temproom.section.length == 1) {
-						temproom.course = "";
-						temproom.semester = "";
-						temproom.subjectcode = "";
-						temproom.teacherid = "";
-						temproom.section = [];
-					}
-					else if (temproom.section.length > 1) {
-						temproom.section = temproom.section.filter(section => section !== document.getElementById("section_option").value);
-					}
-				}
-				else {
-					temproom.course = "";
-					temproom.semester = "";
-					temproom.subjectcode = "";
-					temproom.teacherid = "";
-					temproom.section = [];
-				}
-			}
-
-			// let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
-			let temp_subject = timetable.schedule[currday][currslot].subjectcode;
-			if (temp_subject != '' && temp_roomid != '0') {
-				let temp_facultyid_real = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherid;
-				for (temp_facultyid in faculty_data) {
-					if (temp_facultyid_real == faculty_data[temp_facultyid].teacherid) {
-						// console.log(faculty_data[temp_facultyid])
-						let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
-						if (temp_faculty.section.length > 0) {
-							if (temp_faculty.section.length == 1) {
-								temp_faculty.section = [];
-								temp_faculty.subjectcode = "";
-								temp_faculty.course = "";
-								temp_faculty.semester = "";
-								temp_faculty.roomid = [];
+	return new Promise((resolve, reject) => {
+		try {
+			let mytable = document.getElementById("mytable");
+			for (let i = 1; i <= 7; i++) {
+				let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+				for (let j = 1; j <= 10; j++) {
+					let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+					
+					let temp_roomid = timetable.schedule[currday][currslot].class_id;
+					for (element in room_list) {
+						if (room_list[element].roomid == temp_roomid && temp_roomid != '0') {
+							let temproom = room_list[element].schedule[currday][currslot];
+							// temproom.section = temproom.section.filter((item, index) => temproom.section.indexOf(item) === index);	// remove duplicates from the array ( for debugging )
+							if (temproom.section.length > 0) {
+								if (temproom.section.length == 1) {
+									temproom.course = "";
+									temproom.semester = "";
+									temproom.subjectcode = "";
+									temproom.teacherid = "";
+									temproom.section = [];
+								}
+								else if (temproom.section.length > 1) {
+									temproom.section = temproom.section.filter(section => section !== document.getElementById("section_option").value);
+								}
 							}
-							else if (temp_faculty.section.length > 1) {
-								faculty_data[temp_facultyid].schedule[currday][currslot].section = faculty_data[temp_facultyid].schedule[currday][currslot].section.filter(section => section !== document.getElementById("section_option").value);
+							else {
+								temproom.course = "";
+								temproom.semester = "";
+								temproom.subjectcode = "";
+								temproom.teacherid = "";
+								temproom.section = [];
+							}
+						}		
+					}
+
+					
+					// let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
+					let temp_subject = timetable.schedule[currday][currslot].subjectcode;
+					if (temp_subject != '' && temp_roomid != '0') {
+						let temp_facultyid_real = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherid;
+						for (temp_facultyid in faculty_data) {
+							if (temp_facultyid_real == faculty_data[temp_facultyid].teacherid) {
+								// console.log(faculty_data[temp_facultyid])
+								let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
+								if (temp_faculty.section.length > 0) {
+									if (temp_faculty.section.length == 1) {
+										temp_faculty.section = [];
+										temp_faculty.subjectcode = "";
+										temp_faculty.course = "";
+										temp_faculty.semester = "";
+										temp_faculty.roomid = [];
+									}
+									else if (temp_faculty.section.length > 1) {
+										faculty_data[temp_facultyid].schedule[currday][currslot].section = faculty_data[temp_facultyid].schedule[currday][currslot].section.filter(section => section !== document.getElementById("section_option").value);
+									}
+								}
+								else if (temp_faculty.section.length == 0) {
+									temp_faculty.section = [];
+									temp_faculty.subjectcode = "";
+									temp_faculty.course = "";
+									temp_faculty.semester = "";
+									temp_faculty.roomid = [];
+								}
 							}
 						}
-						else if (temp_faculty.section.length == 0) {
-							temp_faculty.section = [];
-							temp_faculty.subjectcode = "";
-							temp_faculty.course = "";
-							temp_faculty.semester = "";
-							temp_faculty.roomid = [];
-						}
 					}
 				}
 			}
+			resolve();
+		} catch (error) {
+			console.error(':::::  ERROR IN FIXTIME FIRST PHASE :::::', error);
+			reject(error);
 		}
-	}
+	});		
 }
 const fixtime_secondphase = () => {                       	//  this function adds all the current selected classes ( mytable ) and increase the counter(section.length)  
-	// console.log("=====================================================");
-	let mytable = document.getElementById("mytable");
-	for (let i = 1; i <= 7; i++) {
-		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
-		for (let j = 1; j <= 10; j++) {
-			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-
-			let temp_roomid = mytable.rows[i].cells[j].childNodes[1].value;
-			if (temp_roomid in room_list && temp_roomid != '0') {
-				let temproom = room_list[temp_roomid].schedule[currday][currslot];
-				if (temproom.section.length == 0) {
-					temproom.teacherid = timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value).teacherid;
-					temproom.subjectcode = mytable.rows[i].cells[j].childNodes[0].value;
-					temproom.section.push(document.getElementById("section_option").value);
-					temproom.semester = document.getElementById("semester_option").value;
-					temproom.course = document.getElementById("course_option").value;
-				}
-				else if (temproom.section.length > 0) {
-					temproom.section.push(document.getElementById("section_option").value);
-				}
-			}
-
-			let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
-			if (temp_subject != '' && temp_roomid != '0') {
-				let temp_facultyid_real = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherid;
-				for (temp_facultyid in faculty_data) {
-					if (temp_facultyid_real == faculty_data[temp_facultyid].teacherid) {
-						// console.log(faculty_data[temp_facultyid])
-						let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
-						if (temp_faculty.section.length > 0) {
-							faculty_data[temp_facultyid].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
+	return new Promise((resolve, reject) => {
+		try {
+			let mytable = document.getElementById("mytable");
+			for (let i = 1; i <= 7; i++) {
+				let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
+				for (let j = 1; j <= 10; j++) {
+					let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
+					
+					let temp_roomid = mytable.rows[i].cells[j].childNodes[1].value;
+					for (element in room_list) {
+						if (room_list[element].roomid == temp_roomid && temp_roomid != '0') {
+							let temproom = room_list[element].schedule[currday][currslot];
+							if (temproom.section.length == 0) {
+								temproom.teacherid = timetable.teacher_subject_data.find(x => x.subjectcode === mytable.rows[i].cells[j].childNodes[0].value).teacherid;
+								temproom.subjectcode = mytable.rows[i].cells[j].childNodes[0].value;
+								temproom.section.push(document.getElementById("section_option").value);
+								temproom.semester = document.getElementById("semester_option").value;
+								temproom.course = document.getElementById("course_option").value;
+							}
+							else if (temproom.section.length > 0) {
+								temproom.section.push(document.getElementById("section_option").value);
+							}							
 						}
-						else if (temp_faculty.section.length == 0) {
-							faculty_data[temp_facultyid].schedule[currday][currslot].section = [document.getElementById("section_option").value];
-							faculty_data[temp_facultyid].schedule[currday][currslot].subjectcode = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
-							faculty_data[temp_facultyid].schedule[currday][currslot].course = document.getElementById("course_option").value;
-							faculty_data[temp_facultyid].schedule[currday][currslot].semester = document.getElementById("semester_option").value;
-							faculty_data[temp_facultyid].schedule[currday][currslot].roomid = [document.getElementById("mytable").rows[i].cells[j].childNodes[1].value];
+					}
+
+					
+					let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
+					if (temp_subject != '' && temp_roomid != '0') {
+						let temp_facultyid_real = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherid;
+						for (temp_facultyid in faculty_data) {
+							if (temp_facultyid_real == faculty_data[temp_facultyid].teacherid) {
+								// console.log(faculty_data[temp_facultyid])
+								let temp_faculty = faculty_data[temp_facultyid].schedule[currday][currslot];
+								if (temp_faculty.section.length > 0) {
+									faculty_data[temp_facultyid].schedule[currday][currslot].section.push(document.getElementById("section_option").value);
+								}
+								else if (temp_faculty.section.length == 0) {
+									faculty_data[temp_facultyid].schedule[currday][currslot].section = [document.getElementById("section_option").value];
+									faculty_data[temp_facultyid].schedule[currday][currslot].subjectcode = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
+									faculty_data[temp_facultyid].schedule[currday][currslot].course = document.getElementById("course_option").value;
+									faculty_data[temp_facultyid].schedule[currday][currslot].semester = document.getElementById("semester_option").value;
+									faculty_data[temp_facultyid].schedule[currday][currslot].roomid = [document.getElementById("mytable").rows[i].cells[j].childNodes[1].value];
+								}
+								// console.log(faculty_data[temp_facultyid])
+							}
 						}
-						// console.log(faculty_data[temp_facultyid])
 					}
 				}
 			}
+			// console.log(faculty_data);
+			// console.log("=====================================================");
+			// console.log(room_list);
+			console.log(':::::  SECOND PHASE DONE  :::::');
+			resolve();	
+		} catch (error) {
+			console.error(':::::  ERROR IN FIXTIME SECOND PHASE :::::', error);
+			reject(error);
 		}
-	}
-	// console.log(faculty_data);
-	// console.log("=====================================================");
-	// console.log(room_list);
-	console.log(':::::  SECOND PHASE DONE  :::::');
+	});	
 }
 const updateCounter = () => {                            	//  this function updates the counter of currently allocated classes in the timetable data
 	let mytable = document.getElementById("mytable");
@@ -251,6 +272,57 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 	console.log('::::: VALIDATION COMPLETE :::::');
 	return isValid;
 };
+const save_room_list = () => {
+	return new Promise((resolve, reject) => {
+		fetch(`${localhost}/room/savemultiple`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${getCookie('accessToken')}`
+			},
+			credentials: 'include',
+			body: JSON.stringify({
+				"data": room_list
+			})
+		}).then(response => {
+			response.json()
+			if (response.ok) {
+				float_error_card_func('Room Data Saved Success', '', 'success');
+				resolve(response);
+			} else {
+				float_error_card_func('Room Data Saving Failed', '', 'danger');
+				throw new Error(':::::  Room Data Saving Failed :::::');
+			}
+		}).catch(error => {
+			float_error_card_func('Room Data Saving Failed', '', 'danger');
+			console.error('::::: Error Saving Data (Server Error) :::::', error);
+			reject(error);
+		});
+	});	
+}
+setTimeout(() => {
+	save_room_list();
+}, 3000);
+const save_faculty_list = () => {
+	return new Promise((resolve, reject) => {
+		fetch(`${localhost}/faculty/update`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'Authorization': `Bearer ${getCookie('accessToken')}`
+			},
+			body: JSON.stringify({ "facultyList": faculty_data })
+		}).then(parsedData => {
+			float_error_card_func("Faculty data Saved", "", "success");
+			console.log(':::::  Faculty Data Saved Successfully  :::::', parsedData);
+			resolve(parsedData);
+		}).catch(error => {
+			float_error_card_func("Faculty Data Not Saved <br>Server Error", "", "danger");
+			reject(error);
+			console.error('::::: ERROR SAVING DATA :::::', error);
+		});
+	});
+}
 const save_table_func = () => {                         	//  function below calculate and construct the timetable json and send that to the backend 
 	if (validateTeacherSubject()) {
 		blocking();
@@ -268,8 +340,7 @@ const save_table_func = () => {                         	//  function below calc
 				if (sl_class_id != '0' || sl_subjectcode != '') {
 					let curr_box = mytable.rows[i].cells[j].childNodes[1];
 					sl_slotdata = `${sl_subjectcode}\n${curr_box.options[curr_box.selectedIndex].textContent}`;
-				}
-				else {
+				}else {
 					sl_slotdata = "";
 				}
 
@@ -282,7 +353,6 @@ const save_table_func = () => {                         	//  function below calc
 			scheduleslot[currrow] = tempdayslot;
 		}
 
-
 		let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 		// Iterate over each row in the table body
 		for (let i = 0; i < tableBody.rows.length; i++) {
@@ -294,7 +364,6 @@ const save_table_func = () => {                         	//  function below calc
 			let subjectid = row.cells[3].firstChild.innerHTML;
 			let weekly_hrs = row.cells[4].firstChild.innerHTML;
 			let theory_practical = row.cells[5].firstChild.innerHTML;
-
 
 			let rowData = {
 				"subjectcode": subjectid,
@@ -315,21 +384,13 @@ const save_table_func = () => {                         	//  function below calc
 			"teacher_subject_data": tempteachersubjectdata,
 		};
 
-		// console.log(JSON.stringify(jsonData, null, 2));
-		// jsonData ka post request marna hai for teacher subject data  
-
-
-		// Convert JSON data to a string
-		const jsonDataString = JSON.stringify(jsonData, null, 4);
-
-		// Create a POST request
 		fetch(`${localhost}/table/save-timetable`, {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${getCookie('accessToken')}`
 			},
-			body: jsonDataString
+			body: JSON.stringify(jsonData)
 		}).then(response => {
 			if (response.ok) {
 				float_error_card_func("Timetable Saved Successfully", "", "success");
@@ -338,57 +399,16 @@ const save_table_func = () => {                         	//  function below calc
 				float_error_card_func("Timetable Not Saved", "", "danger");
 				throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
 			}
-		}).then(() => {
-			fixtime_firstphase();
-		}).then(() => {
+		}).then(async () => {
+			await fixtime_firstphase();
 			timetable = jsonData;
-		}).then(() => {
-			fixtime_secondphase();
-		}).then(() => {
-			fetch(`${localhost}/list/save-list`, {
-				method: 'POST',
-				headers: {
-					'Content-Type': 'application/json',
-					'Authorization': `Bearer ${getCookie('accessToken')}`
-				},
-				body: JSON.stringify({
-					"type": "rooms",
-					"data": room_list
-				})
-			}).then(response => {
-				if (response.ok) {
-					float_error_card_func("Room Data Saved", "", "success");
-					return response.json();
-				} else {
-					float_error_card_func("Room Data Not Saved", "", "danger");
-					throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
-				}
-			}).then(() => {
-				fetch(`${localhost}/faculty/update`, {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json',
-						'Authorization': `Bearer ${getCookie('accessToken')}`
-					},
-					body: JSON.stringify({ "facultyList": faculty_data })
-				}).then(response => {
-					if (response.ok) {
-						float_error_card_func("Faculty data Saved", "", "success");
-						return response.json();
-					} else {
-						float_error_card_func("Faculty Data Not Saved", "", "danger");
-						throw new Error(':::::  FACULTY DATA NOT SAVED DUE TO NETWORK ERROR :::::');
-					}
-				}).then(() => {
-					setTimeout(initializePage, 1000);
-				}).catch(error => {
-					float_error_card_func("Faculty Data Not Saved <br>Server Error", "", "danger");
-					console.error('::::: ERROR SAVING DATA :::::', error);
-				});
-			}).catch(error => {
-				float_error_card_func("Room Data Not Saved <br>Server Error", "", "danger");
-				console.error('::::: ERROR SAVING DATA :::::', error);
-			});
+			await fixtime_secondphase();
+			await save_room_list();
+			await save_faculty_list();
+			setTimeout(() => {
+				unblocking();
+				initializePage();
+			}, 1000);
 		}).catch(error => {
 			float_error_card_func("Timetable Not Saved <br>Server Error", "", "danger");
 			console.error('::::: ERROR SAVING DATA :::::', error);
@@ -424,38 +444,42 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 			
 			mytable.rows[i].cells[j].childNodes[1].innerHTML = "";
 			let tempselectedvalue = timetable.schedule[currday][currslot].class_id;
-			Object.entries(room_list).forEach(([key, value]) => {
+			for(ele in room_list){
+			// Object.entries(room_list).forEach(([key, value]) => {
 				let option = document.createElement("option");
-				option.value = key;
-				option.text = value.classname;
+				option.value = room_list[ele].roomid;
+				option.text = room_list[ele].name;
+				if (room_list[ele].roomid == '0') {
+					option.text = "";
+				}
 				option.setAttribute("class", "text");
 				// console.log(room_list[key].schedule[currday][currslot].section.length);
-				if (room_list[key].schedule[currday][currslot].section.length == 1) {
+				if (room_list[ele].schedule[currday][currslot].section.length == 1) {
 					option.setAttribute("class", "bg-success text-light bg-gradient text fw-bold");
 					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
-				else if (room_list[key].schedule[currday][currslot].section.length == 2) {
+				else if (room_list[ele].schedule[currday][currslot].section.length == 2) {
 					option.setAttribute("class", "bg-primary text-light bg-gradient text fw-bold");
 					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
-				else if (room_list[key].schedule[currday][currslot].section.length == 3) {
+				else if (room_list[ele].schedule[currday][currslot].section.length == 3) {
 					option.setAttribute("class", "bg-warning text-dark bg-gradient text fw-bold");
 					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
-				else if (room_list[key].schedule[currday][currslot].section.length == 4) {
+				else if (room_list[ele].schedule[currday][currslot].section.length == 4) {
 					option.setAttribute("class", "bg-danger text-light bg-gradient text fw-bold");
 					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
-				else if (room_list[key].schedule[currday][currslot].section.length > 4) {
+				else if (room_list[ele].schedule[currday][currslot].section.length > 4) {
 					option.setAttribute("class", "bg-dark text-light bg-gradient text fw-bold");
 					option.innerHTML = `${value.classname} ${value.schedule[currday][currslot].semester} [ ${value.schedule[currday][currslot].section.sort()} ]`;
 				}
 				// console.log(option.value, option.text)
-				if (key == tempselectedvalue) {
+				if (room_list[ele].roomid == tempselectedvalue) {
 					option.selected = true;
 				}
 				mytable.rows[i].cells[j].childNodes[1].appendChild(option);
-			});
+			};
 		}
 	}
 };
@@ -487,48 +511,67 @@ const add_subjects_options_to_mytable = (subject_list) => { // 	this add options
 };
 
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
-	return fetch(`${localhost}/list/get-list?type=rooms`, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
+	return new Promise((resolve, reject) => {
+		try {
+			// fetch(`${localhost}/room/getall?allowed_course=${document.getElementById('course_option').value}`, {
+			fetch(`${localhost}/room/getall`, {
+					method: 'GET',
+					headers: {
+						'Content-Type': 'application/json'
+					}
+				}).then(response => response.json())
+				.then(data => {
+					room_list = data.data;
+					console.log(room_list)
+					resolve();
+					// add_rooms_options_to_mytable(room_list);
+				}).catch(error => {
+					console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
+					reject(error);
+				});
+		} catch (error) {
+			console.error('Error fetching room data:', error);
+			reject(error);
 		}
-	})
-		.then(response => response.json())
-		.then(data => {
-			room_list = data.data.data;
-			console.log(room_list)
-			// add_rooms_options_to_mytable(room_list);
-		})
-		.catch(error => console.error('Room Data not available [ SERVER ERROR ] :::: ', error));
+	});		
 };
 const fetch_faculties_list = () => {                    	//  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
-	if (timetable) {
-		let teacher_subject_data = timetable.teacher_subject_data;
-		let teacher_query_list = [];
-		for (let i = 0; i < teacher_subject_data.length; i++) {
-			if (teacher_subject_data[i].teacherid != "0") {
-				teacher_query_list.push(teacher_subject_data[i].teacherid);
+	return new Promise((resolve, reject) => {
+		try {
+			if (timetable) {
+				let teacher_subject_data = timetable.teacher_subject_data;
+				let teacher_query_list = [];
+				for (let i = 0; i < teacher_subject_data.length; i++) {
+					if (teacher_subject_data[i].teacherid != "0") {
+						teacher_query_list.push(teacher_subject_data[i].teacherid);
+					}
+				}
+				// console.log(teacher_query_list);
+				
+				fetch(`${localhost}/faculty/get`, {
+					method: 'POST',
+					headers: {
+						'Content-Type': 'application/json'
+					},
+					body: JSON.stringify({ "facultyList": teacher_query_list })
+				})
+				.then(response => response.json())
+				.then(data => {
+					data = data.data;
+					faculty_data = data;
+					console.log(faculty_data);
+					resolve();
+				})
+				.catch(error => {
+					console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
+					reject(error);
+				});
 			}
+		} catch (error) {
+			console.error('Error fetching faculty data:', error);
+			reject(error);
 		}
-		// console.log(teacher_query_list);
-
-		fetch(`${localhost}/faculty/get`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({ "facultyList": teacher_query_list })
-		})
-			.then(response => response.json())
-			.then(data => {
-				data = data.data;
-				faculty_data = data;
-				console.log(faculty_data);
-			})
-			.catch(error => {
-				console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
-			});
-	}
+	});	
 };
 const render_tables = () => {                           	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 	// rendering the second table first
@@ -643,59 +686,60 @@ const render_tables = () => {                           	// renders the timetabl
 	}
 }
 const fetch_timetable = () => {                        	//  this function fetches the timetable data form the server [ database ] and store the variable to the local variable for future use
-	let course = document.getElementById("course_option").value;
-	let semester = document.getElementById("semester_option").value;
-	let section = document.getElementById("section_option").value;
-
-	return fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
+	return new Promise((resolve, reject) => {
+		try {
+			let course = document.getElementById("course_option").value;
+			let semester = document.getElementById("semester_option").value;
+			let section = document.getElementById("section_option").value;
+			
+			fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).then(response => response.json())
+			.then(data => {
+				timetable = data.data;        // Do something with the response data here 
+				console.log(timetable);
+				render_tables();
+			}).then(() => {
+				updateCounter();
+				resolve();
+			}).catch(error => {
+				float_error_card_func("TimeTable - Server Error", "", "danger");
+				console.error('Data unavailable:', error);
+				reject(error);
+			});
+		} catch (error) {
+			console.error('Error fetching timetable:', error);
+			reject(error);	
 		}
-	})
-		.then(response => response.json())
-		.then(data => {
-			timetable = data.data;        // Do something with the response data here 
-			console.log(timetable);
-		})
-		.then(() => {
-			render_tables();
-		})
-		.then(() => {
-			updateCounter();
-		})
-		.catch(error => {
-			float_error_card_func("TimeTable - Server Error", "", "danger");
-			console.error('Data unavailable:', error)
-		});
+	});
 }
-const initializePage = () => {                          	//  this function initializes the page by fetching the room list, faculty list and timetable data from the server
-	// document.getElementById("loader").style.display = "";
-	blocking();
-	fetch_timetable()
-		.then(() => fetch_faculties_list())
-		.then(() => fetch_room_list())
-		.then(() => add_rooms_options_to_mytable(room_list))
-		.then(() => {
+const initializePage = async () => {                          	//  this function initializes the page by fetching the room list, faculty list and timetable data from the server
+	try {
+		blocking();
+		await fetch_timetable();
+		await fetch_faculties_list();
+		await fetch_room_list()
+		add_rooms_options_to_mytable(room_list)
+		setTimeout(() => {
 			unblocking();
-			setTimeout(() => {
-				document.getElementById("loader").style.display = "none";
-			}, 1500);
-			if (timetable) {
-				float_error_card_func("Initialization Successful", "", "success");
-			}
-			else {
-				float_error_card_func("Initialization Failed", "", "danger");
-			}
-		})
-		.catch(error => {
+			document.getElementById("loader").style.display = "none";
+		}, 1500);
+		if (timetable) {
+			float_error_card_func("Initialization Successful", "", "success");
+		}else {
+			throw new Error('Initialization Failed');
+		}
+	}catch (error) {
+		setTimeout(() => {
 			unblocking();
-			setTimeout(() => {
-				document.getElementById("loader").style.display = "none";
-			}, 1500);
-			float_error_card_func("Initialization Failed <br> Server Error", "", "danger");
-			console.error('Error during initialization:', error)
-		});
+			document.getElementById("loader").style.display = "none";
+		}, 1500);
+		float_error_card_func("Initialization Failed <br> Server Error", "", "danger");
+		console.error('Error during initialization:', error)
+	};
 };
 const reset_table = () => {                             	//  this function resets the table to the initial state by removing all the data from the table
 	let mytable = document.getElementById("mytable");
