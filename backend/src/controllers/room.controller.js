@@ -62,9 +62,12 @@ const saveMultipleRooms = asyncHandler(async (req, res, next) => {
     if (!rooms) {
         throw new ApiError(400, "Missing required parameters");
     }
+    let roomidList = rooms.map((room) => room.roomid);
+
+    await Rooms.deleteMany({ roomid: roomidList });
 
     await Rooms.insertMany(rooms);
-    res.status(200).json(new ApiResponse(200, "Rooms created successfully"));
+    res.status(200).json(new ApiResponse(200, "Rooms created/updated successfully"));
 });
 
 const removeRoom = asyncHandler(async (req, res, next) => {
