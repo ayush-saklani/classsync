@@ -313,18 +313,7 @@
         <table>
             <th class="custom-popover">dasdjaskl</th>
         </table>
-        <script>
-            document.addEventListener("DOMContentLoaded",()=>{
-                Array.from(document.getElementsByClassName("custom-popover")).forEach((element) => {
-                    const existingContent = element.innerHTML;
-                    element.innerHTML = `${existingContent}
-                    <div class='popover-content'>
-                        <button class='copy-left popover-button btn btn-primary rounded-start-pill p-1 me-0'><i class="bi bi-arrow-bar-left" style="-webkit-text-stroke-width: 1px;"></i><i class="bi bi-clipboard-data-fill"></i></button>
-                        <button class='copy-right popover-button btn btn-danger rounded-end-pill p-1 ms-0'><i class="bi bi-clipboard-data-fill"></i><i class="bi bi-arrow-bar-right" style="-webkit-text-stroke-width: 1px;"></i></button>
-                    </div>`;
-                });            
-            })
-        </script>
+       
         <div class="container-fluid mt-3 scrollablecontainer">
             <div class="container-fluid mt-3 scrollablecontainer">
                 <table class="table text-center align-middle" id="mytable">
@@ -440,6 +429,40 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded",()=>{
+            let table = document.getElementById("mytable");
+            for (let i = 1; i <= 7; i++) {                
+                for (let j = 1; j <= 10; j++) {
+                    let div = document.createElement("div");
+                    div.classList = ("popover-content");
+                    if(j>1){
+                        let button = document.createElement("button");
+                        button.classList = ("copy-left popover-button btn btn-primary rounded-start-pill p-1 me-0");
+                        button.innerHTML = `<i class="bi bi-arrow-bar-left" style="-webkit-text-stroke-width: 1px;"></i><i class="bi bi-clipboard-data-fill"></i>`;
+                        button.addEventListener("click",()=>{
+                            console.log("11111")
+                            table.rows[i].cells[j].innerHTML +=  table.rows[i].cells[j-1].innerHTML;
+                        });
+                        div.appendChild(button);
+                    }
+                    if(j<10){
+                        let button2 = document.createElement("button");
+                        button2.classList = ("copy-right popover-button btn btn-danger rounded-end-pill p-1 ms-0");
+                        button2.innerHTML = `<i class="bi bi-clipboard-data-fill"></i><i class="bi bi-arrow-bar-right" style="-webkit-text-stroke-width: 1px;"></i>`;
+                        button2.addEventListener("click",()=>{
+                            console.log("222222")
+                            
+                            table.rows[i].cells[j].innerHTML +=  table.rows[i].cells[j+1].innerHTML;
+                        });
+                        div.appendChild(button2);
+                    }
+                    table.rows[i].cells[j].appendChild(div);
+                }
+            }
+        });
+            
+    </script>
     <!-- main table div end -->
     <footer class="bd-footer py-4 py-md-5">
         <!-- <logodiv class="loaderdiv" id="loader"></logodiv> -->
