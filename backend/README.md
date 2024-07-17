@@ -46,8 +46,7 @@
 
 ## API ENDPOINTS
 
-### /table
-
+* ### /table
     ```
     GET /get-timetable
 
@@ -57,7 +56,7 @@
     DELETE /remove-timetable
     ```
 
-### /faculty
+* ### /faculty
 
     ```
     GET /getall
@@ -69,7 +68,7 @@
     POST /update
     ```
 
-### /subjecttable
+* ### /subjecttable
 
     ```
     GET /get
@@ -79,7 +78,7 @@
     GET /update
     ```
 
-### /user
+* ### /user
 
     ```
     POST /add
@@ -90,7 +89,7 @@
     POST /refresh
     ```
 
-### /room
+* ### /room
 
     ```
     GET /getall
