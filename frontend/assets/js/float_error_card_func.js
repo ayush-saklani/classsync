@@ -59,7 +59,7 @@ const float_error_card_func = (title, desc, color) => {
 
 	let messagenumber = document.createElement('span');
 	messagenumber.innerHTML = ` ${messageCounter} `;
-	messagenumber.className = "btn float-end p-0 m-0 me-2 card-header fw-bold ps-2";
+	messagenumber.className = "btn float-end p-0 m-0 me-2 card-header fw-bold ps-2 text";
 	headerDiv.appendChild(messagenumber);
 
 	div.appendChild(headerDiv);
@@ -69,7 +69,7 @@ const float_error_card_func = (title, desc, color) => {
 	bodyDiv.className = "card-body py-2";
 
 	let p = document.createElement('p');
-	p.className = "card-text";
+	p.className = "card-text text";
 	p.innerHTML = desc;
 	bodyDiv.appendChild(p);
 
