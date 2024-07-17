@@ -59,8 +59,9 @@ _( currently in finalization phase )_**
 - [x] Login for admin
 
 ## Version 2.0 *( under development )*
+- [x] Removal of all __list__ and making them individual __collections__.
 - [x] Converting room list to room collection with greater detail stored
-- [ ] copy to side button ***[ jaise 2 hrs ki class hai tab on hover to copy data so the slot at right ] [ future feature ]***
+- [x] copy to side button ***[ jaise 2 hrs ki class hai tab on hover to copy data so the slot at right ]***
 - [ ] Faculty exchange of teaching slot permanently and temporarily.
 - [ ] Teacher absent status introduced.
 - [ ] College events handling and holiday flashes [ save event get 7 event and get all events delete and update events all required accordingly  ]
