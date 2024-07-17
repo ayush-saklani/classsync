@@ -45,6 +45,19 @@ frontend
 ├───login       ------------------------------Handle Login and Cookie Setting
 └───ztester       ----------------------------Contain files for testing future features
 ```
+# Control Flow Diagram
+
+## Timetable Editing Page
+<img src="./assets/image/1FD.png" style = "width:100vw"/>
+
+## Any Other Edit Page
+<img src="./assets/image/2FD.png" style = "width:100vw"/>
+
+## Login flow
+<img src="./assets/image/3FD.png" style = "width:100vw"/>
+
+
+
 # Timetable Structure
 
 <table align="center">
