@@ -37,7 +37,7 @@ const save_table_func = () => {				//  function below calculate and construct th
 			}
 			else if (id in res) {
 				float_error_card_func('Duplicate ID found', '', 'danger');
-				// return;
+				return;
 			}
 			else if (id.length > 10) {
 				float_error_card_func('ID too long (10 digits Max)', '', 'danger');
@@ -164,7 +164,7 @@ const save_table_func = () => {				//  function below calculate and construct th
 			},
 			body: JSON.stringify({
 				"type": "faculties",
-				"data": room_list
+				"data": res
 			}),
 			credentials: 'include'
 		}).then(parsedData => {
@@ -260,7 +260,7 @@ const render_tables = () => {				// renders the tables
 			select.disabled = true;
 			select.classList.add("text-danger");
 			select.classList.add("fw-bold");
-			select.value = "yes";
+			select.value = "no";
 		}
 		cell.appendChild(select);
 	}
@@ -299,7 +299,7 @@ document.addEventListener('DOMContentLoaded', fetch_room_list);
 document.getElementById("save_room_list").addEventListener("click", async ()=>{
 	document.getElementById("loader").style.display = "flex";
 	await delete_room_data();
-	save_table_func();
+	await save_table_func();
 	// fetch_room_list();
 	document.getElementById("loader").style.display = "none";
 });
