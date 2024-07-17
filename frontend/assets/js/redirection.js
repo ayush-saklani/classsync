@@ -1,6 +1,6 @@
 // this redirect the pages acording to the domain name and the path
 let fileName = location.href.split("/")
-console.log(fileName)
+// console.log(fileName)
 if (fileName.includes("gehutimetable.vercel.app")) {
     if(fileName.length <= 4){
         window.location.href = "/view/";        // redirecting to view page automatically

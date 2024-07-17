@@ -43,9 +43,10 @@ const save_table_func = () => {				//  function below calculate and construct th
 				float_error_card_func('ID too long (10 digits Max)', '', 'danger');
 				return;
 			}
-			let schedule;
+			let schedule, course = [];
 			for(element in room_list){
 				if(room_list[element].roomid == id){
+					course = room_list[element].allowed_course;
 					schedule = room_list[element].schedule;
 				}
 			}
@@ -55,6 +56,7 @@ const save_table_func = () => {				//  function below calculate and construct th
 				"name": name,
 				"capacity": capacity,
 				"type": type,
+				"allowed_course": course,
 				"schedule":  schedule ||
 				{
 					"mon": {
