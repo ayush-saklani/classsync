@@ -37,7 +37,13 @@ const letmesee2 = () => {
 			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
 			if (faculty_data && faculty_data.schedule && faculty_data.schedule[currrow] && faculty_data.schedule[currrow][currcol] && faculty_data.schedule[currrow][currcol].subjectcode) {
 				total_hours++;
-				let message = (room_list && room_list[faculty_data.schedule[currrow][currcol].roomid].classname)? room_list[faculty_data.schedule[currrow][currcol].roomid].classname : "Room : N.A";
+				let message = "Room : N.A";
+				for(let i = 0 ;i<room_list.length;i++){
+					if(room_list[i].roomid == faculty_data.schedule[currrow][currcol].roomid){
+						message = `Room : ${room_list[i].name}`;
+						break;	
+					}
+				}
 				let currcelltb = document.getElementById("mytable").rows[i].cells[j]
 				currcelltb.innerHTML = `
 						${faculty_data.schedule[currrow][currcol].subjectcode}<br>
@@ -123,21 +129,29 @@ const college_event_manager = () => {
 	}
 };
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
-	return fetch(`${localhost}/list/get-list?type=rooms`, {
+	// document.getElementById("loader").style.display = "flex";
+	return fetch(`${localhost}/room/getall`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
 		}
-	})
-		.then(response => response.json())
-		.then(data => {
-			room_list = data.data.data;
-			console.log(room_list)
-		})
-		.catch(error => {
-			console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
-			float_error_card_func("Room Data Unavailable", "", "danger");
-		});
+	}).then(response => response.json())
+	.then(data => {
+		data = data.data;
+		console.log("Room Data Fetched");
+		room_list = data;
+	}).then(() => {
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none";
+		}, 2000);
+		// float_error_card_func('Room Data Fetched Success', '', 'success');
+	}).catch(error => {
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none"; 
+		}, 2000);
+		float_error_card_func('Room Data Fetching Failed', '', 'danger');
+		console.error(':::: Room Data not available (SERVER ERROR) :::: ', error)
+	});
 };
 const letmeseeitbaby = () => {
 	blocking();
