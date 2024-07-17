@@ -418,20 +418,28 @@ const save_timetable_func = () => {                         	//  function below 
 }
 
 const add_select_box_to_mytable = () => {               	//  this function below adds 2 select option fields to each table cell in the table  
-	let mytable = document.getElementById("mytable");
-	for (let i = 1; i < mytable.rows.length; i++) {
-		for (let j = 1; j < mytable.rows[1].cells.length; j++) {
-			let tempcell = mytable.rows[i].cells[j];
-			let select = document.createElement('select');
-			select.setAttribute('class', 'form-select form-select text subjectselectbox fw-bold');
-			select.setAttribute('style', 'white-space: pre-wrap;');
-			tempcell.appendChild(select);
-			let select2 = document.createElement('select');
-			select2.setAttribute('class', 'form-select form-select text roomselectbox');
-			select2.setAttribute('style', 'white-space: pre-wrap;');
-			tempcell.appendChild(select2);
+	return new Promise((resolve, reject) => {
+		try {
+			let mytable = document.getElementById("mytable");
+			for (let i = 1; i < mytable.rows.length; i++) {
+				for (let j = 1; j < mytable.rows[1].cells.length; j++) {
+					let tempcell = mytable.rows[i].cells[j];
+					let select = document.createElement('select');
+					select.setAttribute('class', 'form-select form-select text subjectselectbox fw-bold');
+					select.setAttribute('style', 'white-space: pre-wrap;');
+					tempcell.appendChild(select);
+					let select2 = document.createElement('select');
+					select2.setAttribute('class', 'form-select form-select text roomselectbox');
+					select2.setAttribute('style', 'white-space: pre-wrap;');
+					tempcell.appendChild(select2);
+				}
+			}
+			resolve();
+		} catch (error) {
+			console.error(':::::  ERROR IN ADD SELECT BOX TO MYTABLE :::::', error);
+			reject(error);
 		}
-	}
+	});
 }
 const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to room select box in the main table dynamically with the data obtained from mongoDB
 	for (let i = 1; i <= 7; i++) {
@@ -747,6 +755,48 @@ const reset_table = () => {                             	//  this function reset
 		}
 	}
 };
+const addcopybutton = () =>{
+	let table = document.getElementById("mytable");
+	for (let i = 1; i <= 7; i++) {                
+		for (let j = 1; j <= 10; j++) {
+			let div = document.createElement("div");
+			div.classList = ("popover-content");
+			if(j>1){
+				let button = document.createElement("button");
+				button.classList = ("copy-left popover-button btn btn-primary rounded-start-pill p-1 me-0");
+				button.style = "background-color: var(--brand-cyan);"
+				button.innerHTML = `<i class="bi bi-arrow-bar-left" style="-webkit-text-stroke-width: 1px;"></i><i class="bi bi-clipboard-data-fill"></i>`;
+				button.addEventListener("click",()=>{
+					table.rows[i].cells[j].childNodes[0].value =  table.rows[i].cells[j-1].childNodes[0].value;
+					table.rows[i].cells[j].childNodes[1].value =  table.rows[i].cells[j-1].childNodes[1].value;
+				});
+				div.appendChild(button);
+			}
+			let reset_button2 = document.createElement("button");
+			reset_button2.classList = ("copy-reset popover-button btn btn-dark rounded-0 p-1 ms-0 px-2");
+			reset_button2.style = "background-color: var(--Hard-Background);"
+			reset_button2.innerHTML = `<i class="bi bi-arrow-clockwise" style="-webkit-text-stroke-width: 1px;"></i>`;
+			reset_button2.addEventListener("click",()=>{
+				table.rows[i].cells[j].childNodes[0].value =  "";
+				table.rows[i].cells[j].childNodes[1].value =  "0";
+			});
+			div.appendChild(reset_button2);
+		
+			if(j<10){
+				let button2 = document.createElement("button");
+				button2.classList = ("copy-right popover-button btn btn-danger rounded-end-pill p-1 ms-0");
+				button2.style = "background-color: var(--brand-red);"
+				button2.innerHTML = `<i class="bi bi-clipboard-data-fill"></i><i class="bi bi-arrow-bar-right" style="-webkit-text-stroke-width: 1px;"></i>`;
+				button2.addEventListener("click",()=>{
+					table.rows[i].cells[j].childNodes[0].value =  table.rows[i].cells[j+1].childNodes[0].value;
+					table.rows[i].cells[j].childNodes[1].value =  table.rows[i].cells[j+1].childNodes[1].value;
+				});
+				div.appendChild(button2);
+			}
+			table.rows[i].cells[j].appendChild(div);
+		}
+	}
+}
 //  adding event listners to the buttons and select boxes
 document.getElementById("save_tt_json").addEventListener("click", save_timetable_func); 	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click", reset_table);				// [ reset TT button eventlistner ]
@@ -754,7 +804,8 @@ document.getElementById('course_option').addEventListener('change', initializePa
 document.getElementById('semester_option').addEventListener('change', initializePage);  // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.getElementById("mytable").addEventListener("change", validateTeacherSubject);
-document.addEventListener('DOMContentLoaded', () => {                                     //  this function initializes the page
-	add_select_box_to_mytable();            // add subject and room select boxes to all the table cells  
+document.addEventListener('DOMContentLoaded', async () => {                                     //  this function initializes the page
+	await add_select_box_to_mytable();            // add subject and room select boxes to all the table cells  
+	addcopybutton();
 	initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
 });
