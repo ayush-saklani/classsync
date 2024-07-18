@@ -7,13 +7,11 @@ let events = {
 	"2024-06-19": { "description": "End Term- Compiler Design", "color": "holiday" },
 	"2024-06-21": { "description": "End Term- Software engineering", "color": "holiday" },
 	"2024-06-24": { "description": "End Term- Computer network(I)", "color": "holiday" },
-	"2024-06-26": { "description": "End Term- Fullstack web-dev", "color": "holiday" },
-	"2024-06-28": { "description": "End Term- Generative AI", "color": "holiday" },
-	"2024-07-01": { "description": "End Term- Career skills", "color": "holiday" },
-	"2024-07-04": { "description": "End Term- Career skills", "color": "holiday" },
-	"2024-07-05": { "description": "Holiday Reason 2024-07-05", "color": "holiday" },
-	"2024-07-06": { "description": "Holiday Reason 2024-07-06", "color": "holiday" },
-	"2024-07-07": { "description": "Holiday Reason 2024-07-07", "color": "holiday" },
+	"2024-07-18": { "description": "End-Term Theory Exam Fullstack web-dev", "color": "holiday" },
+	"2024-07-19": { "description": "End-Term Theory Exam Generative AI", "color": "danger" },
+	"2024-07-20": { "description": "End-Term Theory Exam Career skills", "color": "holiday" },
+	"2024-07-21": { "description": "End-Term Theory Exam Career skills", "color": "holiday" },
+	"2024-07-22": { "description": "End-Term Theory Exam Career skills", "color": "info" },
 };
 let messageCounter = 0;
 const letmesee2 = () => {
@@ -130,27 +128,31 @@ const college_event_manager = () => {
 };
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
 	// document.getElementById("loader").style.display = "flex";
-	return fetch(`${localhost}/room/getall`, {
-		method: 'GET',
-		headers: {
-			'Content-Type': 'application/json'
-		}
-	}).then(response => response.json())
-	.then(data => {
-		data = data.data;
-		console.log("Room Data Fetched");
-		room_list = data;
-	}).then(() => {
-		setTimeout(() => {
-			document.getElementById("loader").style.display = "none";
-		}, 2000);
-		// float_error_card_func('Room Data Fetched Success', '', 'success');
-	}).catch(error => {
-		setTimeout(() => {
-			document.getElementById("loader").style.display = "none"; 
-		}, 2000);
-		float_error_card_func('Room Data Fetching Failed', '', 'danger');
-		console.error(':::: Room Data not available (SERVER ERROR) :::: ', error)
+	return new Promise((resolve, reject) => {
+		fetch(`${localhost}/room/getall`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(response => response.json())
+		.then(data => {
+			data = data.data;
+			console.log("Room Data Fetched");
+			room_list = data;
+		}).then(() => {
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none";
+			}, 2000);
+			// float_error_card_func('Room Data Fetched Success', '', 'success');
+			resolve();
+		}).catch(error => {
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none"; 
+			}, 2000);
+			float_error_card_func('Room Data Fetching Failed', '', 'danger');
+			console.error(':::: Room Data not available (SERVER ERROR) :::: ', error)
+			reject();
+		});
 	});
 };
 const letmeseeitbaby = () => {
@@ -176,9 +178,6 @@ const letmeseeitbaby = () => {
 		.then(() => {
 			if (flag === 1) {
 				college_event_manager();
-				// setTimeout(() => { float_error_card_func("Events view On", "", "success") }, 3000);
-			} else {
-				// setTimeout(() => { float_error_card_func("Events view Off", "", "danger") }, 3000);
 			}
 		})
 		.then(() => {
@@ -197,14 +196,12 @@ const letmeseeitbaby = () => {
 			console.error('Data unavailable:', error)
 		});
 }
-document.addEventListener('DOMContentLoaded', () => {
-	fetch_room_list()
-		.then(() => {
-			letmeseeitbaby();
-		})
-});
 document.getElementById('teacher_option').addEventListener('change', letmeseeitbaby);
 document.getElementById("toggle_event").addEventListener("click", () => {
 	flag = flag === 1 ? 0 : 1;
+	letmeseeitbaby();
+});
+document.addEventListener('DOMContentLoaded', async () => {
+	await fetch_room_list()
 	letmeseeitbaby();
 });
