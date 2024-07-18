@@ -12,6 +12,13 @@ let events = {
 	"2024-07-04": { "description": "End Term- Career skills", "color": "holiday" },
 	"2024-07-05": { "description": "End Term- Career skills", "color": "info" },
 };
+let teacheroff = {
+	"2024-07-18" : {"time_slot": "08-09","teacherid": "2118422","semester":"6","course":"btechcse","section":["A"]},
+	"2024-07-19" : {"time_slot": "12-01","teacherid": "2118423","semester":"6","course":"btechcse","section":["A"]},
+	"2024-07-20" : {"time_slot": "08-09","teacherid": "2118424","semester":"6","course":"btechcse","section":["A"]},
+	"2024-07-21" : {"time_slot": "08-09","teacherid": "2118425","semester":"6","course":"btechcse","section":["A"]},
+	"2024-07-22" : {"time_slot": "08-09","teacherid": "2118426","semester":"6","course":"btechcse","section":["A"]}
+}
 let messageCounter = 0;
 let cookieVar = document.cookie.split(';');
 if (cookieVar.find(row => row.startsWith('course=')) && cookieVar.find(row => row.startsWith('semester=')) && cookieVar.find(row => row.startsWith('section='))) {
@@ -188,7 +195,31 @@ const college_event_manager = () => {
 		}
 	}
 };
+const teacherAbsentUpdater = () => {
+	let today = new Date();
+	let startDayIndex = today.getDay() - 1;
 
+	let table = document.getElementById("mytable").getElementsByTagName('tbody')[0];
+	for (let i = 0; i <= 7; i++) {
+		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
+		
+		let currentDate = new Date();
+		currentDate.setDate(today.getDate() + i);
+		let currentDateString = currentDate.toISOString().split('T')[0];
+		// console.log(currentDateString);
+		for (let j = 0; j <= 10; j++) {
+			let currcol = document.getElementById("mytable").rows[0].cells[j].innerHTML.toLowerCase();
+			
+			if (teacheroff[currentDateString] && teacheroff[currentDateString].time_slot==currcol) {
+				let rowIndex = (startDayIndex + i) % 7 + 1;
+				let row = document.getElementById("mytable").rows[rowIndex].cells[j];
+				row.innerHTML = row.innerHTML.split("<br>")[0];
+				row.innerHTML += `<br>Free`;
+				row.classList = ("text text-light bg-secondary bg-gradient heading-text border-dark border-3 align-middle");				
+			}	
+		}
+	}
+};
 const letmeseeitbaby = () => {
 	// document.getElementById("loader").style.display = "flex"; // uncomment this line to show the loader for every change
 	blocking();
