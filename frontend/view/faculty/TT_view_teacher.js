@@ -7,11 +7,38 @@ let events = {
 	"2024-06-19": { "description": "End Term- Compiler Design", "color": "holiday" },
 	"2024-06-21": { "description": "End Term- Software engineering", "color": "holiday" },
 	"2024-06-24": { "description": "End Term- Computer network(I)", "color": "holiday" },
-	"2024-07-18": { "description": "End-Term Theory Exam Fullstack web-dev", "color": "holiday" },
-	"2024-07-19": { "description": "End-Term Theory Exam Generative AI", "color": "danger" },
-	"2024-07-20": { "description": "End-Term Theory Exam Career skills", "color": "holiday" },
-	"2024-07-21": { "description": "End-Term Theory Exam Career skills", "color": "holiday" },
-	"2024-07-22": { "description": "End-Term Theory Exam Career skills", "color": "info" },
+	"2024-07-18": { "description": "End-Term Theory Exam : Fullstack web-dev", "color": "holiday" },
+	"2024-07-19": { "description": "End-Term Theory Exam : Generative AI", "color": "danger" },
+	"2024-07-20": { "description": "End-Term Theory Exam: Career Skills", "color": "danger" },
+    "2024-07-21": { "description": "Project Submission Deadline", "color": "warning" },
+    "2024-07-22": { "description": "Mock Interview Session", "color": "info" },
+    "2024-07-23": { "description": "Resume Building Workshop", "color": "info" },
+    "2024-07-24": { "description": "Technical Seminar", "color": "primary" },
+    "2024-07-25": { "description": "Networking Event with Alumni", "color": "success" },
+    "2024-07-26": { "description": "End of Summer Term", "color": "primary" },
+    "2024-07-28": { "description": "Results Declaration", "color": "warning" },
+    "2024-07-30": { "description": "Summer Internship Begins", "color": "info" },
+    "2024-08-01": { "description": "New Semester Orientation", "color": "primary" },
+    "2024-08-03": { "description": "Club Sign-ups", "color": "success" },
+    "2024-08-05": { "description": "First Day of Classes", "color": "info" },
+    "2024-08-07": { "description": "Library Orientation", "color": "info" },
+    "2024-08-09": { "description": "Guest Lecture: Future of AI", "color": "primary" },
+    "2024-08-12": { "description": "Project Team Formation", "color": "warning" },
+    "2024-08-14": { "description": "Independence Day Eve Celebration", "color": "success" },
+    "2024-08-15": { "description": "Independence Day (Holiday)", "color": "danger" },
+    "2024-08-17": { "description": "Hackathon Kickoff", "color": "warning" },
+    "2024-08-18": { "description": "Hackathon Finale", "color": "warning" },
+    "2024-08-20": { "description": "Career Fair", "color": "primary" },
+    "2024-08-22": { "description": "Mid-term Project Proposal Due", "color": "danger" },
+    "2024-08-24": { "description": "Sports Day", "color": "success" },
+    "2024-08-26": { "description": "Workshop: Blockchain Basics", "color": "info" },
+    "2024-08-28": { "description": "Student Council Elections", "color": "primary" },
+    "2024-08-30": { "description": "Research Symposium", "color": "info" },
+    "2024-09-01": { "description": "Club Day", "color": "success" },
+    "2024-09-03": { "description": "Industry Connect Session", "color": "primary" },
+    "2024-09-05": { "description": "Teachers' Day Celebration", "color": "success" },
+    "2024-09-07": { "description": "Coding Competition", "color": "warning" },
+    "2024-09-08": { "description": "Community Service Day", "color": "info" },
 };
 let messageCounter = 0;
 const letmesee2 = () => {
@@ -21,6 +48,13 @@ const letmesee2 = () => {
 	for (let i = 1; i <= 7; i++) {
 		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
 		let day_row_border_adding = document.getElementById("mytable").rows[i];
+		
+		day_row_border_adding.cells[1].innerHTML = "";
+		day_row_border_adding.cells[1].colSpan = 1;
+		for (let i = 2; i <= 10; i++) {
+			day_row_border_adding.cells[i].style.display = "";
+		}
+		
 		let today = new Date();
 		const weekdays = ["sun", "mon", "tue", "wed", "thu", "fri", "sat"];
 		let day_slot = weekdays[today.getDay()];
@@ -71,20 +105,12 @@ const letmesee2 = () => {
 			}
 		}
 		if (holidaychecker === 10) {
-			let row = document.getElementById("mytable").rows[i];
-			for (let k = 1; k <= 10; k++) {
-				row.cells[k].className = "";
-				row.cells[k].innerHTML = "";
-				row.cells[k].className = 'text bg-holiday fw-bold border-holiday border-2 align-middle h5 py-3';
-			}
-			let words = 'No Class Today'.split(' ');
-			let cellIndex = Math.floor((10 - words.length) / 2) + 1 // Start updating from the second cell (first is for day label)
-
-			for (let word of words) {
-				if (cellIndex < row.cells.length) {
-					row.cells[cellIndex].innerHTML = word;
-				}
-				cellIndex++;
+			let tablerow = document.getElementById("mytable").rows[i];
+			tablerow.cells[1].className = 'text bg-holiday fw-bold align-middle h5 py-3';
+			tablerow.cells[1].innerHTML = "No Class Today";
+			tablerow.cells[1].colSpan = 10;
+			for (let i = 2; i <= 10; i++) {
+				tablerow.cells[i].style.display = "none";
 			}
 		}
 	}
@@ -94,34 +120,24 @@ const letmesee2 = () => {
 const college_event_manager = () => {
 	let today = new Date();
 	let startDayIndex = today.getDay() - 1;
-	console.log(startDayIndex);
+	// console.log(startDayIndex);
 	for (let i = 0; i < 7; i++) {
 		let currentDate = new Date();
 		currentDate.setDate(today.getDate() + i);
-		let currentDateString = currentDate.toISOString().split('T')[0];
-		console.log(currentDateString);
+		let year = currentDate.getFullYear();
+		let month = String(currentDate.getMonth() + 1).padStart(2, '0');
+		let day = String(currentDate.getDate()).padStart(2, '0');
+		let currentDateString =  `${year}-${month}-${day}`;
 		if (events[currentDateString]) {
 			let rowIndex = (startDayIndex + i) % 7 + 1;
-			let row = document.getElementById("mytable").rows[rowIndex];
 			let color = events[currentDateString].color || "holiday";
 
-			for (let j = 1; j <= 10; j++) {
-				row.cells[j].className = "";
-				row.cells[j].innerHTML = "";
-				row.cells[j].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle`;
-			}
-
-			// Split the description into words
-			let words = events[currentDateString].description.split(' ');
-			let cellIndex = Math.floor((10 - words.length) / 2) + 1 // Start updating from the second cell (first is for day label)
-
-			for (let word of words) {
-				if (cellIndex < row.cells.length) {
-					row.cells[cellIndex].innerHTML = word;
-					row.cells[cellIndex].className = "";
-					row.cells[cellIndex].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle h5 py-3`;
-				}
-				cellIndex++;
+			let tablerow = document.getElementById("mytable").rows[rowIndex];
+			tablerow.cells[1].className = `text bg-${color} fw-bold text-dark border-${color} border-2 align-middle h5 py-3`;
+			tablerow.cells[1].innerHTML = currentDateString + " " + events[currentDateString].description;
+			tablerow.cells[1].colSpan = 10;
+			for (let i = 2; i <= 10; i++) {
+				tablerow.cells[i].style.display = "none";
 			}
 		}
 	}
