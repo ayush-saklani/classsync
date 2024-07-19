@@ -326,7 +326,7 @@ document.getElementById("add_row").addEventListener("click", add_row_func);					
 document.getElementById("delete_row").addEventListener("click", delete_row_func);			// [ - button ] delete row at last when plus button is pressed 
 document.getElementById("save_room_list").addEventListener("click", async ()=>{
 	document.getElementById("loader").style.display = "flex";
-	await delete_room_data();
+	// await delete_room_data();	// not required
 	await save_table_func();
 	// fetch_room_list();
 	document.getElementById("loader").style.display = "none";

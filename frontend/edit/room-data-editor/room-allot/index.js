@@ -296,9 +296,9 @@ const fetch_room_list = () => {		// fetches the room list from the server
 };	
 
 document.addEventListener('DOMContentLoaded', fetch_room_list);
-document.getElementById("save_room_list").addEventListener("click", async ()=>{
+document.getElementById("save_room_list").addEventListener("click", ()=>{
 	document.getElementById("loader").style.display = "flex";
-	await delete_room_data();
+	// await delete_room_data();	// not required
 	save_table_func();
 	// fetch_room_list();
 	document.getElementById("loader").style.display = "none";
