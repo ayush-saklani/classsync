@@ -387,7 +387,8 @@ const save_timetable_func = () => {                         	//  function below 
 				'Content-Type': 'application/json',
 				'Authorization': `Bearer ${getCookie('accessToken')}`
 			},
-			body: JSON.stringify(jsonData)
+			body: JSON.stringify(jsonData),
+			credentials: 'include'
 		}).then(response => {
 			if (response.ok) {
 				float_error_card_func("Timetable Saved Successfully", "", "success");
