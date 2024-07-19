@@ -173,6 +173,8 @@ const fetch_room_list = () => {                         	//  this function fetch
 };
 const letmeseeitbaby = () => {
 	blocking();
+	document.cookie = `flag=${flag};`
+	document.cookie = `teacher=${document.getElementById("teacher_option").value};`
 	// document.getElementById("loader").style.display = "flex"; // uncomment this line to show the loader for every change
 	let teacher_query_list = [];
 	teacher_query_list.push(document.getElementById("teacher_option").value);
@@ -192,7 +194,7 @@ const letmeseeitbaby = () => {
 			letmesee2();
 		})
 		.then(() => {
-			if (flag === 1) {
+			if (flag == 1) {
 				college_event_manager();
 			}
 		})
@@ -214,10 +216,16 @@ const letmeseeitbaby = () => {
 }
 document.getElementById('teacher_option').addEventListener('change', letmeseeitbaby);
 document.getElementById("toggle_event").addEventListener("click", () => {
-	flag = flag === 1 ? 0 : 1;
+	flag = flag == 1 ? 0 : 1;
 	letmeseeitbaby();
 });
 document.addEventListener('DOMContentLoaded', async () => {
+	let cookieVar = document.cookie.split(';').map(row => row.trim());
+	if (cookieVar.find(row => row.startsWith('teacher=')) && cookieVar.find(row => row.startsWith('flag='))) {
+		document.getElementById('teacher_option').value = cookieVar.find(row => row.startsWith('teacher=')).split('=')[1] ?? "2118570";
+		flag = cookieVar.find(row => row.startsWith('flag=')).split('=')[1] ?? "0";
+	}
+	flag == 1 ? document.getElementById("toggle_event").checked = true : document.getElementById("toggle_event").checked = false;
 	await fetch_room_list()
 	letmeseeitbaby();
 });
