@@ -281,8 +281,8 @@ document.getElementById("toggle_event").addEventListener("click", () => {
 document.addEventListener("DOMContentLoaded", () => {
 	let cookieVar = document.cookie.split(';').map(row => row.trim());
 	if (cookieVar.find(row => row.startsWith('course=')) && cookieVar.find(row => row.startsWith('semester=')) && cookieVar.find(row => row.startsWith('section=')) && cookieVar.find(row => row.startsWith('flag='))) {
-		document.getElementById('course_option').value = cookieVar.find(row => row.startsWith('course=')).split('=')[1] ?? "B.Tech";
-		document.getElementById('semester_option').value = cookieVar.find(row => row.startsWith('semester=')).split('=')[1] ?? "6";
+		document.getElementById('course_option').value = cookieVar.find(row => row.startsWith('course=')).split('=')[1] ?? "btechcse";
+		document.getElementById('semester_option').value = cookieVar.find(row => row.startsWith('semester=')).split('=')[1] ?? "1";
 		document.getElementById('section_option').value = cookieVar.find(row => row.startsWith('section=')).split('=')[1] ?? "A";
 		flag = cookieVar.find(row => row.startsWith('flag=')).split('=')[1] ?? "0";
 	}
