@@ -15,6 +15,7 @@ let events = {
     "2024-07-24": { "description": "Technical Seminar", "color": "primary" },
     "2024-07-25": { "description": "Networking Event with Alumni", "color": "success" },
     "2024-07-26": { "description": "End of Summer Term", "color": "primary" },
+    "2024-07-27": { "description": "End of Summer Term", "color": "secondary" },
     "2024-07-28": { "description": "Results Declaration", "color": "warning" },
     "2024-07-30": { "description": "Summer Internship Begins", "color": "info" },
     "2024-08-01": { "description": "New Semester Orientation", "color": "primary" },
@@ -187,6 +188,7 @@ const letmesee2 = (temp_tt) => {
 const college_event_manager = () => {
 	let today = new Date();
 	let startDayIndex = today.getDay() - 1;
+	if(today.getDay() == 0) startDayIndex = 6;	  	//sunday is 0 in js but we need it to be 6 for our table
 	// console.log(startDayIndex);
 	for (let i = 0; i < 7; i++) {
 		let currentDate = new Date();
