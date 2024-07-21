@@ -525,8 +525,12 @@ const fetch_room_list = () => {                         	//  this function fetch
 					headers: {
 						'Content-Type': 'application/json'
 					}
-				}).then(response => response.json())
-				.then(data => {
+				}).then(response => {
+					if (!response.ok) {
+						throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
+					}
+					return response.json()
+				}).then(data => {
 					room_list = data.data;
 					console.log(room_list)
 					resolve();
@@ -561,8 +565,12 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 					},
 					body: JSON.stringify({ "facultyList": teacher_query_list })
 				})
-				.then(response => response.json())
-				.then(data => {
+				.then(response => {
+					if (!response.ok) {
+						throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
+					}
+					return response.json()
+				}).then(data => {
 					data = data.data;
 					faculty_data = data;
 					console.log(faculty_data);
@@ -703,8 +711,13 @@ const fetch_timetable = () => {                        		//  this function fetch
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			}).then(response => response.json())
-			.then(data => {
+			}).then(response => {
+				if (!response.ok) {
+					throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
+				}
+				return response.json()
+			}).then(data => {
+				console.log(data);
 				timetable = data.data;        // Do something with the response data here 
 				console.log(timetable);
 				render_tables();
@@ -717,6 +730,7 @@ const fetch_timetable = () => {                        		//  this function fetch
 				reject(error);
 			});
 		} catch (error) {
+			// document.getElementById("loader").style.display = "none";
 			console.error('Error fetching timetable:', error);
 			reject(error);	
 		}
