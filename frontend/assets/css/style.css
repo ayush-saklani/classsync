@@ -168,7 +168,12 @@ body{
     position: relative;
 }
 .bus-arr::after, .bus-dep::before{ 
+    /* content: "🚍"; */
     content: "";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
     position: absolute;
     width: 10px;
 }
@@ -557,3 +562,86 @@ table>tbody>tr{
     background-color: #458588 !important;
     color: var() !important;
 }
+/* ------------Menu CSS Start---------------- */
+.menu {
+    width: fit-content;
+}
+.menu a {
+    text-decoration: none;
+    color: var(--brand-cyan);
+}
+.menu .link {
+    position: relative;
+    display: flex;
+    padding: 12px 36px;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu .link::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--brand-cyan);
+    z-index: -1;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.menu .item {
+    position: relative;
+}
+.menu .item .submenu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid #cccccc;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-12px);
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+    z-index: 1;
+    pointer-events: none;
+    list-style: none;
+}
+.menu .item:hover .submenu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+    border-top: transparent;
+    border-color: var(--brand-cyan);
+}
+.menu .item:hover .link {
+    color: #ffffff;
+}
+.menu .item:hover .link::after {
+    transform: scaleX(1);
+    transform-origin: right;
+}
+.submenu .submenu-item {
+    width: 100%;
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.submenu .submenu-link {
+    display: block;
+    padding: 12px 24px;
+    width: 100%;
+    position: relative;
+    text-align: center;
+    background-color: #ffffff;
+    color: var(--brand-cyan);
+    transition: all 0.48s cubic-bezier(0.23, 1, 0.32, 1);
+}
+.submenu .submenu-item:last-child .submenu-link {
+    border-bottom: none;
+}
+.submenu .submenu-link:hover {
+    color: #ffffff;
+    background-color: var(--brand-cyan);
+}
+/* ------------Menu CSS End---------------- */
