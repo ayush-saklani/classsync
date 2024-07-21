@@ -114,14 +114,32 @@ const addDynamicSectionOptions = () => {                // add sections to secti
     });
 };
 document.addEventListener("DOMContentLoaded", async () => {
-    addDynamicCourseOptions();
-    await addDynamicSemesterOptions();
-    await addDynamicSectionOptions();
+    if(document.getElementById("course_option")) {
+        console.log("course_option found");
+        addDynamicCourseOptions();
+        if(document.getElementById("semester_option")){
+            console.log("semester_option found");
+            await addDynamicSemesterOptions();
+            if(document.getElementById("section_option")){
+                console.log("section_option found");
+                await addDynamicSectionOptions();
+            }
+        }
+    }
 });
-document.getElementById("course_option").addEventListener("change", async () => {
-    await addDynamicSemesterOptions();
-    await addDynamicSectionOptions();
-});
-document.getElementById("semester_option").addEventListener("change", async () => {
-    await addDynamicSectionOptions();
-});
+if(document.getElementById("course_option")){
+    document.getElementById("course_option").addEventListener("change", async () => {
+        console.log("semester_option found");
+        await addDynamicSemesterOptions();
+        if(document.getElementById("section_option")) {
+            console.log("section_option found");
+            await addDynamicSectionOptions();
+        }
+    });
+}
+if(document.getElementById("semester_option")){
+    document.getElementById("semester_option").addEventListener("change", async () => {
+        console.log("section_option found");
+        await addDynamicSectionOptions();
+    });
+}
