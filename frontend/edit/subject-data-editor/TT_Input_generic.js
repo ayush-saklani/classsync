@@ -154,30 +154,34 @@ const render_tables = () => {			//	renders the tables
 			select = document.createElement('select');
 			select.setAttribute('class', 'form-select text');
 			cell.appendChild(select);
+			let option_option = ["THEORY", "PRACTICAL"];
+			for (let j = 0; j < option_option.length; j++) {
+				let option = document.createElement('option');
+				option.value = option.text = option_option[j];
+				option.classList.add('fw-bold');
+				select.appendChild(option);
+			}
 			if (localteacher_subject_data[i].theory_practical === "PRACTICAL") {
-			    let option = document.createElement('option');
-			    option.value = localteacher_subject_data[i].theory_practical;
-			    option.text = localteacher_subject_data[i].theory_practical;
-			    option.selected = true;
-			    select.appendChild(option);
-			    option = document.createElement('option');
-			    option.value = "THEORY";
-			    option.text = "THEORY";
-			    select.appendChild(option);
-			    select.classList.add('bg-practical', 'text-light','fw-bold'); // Make dropdown red with light text
+			   	select.value = localteacher_subject_data[i].theory_practical;
+			    // select.classList.add('bg-practical', 'text-light','fw-bold','border','border-practical'); 	// Make dropdown colored with light text
 			}
 			else if (localteacher_subject_data[i].theory_practical === "THEORY") {
-			    let option = document.createElement('option');
-			    option.value = localteacher_subject_data[i].theory_practical;
-			    option.text = localteacher_subject_data[i].theory_practical;
-			    option.selected = true;
-			    select.appendChild(option);
-			    option = document.createElement('option');
-			    option.value = "PRACTICAL";
-			    option.text = "PRACTICAL";
-			    select.appendChild(option);
-			    select.classList.add('bg-theory', 'text-light','fw-bold'); // Make dropdown green with light text
+				select.value = localteacher_subject_data[i].theory_practical;
+				// select.classList.add('bg-theory', 'text-light','fw-bold','border','border-theory'); 		// Make dropdown colored with light text
 			}
+
+			// below code is for making the colored marker cell for denoting theory and practical
+			// (might delete this code)(if delete remove the comment of above select code)
+
+			cell = newRow.insertCell();
+			cell.setAttribute('style', 'height: 40px;');
+			cell.setAttribute('style', 'width: 40px;');
+			if (localteacher_subject_data[i].theory_practical === "PRACTICAL") {
+				cell.classList.add('text-center','bg-practical','border','border-practical') ;
+			}
+			else if (localteacher_subject_data[i].theory_practical === "THEORY") {
+				cell.classList.add('text-center','bg-theory','border','border-theory') ;
+		 	}
 		}
 		document.getElementById("save_subject_list").disabled = false;
 	}
@@ -234,10 +238,17 @@ const set_for_all = () => {			// reset the data for all the courses and semester
 	fetch(`${localhost}/subjecttable/update?course=${course_option}&semester=${semester_option}`, {
 		method: 'GET',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
 		}
 	})
-		.then(response => response.json())
+		.then(response => {
+			if (response.ok) {
+				return response.json();
+			} else {
+				throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
+			}
+		})
 		.then(() => {
 			document.getElementById("save_subject_list").disabled = false;
 			document.getElementById("set_for_all").disabled = false;

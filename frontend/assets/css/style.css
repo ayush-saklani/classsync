@@ -547,10 +547,6 @@ table>tbody>tr{
     background-color: #f1c40f !important;
     color: black !important;
 }
-.border-holiday{
-    border-color: #f1c40f !important;
-    color: black !important;
-}
 .bg-indicator{
     background-color: #f1c40f !important;
     color: black !important;
@@ -562,6 +558,21 @@ table>tbody>tr{
 .bg-empty{
     background-color: #458588 !important;
     color: var() !important;
+}
+.border-practical{
+    border-color: #18a387 !important;
+}
+.border-holiday{
+    border-color: #f1c40f !important;
+}
+.border-indicator{
+    border-color: #f1c40f !important;
+}
+.border-theory{
+    border-color: #2c3e50 !important;
+}
+.border-empty{
+    border-color: #458588 !important;
 }
 /* ------------Menu CSS Start---------------- */
 .menu {
