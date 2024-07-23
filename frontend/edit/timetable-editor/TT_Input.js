@@ -420,7 +420,7 @@ const save_timetable_func = () => {                         	//  function below 
 			float_error_card_func("Timetable Not Saved <br>Server Error", "", "danger");
 			console.error('::::: ERROR SAVING DATA :::::', error);
 		});
-	}else{
+	} else {
 		setTimeout(() => {
 			float_error_card_func("Validation Failed <br>Timetable Not saved", "", "warning");
 		}, 3000);
@@ -456,11 +456,11 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		for (let j = 1; j <= 10; j++) {
 			let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-			
+
 			mytable.rows[i].cells[j].childNodes[1].innerHTML = "";
 			let tempselectedvalue = timetable.schedule[currday][currslot].class_id;
-			for(ele in room_list){
-			// Object.entries(room_list).forEach(([key, value]) => {
+			for (ele in room_list) {
+				// Object.entries(room_list).forEach(([key, value]) => {
 				let option = document.createElement("option");
 				option.value = room_list[ele].roomid;
 				option.text = room_list[ele].name;
@@ -529,30 +529,30 @@ const fetch_room_list = () => {                         	//  this function fetch
 	return new Promise((resolve, reject) => {
 		try {
 			fetch(`${localhost}/room/getall?allowed_course=${document.getElementById('course_option').value}`, {
-			// fetch(`${localhost}/room/getall`, {	// for testing get all rooms
-					method: 'GET',
-					headers: {
-						'Content-Type': 'application/json'
-					}
-				}).then(response => {
-					if (!response.ok) {
-						throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
-					}
-					return response.json()
-				}).then(data => {
-					room_list = data.data;
-					console.log(room_list)
-					resolve();
-					// add_rooms_options_to_mytable(room_list);
-				}).catch(error => {
-					console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
-					reject(error);
-				});
+				// fetch(`${localhost}/room/getall`, {	// for testing get all rooms
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).then(response => {
+				if (!response.ok) {
+					throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
+				}
+				return response.json()
+			}).then(data => {
+				room_list = data.data;
+				console.log(room_list)
+				resolve();
+				// add_rooms_options_to_mytable(room_list);
+			}).catch(error => {
+				console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
+				reject(error);
+			});
 		} catch (error) {
 			console.error('Error fetching room data:', error);
 			reject(error);
 		}
-	});		
+	});
 };
 const fetch_faculties_list = () => {                    	//  this function fetches the faculty list data form the server [ database ] and store the variable to the local variable for future use  
 	return new Promise((resolve, reject) => {
@@ -566,7 +566,7 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 					}
 				}
 				// console.log(teacher_query_list);
-				
+
 				fetch(`${localhost}/faculty/get`, {
 					method: 'POST',
 					headers: {
@@ -574,21 +574,21 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 					},
 					body: JSON.stringify({ "facultyList": teacher_query_list })
 				})
-				.then(response => {
-					if (!response.ok) {
-						throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
-					}
-					return response.json()
-				}).then(data => {
-					data = data.data;
-					faculty_data = data;
-					console.log(faculty_data);
-					resolve();
-				})
-				.catch(error => {
-					console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
-					reject(error);
-				});
+					.then(response => {
+						if (!response.ok) {
+							throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
+						}
+						return response.json()
+					}).then(data => {
+						data = data.data;
+						faculty_data = data;
+						console.log(faculty_data);
+						resolve();
+					})
+					.catch(error => {
+						console.error('Faculty Data not available [ SERVER ERROR ] :::: ', error)
+						reject(error);
+					});
 			}
 		} catch (error) {
 			console.error('Error fetching faculty data:', error);
@@ -714,7 +714,7 @@ const fetch_timetable = () => {                        		//  this function fetch
 			let course = document.getElementById("course_option").value;
 			let semester = document.getElementById("semester_option").value;
 			let section = document.getElementById("section_option").value;
-			
+
 			fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
 				method: 'GET',
 				headers: {
@@ -741,7 +741,7 @@ const fetch_timetable = () => {                        		//  this function fetch
 		} catch (error) {
 			// document.getElementById("loader").style.display = "none";
 			console.error('Error fetching timetable:', error);
-			reject(error);	
+			reject(error);
 		}
 	});
 }
@@ -758,10 +758,10 @@ const initializePage = async () => {                        //  this function in
 		}, 1500);
 		if (timetable) {
 			float_error_card_func("Initialization Successful", "", "success");
-		}else {
+		} else {
 			throw new Error('Initialization Failed');
 		}
-	}catch (error) {
+	} catch (error) {
 		setTimeout(() => {
 			unblocking();
 			document.getElementById("loader").style.display = "none";
@@ -783,7 +783,7 @@ const reset_table = () => {                             	//  this function reset
 		}
 	}
 };
-const addcopybutton = () =>{
+const addcopybutton = () => {
 	let table = document.getElementById("mytable");
 	for (let i = 1; i <= 7; i++) {
 		for (let j = 1; j <= 10; j++) {
