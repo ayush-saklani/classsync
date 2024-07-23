@@ -1,5 +1,6 @@
 let timetable;
 let flag = 0;
+let room_list;
 let events = {
 	"2024-06-06": { "description": "Software Enginneering (Practical)", "color": "info" },
 	"2024-06-08": { "description": "Farewell Party BTech CSE", "color": "holiday" },
@@ -85,7 +86,13 @@ const letmesee2 = (temp_tt) => {
 						}
 						else {
 							currcelltb.setAttribute("class", "text bg-theory bg-gradient heading-text border-dark border-3");
-							currcelltb.innerHTML = temp_tt.schedule[currrow][currcol].slotdata.replace("\n", "<br>");;
+							console.log(`${temp_tt.schedule[currrow][currcol].subjectcode}`+`${room_list.find(room => room.roomid == temp_tt.schedule[currrow][currcol].class_id).schedule[currrow][currcol].section}`);
+							currcelltb.innerHTML = `${temp_tt.schedule[currrow][currcol].subjectcode}`+`<br>`+room_list.find(room => room.roomid == temp_tt.schedule[currrow][currcol].class_id).name;
+							let sections = room_list.find(room => room.roomid == temp_tt.schedule[currrow][currcol].class_id).schedule[currrow][currcol].section.sort()
+							if (sections.length > 1) {
+								currcelltb.innerHTML += " "+ `(${sections})` ;
+							}
+								
 						}
 					}
 					else {
@@ -236,6 +243,35 @@ const teacherAbsentUpdater = () => {
 		}
 	}
 };
+const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
+	// document.getElementById("loader").style.display = "flex";
+	return new Promise((resolve, reject) => {
+		fetch(`${localhost}/room/getall?allowed_course=${document.getElementById('course_option').value}`, {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		}).then(response => response.json())
+		.then(data => {
+			data = data.data;
+			console.log("Room Data Fetched",data);
+			room_list = data;
+		}).then(() => {
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none";
+			}, 2000);
+			// float_error_card_func('Room Data Fetched Success', '', 'success');
+			resolve();
+		}).catch(error => {
+			setTimeout(() => {
+				document.getElementById("loader").style.display = "none"; 
+			}, 2000);
+			float_error_card_func('Room Data Fetching Failed', '', 'danger');
+			console.error(':::: Room Data not available (SERVER ERROR) :::: ', error)
+			reject();
+		});
+	});
+};
 const letmeseeitbaby = () => {
 	// document.getElementById("loader").style.display = "flex"; // uncomment this line to show the loader for every change
 	blocking();
@@ -278,7 +314,7 @@ document.getElementById("toggle_event").addEventListener("click", () => {
 	flag = (flag == 1) ? 0 : 1;
 	letmeseeitbaby();
 });
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async() => {
 	let cookieVar = document.cookie.split(';').map(row => row.trim());
 	if (cookieVar.find(row => row.startsWith('course=')) && cookieVar.find(row => row.startsWith('semester=')) && cookieVar.find(row => row.startsWith('section=')) && cookieVar.find(row => row.startsWith('flag='))) {
 		document.getElementById('course_option').value = cookieVar.find(row => row.startsWith('course=')).split('=')[1] ?? "btechcse";
@@ -287,5 +323,6 @@ document.addEventListener("DOMContentLoaded", () => {
 		flag = cookieVar.find(row => row.startsWith('flag=')).split('=')[1] ?? "0";
 	}
 	flag == 1 ? document.getElementById("toggle_event").checked = true : document.getElementById("toggle_event").checked = false;
+	await fetch_room_list();
 	letmeseeitbaby();
 });
