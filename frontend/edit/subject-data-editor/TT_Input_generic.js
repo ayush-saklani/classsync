@@ -92,7 +92,8 @@ const save_table_func = () => {			//  calculate and construct the subject table 
 	fetch(`${localhost}/subjecttable/save`, {
 		method: 'POST',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getCookie('accessToken')}`
 		},
 		body: jsonDataString
 	})
@@ -116,6 +117,7 @@ const render_tables = () => {			//	renders the tables
 	table.innerHTML = "";
 	if (timetable) {
 		let localteacher_subject_data = timetable.teacher_subject_data;
+		localteacher_subject_data.sort((a, b) => b.theory_practical.localeCompare(a.theory_practical)); // sort the data based on subject code
 		for (let i = 0; i < localteacher_subject_data.length; i++) {
 			const element = localteacher_subject_data[i];
 
@@ -153,26 +155,28 @@ const render_tables = () => {			//	renders the tables
 			select.setAttribute('class', 'form-select text');
 			cell.appendChild(select);
 			if (localteacher_subject_data[i].theory_practical === "PRACTICAL") {
-				let option = document.createElement('option');
-				option.value = localteacher_subject_data[i].theory_practical;
-				option.text = localteacher_subject_data[i].theory_practical;
-				option.selected = true;
-				select.appendChild(option);
-				option = document.createElement('option');
-				option.value = "THEORY";
-				option.text = "THEORY";
-				select.appendChild(option);
+			    let option = document.createElement('option');
+			    option.value = localteacher_subject_data[i].theory_practical;
+			    option.text = localteacher_subject_data[i].theory_practical;
+			    option.selected = true;
+			    select.appendChild(option);
+			    option = document.createElement('option');
+			    option.value = "THEORY";
+			    option.text = "THEORY";
+			    select.appendChild(option);
+			    select.classList.add('bg-practical', 'text-light','fw-bold'); // Make dropdown red with light text
 			}
 			else if (localteacher_subject_data[i].theory_practical === "THEORY") {
-				let option = document.createElement('option');
-				option.value = localteacher_subject_data[i].theory_practical;
-				option.text = localteacher_subject_data[i].theory_practical;
-				option.selected = true;
-				select.appendChild(option);
-				option = document.createElement('option');
-				option.value = "PRACTICAL";
-				option.text = "PRACTICAL";
-				select.appendChild(option);
+			    let option = document.createElement('option');
+			    option.value = localteacher_subject_data[i].theory_practical;
+			    option.text = localteacher_subject_data[i].theory_practical;
+			    option.selected = true;
+			    select.appendChild(option);
+			    option = document.createElement('option');
+			    option.value = "PRACTICAL";
+			    option.text = "PRACTICAL";
+			    select.appendChild(option);
+			    select.classList.add('bg-theory', 'text-light','fw-bold'); // Make dropdown green with light text
 			}
 		}
 		document.getElementById("save_subject_list").disabled = false;
