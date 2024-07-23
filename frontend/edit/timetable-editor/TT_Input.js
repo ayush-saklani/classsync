@@ -13,7 +13,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 				let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 				for (let j = 1; j <= 10; j++) {
 					let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-					
+
 					let temp_roomid = timetable.schedule[currday][currslot].class_id;
 					for (element in room_list) {
 						if (room_list[element].roomid == temp_roomid && temp_roomid != '0') {
@@ -38,10 +38,10 @@ const fixtime_firstphase = () => {                        	//  this function rem
 								temproom.teacherid = "";
 								temproom.section = [];
 							}
-						}		
+						}
 					}
 
-					
+
 					// let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
 					let temp_subject = timetable.schedule[currday][currslot].subjectcode;
 					if (temp_subject != '' && temp_roomid != '0') {
@@ -79,7 +79,7 @@ const fixtime_firstphase = () => {                        	//  this function rem
 			console.error(':::::  ERROR IN FIXTIME FIRST PHASE :::::', error);
 			reject(error);
 		}
-	});		
+	});
 }
 const fixtime_secondphase = () => {                       	//  this function adds all the current selected classes ( mytable ) and increase the counter(section.length)  
 	return new Promise((resolve, reject) => {
@@ -89,7 +89,7 @@ const fixtime_secondphase = () => {                       	//  this function add
 				let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 				for (let j = 1; j <= 10; j++) {
 					let currslot = mytable.rows[0].cells[j].innerHTML.toLowerCase();
-					
+
 					let temp_roomid = mytable.rows[i].cells[j].childNodes[1].value;
 					for (element in room_list) {
 						if (room_list[element].roomid == temp_roomid && temp_roomid != '0') {
@@ -103,11 +103,11 @@ const fixtime_secondphase = () => {                       	//  this function add
 							}
 							else if (temproom.section.length > 0) {
 								temproom.section.push(document.getElementById("section_option").value);
-							}							
+							}
 						}
 					}
 
-					
+
 					let temp_subject = document.getElementById("mytable").rows[i].cells[j].childNodes[0].value;
 					if (temp_subject != '' && temp_roomid != '0') {
 						let temp_facultyid_real = timetable.teacher_subject_data.find(x => x.subjectcode === temp_subject).teacherid;
@@ -135,12 +135,12 @@ const fixtime_secondphase = () => {                       	//  this function add
 			// console.log("=====================================================");
 			// console.log(room_list);
 			console.log(':::::  SECOND PHASE DONE  :::::');
-			resolve();	
+			resolve();
 		} catch (error) {
 			console.error(':::::  ERROR IN FIXTIME SECOND PHASE :::::', error);
 			reject(error);
 		}
-	});	
+	});
 }
 const updateCounter = () => {                            	//  this function updates the counter of currently allocated classes in the timetable data
 	let mytable = document.getElementById("mytable");
@@ -161,7 +161,7 @@ const updateCounter = () => {                            	//  this function upda
 					}
 					if (parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) < parseInt(teacher_subject_table.rows[k].cells[4].firstChild.innerHTML)) {
 						let column = teacher_subject_table.rows[k].cells[6].firstChild;
-						column.classList = ("text", "text-warning","more_lectures");
+						column.classList = ("text", "text-warning", "more_lectures");
 
 					}
 					else if (parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) == parseInt(teacher_subject_table.rows[k].cells[4].firstChild.innerHTML)) {
@@ -170,7 +170,7 @@ const updateCounter = () => {                            	//  this function upda
 					}
 					else if (parseInt(teacher_subject_table.rows[k].cells[6].firstChild.innerHTML) > parseInt(teacher_subject_table.rows[k].cells[4].firstChild.innerHTML)) {
 						let column = teacher_subject_table.rows[k].cells[6].firstChild;
-						column.classList = ("text","text-danger","less_lectures");
+						column.classList = ("text", "text-danger", "less_lectures");
 					}
 				}
 			}
@@ -181,6 +181,8 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 	updateCounter();
 	let mytable = document.getElementById("mytable");
 	let isValid = true;
+	// console.log(':::::  TIMETABLE DATA :::::', timetable);
+
 
 	for (let i = 1; i <= 7; i++) {
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
@@ -196,76 +198,83 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 			}
 
 			// Validate if the room exists in room_list
-			if (curr_slot_room in room_list) {
-				let roomSchedule = room_list[curr_slot_room].schedule[currday][currslot];
-				let teacherId = timetable.teacher_subject_data.find(x => x.subjectcode === subjectCode).teacherid;
+			for (element in room_list) {
+				if (room_list[element].roomid == curr_slot_room && curr_slot_room != '0') {
+					let temproom = room_list[element].schedule[currday][currslot];
+					console.log("=====================================\n", curr_slot_room, subjectCode);
 
-				// Skip teacher with ID '0'
-				if (!teacherId || teacherId === '0') {
-					continue;
-				}
 
-				// Check if room has any assigned section
-				if (roomSchedule.section.length > 0) {
-					// Subject mismatch check
-					if (roomSchedule.subjectcode !== subjectCode) {
-						setTimeout(() => {
-							float_error_card_func(`Type 1 - Room conflict <br>Diffrent Subject Conflicted at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`, "primary");
-						}, 1000);
-						isValid = false;
+					let roomSchedule = room_list[element].schedule[currday][currslot];
+					let teacherId = timetable.teacher_subject_data.find(x => x.subjectcode === subjectCode).teacherid;
+
+					// Skip teacher with ID '0'
+					if (!teacherId || teacherId === '0') {
+						continue;
 					}
-					// Teacher mismatch check
-					if (roomSchedule.teacherid !== teacherId) {
-						setTimeout(() => {
-							float_error_card_func(`Type 2 - Room conflict <br>Teacher Conflicted at ${currday.toUpperCase()} ${currslot} slot`, `[ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. <br>[ Choose another class if the teacher is diffrent ]`, "info");
-						}, 2000);
-						isValid = false;
+
+					// Check if room has any assigned section
+					if (roomSchedule.section.length > 0) {
+						// Subject mismatch check
+						if (roomSchedule.subjectcode !== subjectCode) {
+							setTimeout(() => {
+								float_error_card_func(`Type 1 - Room conflict <br>Diffrent Subject Conflicted at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`, "primary");
+							}, 1000);
+							isValid = false;
+						}
+						// Teacher mismatch check
+						if (roomSchedule.teacherid !== teacherId) {
+							setTimeout(() => {
+								float_error_card_func(`Type 2 - Room conflict <br>Teacher Conflicted at ${currday.toUpperCase()} ${currslot} slot`, `[ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. <br>[ Choose another class if the teacher is diffrent ]`, "info");
+							}, 2000);
+							isValid = false;
+						}
 					}
-				}
-				// Validate the teacher's schedule
-				for (element in faculty_data) {
-					if (faculty_data[element].teacherid === teacherId) { // the teacher who is teaching the subject
-						let teacherSchedule = faculty_data[element].schedule[currday][currslot];
+					// Validate the teacher's schedule
+					for (element in faculty_data) {
+						if (faculty_data[element].teacherid === teacherId) { // the teacher who is teaching the subject
+							let teacherSchedule = faculty_data[element].schedule[currday][currslot];
 
-						// If the teacher is assigned in the same slot
-						if (teacherSchedule.subjectcode === subjectCode && teacherSchedule.section.length >0) { // review this condition
-							if(teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length > 1) {
-								setTimeout(() => {
-									// float_error_card_func(`${teacherSchedule.section.includes(document.getElementById("section_option").value)} && ${teacherSchedule.section} ${currday} ${currslot}`,"","info")
-									float_error_card_func(`Merge at ${currday.toUpperCase()} ${currslot}`, ``, "warning");
-								}, 500);
+							// If the teacher is assigned in the same slot
+							if (teacherSchedule.subjectcode === subjectCode && teacherSchedule.section.length > 0) { // review this condition
+								if (teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length > 1) {
+									setTimeout(() => {
+										// float_error_card_func(`${teacherSchedule.section.includes(document.getElementById("section_option").value)} && ${teacherSchedule.section} ${currday} ${currslot}`,"","info")
+										float_error_card_func(`Merge at ${currday.toUpperCase()} ${currslot}`, ``, "warning");
+									}, 500);
+								}
+								if (!teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length == 1) {
+									setTimeout(() => {
+										float_error_card_func(`Merge at ${currday.toUpperCase()} ${currslot}`, ``, "warning");
+									}, 500);
+								}
+								// isValid = false;
 							}
-							if(!teacherSchedule.section.includes(document.getElementById("section_option").value) && teacherSchedule.section.length == 1) {
-								setTimeout(() => {
-									float_error_card_func(`Merge at ${currday.toUpperCase()} ${currslot}`, ``, "warning");
-								}, 500);
-							}
-							// isValid = false;
-						}
 
-						// If the teacher is teaching a different subject in the same slot
-						if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
-							float_error_card_func(`Type 11 tester- Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${teacherSchedule.subjectcode} as subject in this slot already.`, "danger");
-							isValid = false;
-						}
-						// if (teacherSchedule.section.length > 0) {
-						// 	if (teacherSchedule.section.includes(document.getElementById("section_option").value)) {
-						// 		float_error_card_func(`Type 22 tester - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
-						// 		isValid = false;
-						// 	}
-						// }
-						if (teacherSchedule.subjectcode !== "" && teacherSchedule.subjectcode !== subjectCode) {
-							float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time.`, "danger");
-							isValid = false;
-						}
-						if (teacherSchedule.roomid.length != 0 && teacherSchedule.roomid[0] !== curr_slot_room) {
-							console.log(room_list[teacherSchedule.roomid])
-							float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time.`, "danger");
-							isValid = false;
+							// If the teacher is teaching a different subject in the same slot
+							if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
+								float_error_card_func(`Type 11 tester- Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `Another class is allotted ${teacherSchedule.subjectcode} as subject in this slot already.`, "danger");
+								isValid = false;
+							}
+							// if (teacherSchedule.section.length > 0) {
+							// 	if (teacherSchedule.section.includes(document.getElementById("section_option").value)) {
+							// 		float_error_card_func(`Type 22 tester - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`, "danger");
+							// 		isValid = false;
+							// 	}
+							// }
+							if (teacherSchedule.subjectcode !== "" && teacherSchedule.subjectcode !== subjectCode) {
+								float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time.`, "danger");
+								isValid = false;
+							}
+							if (teacherSchedule.roomid.length != 0 && teacherSchedule.roomid[0] !== curr_slot_room) {
+								console.log(room_list[teacherSchedule.roomid])
+								float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[teacherSchedule.roomid].classname} at the current time.`, "danger");
+								isValid = false;
+							}
 						}
 					}
 				}
 			}
+
 		}
 	}
 
@@ -298,7 +307,7 @@ const save_room_list = () => {	 	// save_timetable_func helper functions	//  thi
 			console.error('::::: Error Saving Data (Server Error) :::::', error);
 			reject(error);
 		});
-	});	
+	});
 }
 const save_faculty_list = () => { 	// save_timetable_func helper functions	//  this function saves the faculty list data to the server [ database ] and returns the promise
 	return new Promise((resolve, reject) => {
@@ -337,7 +346,7 @@ const save_timetable_func = () => {                         	//  function below 
 				if (sl_class_id != '0' || sl_subjectcode != '') {
 					let curr_box = mytable.rows[i].cells[j].childNodes[1];
 					sl_slotdata = `${sl_subjectcode}\n${curr_box.options[curr_box.selectedIndex].textContent}`;
-				}else {
+				} else {
 					sl_slotdata = "";
 				}
 
@@ -585,7 +594,7 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 			console.error('Error fetching faculty data:', error);
 			reject(error);
 		}
-	});	
+	});
 };
 const render_tables = () => {                           	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 	// rendering the second table first
@@ -757,6 +766,10 @@ const initializePage = async () => {                        //  this function in
 			unblocking();
 			document.getElementById("loader").style.display = "none";
 		}, 1500);
+		//reset the table to the initial state to avoid any error
+		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+		table.innerHTML = "";
+		reset_table();
 		float_error_card_func("Initialization Failed <br> Server Error", "", "danger");
 		console.error('Error during initialization:', error)
 	};
@@ -772,18 +785,18 @@ const reset_table = () => {                             	//  this function reset
 };
 const addcopybutton = () =>{
 	let table = document.getElementById("mytable");
-	for (let i = 1; i <= 7; i++) {                
+	for (let i = 1; i <= 7; i++) {
 		for (let j = 1; j <= 10; j++) {
 			let div = document.createElement("div");
 			div.classList = ("popover-content");
-			if(j>1){
+			if (j > 1) {
 				let button = document.createElement("button");
 				button.classList = ("copy-left popover-button btn btn-primary rounded-start-pill p-1 me-0");
 				button.style = "background-color: var(--brand-cyan);"
 				button.innerHTML = `<i class="bi bi-arrow-bar-left" style="-webkit-text-stroke-width: 1px;"></i><i class="bi bi-clipboard-data-fill"></i>`;
-				button.addEventListener("click",()=>{
-					table.rows[i].cells[j].childNodes[0].value =  table.rows[i].cells[j-1].childNodes[0].value;
-					table.rows[i].cells[j].childNodes[1].value =  table.rows[i].cells[j-1].childNodes[1].value;
+				button.addEventListener("click", () => {
+					table.rows[i].cells[j].childNodes[0].value = table.rows[i].cells[j - 1].childNodes[0].value;
+					table.rows[i].cells[j].childNodes[1].value = table.rows[i].cells[j - 1].childNodes[1].value;
 				});
 				div.appendChild(button);
 			}
@@ -791,20 +804,20 @@ const addcopybutton = () =>{
 			reset_button2.classList = ("copy-reset popover-button btn btn-dark rounded-0 p-1 ms-0 px-2");
 			reset_button2.style = "background-color: var(--Hard-Background);"
 			reset_button2.innerHTML = `<i class="bi bi-arrow-clockwise" style="-webkit-text-stroke-width: 1px;"></i>`;
-			reset_button2.addEventListener("click",()=>{
-				table.rows[i].cells[j].childNodes[0].value =  "";
-				table.rows[i].cells[j].childNodes[1].value =  "0";
+			reset_button2.addEventListener("click", () => {
+				table.rows[i].cells[j].childNodes[0].value = "";
+				table.rows[i].cells[j].childNodes[1].value = "0";
 			});
 			div.appendChild(reset_button2);
-		
-			if(j<10){
+
+			if (j < 10) {
 				let button2 = document.createElement("button");
 				button2.classList = ("copy-right popover-button btn btn-danger rounded-end-pill p-1 ms-0");
 				button2.style = "background-color: var(--brand-red);"
 				button2.innerHTML = `<i class="bi bi-clipboard-data-fill"></i><i class="bi bi-arrow-bar-right" style="-webkit-text-stroke-width: 1px;"></i>`;
-				button2.addEventListener("click",()=>{
-					table.rows[i].cells[j].childNodes[0].value =  table.rows[i].cells[j+1].childNodes[0].value;
-					table.rows[i].cells[j].childNodes[1].value =  table.rows[i].cells[j+1].childNodes[1].value;
+				button2.addEventListener("click", () => {
+					table.rows[i].cells[j].childNodes[0].value = table.rows[i].cells[j + 1].childNodes[0].value;
+					table.rows[i].cells[j].childNodes[1].value = table.rows[i].cells[j + 1].childNodes[1].value;
 				});
 				div.appendChild(button2);
 			}

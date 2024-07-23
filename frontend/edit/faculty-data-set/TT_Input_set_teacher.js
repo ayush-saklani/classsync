@@ -68,9 +68,11 @@ const save_table_func = () => {                         //  function below calcu
     fetch(`${localhost}/table/save-timetable`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getCookie('accessToken')}`
         },
-        body: jsonDataString
+        body: jsonDataString,
+        credentials: 'include'
     })
         .then(response => {
             if (response.ok) {
