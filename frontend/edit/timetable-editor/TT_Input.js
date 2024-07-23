@@ -198,13 +198,13 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 			}
 
 			// Validate if the room exists in room_list
-			for (element in room_list) {
-				if (room_list[element].roomid == curr_slot_room && curr_slot_room != '0') {
-					let temproom = room_list[element].schedule[currday][currslot];
+			for (elementr in room_list) {
+				if (room_list[elementr].roomid == curr_slot_room && curr_slot_room != '0') {
+					let temproom = room_list[elementr].schedule[currday][currslot];
 					// console.log("=====================================\n", curr_slot_room, subjectCode);
 
 
-					let roomSchedule = room_list[element].schedule[currday][currslot];
+					let roomSchedule = room_list[elementr].schedule[currday][currslot];
 					let teacherId = timetable.teacher_subject_data.find(x => x.subjectcode === subjectCode).teacherid;
 
 					// Skip teacher with ID '0'
@@ -232,7 +232,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 					// Validate the teacher's schedule
 					for (element in faculty_data) {
 						if (faculty_data[element].teacherid === teacherId) { // the teacher who is teaching the subject
-							console.log("========"+faculty_data[element].teacherid, teacherId);
+							// console.log("========"+faculty_data[element].teacherid, teacherId);
 							let teacherSchedule = faculty_data[element].schedule[currday][currslot];
 
 							// If the teacher is assigned in the same slot
@@ -262,14 +262,15 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 							// 		isValid = false;
 							// 	}
 							// }
+							let teachercurrroomnow = "[NA :: developing rn]";
+							// let teachercurrroomnow = room_list.find(x => x.roomid === faculty_data[element].schedule[currday][currslot].roomid[0]).name || "No Room Assigned";
+							console.log(teachercurrroomnow);
 							if (teacherSchedule.subjectcode !== "" && teacherSchedule.subjectcode !== subjectCode) {
-								float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[element].classname} at the current time.`, "danger");
+								float_error_card_func(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teachercurrroomnow} at the current time.`, "danger");
 								isValid = false;
 							}
-							if(room_list[element].roomid.length!=0 &&  teacherSchedule.roomid[0] !== curr_slot_room){ 
-							// if (teacherSchedule.roomid.length != 0 && teacherSchedule.roomid[0] !== curr_slot_room) {
-								console.log(room_list[teacherSchedule.roomid])
-								float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${room_list[element].classname} at the current time.`, "danger");
+							if (room_list[elementr].roomid.length != 0 && teacherSchedule.roomid[0] && teacherSchedule.roomid[0] !== curr_slot_room) {
+								float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${teachercurrroomnow} at the current time.`, "danger");
 								isValid = false;
 							}
 						}
@@ -835,8 +836,8 @@ document.getElementById('semester_option').addEventListener('change', initialize
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.getElementById("mytable").addEventListener("change", validateTeacherSubject);
 document.addEventListener('DOMContentLoaded', async () => {                                     //  this function initializes the page
-	document.getElementById("semester_option").value = "6";
-	document.getElementById("section_option").value = "B";
+	document.getElementById("semester_option").value = "6";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
+	document.getElementById("section_option").value = "B";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
 	await add_select_box_to_mytable();            // add subject and room select boxes to all the table cells  
 	addcopybutton();
 	initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
