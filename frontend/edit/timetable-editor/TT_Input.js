@@ -573,15 +573,18 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 				fetch(`${localhost}/faculty/get`, {
 					method: 'POST',
 					headers: {
-						'Content-Type': 'application/json'
+						'Content-Type': 'application/json',
+						'Authorization': `Bearer ${getCookie('accessToken')}`
 					},
+					credentials: 'include',
 					body: JSON.stringify({ "facultyList": teacher_query_list })
 				})
 					.then(response => {
-						if (!response.ok) {
+						if(response.ok){
+							return response.json();
+						}else{
 							throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
 						}
-						return response.json()
 					}).then(data => {
 						data = data.data;
 						faculty_data = data;
