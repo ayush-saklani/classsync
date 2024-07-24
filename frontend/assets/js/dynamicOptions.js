@@ -139,7 +139,9 @@ if(document.getElementById("course_option")){
 }
 if(document.getElementById("semester_option")){
     document.getElementById("semester_option").addEventListener("change", async () => {
-        console.log("section_option found");
-        await addDynamicSectionOptions();
+        if(document.getElementById("section_option")) {   
+            console.log("section_option found");
+            await addDynamicSectionOptions();
+        }
     });
 }
