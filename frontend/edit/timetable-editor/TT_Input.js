@@ -270,8 +270,10 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 								isValid = false;
 							}
 							if (room_list[elementr].roomid.length != 0 && teacherSchedule.roomid[0] && teacherSchedule.roomid[0] !== curr_slot_room) {
-								float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${teachercurrroomnow} at the current time.`, "danger");
-								isValid = false;
+								if(!teacherSchedule.section.includes(document.getElementById("section_option").value)){
+									float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${teachercurrroomnow} at the current time.`, "danger");
+									isValid = false;
+								}
 							}
 						}
 					}
