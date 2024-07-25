@@ -115,16 +115,17 @@ const render_tables = () => {                           // renders the table [ u
             // teacher select box render
             cell = newRow.insertCell();
             select = document.createElement('select');
-            select.setAttribute('class', 'form-select text');
+            select.setAttribute('class', 'form-select text teacherchoosefield');
             cell.appendChild(select);
             let tempTeacherID = localteacher_subject_data[i].teacherid ? localteacher_subject_data[i].teacherid : "0";
             for (let ele in faculty_data) {
                 let option = document.createElement('option');
                 option.value = faculty_data[ele].teacherid;
                 option.text = faculty_data[ele].name;
-                if (faculty_data[ele].teacherid == tempTeacherID) {
+                if (faculty_data[ele].teacherid == tempTeacherID && tempTeacherID != "0") {
                     option.selected = true;
                     // console.log(ele)
+                    select.disabled = true;
                 }
                 select.appendChild(option);
             }
@@ -171,6 +172,7 @@ const fetch_faculties_list = () => {                    //  this function fetche
             data = data.data;
             console.log(data);
             faculty_data = data;
+            faculty_data.sort((a, b) => (a.name > b.name) ? 1 : -1); 
         })
         .then(() => {
             float_error_card_func('Faculty Data Fetched Successfully', '', 'success');
@@ -212,6 +214,9 @@ const fetch_timetable = () => {                        //  this function fetches
                     })
                     .then(() => {
                         render_tables();
+                        document.querySelectorAll(".teacherchoosefield").forEach(element => {
+                            element.disabled = false;
+                        });
                         float_error_card_func("New Section Detection", "Time Table Data was not available.<br>A new <b>Empty</b> Time Table will be created.", "warning");
                     })
             }
@@ -263,5 +268,6 @@ document.getElementById('course_option').addEventListener('change', initializePa
 document.getElementById('semester_option').addEventListener('change', initializePage);  // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.addEventListener('DOMContentLoaded', () => {                                     //  this function initializes the page
+    document.getElementById('semester_option').value = "6";
     initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
 });
