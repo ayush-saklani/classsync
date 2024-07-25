@@ -266,7 +266,7 @@ const render_tables = () => {				// renders the tables
 	}
 };
 const fetch_room_list = () => {		// fetches the room list from the server
-	// document.getElementById("loader").style.display = "flex";
+	document.getElementById("loader").style.display = "flex";
 	fetch(`${localhost}/room/getall`, {
 		method: 'GET',
 		headers: {

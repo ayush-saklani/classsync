@@ -45,7 +45,7 @@ const save_table_func = () => {				//  function below calculate and construct th
 const render_tables = () => {				// renders the tables
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 	table.innerHTML = "";
-	
+	faculty_data.sort((a, b) => a.teacherid - b.teacherid);	// sorting the data by teacher id
 	for( element in faculty_data){
 		let newRow = table.insertRow(table.rows.length);
 		let cell = newRow.insertCell();
