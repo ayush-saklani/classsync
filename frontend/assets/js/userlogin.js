@@ -6,7 +6,7 @@ const getCookie = (name) => {      // get cookie by name
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 const delete_cookie = () => {       // logout function
-    fetch(`${localhost}/user/logout`, {
+    fetch(`https://classsync-3ht1.onrender.com/user/logout`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -50,7 +50,7 @@ const validate_cookie = (refreshToken) => {
 
     if (document.cookie.includes("refreshToken")) {
         if (!document.cookie.includes("accessToken")) {
-            fetch(`${localhost}/user/refresh-token`, {
+            fetch(`https://classsync-3ht1.onrender.com/user/refresh-token`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
