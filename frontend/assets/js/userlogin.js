@@ -6,7 +6,7 @@ const getCookie = (name) => {      // get cookie by name
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 const delete_cookie = () => {       // logout function
-    fetch(`https://classsync-3ht1.onrender.com/user/logout`, {
+    fetch(`${localhost}/user/logout`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -28,6 +28,11 @@ const delete_cookie = () => {       // logout function
         document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         window.location.reload();
     }).catch(error => {
+        document.cookie = "accessToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        window.location.reload();
         // window.location.href = '/login/';
         console.error('Error:', error);
     });
@@ -45,7 +50,7 @@ const validate_cookie = (refreshToken) => {
 
     if (document.cookie.includes("refreshToken")) {
         if (!document.cookie.includes("accessToken")) {
-            fetch(`https://classsync-3ht1.onrender.com/user/refresh-token`, {
+            fetch(`${localhost}/user/refresh-token`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
