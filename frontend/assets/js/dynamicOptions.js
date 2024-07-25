@@ -1,7 +1,7 @@
 const options = {
     "arr": ["08", "12"],                // bus arrival time
     "dep": ["01", "04", "06"],          // bus departure time
-    "curr_term": "even",                // current term (odd/even)
+    "curr_term": "odd",                // current term (odd/even)
     "courses": [
         {
             "course_id": "btechcse",

@@ -127,14 +127,14 @@ const render_tables = () => {			//	renders the tables
 			let cell_insert = document.createElement("input");
 			cell_insert.setAttribute("class", "form-control text");
 			cell_insert.setAttribute("type", "text");
-			cell_insert.value = localteacher_subject_data[i].subjectname;
+			cell_insert.value = localteacher_subject_data[i].subjectname.toUpperCase();
 			cell.appendChild(cell_insert);
 
 			cell = newRow.insertCell();
 			cell_insert = document.createElement("input");
 			cell_insert.setAttribute("class", "form-control text");
 			cell_insert.setAttribute("type", "text");
-			cell_insert.value = localteacher_subject_data[i].subjectcode;
+			cell_insert.value = localteacher_subject_data[i].subjectcode.toUpperCase();
 			cell.appendChild(cell_insert);
 
 			cell = newRow.insertCell();
@@ -267,7 +267,10 @@ const set_for_all = () => {			// reset the data for all the courses and semester
 			console.error('::::: ERROR RESETTING DATA :::::', error);
 		});
 }
-document.addEventListener("DOMContentLoaded", fetch_course_data);
+document.addEventListener("DOMContentLoaded", ()=>{
+	document.getElementById('semester_option').value = '3';
+	fetch_course_data();
+});
 document.getElementById("save_subject_list").addEventListener("click", save_table_func);	// [ save subject list button ]
 document.getElementById("set_for_all").addEventListener("click", ()=>{						// [ set for all button ]
 	let confirmation = confirm(`Are you really sure that you want to set the data for all sections ?`);

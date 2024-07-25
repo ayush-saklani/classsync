@@ -157,18 +157,31 @@ const render_tables = () => {                           // renders the table [ u
             cell_insert.innerHTML = "Reset";
             cell_insert.addEventListener("click", function () {
                 let row = this.parentNode.parentNode;
-                if(row.cells[1].childNodes[0].value != "0" && row.cells[1].childNodes[0].disabled == true) {
-                    if(window.confirm("Are you sure you want to reset the teacher for this subject?")){
+                if(row.cells[1].childNodes[0].value != "0") {
+                // if(row.cells[1].childNodes[0].value != "0" && row.cells[1].childNodes[0].disabled == true) {
+                    // if(window.confirm("Are you sure you want to reset the teacher for this subject?")){
                         console.log(document.getElementById("course_option").value);
                         console.log(document.getElementById("semester_option").value);
                         console.log(document.getElementById("section_option").value);
                         console.log(row.cells[1].childNodes[0].value);
                         console.log(row.cells[2].childNodes[0].innerHTML);
+                        let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+                        let currcol = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
+                        for (let i = 1; i <= 7; i++) {
+                            let currrow = days[i - 1];
+                            for (let j = 1; j <= 10; j++) {
+                                let tempdayslot = currcol[j - 1];
+                                if (timetable.schedule[currrow][tempdayslot].subjectcode == row.cells[2].childNodes[0].innerHTML){
+                                    console.log(timetable.schedule[currrow][tempdayslot].subjectcode == row.cells[2].childNodes[0].innerHTML);                                 
+                                    console.log(timetable.schedule[currrow][tempdayslot].class_id);                                 
+                                }                                 
+                            }
+                        }
                         // course, semester, section, teacherid, subjectcode
                         // api call to reset the particular teacher 
                         // api call to reset the particular section timetable 
                         // api call to reset the particular room timetable 
-                    }
+                    // }
                 }                
             });
             cell_insert.setAttribute("class", "btn bg-theory fw-bolder rounded-pill");
