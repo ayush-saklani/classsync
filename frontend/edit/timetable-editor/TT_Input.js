@@ -519,6 +519,10 @@ const add_subjects_options_to_mytable = (subject_list) => { // 	this add options
 		select.appendChild(option);
 		//
 		subject_list.forEach(element => {
+			console.log(element);
+			if(element.teacherid == "0"){
+				return;
+			}
 			option = document.createElement("option");
 			option.value = element.subjectcode;
 			option.text = element.subjectcode
@@ -841,8 +845,9 @@ document.getElementById('semester_option').addEventListener('change', initialize
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.getElementById("mytable").addEventListener("change", validateTeacherSubject);
 document.addEventListener('DOMContentLoaded', async () => {                                     //  this function initializes the page
-	document.getElementById("semester_option").value = "6";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
-	document.getElementById("section_option").value = "B";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
+	document.getElementById("semester_option").value = "3";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
+	addDynamicSectionOptions();
+	// document.getElementById("section_option").value = "B";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
 	await add_select_box_to_mytable();            // add subject and room select boxes to all the table cells  
 	addcopybutton();
 	initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
