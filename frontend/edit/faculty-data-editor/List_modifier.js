@@ -1,47 +1,6 @@
 let faculty_data;
 let messageCounter = 0;
 
-const save_table_func = () => {				//  function below calculate and construct the teacher list and send that to the backend via post request 
-	let res = {}
-	let tableBody = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-	// Iterate over each row in the table body
-	for (let i = 0; i < tableBody.rows.length; i++) {
-		let id = tableBody.rows[i].cells[0].firstElementChild.value.trim();
-		let name = tableBody.rows[i].cells[1].firstElementChild.value;
-		if (id === "" || name === "" && id !== "0") {
-			float_error_card_func('Empty Field found', 'Please fill all the fields before saving the data', 'danger');
-			return;
-		}
-		else if (id in res) {
-			float_error_card_func('Duplicate ID found', 'ID cannot be duplicate 2 teacher with same IDs are detected', 'danger');
-			return;
-		}
-		else if (id.length > 10) {
-			float_error_card_func('ID too long', 'ID cannot be more than 10 digits', 'danger');
-			return;
-		}
-		res[id] = name;
-	}
-	console.log(res);
-	fetch(`${localhost}/list/save-list`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({
-			"type": "faculties",
-			"data": res
-		})
-	})
-	.then(parsedData => {
-		float_error_card_func('Faculty Data Saved Successfully', 'Faculty Data Sent and Saved Successfully to the Database', 'success');
-		console.log(':::::  TEACHER DATA SAVED SUCCESSFULLY  :::::', parsedData);
-	})
-	.catch(error => {
-		float_error_card_func('Faculty Data not saved', 'Faculty Data sent but not saved due to probable server error', 'danger');
-		console.error('::::: ERROR SAVING DATA :::::', error);
-	});
-};
 const render_tables = () => {				// renders the tables
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 	table.innerHTML = "";
@@ -71,13 +30,22 @@ const render_tables = () => {				// renders the tables
 };
 const fetch_faculties_list = () => {		// fetches the faculty list from the server
 	// document.getElementById("loader").style.display = "flex";
+	console.log
 	fetch(`${localhost}/faculty/getall`, {
 		method: 'GET',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
 		}
 	})
-		.then(response => response.json())
+		.then(response => {
+			if(response.ok){
+				return response.json();
+			}
+			else{
+				throw new Error('Faculty Data not available [ SERVER ERROR ] ::::', response.status);
+			}
+		})
 		.then(data => {
 			data = data.data;
 			console.log(data);
@@ -120,7 +88,8 @@ const addfaculty = () => {					// function to add faculty
 	fetch(`${localhost}/faculty/add?teacherid=` + id + '&name=' + name, {
 		method: 'GET',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
 		}
 	})
 		.then(response => {
@@ -161,7 +130,8 @@ const removefaculty = () => {				// function to remove faculty
 	fetch(`${localhost}/faculty/remove?teacherid=` + id,{
 		method: 'DELETE',
 		headers: {
-			'Content-Type': 'application/json'
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
 		}
 	})
 		.then(response => response.json())
