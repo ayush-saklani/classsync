@@ -305,5 +305,6 @@ document.getElementById('semester_option').addEventListener('change', initialize
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.addEventListener('DOMContentLoaded', () => {                                     //  this function initializes the page
     document.getElementById('semester_option').value = "3";
+    addDynamicSectionOptions();
     initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
 });
