@@ -151,6 +151,29 @@ const render_tables = () => {                           // renders the table [ u
             cell_insert.setAttribute("class", "text");
             cell.appendChild(cell_insert);
             cell.setAttribute("class", "border-dark border-3");
+            
+            cell = newRow.insertCell();
+            cell_insert = document.createElement("button");
+            cell_insert.innerHTML = "Reset";
+            cell_insert.addEventListener("click", function () {
+                let row = this.parentNode.parentNode;
+                if(row.cells[1].childNodes[0].value != "0" && row.cells[1].childNodes[0].disabled == true) {
+                    if(window.confirm("Are you sure you want to reset the teacher for this subject?")){
+                        console.log(document.getElementById("course_option").value);
+                        console.log(document.getElementById("semester_option").value);
+                        console.log(document.getElementById("section_option").value);
+                        console.log(row.cells[1].childNodes[0].value);
+                        console.log(row.cells[2].childNodes[0].innerHTML);
+                        // course, semester, section, teacherid, subjectcode
+                        // api call to reset the particular teacher 
+                        // api call to reset the particular section timetable 
+                        // api call to reset the particular room timetable 
+                    }
+                }                
+            });
+            cell_insert.setAttribute("class", "btn bg-theory fw-bolder rounded-pill");
+            cell.appendChild(cell_insert);
+            cell.setAttribute("class", "border-dark border-3 p-1 align-middle ");
         }
     }
     else {
@@ -187,7 +210,7 @@ const fetch_timetable = () => {                        //  this function fetches
     let semester = document.getElementById("semester_option").value;
     let section = document.getElementById("section_option").value;
 
-    fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
+    return fetch(`${localhost}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'

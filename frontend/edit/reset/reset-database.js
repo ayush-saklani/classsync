@@ -7,11 +7,16 @@ const update_faculty_list = () => {		    // updates the faculty list to the serv
     fetch(`${localhost}/faculty/update`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getCookie('accessToken')}`
         },
         body: JSON.stringify({ "facultyList": faculty_data })
     }).then(response => {
-        response.json()
+        if (response.ok) {
+            return response.json();
+        } else {
+            throw new Error(':::::  DATA NOT SAVED DUE TO NETWORK ERROR :::::');
+        }
     }).then(() => {
         setTimeout(() => {
             document.getElementById("loader").style.display = "none";
@@ -146,10 +151,11 @@ const fetch_faculties_list = () => {		// fetches the faculty list from the serve
 };
 
 const reset_room_occupancy_data = () => {   // this function resets the room data to the server
-    fetch(`${localhost}/list/save-list`, {
+    return fetch(`${localhost}/room/savemultiple`, {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${getCookie('accessToken')}`
         },
         body: JSON.stringify({
             "type": "rooms",
@@ -168,7 +174,7 @@ const reset_room_occupancy_data = () => {   // this function resets the room dat
     });
 }
 const fetch_room_list = () => {             //  this function fetches the room list data form the server 	
-    return fetch(`${localhost}/list/get-list?type=rooms`, {
+    return fetch(`${localhost}/room/getall`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json'
@@ -176,11 +182,12 @@ const fetch_room_list = () => {             //  this function fetches the room l
     }).then(response => response.json())
         .then(data => {
             float_error_card_func('Room Data Fetched Successfully', '', 'success');
-            room_list = data.data.data;
+            room_list = data.data;
         }).then(() => {
             console.log(room_list);
         }).then(() => {
             for (room in room_list) {
+                // console.log(room_list[room]);
                 room_list[room].schedule = {
                     "mon": {
                         "08-09": { "course": "", "semester": "", "section": [], "teacherid": "", "subjectcode": "" },
@@ -335,7 +342,7 @@ document.getElementById('reset_room_occupancy_data_button').addEventListener('cl
 document.getElementById('remove_room_data_button').addEventListener('click', ()=>{
     if(window.confirm('Are you sure you want to Delete the room data?')){
         if(window.confirm('This action is irreversible. Are you sure you want to continue?')){
-            delete_room_data()
+            // delete_room_data()
         }
     }
 });
