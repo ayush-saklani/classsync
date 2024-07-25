@@ -28,6 +28,16 @@ const options = {
             }
         },
         {
+            "course_id": "diplomacse",
+            "course_name": "Diploma (CSE)",
+            "total_sem": 6,
+            "sections": {
+                "2": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+                "4": ["A", "B", "C", "D", "E", "F", "G", "H", "I"],
+                "6": ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
+            }
+        },
+        {
             "course_id": "btechme",
             "course_name": "BTech ME",
             "total_sem": 8,
