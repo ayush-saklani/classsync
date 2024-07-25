@@ -316,25 +316,14 @@ document.getElementById("toggle_event").addEventListener("click", () => {
 });
 document.addEventListener("DOMContentLoaded", async() => {
 	let cookieVar = document.cookie.split(';').map(row => row.trim());
-	setTimeout(() => {
-		
-		if (cookieVar.find(row => row.startsWith('course=')) && cookieVar.find(row => row.startsWith('semester=')) && cookieVar.find(row => row.startsWith('section=')) && cookieVar.find(row => row.startsWith('flag='))) {
-			setTimeout(()=>{
-				document.getElementById('course_option').value = cookieVar.find(row => row.startsWith('course=')).split('=')[1] ?? "btechcse";
-				addDynamicSemesterOptions();
-			},500);
-			setTimeout(()=>{
-				document.getElementById('semester_option').value = cookieVar.find(row => row.startsWith('semester=')).split('=')[1] ;
-				addDynamicSectionOptions();
-			},500);
-			setTimeout(()=>{
-				document.getElementById('section_option').value = cookieVar.find(row => row.startsWith('section=')).split('=')[1] ;
-			},500);
-			setTimeout(()=>{
-				flag = cookieVar.find(row => row.startsWith('flag=')).split('=')[1] ?? "0";
-			},500);
-		}
-	}, 1000);
+	if (cookieVar.find(row => row.startsWith('course=')) && cookieVar.find(row => row.startsWith('semester=')) && cookieVar.find(row => row.startsWith('section=')) && cookieVar.find(row => row.startsWith('flag='))) {
+		document.getElementById('course_option').value = cookieVar.find(row => row.startsWith('course=')).split('=')[1] ?? "btechcse";
+		addDynamicSemesterOptions();
+		document.getElementById('semester_option').value = cookieVar.find(row => row.startsWith('semester=')).split('=')[1] ?? "3";
+		addDynamicSectionOptions();
+		flag = cookieVar.find(row => row.startsWith('flag=')).split('=')[1] ?? "0";
+		document.getElementById('section_option').value = cookieVar.find(row => row.startsWith('section=')).split('=')[1] ?? "A";
+	}
 	flag == 1 ? document.getElementById("toggle_event").checked = true : document.getElementById("toggle_event").checked = false;
 	await fetch_room_list();
 	letmeseeitbaby();
