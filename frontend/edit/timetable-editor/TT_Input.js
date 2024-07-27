@@ -519,7 +519,7 @@ const add_subjects_options_to_mytable = (subject_list) => { // 	this add options
 		select.appendChild(option);
 		//
 		subject_list.forEach(element => {
-			console.log(element);
+			// console.log(element);
 			if(element.teacherid == "0"){
 				return;
 			}
