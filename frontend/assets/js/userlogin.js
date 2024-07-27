@@ -6,7 +6,7 @@ const getCookie = (name) => {      // get cookie by name
     if (parts.length === 2) return parts.pop().split(';').shift();
 }
 const delete_cookie = () => {       // logout function
-    fetch(`https://classsync-3ht1.onrender.com/user/logout`, {
+    fetch(`${localhost}/user/logout`, {
         method: 'POST',
         credentials: 'include',
         headers: {
@@ -15,7 +15,7 @@ const delete_cookie = () => {       // logout function
         },
     }).then(response => {
         if (!response.ok) {
-            console.error(response);
+            console.log(response);
             throw new Error('Error in logging out');
         }
         // window.location.href = '/login/';
@@ -32,8 +32,7 @@ const delete_cookie = () => {       // logout function
         document.cookie = "refreshToken=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "name=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        window.location.reload();
-        // window.location.href = '/login/';
+        window.location.href = '/login/';
         console.error('Error:', error);
     });
 }
@@ -47,15 +46,20 @@ const validate_cookie = (refreshToken) => {
     // return;
 
     //::::::::::::::::::::::: update after the process is done ( domain name is aquired):::::::::::::::::::::::
-
-    if (document.cookie.includes("refreshToken")) {
-        if (!document.cookie.includes("accessToken")) {
-            fetch(`https://classsync-3ht1.onrender.com/user/refresh-token`, {
+    let cookieVar = document.cookie.split(';').map(row => row.trim());
+    if (cookieVar.find(row => row.startsWith('refreshToken'))) {
+        if (!cookieVar.find(row => row.startsWith("accessToken"))) {
+            console.log("cookie validate");
+            fetch(`${localhost}/user/refresh-token`, {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${getCookie('refreshToken')}`
                 },
-                credentials: 'include'
+                credentials: 'include',
+                body: JSON.stringify({
+                    "refreshToken": getCookie('refreshToken')                           
+                })
             }).then(response => {
                 if (!response.ok) {
                     throw new Error('Error in fetching new access token');
@@ -69,8 +73,7 @@ const validate_cookie = (refreshToken) => {
                 butt.addEventListener("click", delete_cookie);
                 document.getElementsByTagName('nav')[0].appendChild(butt);
             }).catch(error => {
-                window.location.href = '/login/';
-                display_error("Email or password is incorrect");
+                float_error_card_func("Login Failed", "", "info");
                 console.error('Error:', error);
             });
         }
