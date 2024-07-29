@@ -457,6 +457,8 @@ const add_select_box_to_mytable = () => {               	//  this function below
 	});
 }
 const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to room select box in the main table dynamically with the data obtained from mongoDB
+	// room_list.sort((a, b) => a.roomid.localeCompare(b.roomid));
+	// room_list.sort((a, b) => a.name.localeCompare(b.name));
 	for (let i = 1; i <= 7; i++) {
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		for (let j = 1; j <= 10; j++) {

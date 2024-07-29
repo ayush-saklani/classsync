@@ -321,9 +321,41 @@ const delete_row_func = () => {			//  function deletes a row in the table
 	}
 	table.deleteRow(rowCount - 1);
 }
+const delete_room_func = () => {		//  function deletes a room from the table
+	// document.getElementById("loader").style.display = "flex";
+	fetch(`${localhost}/room/remove?roomid=${document.getElementById("remove_room_id").value}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
+		},
+	}).then(response => {
+		if(response.ok){
+			return response.json();
+		}else{
+			throw new Error('Room Data not deleted', response.status);
+		}
+	})
+	.then(() => {
+		document.getElementById("remove_room_button").disabled = false;
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none";
+		}, 2000);
+		float_error_card_func('Room Data Deleted', '', 'success');
+		fetch_room_list();
+	}).catch(error => {
+		document.getElementById("remove_room_button").disabled = false;
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none"; 
+		}, 2000);
+		float_error_card_func('Room Data not Deleted', '', 'danger');
+		console.error(':::: Room Data not deleted (SERVER ERROR) :::: ', error)
+	});
+}
 document.addEventListener('DOMContentLoaded', fetch_room_list);
 document.getElementById("add_row").addEventListener("click", add_row_func);					// [ + button ] add row at last when plus button is pressed 
 document.getElementById("delete_row").addEventListener("click", delete_row_func);			// [ - button ] delete row at last when plus button is pressed 
+document.getElementById("remove_room_button").addEventListener("click", delete_room_func);			// [ - button ] delete row at last when plus button is pressed 
 document.getElementById("save_room_list").addEventListener("click", async ()=>{
 	document.getElementById("loader").style.display = "flex";
 	// await delete_room_data();	// not required
