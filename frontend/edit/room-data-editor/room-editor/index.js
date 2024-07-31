@@ -279,6 +279,15 @@ const fetch_room_list = () => {		// fetches the room list from the server
 		data = data.data;
 		console.log(data);
 		room_list = data;
+		console.log(room_list);
+		// below code is to remove duplicate rooms (Might be removed in future)
+		// for(let i = 0; i < room_list.length; i++){
+		// 	for(let j = 0; j < room_list.length; j++){
+		// 	if(room_list[i].roomid == room_list[j].roomid && i != j){
+		// 		room_list.splice(j, 1);
+		// 		console.log("Duplicate Found");
+		// 	}
+		// }}
 	}).then(() => {	
 		render_tables();
 	}).then(() => {
