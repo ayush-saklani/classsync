@@ -182,7 +182,12 @@ const render_tables = () => {				// renders the tables
 	let course = document.getElementById("course_option").value;
 	let table = document.getElementById("room_table").getElementsByTagName('tbody')[0];
 	table.innerHTML = "";
-	room_list.sort((a, b) => a.roomid - b.roomid);	
+	// room_list.sort((a, b) => a.roomid - b.roomid);	
+	room_list.sort((a, b) => {
+		if (a.roomid === '0') return -1;
+		if (b.roomid === '0') return 1;
+		return a.name.localeCompare(b.name);
+	});
 	for( element in room_list){
 		let newRow = table.insertRow(table.rows.length);
 		let cell = newRow.insertCell();
@@ -194,6 +199,7 @@ const render_tables = () => {				// renders the tables
 			cell_insert.disabled = true;
 			cell_insert.classList.add("text-danger");
 		}
+		cell_insert.disabled = true;
 		cell.appendChild(cell_insert);
 
 		cell = newRow.insertCell();
@@ -207,6 +213,7 @@ const render_tables = () => {				// renders the tables
 			cell_insert.classList.add("fw-bold");
 			cell_insert.value = "Reserved by Admin";
 		}
+		cell_insert.disabled = true;
 		cell.appendChild(cell_insert);
 		
 		cell = newRow.insertCell();
@@ -224,6 +231,7 @@ const render_tables = () => {				// renders the tables
 			select.classList.add("fw-bold");
 			select.value = "1";
 		}
+		select.disabled = true;
 		cell.appendChild(select);
 
 		cell = newRow.insertCell();
@@ -242,6 +250,7 @@ const render_tables = () => {				// renders the tables
 			select.classList.add("fw-bold");
 			select.value = "class";
 		}
+		select.disabled = true;
 		cell.appendChild(select);
 
 		
@@ -256,6 +265,9 @@ const render_tables = () => {				// renders the tables
 		}
 		// console.log(room_list[element].allowed_course);
 		select.value = room_list[element].allowed_course.includes(course) ? "yes" : "no";
+		if(select.value == "yes"){
+			select.classList.add("bg-holiday");
+		}
 		if(room_list[element].roomid == "0"){
 			select.disabled = true;
 			select.classList.add("text-danger");

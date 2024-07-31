@@ -172,7 +172,12 @@ const save_table_func = () => {				//  function below calculate and construct th
 const render_tables = () => {				// renders the tables
 	let table = document.getElementById("room_table").getElementsByTagName('tbody')[0];
 	table.innerHTML = "";
-	room_list.sort((a, b) => a.roomid - b.roomid);	
+	// room_list.sort((a, b) => a.roomid - b.roomid);	
+	room_list.sort((a, b) => {
+		if (a.roomid === '0') return -1;
+		if (b.roomid === '0') return 1;
+		return a.name.localeCompare(b.name);
+	});
 	for( element in room_list){
 		let newRow = table.insertRow(table.rows.length);
 		let cell = newRow.insertCell();
