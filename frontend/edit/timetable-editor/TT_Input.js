@@ -458,7 +458,11 @@ const add_select_box_to_mytable = () => {               	//  this function below
 }
 const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to room select box in the main table dynamically with the data obtained from mongoDB
 	// room_list.sort((a, b) => a.roomid.localeCompare(b.roomid));
-	// room_list.sort((a, b) => a.name.localeCompare(b.name));
+	room_list.sort((a, b) => {
+		if (a.roomid === '0') return -1;
+		if (b.roomid === '0') return 1;
+		return a.name.localeCompare(b.name);
+	});
 	for (let i = 1; i <= 7; i++) {
 		let currday = mytable.rows[i].cells[0].innerHTML.toLowerCase();
 		for (let j = 1; j <= 10; j++) {
@@ -779,6 +783,7 @@ const initializePage = async () => {                        //  this function in
 		setTimeout(() => {
 			unblocking();
 			document.getElementById("loader").style.display = "none";
+			document.getElementById("save_tt_json").disabled = true;
 		}, 1500);
 		//reset the table to the initial state to avoid any error
 		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
@@ -792,8 +797,8 @@ const reset_table = () => {                             	//  this function reset
 	let mytable = document.getElementById("mytable");
 	for (let i = 1; i <= 7; i++) {
 		for (let j = 1; j <= 10; j++) {
-			mytable.rows[i].cells[j].childNodes[0].selectedIndex = 0;
-			mytable.rows[i].cells[j].childNodes[1].selectedIndex = 0;
+			mytable.rows[i].cells[j].childNodes[0].value = "";
+			mytable.rows[i].cells[j].childNodes[1].value = "0";
 		}
 	}
 };
