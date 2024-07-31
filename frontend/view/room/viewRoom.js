@@ -16,7 +16,9 @@ let events = {
 };
 let messageCounter = 0;
 const letmesee2 = (currroom) => {
-	document.getElementById("teacher_detail").rows[0].cells[0].innerHTML = room_list[currroom].classname;
+	document.getElementById("teacher_detail").rows[0].cells[0].innerHTML = room_list[currroom].name;
+	document.getElementById("teacher_detail").rows[0].cells[1].innerHTML = "Capacity : " +room_list[currroom].capacity;
+	document.getElementById("teacher_detail").rows[0].cells[2].innerHTML = "Type : "+room_list[currroom].type;
 	let total_hours = 0;
 	for (let i = 1; i <= 7; i++) {
 		let currrow = document.getElementById("mytable").rows[i].cells[0].innerHTML.toLowerCase();
@@ -39,8 +41,9 @@ const letmesee2 = (currroom) => {
 				currcelltb.innerHTML = `
 						${room_list[currroom].schedule[currrow][currcol].course}
 						${room_list[currroom].schedule[currrow][currcol].semester}<br> 
+						[ ${room_list[currroom].schedule[currrow][currcol].section} ]<br>
 						${room_list[currroom].schedule[currrow][currcol].subjectcode}<br> 
-						Sec:${room_list[currroom].schedule[currrow][currcol].section}<br>
+						Teacher : ${room_list[currroom].schedule[currrow][currcol].teacherid}<br>
 						`;
 						// ${room_list[currroom].schedule[currrow][currcol].teacherid}<br>
 					currcelltb.setAttribute("class", "text bg-practical bg-gradient heading-text border-dark border-3");
@@ -85,7 +88,7 @@ const letmesee2 = (currroom) => {
 			}
 		}
 	}
-	document.getElementById("teacher_detail").rows[0].cells[1].innerHTML = ((total_hours/60)*100).toFixed(2) + "%";
+	document.getElementById("teacher_detail").rows[0].cells[3].innerHTML = "Used : " + ((total_hours/60)*100).toFixed(2) + "%";
 	if (flag === 1) {
 		college_event_manager();
 	}
@@ -126,35 +129,43 @@ const college_event_manager = () => {
 	}
 };
 const fetch_room_list = () => {                         	//  this function fetches the room list data form the server [ database ] and store the variable to the local variable for future use	
-	return fetch(`${localhost}/list/get-list?type=rooms`, {
+	return new Promise((resolve, reject) => {
+	fetch(`${localhost}/room/getall`, {
 		method: 'GET',
 		headers: {
 			'Content-Type': 'application/json'
 		}
 	}).then(response => response.json())
 	.then(data => {
-		room_list = data.data.data;
-		console.log(room_list)
+		data = data.data;
+		console.log("Room Data Found");
+		room_list = data;
 		float_error_card_func("Room Data Available", "", "success");
 	}).then(() => {
 		for(room in room_list){
+			console.log(room_list[room]);
 			if(room_list[room].classname == ''){
 				continue;
 			}
-			console.log(room_list[room].schedule.mon["08-09"]);
+			// console.log(room_list[room].schedule.mon["08-09"]);
 			// console.log(room);
 			let option = document.createElement("option");
-			option.text = room_list[room].classname;
+			option.text = room_list[room].name;
 			option.value = room;
 			document.getElementById("room_options").add(option);
-			setTimeout(() => {
-				document.getElementById("loader").style.display = "none";
-			});
 		}
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none";
+		});
+		document.getElementById("room_options").value = "96";
+
 		letmesee2(document.getElementById("room_options").value);
+		resolve();
 	}).catch(error => {
 		console.error('Room Data not available [ SERVER ERROR ] :::: ', error);
 		float_error_card_func("Room Data Unavailable<br>Server Error", "", "danger");
+		reject();
+	});
 	});
 };
 const letmeseeitbaby = () => {
