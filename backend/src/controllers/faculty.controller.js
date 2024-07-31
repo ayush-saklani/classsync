@@ -42,19 +42,44 @@ const clearFromTimetable = async (
 
     table.save();
 };
-const clearFromRoom = async (room, day, slot) => {
-    room.schedule[day][slot] = {
-        course: "",
-        semester: "",
-        section: [],
-        teacherid: "0",
-        subjectcode: "",
-    };
+const clearFromRoom = async (roomid, day, slot, removeCalled, reqSection) => {
+    const room = await Rooms.findOne({ roomid: roomid });
 
-    room.save();
+    if (!room) {
+        throw new ApiError(404, "Room not found");
+    }
+
+    let roomSlot = room.schedule[day][slot];
+    if (
+        removeCalled ||
+        (roomSlot.section.length === 1 && roomSlot.section.includes(reqSection))
+    ) {
+        roomSlot = {
+            course: "",
+            semester: "",
+            section: [],
+            teacherid: "0",
+            subjectcode: "",
+        };
+    } else {
+        roomSlot.section = roomSlot.section.filter((section) => {
+            return section !== reqSection;
+        });
+    }
+    await Rooms.updateOne(
+        { roomid: roomid },
+        { $set: { [`schedule.${day}.${slot}`]: roomSlot } }
+    );
 };
 
-const iterateTimetable = async (facultyTable, teacherid) => {
+const iterateTimetable = async (
+    facultyTable,
+    teacherid,
+    removeCalled,
+    reqSection,
+    reqCourse,
+    reqSemester
+) => {
     const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
     const timeSlots = [
         "08-09",
@@ -69,30 +94,81 @@ const iterateTimetable = async (facultyTable, teacherid) => {
         "05-06",
     ];
 
-    const timetable = facultyTable.schedule;
+    for (const day of days) {
+        for (const slot of timeSlots) {
+            let slotInfo = facultyTable.schedule[day][slot];
+            if (
+                (removeCalled && slotInfo.course) ||
+                (!removeCalled &&
+                    slotInfo.course === reqCourse &&
+                    slotInfo.semester === reqSemester)
+            ) {
+                await clearFromRoom(
+                    slotInfo.roomid,
+                    day,
+                    slot,
+                    removeCalled,
+                    reqSection
+                );
 
-    days.forEach((day) => {
-        timeSlots.forEach(async (slot) => {
-            const slotInfo = timetable[day][slot];
-            if (slotInfo.course) {
-                const room = await Rooms.findOne({
-                    roomid: slotInfo.roomid,
-                });
-                clearFromRoom(room, day, slot);
-
-                slotInfo.section.forEach((section) => {
-                    clearFromTimetable(
+                if (removeCalled) {
+                    for (const section of slotInfo.section) {
+                        await clearFromTimetable(
+                            slotInfo.course,
+                            slotInfo.semester,
+                            section,
+                            teacherid,
+                            day,
+                            slot
+                        );
+                    }
+                    facultyTable.schedule[day][slot] = {
+                        course: "",
+                        semester: "",
+                        section: [],
+                        roomid: [],
+                        subjectcode: "",
+                    };
+                } else {
+                    await clearFromTimetable(
                         slotInfo.course,
                         slotInfo.semester,
-                        section,
+                        reqSection,
                         teacherid,
                         day,
                         slot
                     );
-                });
+                    if (
+                        slotInfo.section.includes(reqSection) &&
+                        slotInfo.section.length === 1
+                    ) {
+                        facultyTable.schedule[day][slot] = {
+                            course: "",
+                            semester: "",
+                            section: [],
+                            roomid: [],
+                            subjectcode: "",
+                        };
+                    } else {
+                        facultyTable.schedule[day][slot].section =
+                            slotInfo.section.filter(
+                                (section) => section !== reqSection
+                            );
+                    }
+                }
+                facultyTable.markModified(`schedule.${day}.${slot}`);
             }
-        });
-    });
+        }
+    }
+    console.log("Modified paths:", facultyTable.modifiedPaths());
+
+    // Save the changes to the database
+    try {
+        await facultyTable.save();
+        console.log("Faculty table saved successfully");
+    } catch (error) {
+        console.error("Error saving faculty table:", error);
+    }
 };
 
 const getspecified = asyncHandler(async (req, res, next) => {
@@ -170,7 +246,7 @@ const removefaculty = asyncHandler(async (req, res, next) => {
     }
 
     try {
-        iterateTimetable(faculty, teacherid);
+        iterateTimetable(faculty, teacherid, true);
         await Faculties.findByIdAndDelete(faculty._id);
     } catch (error) {
         new ApiError(500, error.message);
@@ -200,4 +276,37 @@ const updatefaculties = asyncHandler(async (req, res, next) => {
     res.status(200).json(new ApiResponse(200, "faculty updated successfully"));
 });
 
-export { getall, addfaculty, removefaculty, updatefaculties, getspecified };
+const resetFromSection = asyncHandler(async (req, res, next) => {
+    const teacherid = req.query.teacherid;
+    const section = req.query.section;
+    const course = req.query.course;
+    const semester = req.query.semester;
+
+    if (!teacherid || !section || !course || !semester) {
+        throw new ApiError(400, "Missing one or more required parameters");
+    }
+
+    const faculty = await Faculties.findOne({
+        teacherid: teacherid,
+    });
+
+    if (faculty === null) {
+        throw new ApiError(404, "No such teacher exists");
+    }
+
+    try {
+        iterateTimetable(faculty, teacherid, false, section, course, semester);
+    } catch (error) {
+        new ApiError(500, error.message);
+    }
+    res.status(200).json(new ApiResponse(200, "faculty reset successful"));
+});
+
+export {
+    getall,
+    addfaculty,
+    removefaculty,
+    updatefaculties,
+    getspecified,
+    resetFromSection,
+};

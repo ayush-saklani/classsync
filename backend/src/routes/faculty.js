@@ -3,6 +3,7 @@ import {
     getall,
     addfaculty,
     removefaculty,
+    resetFromSection,
     updatefaculties,
     getspecified,
 } from "../controllers/faculty.controller.js";
@@ -15,6 +16,7 @@ router.get("/getall", getall);
 
 // secured routes
 router.get("/add", verifyJWT, addfaculty);
+router.get("/reset", verifyJWT, resetFromSection);
 router.delete("/remove", verifyJWT, removefaculty);
 router.post("/update", verifyJWT, updatefaculties);
 
