@@ -74,6 +74,12 @@ const validate_cookie = (refreshToken) => {
                 document.getElementsByTagName('nav')[0].appendChild(butt);
             }).catch(error => {
                 float_error_card_func("Login Failed", "", "info");
+                let butt = document.createElement("button");
+                butt.className = "ms-auto fw-bold h4 px-4 btn btn-lg btn-primary bg-primary rounded-pill float-end";
+                butt.id = "logout_button";
+                butt.innerHTML = "Login";
+                butt.onclick = () => window.location.href = '/login/';
+                document.getElementsByTagName('nav')[0].appendChild(butt);
                 console.error('Error:', error);
             });
         }
