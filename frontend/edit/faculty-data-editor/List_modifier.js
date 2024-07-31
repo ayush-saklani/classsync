@@ -22,6 +22,28 @@ const render_tables = () => {				// renders the tables
 		cell_insert.setAttribute("type", "text");
 		cell_insert.innerHTML = faculty_data[element].name;
 		cell.appendChild(cell_insert);
+		
+		
+		// below code is to check if the teacher is active or not to avoid deletion of any active teacher (Might be removed in future)
+
+		let flag = 0;
+		let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+		let currcol = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
+		for (let i = 1; i <= 7; i++) {
+			let currrow = days[i - 1];
+			for (let j = 1; j <= 10; j++) {
+				let tempdayslot = currcol[j - 1];                
+				if(faculty_data[element].schedule[currrow][tempdayslot].course){
+					flag++;
+				}                       
+				console.log(faculty_data[element].schedule[currrow][tempdayslot]);                       
+			}
+		}
+		if(flag>0){
+			cell_insert.classList.add("bg-warning");
+		}
+		// above code is to check if the teacher is active or not to avoid deletion of any active teacher (Might be removed in future)
+
 		if (faculty_data[element].teacherid == "0") {
 			cell_insert.classList.add("text-danger");
 			cell_insert.innerHTML = "<b>Reserved by Admin</b>";

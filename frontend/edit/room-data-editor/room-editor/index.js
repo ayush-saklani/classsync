@@ -198,6 +198,27 @@ const render_tables = () => {				// renders the tables
 			cell_insert.value = "Reserved by Admin";
 		}
 		cell.appendChild(cell_insert);
+		// below code is to check if the room is used or not to avoid deletion of used room (Might be removed in future)
+		let flag = 0;
+		let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+		let currcol = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
+		for (let i = 1; i <= 7; i++) {
+			let currrow = days[i - 1];
+			for (let j = 1; j <= 10; j++) {
+				let tempdayslot = currcol[j - 1];                
+				if(room_list[element].schedule[currrow][tempdayslot].course){
+					flag++;
+					break;
+				}                       
+			}
+			if(flag>0){
+				break;
+			}
+		}
+		if(flag>0){
+			cell_insert.classList.add("bg-warning");
+		}
+		// above code is to check if the room is used or not to avoid deletion of used room (Might be removed in future)
 		
 		cell = newRow.insertCell();
 		select = document.createElement('select');
