@@ -152,11 +152,14 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 if(document.getElementById("course_option")){
     document.getElementById("course_option").addEventListener("change", async () => {
-        console.log("semester_option found");
-        await addDynamicSemesterOptions();
-        if(document.getElementById("section_option")) {
-            console.log("section_option found");
-            await addDynamicSectionOptions();
+        console.log("course_option found");
+        if(document.getElementById("semester_option")){
+            console.log("semester_option found");
+            await addDynamicSemesterOptions();
+            if(document.getElementById("section_option")) {
+                console.log("section_option found");
+                await addDynamicSectionOptions();
+            }
         }
     });
 }

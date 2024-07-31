@@ -172,7 +172,12 @@ const save_table_func = () => {				//  function below calculate and construct th
 const render_tables = () => {				// renders the tables
 	let table = document.getElementById("room_table").getElementsByTagName('tbody')[0];
 	table.innerHTML = "";
-	room_list.sort((a, b) => a.roomid - b.roomid);	
+	// room_list.sort((a, b) => a.roomid - b.roomid);	
+	room_list.sort((a, b) => {
+		if (a.roomid === '0') return -1;
+		if (b.roomid === '0') return 1;
+		return a.name.localeCompare(b.name);
+	});
 	for( element in room_list){
 		let newRow = table.insertRow(table.rows.length);
 		let cell = newRow.insertCell();
@@ -198,6 +203,27 @@ const render_tables = () => {				// renders the tables
 			cell_insert.value = "Reserved by Admin";
 		}
 		cell.appendChild(cell_insert);
+		// below code is to check if the room is used or not to avoid deletion of used room (Might be removed in future)
+		let flag = 0;
+		let days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+		let currcol = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
+		for (let i = 1; i <= 7; i++) {
+			let currrow = days[i - 1];
+			for (let j = 1; j <= 10; j++) {
+				let tempdayslot = currcol[j - 1];                
+				if(room_list[element].schedule[currrow][tempdayslot].course){
+					flag++;
+					break;
+				}                       
+			}
+			if(flag>0){
+				break;
+			}
+		}
+		if(flag>0){
+			cell_insert.classList.add("bg-warning");
+		}
+		// above code is to check if the room is used or not to avoid deletion of used room (Might be removed in future)
 		
 		cell = newRow.insertCell();
 		select = document.createElement('select');
@@ -258,6 +284,15 @@ const fetch_room_list = () => {		// fetches the room list from the server
 		data = data.data;
 		console.log(data);
 		room_list = data;
+		console.log(room_list);
+		// below code is to remove duplicate rooms (Might be removed in future)
+		// for(let i = 0; i < room_list.length; i++){
+		// 	for(let j = 0; j < room_list.length; j++){
+		// 	if(room_list[i].roomid == room_list[j].roomid && i != j){
+		// 		room_list.splice(j, 1);
+		// 		console.log("Duplicate Found");
+		// 	}
+		// }}
 	}).then(() => {	
 		render_tables();
 	}).then(() => {
@@ -321,9 +356,41 @@ const delete_row_func = () => {			//  function deletes a row in the table
 	}
 	table.deleteRow(rowCount - 1);
 }
+const delete_room_func = () => {		//  function deletes a room from the table
+	// document.getElementById("loader").style.display = "flex";
+	fetch(`${localhost}/room/remove?roomid=${document.getElementById("remove_room_id").value}`, {
+		method: 'DELETE',
+		headers: {
+			'Content-Type': 'application/json',
+			'Authorization': `Bearer ${getCookie('accessToken')}`
+		},
+	}).then(response => {
+		if(response.ok){
+			return response.json();
+		}else{
+			throw new Error('Room Data not deleted', response.status);
+		}
+	})
+	.then(() => {
+		document.getElementById("remove_room_button").disabled = false;
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none";
+		}, 2000);
+		float_error_card_func('Room Data Deleted', '', 'success');
+		fetch_room_list();
+	}).catch(error => {
+		document.getElementById("remove_room_button").disabled = false;
+		setTimeout(() => {
+			document.getElementById("loader").style.display = "none"; 
+		}, 2000);
+		float_error_card_func('Room Data not Deleted', '', 'danger');
+		console.error(':::: Room Data not deleted (SERVER ERROR) :::: ', error)
+	});
+}
 document.addEventListener('DOMContentLoaded', fetch_room_list);
 document.getElementById("add_row").addEventListener("click", add_row_func);					// [ + button ] add row at last when plus button is pressed 
 document.getElementById("delete_row").addEventListener("click", delete_row_func);			// [ - button ] delete row at last when plus button is pressed 
+document.getElementById("remove_room_button").addEventListener("click", delete_room_func);			// [ - button ] delete row at last when plus button is pressed 
 document.getElementById("save_room_list").addEventListener("click", async ()=>{
 	document.getElementById("loader").style.display = "flex";
 	// await delete_room_data();	// not required

@@ -44,6 +44,7 @@
 			<ul class="pt-3">
 				<h4 class="center text text-danger fw-bold">Warning <i class="bi bi-exclamation-triangle-fill"></i> </h1>
 				<li class="center text text-danger fw-bold">Naming schema can be find here <a href="/assets/doc/room-schema.pdf" target="_blank"><i class="bi bi-box-arrow-up-right" style="-webkit-text-stroke-width: 1px;"></i></a></li>
+				<li class="center text text-danger fw-bold">Yellow color indicates that room is being used</li>
 				<li class="center text text-danger fw-bold">Contact Developers for any query, help and support</li>
 			</ul>
 		</div>
@@ -73,6 +74,24 @@
 					<div class="button-top-blue h4"><b>Save Room Data</b></div>
 					<div class="button-bottom-blue"></div>
 				</button>
+			</div>
+		</div>
+		<div class="container mt-2">
+			<div class="container row pt-2">
+				<h1 class="text fw-bold">Remove Room </h1>
+				<div class="col-10">
+					<div class="form-floating mb-3">
+						<input type="text" class="form-control" id="remove_room_id" placeholder="">
+						<label for="remove_room_id">Room ID <b class="text-danger">*</b> </label>
+					</div>
+				</div>
+				<div class="col-2">
+					<button type="button" class="button" id="remove_room_button">
+						<div class="button-top-red h4"><b>Remove<i class="bi bi-exclamation-triangle-fill text-warning"></i>
+							</b></div>
+						<div class="button-bottom-red"></div>
+					</button>
+				</div>
 			</div>
 		</div>
 		<!-- main content div start -->
