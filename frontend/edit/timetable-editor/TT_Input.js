@@ -614,7 +614,7 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 		}
 	});
 };
-const render_tables = () => {                           	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
+const render_tables = (timetable) => {                           	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 	// rendering the second table first
 	if (timetable) {
 		// float_error_card_func("Timetable Available", "", "success");
@@ -747,7 +747,7 @@ const fetch_timetable = () => {                        		//  this function fetch
 				console.log(data);
 				timetable = data.data;        // Do something with the response data here 
 				console.log(timetable);
-				render_tables();
+				render_tables(timetable);
 			}).then(() => {
 				updateCounter();
 				resolve();
