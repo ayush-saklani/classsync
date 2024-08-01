@@ -161,6 +161,7 @@ const render_tables = () => {                           // renders the table [ u
                 }
                 select.appendChild(option);
             }
+            select.setAttribute('style', 'white-space: pre-wrap;');
             cell.setAttribute("class", "border-dark border-3 p-0");
 
             cell = newRow.insertCell();
@@ -186,7 +187,7 @@ const render_tables = () => {                           // renders the table [ u
             
             cell = newRow.insertCell();
             cell_insert = document.createElement("button");
-            cell_insert.innerHTML = "Remove Teacher";
+            cell_insert.innerHTML = "Remove";
             cell_insert.addEventListener("click", function () {
                 let row = this.parentNode.parentNode;
                 if(row.cells[1].childNodes[0].value != "0" && row.cells[1].childNodes[0].disabled == true) {
@@ -216,7 +217,7 @@ const render_tables = () => {                           // renders the table [ u
                 this.style.transform = "scale(1.0)";
             });
             cell.appendChild(cell_insert);
-            cell.setAttribute("class", "border-dark border-3 py-1 mx-2 text-center");
+            cell.setAttribute("class", "border-dark border-3 py-1 mx-2 text-center align-middle");
         }
     }
     else {
@@ -334,7 +335,7 @@ document.getElementById('course_option').addEventListener('change', initializePa
 document.getElementById('semester_option').addEventListener('change', initializePage);  // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.addEventListener('DOMContentLoaded', () => {                                     //  this function initializes the page
-    document.getElementById('semester_option').value = "1";
+    document.getElementById('semester_option').value = "3";
     addDynamicSectionOptions();
     initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
 });
