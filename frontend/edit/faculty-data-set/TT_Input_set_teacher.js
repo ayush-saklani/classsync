@@ -94,7 +94,7 @@ const save_table_func = () => {                         //  function below calcu
 const removeTeacherFromThisSection = (teacherid, course, semester, section, subjectcode) => {  //  this function removes the teacher from the section
     return new Promise((resolve,reject) => {
         try{
-            return fetch(`${localhost}/faculty/reset?` + new URLSearchParams({ course: course, semester: semester, section: section, teacherid: teacherid}), {
+            return fetch(`${localhost}/faculty/reset?` + new URLSearchParams({ course: course, semester: semester, section: section, teacherid: teacherid,subjectcode:subjectcode}), {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
