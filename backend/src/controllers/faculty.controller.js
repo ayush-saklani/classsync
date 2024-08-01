@@ -9,7 +9,7 @@ const clearFromTimetable = async (
     course,
     semester,
     section,
-    teacherid,
+    subjectcode,
     day,
     slot
 ) => {
@@ -23,25 +23,47 @@ const clearFromTimetable = async (
         throw new ApiError(404, "Timetable not found");
     }
 
-    if (table.teacher_subject_data.length === 0) {
-        throw new ApiError(404, "Timetable not found");
+    console.log(table.schedule[day][slot].subjectcode, subjectcode);
+
+    if (table.schedule[day][slot].subjectcode === subjectcode) {
+        table.schedule[day][slot] = {
+            class_id: "0",
+            subjectcode: "",
+            slotdata: "",
+        };
     }
 
-    table.schedule[day][slot] = {
-        class_id: "0",
-        subjectcode: "",
-        slotdata: "",
-    };
+    table.save();
+};
 
+const clearTeacherSubjectData = async (
+    teacherid,
+    course,
+    semester,
+    section,
+    subjectcode
+) => {
+    const table = await Tables.findOne({
+        course: course,
+        semester: semester,
+        section: section,
+    });
+
+    if (!table) {
+        throw new ApiError(404, "Timetable not found");
+    }
     table.teacher_subject_data.forEach((subject) => {
-        if (subject.teacherid === teacherid) {
+        if (
+            subject.teacherid === teacherid &&
+            subject.subjectcode === subjectcode
+        ) {
             subject.teacherid = "0";
             subject.teachername = "";
         }
     });
-
     table.save();
 };
+
 const clearFromRoom = async (roomid, day, slot, removeCalled, reqSection) => {
     const room = await Rooms.findOne({ roomid: roomid });
 
@@ -74,11 +96,12 @@ const clearFromRoom = async (roomid, day, slot, removeCalled, reqSection) => {
 
 const iterateTimetable = async (
     facultyTable,
-    teacherid,
+    reqteacherid,
     removeCalled,
     reqSection,
     reqCourse,
-    reqSemester
+    reqSemester,
+    reqSubjectcode
 ) => {
     const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
     const timeSlots = [
@@ -93,6 +116,14 @@ const iterateTimetable = async (
         "04-05",
         "05-06",
     ];
+
+    await clearTeacherSubjectData(
+        reqteacherid,
+        reqCourse,
+        reqSemester,
+        reqSection,
+        reqSubjectcode
+    );
 
     for (const day of days) {
         for (const slot of timeSlots) {
@@ -117,7 +148,7 @@ const iterateTimetable = async (
                             slotInfo.course,
                             slotInfo.semester,
                             section,
-                            teacherid,
+                            slotInfo.subjectcode,
                             day,
                             slot
                         );
@@ -134,7 +165,7 @@ const iterateTimetable = async (
                         slotInfo.course,
                         slotInfo.semester,
                         reqSection,
-                        teacherid,
+                        reqSubjectcode,
                         day,
                         slot
                     );
@@ -281,8 +312,9 @@ const resetFromSection = asyncHandler(async (req, res, next) => {
     const section = req.query.section;
     const course = req.query.course;
     const semester = req.query.semester;
+    const subjectcode = req.query.subjectcode;
 
-    if (!teacherid || !section || !course || !semester) {
+    if (!teacherid || !section || !course || !semester || !subjectcode) {
         throw new ApiError(400, "Missing one or more required parameters");
     }
 
@@ -295,7 +327,15 @@ const resetFromSection = asyncHandler(async (req, res, next) => {
     }
 
     try {
-        iterateTimetable(faculty, teacherid, false, section, course, semester);
+        iterateTimetable(
+            faculty,
+            teacherid,
+            false,
+            section,
+            course,
+            semester,
+            subjectcode
+        );
     } catch (error) {
         new ApiError(500, error.message);
     }
