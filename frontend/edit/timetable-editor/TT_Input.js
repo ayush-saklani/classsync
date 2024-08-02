@@ -334,7 +334,7 @@ const save_faculty_list = () => { 	// save_timetable_func helper functions	//  t
 		});
 	});
 }
-const save_timetable_func = () => {                         	//  function below calculate and construct the timetable json and send that to the backend 
+const save_timetable_func = () => {                         //  function below calculate and construct the timetable json and send that to the backend 
 	if (validateTeacherSubject()) {
 		blocking();
 		let tempteachersubjectdata = [];
@@ -617,74 +617,83 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 		}
 	});
 };
-const render_tables = (timetable) => {                           	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
+const render_tables = (timetable) => {                  	// renders the timetable on the main table [ uses the same strucute of JSON as it POST to the backend]
 	// rendering the second table first
 	if (timetable) {
 		// float_error_card_func("Timetable Available", "", "success");
-		let localteacher_subject_data = timetable.teacher_subject_data;
-		let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-		table.innerHTML = "";
-		for (let i = 0; i < localteacher_subject_data.length; i++) {
-			const element = localteacher_subject_data[i];
-
+		
+		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+		//(debugging to copy selection shortcut) if teacher_subject_data is available then only render the teacher table (debugging) (if statement only)
+		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+		if(timetable.teacher_subject_data){
+			let localteacher_subject_data = timetable.teacher_subject_data;
 			let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
-			let newRow = table.insertRow(table.rows.length);
+			table.innerHTML = "";
+			for (let i = 0; i < localteacher_subject_data.length; i++) {
+				const element = localteacher_subject_data[i];
 
-			// subject select box render
-			let cell = newRow.insertCell();
+				let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
+				let newRow = table.insertRow(table.rows.length);
 
-			let cell_insert = document.createElement("span");
-			cell_insert.setAttribute("class", "text");
-			cell_insert.innerHTML = localteacher_subject_data[i].subjectname;
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3");
+				// subject select box render
+				let cell = newRow.insertCell();
 
-			// teacher select box render
-			cell = newRow.insertCell();
-			cell_insert = document.createElement('span');
-			cell_insert.setAttribute("class", "text");
-			cell_insert.innerHTML = localteacher_subject_data[i].teachername;
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3");
+				let cell_insert = document.createElement("span");
+				cell_insert.setAttribute("class", "text");
+				cell_insert.innerHTML = localteacher_subject_data[i].subjectname;
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3");
 
-			// teacher select box render
-			cell = newRow.insertCell();
-			cell_insert = document.createElement('span');
-			cell_insert.setAttribute("class", "text");
-			cell_insert.innerHTML = localteacher_subject_data[i].teacherid;
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3");
+				// teacher select box render
+				cell = newRow.insertCell();
+				cell_insert = document.createElement('span');
+				cell_insert.setAttribute("class", "text");
+				cell_insert.innerHTML = localteacher_subject_data[i].teachername;
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3");
 
-			cell = newRow.insertCell();
-			cell_insert = document.createElement("span");
-			cell_insert.innerHTML = localteacher_subject_data[i].subjectcode;
-			cell_insert.setAttribute("class", "text");
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3 fw-bolder");
+				// teacher select box render
+				cell = newRow.insertCell();
+				cell_insert = document.createElement('span');
+				cell_insert.setAttribute("class", "text");
+				cell_insert.innerHTML = localteacher_subject_data[i].teacherid;
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3");
 
-			cell = newRow.insertCell();
-			cell_insert = document.createElement("span");
-			cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
-			cell_insert.setAttribute("class", "text");
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3 h5 fw-bold");
+				cell = newRow.insertCell();
+				cell_insert = document.createElement("span");
+				cell_insert.innerHTML = localteacher_subject_data[i].subjectcode;
+				cell_insert.setAttribute("class", "text");
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3 fw-bolder");
 
-			cell = newRow.insertCell();
-			cell_insert = document.createElement("span");
-			cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
-			cell_insert.setAttribute("class", "text");
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3");
+				cell = newRow.insertCell();
+				cell_insert = document.createElement("span");
+				cell_insert.innerHTML = localteacher_subject_data[i].weekly_hrs;
+				cell_insert.setAttribute("class", "text");
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3 h5 fw-bold");
 
-			cell = newRow.insertCell();
-			cell_insert = document.createElement("span");
-			cell_insert.innerHTML = 0;
-			cell_insert.setAttribute("class", "text");
-			cell.appendChild(cell_insert);
-			cell.setAttribute("class", "border-dark border-3 h4 fw-bold");
+				cell = newRow.insertCell();
+				cell_insert = document.createElement("span");
+				cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
+				cell_insert.setAttribute("class", "text");
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3");
+
+				cell = newRow.insertCell();
+				cell_insert = document.createElement("span");
+				cell_insert.innerHTML = 0;
+				cell_insert.setAttribute("class", "text");
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3 h4 fw-bold");
+			}
+			add_subjects_options_to_mytable(localteacher_subject_data)
 		}
-		add_subjects_options_to_mytable(localteacher_subject_data)
-
+		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+		//(debugging to copy selection shortcut) if teacher_subject_data is available then only render the teacher table (debugging) (if statement only)
+		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+		
 		// rendering the first main table now 
 		let local_time_table_data = timetable.schedule;
 		let mytable = document.getElementById("mytable");
@@ -848,17 +857,17 @@ const addcopybutton = () => {
 	}
 }
 //  adding event listners to the buttons and select boxes
-document.getElementById("save_tt_json").addEventListener("click", save_timetable_func); 	// [ save TT JSON on DB button eventlistner ]
+document.getElementById("save_tt_json").addEventListener("click", save_timetable_func);	// [ save TT JSON on DB button eventlistner ]
 document.getElementById("reset_tt").addEventListener("click", reset_table);				// [ reset TT button eventlistner ]
 document.getElementById('course_option').addEventListener('change', initializePage);  	// [ course select box eventlistner ]
 document.getElementById('semester_option').addEventListener('change', initializePage);  // [ semester select box eventlistner ]
 document.getElementById('section_option').addEventListener('change', initializePage);	// [ section select box eventlistner ]
 document.getElementById("mytable").addEventListener("change", validateTeacherSubject);
-document.addEventListener('DOMContentLoaded', async () => {                                     //  this function initializes the page
-	document.getElementById("semester_option").value = "3";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
-	addDynamicSectionOptions();
+document.addEventListener('DOMContentLoaded', async () => {                          	//  this function initializes the page
+	document.getElementById("semester_option").value = "3";					// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
+	addDynamicSectionOptions();												// dynamically add section options
 	// document.getElementById("section_option").value = "B";				// ===========xxxxxxxxxxxxxxxxxxxxxxxxx remove this
-	await add_select_box_to_mytable();            // add subject and room select boxes to all the table cells  
-	addcopybutton();
+	await add_select_box_to_mytable();      // add subject and room select boxes to all the table cells  
+	addcopybutton();						// add copy and reset buttons to all the table cells
 	initializePage();                       // initialize the page by fetching the room list, faculty list and timetable data from the server
 });
