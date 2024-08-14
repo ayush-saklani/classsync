@@ -58,5 +58,5 @@ jobs:
         with:
           app-name: 'classsync'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_F74B8E06177445F8B8E407611A91832C }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_47439B71B128423495E36FAA8BC5A78E }}
           package: .
