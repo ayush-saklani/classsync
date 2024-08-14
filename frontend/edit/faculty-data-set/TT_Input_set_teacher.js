@@ -147,7 +147,7 @@ const render_tables = () => {                           // renders the table [ u
             // teacher select box render
             cell = newRow.insertCell();
             select = document.createElement('select');
-            select.setAttribute('class', 'form-select text teacherchoosefield');
+            select.setAttribute('class', 'form-select text teacherchoosefield select2');
             cell.appendChild(select);
             let tempTeacherID = localteacher_subject_data[i].teacherid ? localteacher_subject_data[i].teacherid : "0";
             for (let ele in faculty_data) {
@@ -219,6 +219,11 @@ const render_tables = () => {                           // renders the table [ u
             cell.appendChild(cell_insert);
             cell.setAttribute("class", "border-dark border-3 py-1 mx-2 text-center align-middle");
         }
+        //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx dynamic select2 xxx
+        //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx dynamic select2 xxx
+        $('.select2').select2();
+        //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx dynamic select2 xxx
+        //xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx dynamic select2 xxx
     }
     else {
         let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
