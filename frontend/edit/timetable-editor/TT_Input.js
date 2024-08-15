@@ -500,9 +500,9 @@ const add_rooms_options_to_mytable = (room_list) => {		// 	this add options to r
 					option.setAttribute("class", "bg-dark text-light bg-gradient text fw-bold");
 					option.innerHTML = `${room_list[ele].name} ${room_list[ele].schedule[currday][currslot].semester} [ ${room_list[ele].schedule[currday][currslot].section.sort()} ]`;
 				}
-				if(room_list[ele].schedule[currday][currslot].section.length >= room_list[ele].capacity){
-					option.disabled = true;
-				}
+				// if(room_list[ele].schedule[currday][currslot].section.length >= room_list[ele].capacity){
+				// 	option.disabled = true;
+				// }
 				// console.log(option.value, option.text)
 				if (room_list[ele].roomid == tempselectedvalue) {
 					option.selected = true;
