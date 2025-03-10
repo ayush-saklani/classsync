@@ -1,9 +1,6 @@
 import React, { useEffect } from 'react';
-import Course from './course/course.jsx';
-import Semester from './semester/semester.jsx';
-import Section from './section/section.jsx';
 import EventToggle from './eventToggle/eventToggle.jsx';
-import Options from '../../dynamicOption.jsx';
+import Options from '../../utils/dynamicOption.jsx';
 
 const CouSecSemoption = ({
     displaycourse,
@@ -17,18 +14,94 @@ const CouSecSemoption = ({
     semester,
     section
 }) => {
-    Options.courses.forEach((element) => {
-        if (element.course_id == course) {
-            console.log(element.sections);
-        }
-    });
     return (
         <div className="container">
             <div className="row mt-4">
-                {displaycourse && <Course updateCourse={updateCourse} />}
-                {displaysemester && <Semester updateSemester={updateSemester} />}
-                {displaysection && <Section updateSection={updateSection} />}
-                {displayeventToggle && <EventToggle />}
+                {
+                    displaycourse &&
+                    <div className="col">
+                        <div className="col-sm-12 form-floating">
+                            <select
+                                className="form-select mb-3 text"
+                                name="course"
+                                id="course_option"
+                                onChange={(e) => updateCourse(e.target.value)}
+                            >
+                                {
+                                    Options.courses.map((course) => {
+                                        return (
+                                            <option key={course.course_id} value={course.course_id}>{course.course_name}</option>
+                                        );
+                                    })
+                                }
+                            </select>
+                            <label htmlFor="course_option" className="heading-text">Course</label>
+                        </div>
+                    </div>
+                }
+                {
+                    displaysemester &&
+                    <div className="col">
+                        <div className="col-sm-12 form-floating">
+                            <select
+                                className="form-select mb-3 text"
+                                name="semester"
+                                id="semester_option"
+                                onChange={(e) => updateSemester(e.target.value)}
+                            >
+                                {
+                                    Options.courses.map((c) => {
+                                        if (c.course_id == course) {
+                                            return (
+                                                Object.keys(c.sections).map((heresemester) => {
+                                                    return (
+                                                        <option key={heresemester} value={heresemester} selected={heresemester == semester}>{heresemester}</option>
+                                                    );
+                                                })
+                                            );
+                                        }
+                                    })
+                                }
+                            </select>
+                            <label htmlFor="semester_option" className="heading-text">Semester</label>
+                        </div>
+                    </div>}
+                {
+                    displaysection &&
+                    <div className="col">
+                        <div className="col-sm-12 form-floating">
+                            <select
+                                className="form-select mb-3 text"
+                                name="section"
+                                id="section_option"
+                                onChange={(e) => updateSection(e.target.value)}
+                            >
+                                {
+                                    Options.courses.map((c) => {
+                                        if (c.course_id == course) {
+                                            return (
+                                                Object.keys(c.sections).map((sem) => {
+                                                    if (sem == semester) {
+                                                        return (
+                                                            c.sections[sem].map((heresection) => {
+                                                                return (
+                                                                    <option key={heresection} value={heresection} selected={heresection == section}>{heresection}</option>
+                                                                );
+                                                            })
+                                                        );
+                                                    }
+                                                })
+                                            );
+                                        }
+                                    })
+                                }
+                            </select>
+                            <label htmlFor="section_option" className="heading-text">Section</label>
+                        </div>
+                    </div>
+                }
+                {
+                    displayeventToggle && <EventToggle />}
             </div>
         </div>
     );
