@@ -1,0 +1,12 @@
+.btn{
+    box-shadow: 1px 1px 7px  #000000;
+    transition: 0.2s;
+}
+.btn:hover{
+    transform: scale(1.1);
+    transition: 0.2s;
+}
+.btn:active{
+    transform: scale(1.00);
+    transition: 0.2s;
+}
