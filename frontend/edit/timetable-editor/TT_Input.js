@@ -270,7 +270,7 @@ const validateTeacherSubject = () => {						//  this function validates the teac
 								isValid = false;
 							}
 							if (room_list[elementr].roomid.length != 0 && teacherSchedule.roomid[0] && teacherSchedule.roomid[0] !== curr_slot_room) {
-								if(!teacherSchedule.section.includes(document.getElementById("section_option").value)){
+								if (!teacherSchedule.section.includes(document.getElementById("section_option").value)) {
 									float_error_card_func(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot`, `${faculty_data[element].name} [ ${faculty_data[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${teachercurrroomnow} at the current time.`, "danger");
 									isValid = false;
 								}
@@ -375,6 +375,7 @@ const save_timetable_func = () => {                         //  function below c
 			let subjectid = row.cells[3].firstChild.innerHTML;
 			let weekly_hrs = row.cells[4].firstChild.innerHTML;
 			let theory_practical = row.cells[5].firstChild.innerHTML;
+			let room_type = row.cells[7].firstChild.innerHTML;
 
 			let rowData = {
 				"subjectcode": subjectid,
@@ -383,6 +384,7 @@ const save_timetable_func = () => {                         //  function below c
 				"teachername": teachername,
 				"subjectname": subjectname,
 				"theory_practical": theory_practical,
+				"room_type": room_type,
 			}
 			tempteachersubjectdata.push(rowData);
 		}
@@ -529,7 +531,7 @@ const add_subjects_options_to_mytable = (subject_list) => { // 	this add options
 		//
 		subject_list.forEach(element => {
 			// console.log(element);
-			if(element.teacherid == "0"){
+			if (element.teacherid == "0") {
 				return;
 			}
 			option = document.createElement("option");
@@ -595,9 +597,9 @@ const fetch_faculties_list = () => {                    	//  this function fetch
 					body: JSON.stringify({ "facultyList": teacher_query_list })
 				})
 					.then(response => {
-						if(response.ok){
+						if (response.ok) {
 							return response.json();
-						}else{
+						} else {
 							throw new Error(':::::  Room Data not available [ SERVER ERROR ] :::::');
 						}
 					}).then(data => {
@@ -621,11 +623,11 @@ const render_tables = (timetable) => {                  	// renders the timetabl
 	// rendering the second table first
 	if (timetable) {
 		// float_error_card_func("Timetable Available", "", "success");
-		
+
 		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 		//(debugging to copy selection shortcut) if teacher_subject_data is available then only render the teacher table (debugging) (if statement only)
 		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
-		if(timetable.teacher_subject_data){
+		if (timetable.teacher_subject_data) {
 			let localteacher_subject_data = timetable.teacher_subject_data;
 			let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
 			table.innerHTML = "";
@@ -687,13 +689,21 @@ const render_tables = (timetable) => {                  	// renders the timetabl
 				cell_insert.setAttribute("class", "text");
 				cell.appendChild(cell_insert);
 				cell.setAttribute("class", "border-dark border-3 h4 fw-bold");
+
+				cell = newRow.insertCell();
+				cell_insert = document.createElement("span");
+				cell_insert.innerHTML =  localteacher_subject_data[i].room_type.charAt(0).toUpperCase() + localteacher_subject_data[i].room_type.slice(1);
+				cell_insert.setAttribute("class", "text");
+				cell.appendChild(cell_insert);
+				cell.setAttribute("class", "border-dark border-3");
+
 			}
 			add_subjects_options_to_mytable(localteacher_subject_data)
 		}
 		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 		//(debugging to copy selection shortcut) if teacher_subject_data is available then only render the teacher table (debugging) (if statement only)
 		//xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
-		
+
 		// rendering the first main table now 
 		let local_time_table_data = timetable.schedule;
 		let mytable = document.getElementById("mytable");
