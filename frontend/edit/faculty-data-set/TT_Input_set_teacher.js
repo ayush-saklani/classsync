@@ -40,7 +40,7 @@ const save_table_func = () => {                         //  function below calcu
         let weekly_hrs = row.cells[3].firstChild.innerHTML;
         let theory_practical = row.cells[4].firstChild.innerHTML;
         let teachername = row.cells[1].firstChild.options[row.cells[1].firstChild.selectedIndex].textContent;
-
+        let room_type = row.cells[5].firstChild.innerHTML;
 
         let rowData = {
             "subjectcode": subjectid,
@@ -49,6 +49,7 @@ const save_table_func = () => {                         //  function below calcu
             "teachername": teachername,
             "subjectname": subjectname,
             "theory_practical": theory_practical,
+            "room_type": room_type,
         }
         tempteachersubjectdata.push(rowData);
     }
@@ -181,6 +182,13 @@ const render_tables = () => {                           // renders the table [ u
             cell = newRow.insertCell();
             cell_insert = document.createElement("span");
             cell_insert.innerHTML = localteacher_subject_data[i].theory_practical.charAt(0).toUpperCase() + localteacher_subject_data[i].theory_practical.slice(1);
+            cell_insert.setAttribute("class", "text");
+            cell.appendChild(cell_insert);
+            cell.setAttribute("class", "border-dark border-3");
+
+            cell = newRow.insertCell();
+            cell_insert = document.createElement("span");
+            cell_insert.innerHTML = localteacher_subject_data[i].room_type
             cell_insert.setAttribute("class", "text");
             cell.appendChild(cell_insert);
             cell.setAttribute("class", "border-dark border-3");
