@@ -7,6 +7,7 @@ const subjectSchema = new mongoose.Schema({
     teachername: String,
     subjectname: String,
     theory_practical: String,
+    room_type: String,
 });
 
 const slotSchema = new mongoose.Schema({
