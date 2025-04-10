@@ -40,6 +40,18 @@ const add_row_func = () => {			//  function creates a row in the table
 	option = document.createElement('option');
 	option.value = option.text = "PRACTICAL";
 	select.appendChild(option);
+
+	cell = newRow.insertCell();
+	select = document.createElement('select');
+	select.setAttribute('class', 'form-select text');
+	cell.appendChild(select);
+	let options = ["class", "hall", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "other"];
+	for (let i = 0; i < options.length; i++) {
+		let option = document.createElement('option');
+		option.value = option.text = options[i];
+		select.appendChild(option);
+	}
+	cell = newRow.insertCell();
 };
 const delete_row_func = () => {			//  function deletes a row in the table 
 	let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
@@ -60,6 +72,7 @@ const save_table_func = () => {			//  calculate and construct the subject table 
 		subjectid = subjectid.trim();
 		let weekly_hrs = row.cells[2].firstChild.value;
 		let theory_practical = row.cells[3].firstChild.value;
+		let room_type = row.cells[4].firstChild.value;
 		let teacherid = "";
 		let teachername = "";
 		if(subjectid === "" || subjectname === ""){
@@ -76,6 +89,7 @@ const save_table_func = () => {			//  calculate and construct the subject table 
 			"teachername": teachername,
 			"subjectname": subjectname,
 			"theory_practical": theory_practical,
+			"room_type": room_type,
 		}
 		tempteachersubjectdata.push(rowData);
 	}
@@ -172,7 +186,23 @@ const render_tables = () => {			//	renders the tables
 
 			// below code is for making the colored marker cell for denoting theory and practical
 			// (might delete this code)(if delete remove the comment of above select code)
-
+			cell = newRow.insertCell();
+			select = document.createElement('select');
+			select.setAttribute('class', 'form-select text');
+			cell.appendChild(select);
+			
+			let options = ["class", "hall", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "other"];
+			for (let j = 0; j < options.length; j++) {
+				let option = document.createElement('option');
+				option.value = option.text = options[j];
+				select.appendChild(option);
+			}
+			if(localteacher_subject_data[i].room_type){
+				select.value = localteacher_subject_data[i].room_type;
+			}else{
+				select.value = 'class';
+			}
+			
 			cell = newRow.insertCell();
 			cell.setAttribute('style', 'height: 40px;');
 			cell.setAttribute('style', 'width: 40px;');
