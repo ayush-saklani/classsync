@@ -245,7 +245,7 @@ const render_tables = () => {				// renders the tables
 		cell = newRow.insertCell();
 		select = document.createElement('select');
 		select.setAttribute('class', 'form-select text');
-		let options = ["class", "hall", "computerlab", "englishlab","electroniclab", "mechanicallab", "civillab","drawinglab", "physicslab", "chemistrylab", "other"];
+		let options = ["class", "hall", "computerlab", "englishlab","electroniclab", "mechanicallab", "civillab","drawinglab", "physicslab", "chemistrylab","ladieswashroom","gentswashroom", "other"];
 		for(let i = 0; i < options.length; i++){
 			let option = document.createElement('option');
 			option.value = option.text = options[i];
