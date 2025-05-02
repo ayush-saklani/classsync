@@ -4,7 +4,7 @@ import Faculties from "../models/faculty.model.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiResponse } from "../utils/ApiResponse.js";
 import { ApiError } from "../utils/ApiError.js";
-
+import { GENERIC_TEACHER_SCHEDULE } from "../constants.js";
 const clearFromTimetable = async (
     course,
     semester,
