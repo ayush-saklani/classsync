@@ -244,8 +244,7 @@ const addfaculty = asyncHandler(async (req, res, next) => {
     const teacherid = req.query.teacherid;
     const name = req.query.name;
     const check_faculty = await Faculties.findOne({
-        teacherid: teacherid,
-        name: name,
+        teacherid: teacherid
     });
 
     if (check_faculty === null) {
@@ -277,7 +276,7 @@ const removefaculty = asyncHandler(async (req, res, next) => {
     }
 
     try {
-        iterateTimetable(faculty, teacherid, true);
+        // iterateTimetable(faculty, teacherid, true); //
         await Faculties.findByIdAndDelete(faculty._id);
     } catch (error) {
         new ApiError(500, error.message);
