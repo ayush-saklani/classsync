@@ -128,6 +128,7 @@ const render_tables = () => {                           // renders the table [ u
     if (timetable) {
         float_error_card_func("Section Data Available", "", "success");
         let localteacher_subject_data = timetable.teacher_subject_data;
+        localteacher_subject_data.sort((a, b) => b.theory_practical.localeCompare(a.theory_practical)); // sort the data based on subject code
         let table = document.getElementById("teacher_table").getElementsByTagName('tbody')[0];
         table.innerHTML = "";
         for (let i = 0; i < localteacher_subject_data.length; i++) {
