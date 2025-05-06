@@ -45,7 +45,7 @@ const add_row_func = () => {			//  function creates a row in the table
 	select = document.createElement('select');
 	select.setAttribute('class', 'form-select text');
 	cell.appendChild(select);
-	let options = ["class", "hall", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "other"];
+	let options = ["class", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "other"];
 	for (let i = 0; i < options.length; i++) {
 		let option = document.createElement('option');
 		option.value = option.text = options[i];
@@ -191,7 +191,7 @@ const render_tables = () => {			//	renders the tables
 			select.setAttribute('class', 'form-select text');
 			cell.appendChild(select);
 			
-			let options = ["class", "hall", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "other"];
+			let options = ["class", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "other"];
 			for (let j = 0; j < options.length; j++) {
 				let option = document.createElement('option');
 				option.value = option.text = options[j];
