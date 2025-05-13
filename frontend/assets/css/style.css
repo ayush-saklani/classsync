@@ -262,7 +262,7 @@ body{
 }
 .bus-arr::after, .bus-dep::before{ 
     content: "🚌";
-    /* content: ""; */
+    /* content: "🚌 🚍 🚎"; */
     font-size: xx-large;
     z-index: 500;
     display: flex;
