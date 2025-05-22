@@ -31,11 +31,11 @@ const save_table_func = () => {				//  function below calculate and construct th
 			let name = tableBody.rows[i].cells[1].firstElementChild.value;
 			let capacity = tableBody.rows[i].cells[2].firstElementChild.value;
 			let type = tableBody.rows[i].cells[3].firstElementChild.value;
-			if (id === "" || name === "" && id !== "0") {
+			if ((id === "" || name === "") && id !== "0") {
 				float_error_card_func('Empty Field found', '', 'danger');
 				continue; 		
 			}
-			else if (id in res) {
+			else if (res.some(room => room.roomid === id)) {
 				float_error_card_func('Duplicate ID found', '', 'danger');
 				// return;
 			}
@@ -44,10 +44,10 @@ const save_table_func = () => {				//  function below calculate and construct th
 				return;
 			}
 			let schedule, course = [];
-			for(element in room_list){
-				if(room_list[element].roomid == id){
-					course = room_list[element].allowed_course;
-					schedule = room_list[element].schedule;
+			for (let element of room_list) {
+				if (element.roomid == id) {
+					course = element.allowed_course;
+					schedule = element.schedule;
 				}
 			}
 			if(tableBody.rows[i].cells[4].firstElementChild.value == "yes"){
