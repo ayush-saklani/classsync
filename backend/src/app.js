@@ -18,6 +18,7 @@ app.use(
             "https://gehutimetable.vercel.app",
             "https://projectclasssync.vercel.app",
             "https://navit.vercel.app",
+            "capacitor://localhost"             // ✅ Mobile app origin (Capacitor)
         ],
         credentials: true,
     })
