@@ -1,6 +1,6 @@
 // Slot Type
 export interface Slot {
-    roomid: string | undefined;
+    class_id: string | undefined;
     course: string;
     semester: string;
     section: string[]; // Array of sections
