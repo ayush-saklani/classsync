@@ -1,0 +1,81 @@
+'use client';
+import { useState } from 'react';
+import { useAuth } from '@/hooks/useAuth';
+import { useNotificationStore } from '@/store/notificationStore';
+import { validateEmail } from '@/utils/validation';
+import Cookies from 'js-cookie';
+
+const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
+
+export default function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useAuth();
+  const addNotification = useNotificationStore(state => state.addNotification);
+
+  const handleLogin = async () => {
+    if (!validateEmail(email)) {
+      addNotification({ title: 'Invalid Email', description: 'Please enter a valid GEHU email address.', color: 'danger' });
+      return;
+    }
+
+    try {
+      const response = await fetch(`${SERVER_URL}/user/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      const data = await response.json();
+      Cookies.set('accessToken', data.accessToken);
+      Cookies.set('refreshToken', data.refreshToken);
+      Cookies.set('role', data.role);
+      Cookies.set('name', data.name);
+      login();
+    } catch (error) {
+      addNotification({ title: 'Login Failed', description: 'Please check your credentials and try again.', color: 'danger' });
+    }
+  };
+
+  return (
+    <>
+      <section className="container p-5 signinbox shadow-lg">
+        <div className="row">
+          <div className="col-md-6">
+            <img src="/image/logo.png" className="h-16 d-inline-block align-text-top " />
+            <h1 className="heading-text mt-4">Sign in</h1>
+            <h4 className="text my-3">Login into account</h4>
+          </div>
+          <div className="col-lg-6">
+            <form className="mt-4 mb-2">
+              <div className="mb-3">
+                <label htmlFor="signin_email" className="form-label heading-text h5">Email address</label>
+                <input type="email" className="form-control text" id="signin_email" placeholder="stepneysharma@gehu.ac.in" value={email} onChange={e => setEmail(e.target.value)} />
+                <div className="form-text text">We'll never share your email with anyone else.🤞🏼</div>
+              </div>
+              <div className="mb-2">
+                <label htmlFor="signin_InputPassword" className="form-label heading-text h5">Password</label>
+                <input type="password" className="form-control" id="signin_InputPassword" value={password} onChange={e => setPassword(e.target.value)} />
+              </div>
+              <div className="my-2">
+                <label className="text-danger text fw-bold" id="signin_error"> </label>
+              </div>
+              <button
+                type="button"
+                className="btn btn-danger rounded-pill px-4 py-2 fw-bold heading-text"
+                id="login"
+                onClick={handleLogin}
+              >
+                Login
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

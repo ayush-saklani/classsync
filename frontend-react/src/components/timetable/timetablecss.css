@@ -1,0 +1,65 @@
+.bus-dep{
+    position: relative;
+  }
+  .bus-arr{
+    position: relative;
+  }
+  .bus-arr::after, .bus-dep::before{ 
+    content: "🚌";
+    /* content: ""; */
+    font-size: xx-large;
+    z-index: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    width: 10px;
+  }
+  .bus-arr::after {
+    top: 0;
+    left: 0;
+    background: var(--brand-cyan) ;
+    animation: wavedown 2s ease-in-out infinite;
+  }
+  .bus-dep::before {
+    bottom: 0;
+    right: 0;
+    background: var(--brand-red);
+    animation: waveup 2s ease-in-out infinite;
+  }
+  @keyframes wavedown {
+    0% {
+        opacity: 1;
+        height: 30%;
+    }
+    70% {
+        opacity: 1;
+        height: 100%;
+    }
+    90% {
+        opacity: 1;
+        height: 100%;
+    }
+    100% {
+        opacity: 0;
+        height: 100%;
+    }
+  }
+  @keyframes waveup {
+    0% {
+        opacity: 1;
+        height: 30%;
+    }
+    70% {
+        opacity: 1;
+        height: 100%;
+    }
+    90% {
+        opacity: 1;
+        height: 100%;
+    }
+    100% {
+        opacity: 0;
+        height: 100%;
+    }    
+  }

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Class-Sync | Rooms</title>
+	<script src="/assets/js/redirection.js"></script>
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="/assets/css/style.css" />
+	<link rel="stylesheet" href="/assets/css/loader.css" />
+	<link rel="stylesheet" href="/assets/css/responsive_block_view.css" />
+	<link rel="icon" href="/assets/image/logo.png">
+	<style>
+		.bg-primary {
+			background-color: #448588 !important ;
+		}	
+	</style>
+</head>
+
+<body>
+	<!-- header start -->
+	<nav class="navbar navbar-expand mx-3">
+		<img src="/assets/image/logo.png" height="75px" class="d-inline-block align-text-top ">
+		<h2 class="mx-3 my-3 heading-text">Class-Sync Timetable Manager</h2>
+	</nav>
+	<!-- header end -->
+	
+	<!-- course sem year detail div start -->
+	<div class="container-fluid mt-5">
+		<div class="container">
+			<h1 class="center text fw-bold">Timetable viewing Portal - Rooms</h1>
+		</div>
+		
+		<!-- course sem year details start -->
+		<div class="container">
+			<div class="row mt-3">
+				<div class="col-md-11">
+					<div class="form-floating">
+						<select class="form-select mb-3 text" name="Room" id="room_options">
+						</select>
+						<label for="room_options" class="heading-text text">Room</label>
+					</div>
+				</div>
+				<div class="col-md-1 text-center d-flex align-items-center justify-content-center">
+					<div class="text-center">
+						<label class="switch">
+							<input class="toggle" type="checkbox" id="toggle_event">
+							<span class="slider round"></span>
+							<span class="card-side"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- course sem year details end -->
+	</div>
+	<!-- course sem year detail div end -->
+
+	<!-- main table div start -->
+	<div class="container-fluid" id="ttdiv">
+		<!-- main table div start -->
+		<div class="container-fluid pt-3">
+			<table class="table text-center align-middle mb-0 pb-0" id="teacher_detail">
+				<th class="text table-light fw-bold py-3 h5 col-6" scope="col">Room </th>
+				<th class="text table-light fw-bold py-3 h5 col-2" scope="col">Capacity</th>
+				<th class="text table-light fw-bold py-3 h5 col-2" scope="col">Type</th>
+				<th class="text table-light fw-bold py-3 h5 col-2" scope="col">Avg occupancy</th>
+			</table>
+		 </div>
+		<div class="container-fluid scrollablecontainer">			
+			<table class="table text-center align-middle" id="mytable">
+				<thead>
+					<tr>
+						<th class="text table-light border-dark border-3" scope="col"><i class="bi bi-twitter-x h5" style="-webkit-text-stroke: 1px;"></i></th>
+						<th class="text table-light border-dark border-3" scope="col">08-09</th>
+						<th class="text table-light border-dark border-3" scope="col">09-10</th>
+						<th class="text table-light border-dark border-3" scope="col">10-11</th>
+						<th class="text table-light border-dark border-3" scope="col">11-12</th>
+						<th class="text table-light border-dark border-3" scope="col">12-01</th>
+						<th class="text table-light border-dark border-3" scope="col">01-02</th>
+						<th class="text table-light border-dark border-3" scope="col">02-03</th>
+						<th class="text table-light border-dark border-3" scope="col">03-04</th>
+						<th class="text table-light border-dark border-3" scope="col">04-05</th>
+						<th class="text table-light border-dark border-3" scope="col">05-06</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">MON</th>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+					</tr>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">TUE</th>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+						<td class="text bg-practical border-dark border-3"></td>
+					</tr>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">WED</th>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+					</tr>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">THU</th>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+						<td class="text bg-holiday border-dark border-3"></td>
+					</tr>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">FRI</th>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+					</tr>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">SAT</th>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+						<td class="text bg-theory border-dark border-3"></td>
+					</tr>
+					<tr>
+						<th class="table-light border-dark border-3" scope="row">SUN</th>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+						<td class="text bg-empty border-dark border-3"></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- main table div end -->
+
+	</div>
+	<!-- main table div end -->
+
+	<!-- footer div start -->
+	<footer class="bd-footer py-4 py-md-5">
+		<logodiv class="loaderdiv" id="loader"></logodiv>
+		<div class="position-fixed bottom-0 end-0 m-3" style="max-width: 25rem; z-index: 1000;" id="message_container"></div> <!-- this is float message-->
+	</footer>
+	<!-- footer div end -->
+	<script src="/assets/js/serverLocation.js"></script>
+	<script src="/assets/js/footer.js"></script>
+	<script src="/assets/js/block-unblocking.js"></script>
+	<script src="/assets/js/loader.js"></script>
+	<script src="/assets/js/float_error_card_func.js"></script>
+	<script src="/assets/js/bus_timing.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+	<script src="viewRoom.js"></script>
+
+</body>
+
+</html>

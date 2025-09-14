@@ -1,0 +1,33 @@
+{
+  "name": "my-next-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack -p 5500",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
+    "@tailwindcss/oxide": "^4.0.12",
+    "@types/js-cookie": "^3.0.6",
+    "autoprefixer": "^10.4.21",
+    "js-cookie": "^3.0.5",
+    "next": "15.2.1",
+    "postcss": "^8.5.3",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-hot-toast": "^2.6.0",
+    "react-icons": "^5.5.0",
+    "tailwindcss": "^4.0.12",
+    "zustand": "^5.0.8"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "20.17.24",
+    "@types/react": "19.0.10",
+    "@types/react-dom": "^19",
+    "typescript": "5.8.2"
+  }
+}
