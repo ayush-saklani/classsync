@@ -19,16 +19,7 @@ export default function FacultyPage() {
   const [facultyList, setFacultyList] = useState<faculty_schema[]>([]);
   const [room_list, setroom_list] = useState<room_schema[]>([]);
 
-  const fetchfreshdata = async () => {
-    setSelectedFacultyId('');
-    setFacultyList([]);
-    localStorage.removeItem('facultyList');
-    localStorage.removeItem('room_list');
-    toast.error('cache cleared. fetching fresh data');
-    await fetch_faculty_list();
-    await fetchroom_list();
-  };
-  const fetchroom_list = async () => {   // Fetch all rooms from the server
+  const fetch_room_list = async () => {   // Fetch all rooms from the server
     const toastId = toast.loading('Fetching Room List...');
     console.log("Fetching Room List...");
     try {
@@ -56,9 +47,11 @@ export default function FacultyPage() {
       setroom_list(result.data || []);
       localStorage.setItem('room_list', JSON.stringify(result.data || []));
       toast.success('Room List Loaded', { id: toastId });
+      return;
     } catch (error) {
       console.error(':::: Room Data not available (SERVER ERROR) :::: ', error);
       toast.error('Failed to Load Room List', { id: toastId });
+      return;
     }
   };
   const fetch_faculty_list = async () => {
@@ -96,11 +89,19 @@ export default function FacultyPage() {
       return [];
     }
   };
-
+  const fetchfreshdata = async () => {
+    setSelectedFacultyId('');
+    setFacultyList([]);
+    localStorage.removeItem('facultyList');
+    localStorage.removeItem('room_list');
+    toast.error('cache cleared. fetching fresh data');
+    await fetch_faculty_list();
+    await fetch_room_list();
+  };
   useEffect(() => {
     const fetchData = async () => {
       await fetch_faculty_list();
-      await fetchroom_list();
+      await fetch_room_list();
     };
     fetchData();
   }, []);
@@ -139,7 +140,6 @@ export default function FacultyPage() {
     }
     return null;
   };
-
   const getSlotClassName = (day: Day | undefined, timeSlot: keyof Day) => {
     const slot: Slot | undefined = day?.[timeSlot];
     if (slot?.subjectcode && slot?.subjectcode[0] !== '') {
@@ -156,6 +156,7 @@ export default function FacultyPage() {
     }
     return "text bg-empty border-dark border-3"; // Placeholder for empty slot
   };
+
   return (
     <>
       <Header />
