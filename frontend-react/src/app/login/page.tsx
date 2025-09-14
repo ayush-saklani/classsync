@@ -4,6 +4,7 @@ import { useAuth } from '@/hooks/useAuth';
 import { useNotificationStore } from '@/store/notificationStore';
 import { validateEmail } from '@/utils/validation';
 import Cookies from 'js-cookie';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -14,12 +15,17 @@ export default function LoginPage() {
   const addNotification = useNotificationStore(state => state.addNotification);
 
   const handleLogin = async () => {
-    if (!validateEmail(email)) {
-      addNotification({ title: 'Invalid Email', description: 'Please enter a valid GEHU email address.', color: 'danger' });
-      return;
-    }
+    const toastId = toast.loading('Logging in...');
+    // if (!validateEmail(email)) {
+    //   addNotification({ title: 'Invalid Email', description: 'Please enter a valid GEHU email address.', color: 'danger' });
+    //   toast.dismiss(toastId); 
+    //   return;
+    // }
+
 
     try {
+      console.log('response');
+
       const response = await fetch(`${SERVER_URL}/user/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -35,8 +41,11 @@ export default function LoginPage() {
       Cookies.set('refreshToken', data.refreshToken);
       Cookies.set('role', data.role);
       Cookies.set('name', data.name);
+      toast.success('Login Successful!', { id: toastId });
       login();
     } catch (error) {
+      toast.error('Login Failed', { id: toastId });
+      console.error('Error during login:', error);
       addNotification({ title: 'Login Failed', description: 'Please check your credentials and try again.', color: 'danger' });
     }
   };
