@@ -1,7 +1,6 @@
 'use client';
 import { useState } from 'react';
 import { useAuth } from '@/hooks/useAuth';
-import { useNotificationStore } from '@/store/notificationStore';
 import { validateEmail } from '@/utils/validation';
 import Cookies from 'js-cookie';
 import toast, { Toaster } from 'react-hot-toast';
@@ -12,12 +11,10 @@ export default function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const { login } = useAuth();
-  const addNotification = useNotificationStore(state => state.addNotification);
 
   const handleLogin = async () => {
     const toastId = toast.loading('Logging in...');
     // if (!validateEmail(email)) {
-    //   addNotification({ title: 'Invalid Email', description: 'Please enter a valid GEHU email address.', color: 'danger' });
     //   toast.dismiss(toastId); 
     //   return;
     // }
@@ -36,16 +33,23 @@ export default function LoginPage() {
       }
 
       const data = await response.json();
-      Cookies.set('accessToken', data.accessToken);
-      Cookies.set('refreshToken', data.refreshToken);
-      Cookies.set('role', data.role);
-      Cookies.set('name', data.name);
+      if(!data.success){
+        throw new Error(data.message || 'Login failed');
+      }
+      // Cookies.set('accessToken', data.accessToken);
+      // Cookies.set('refreshToken', data.refreshToken);
+      // Cookies.set('role', data.role);
+      // Cookies.set('name', data.name);
+      console.log(data);
+      localStorage.setItem('accessToken', data.data.accessToken);
+      localStorage.setItem('refreshToken', data.data.refreshToken);
+      localStorage.setItem('role', data.data.role);
+      localStorage.setItem('name', data.data.name);
       toast.success('Login Successful!', { id: toastId });
       login();
     } catch (error) {
       toast.error('Login Failed', { id: toastId });
       console.error('Error during login:', error);
-      addNotification({ title: 'Login Failed', description: 'Please check your credentials and try again.', color: 'danger' });
     }
   };
 

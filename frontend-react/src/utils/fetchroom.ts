@@ -1,3 +1,4 @@
+import { room_schema } from "@/models/room.model";
 import toast from "react-hot-toast";
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
@@ -32,5 +33,34 @@ export const fetch_all_rooms = async () => {
         console.error(':::: Room Data not available (SERVER ERROR) :::: ', error);
         toast.error('Failed to Load Room List', { id: toastId });
         return [];
+    }
+};
+export const save_all_rooms = async (room_list: room_schema[]) => {
+    const toastId = toast.loading('Saving Room List...');
+    console.log("Saving Room List...");
+    try {
+        const response = await fetch(`${SERVER_URL}/room/savemultiple`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({
+                "type": "faculties",
+                "data": room_list
+            }),
+            credentials: 'include'
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log("saving room list");
+        toast.success('Room List Saved', { id: toastId });
+        localStorage.setItem('room_list', JSON.stringify(room_list));
+        return;
+    } catch (error) {
+        console.error(':::: Room Data not available (SERVER ERROR) :::: ', error);
+        toast.error('Failed to Save Room List', { id: toastId });
+        return;
     }
 };

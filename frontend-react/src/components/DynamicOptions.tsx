@@ -7,13 +7,14 @@ import { options } from '@/utils/options';
 // const [semester, setSemester] = useState('');
 // const [section, setSection] = useState('');
 
-export default function DynamicOptions({ course, semester, section, setCourse, setSemester, setSection, }: {
+export default function DynamicOptions({ course, semester, section, setCourse, setSemester, setSection, onlyone = 3 }: {
   course: string;
   semester: string;
   section: string;
   setCourse: (c: string) => void;
   setSemester: (s: string) => void;
   setSection: (s: string) => void;
+  onlyone?: number; // 1 for only course selection 2 for course and semester selection 3 for all three selections
 }) {
   const [courses, setCourses] = useState<{ value: string; label: string }[]>([]);
   const [semesters, setSemesters] = useState<{ value: string; label: string }[]>([]);
@@ -60,7 +61,6 @@ export default function DynamicOptions({ course, semester, section, setCourse, s
     }
   }, [course, semester]);
 
-
   return (
     <>
       <div className="container">
@@ -75,26 +75,30 @@ export default function DynamicOptions({ course, semester, section, setCourse, s
               <label htmlFor="course_option" className="heading-text">Course</label>
             </div>
           </div>
-          <div className="col-md-4 col-sm-6">
-            <div className="form-floating">
-              <select className="form-select mb-3 text" name="semester" id="semester_option" value={semester} onChange={e => setSemester(e.target.value)}>
-                {semesters.map(s => (
-                  <option key={s.value} value={s.value}>{s.label}</option>
-                ))}
-              </select>
-              <label htmlFor="semester_option" className="heading-text">Semester</label>
+          {(onlyone > 1) && (
+            <div className="col-md-4 col-sm-6">
+              <div className="form-floating">
+                <select className="form-select mb-3 text" name="semester" id="semester_option" value={semester} onChange={e => setSemester(e.target.value)}>
+                  {semesters.map(s => (
+                    <option key={s.value} value={s.value}>{s.label}</option>
+                  ))}
+                </select>
+                <label htmlFor="semester_option" className="heading-text">Semester</label>
+              </div>
             </div>
-          </div>
-          <div className="col-md-4 col-sm-6">
-            <div className="form-floating">
-              <select className="form-select mb-3 text" name="section" id="section_option" value={section} onChange={e => setSection(e.target.value)}>
-                {sections.map(s => (
-                  <option key={s.value} value={s.value}>{s.label}</option>
-                ))}
-              </select>
-              <label htmlFor="section_option" className="heading-text">Section</label>
+          )}
+          {(onlyone > 2) && (
+            <div className="col-md-4 col-sm-6">
+              <div className="form-floating">
+                <select className="form-select mb-3 text" name="section" id="section_option" value={section} onChange={e => setSection(e.target.value)}>
+                  {sections.map(s => (
+                    <option key={s.value} value={s.value}>{s.label}</option>
+                  ))}
+                </select>
+                <label htmlFor="section_option" className="heading-text">Section</label>
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </div>
     </>

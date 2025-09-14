@@ -6,11 +6,15 @@ import React, { useEffect } from "react";
 export default function Header() {
   const logout = () => {
     // Clear all cookies
-    document.cookie.split(";").forEach((c) => {
-      document.cookie = c
-        .replace(/^ +/, "")
-        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
-    });
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    // document.cookie.split(";").forEach((c) => {
+    //   document.cookie = c
+    //     .replace(/^ +/, "")
+    //     .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    // });
     window.location.href = "/login";  // Redirect to login page
   };
   const pathname = usePathname();
@@ -18,10 +22,10 @@ export default function Header() {
 
   // Check if not logged in (no cookies), then redirect to /login
   useEffect(() => {
-    if (pathname.startsWith("/edit") && (!document.cookie || document.cookie.trim() === "")) {
+    if (pathname.startsWith("/edit") && (!localStorage.getItem('accessToken'))) {
       window.location.href = "/login";
     }
-  }, [showLogout]);
+  }, []);
   return (
     <nav className="navbar navbar-expand mx-3">
       <img src="/image/logo.png" className="h-18 d-inline-block align-text-top " alt="Class-Sync Logo" />

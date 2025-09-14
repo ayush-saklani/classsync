@@ -1,5 +1,4 @@
 import Header from "@/components/header";
-import Footer from "@/components/footer";
 import Link from "next/link";
 
 export default function RoomDataEditorPage() {
@@ -14,7 +13,7 @@ export default function RoomDataEditorPage() {
           <div className="row justify-content-center">
             <div className="col-sm-9 col-md-6 col-xl-4 mt-4">
               <div className="card text-bg-dark">
-                <Link href="./room-editor/">
+                <Link href="./room-data-editor/room-editor/">
                   <img src="/image/img21.jpg" className="card-img" alt="..." />
                   <div className="card-img-overlay">
                     <h2 className="card-title text"><b>Edit Room</b></h2>
@@ -24,7 +23,7 @@ export default function RoomDataEditorPage() {
             </div>
             <div className="col-sm-9 col-md-6 col-xl-4 mt-4">
               <div className="card text-bg-dark">
-                <Link href="./room-allot/">
+                <Link href="./room-data-editor/room-allot/">
                   <img src="/image/img20.jpg" className="card-img" alt="..." />
                   <div className="card-img-overlay">
                     <h2 className="card-title text"><b>Allot Room</b></h2>
@@ -35,7 +34,6 @@ export default function RoomDataEditorPage() {
           </div>
         </div>
       </section>
-      <Footer />
     </>
   );
 }

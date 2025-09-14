@@ -1,18 +1,17 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
-import { useNotificationStore } from '@/store/notificationStore';
 
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export function useAuth() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const addNotification = useNotificationStore(state => state.addNotification);
 
   useEffect(() => {
     const validateCookie = async () => {
-      const refreshToken = Cookies.get('refreshToken');
+      // const refreshToken = Cookies.get('refreshToken');
+      const refreshToken = localStorage.getItem('refreshToken');
       if (refreshToken) {
-        if (!Cookies.get('accessToken')) {
+        if (!localStorage.getItem('accessToken')) {
           try {
             const response = await fetch(`${SERVER_URL}/user/refresh-token`, {
               method: 'POST',
@@ -27,7 +26,6 @@ export function useAuth() {
             }
             setIsLoggedIn(true);
           } catch (error) {
-            addNotification({ title: 'Login Failed', description: '', color: 'info' });
             setIsLoggedIn(false);
           }
         } else {
@@ -48,7 +46,8 @@ export function useAuth() {
 
   const logout = async () => {
     try {
-      const accessToken = Cookies.get('accessToken');
+      // const accessToken = Cookies.get('accessToken');
+      const accessToken = localStorage.getItem('accessToken');
       await fetch(`${SERVER_URL}/user/logout`, {
         method: 'POST',
         headers: {
@@ -59,10 +58,14 @@ export function useAuth() {
     } catch (error) {
       console.error('Error:', error);
     }
-    Cookies.remove('accessToken');
-    Cookies.remove('refreshToken');
-    Cookies.remove('role');
-    Cookies.remove('name');
+    localStorage.removeItem('accessToken');
+    localStorage.removeItem('refreshToken');
+    localStorage.removeItem('role');
+    localStorage.removeItem('name');
+    // Cookies.remove('accessToken');
+    // Cookies.remove('refreshToken');
+    // Cookies.remove('role');
+    // Cookies.remove('name');
     setIsLoggedIn(false);
     window.location.href = '/login';
   };
