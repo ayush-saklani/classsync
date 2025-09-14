@@ -1,10 +1,36 @@
+'use client';
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React, { useEffect } from "react";
 
 export default function Header() {
+  const logout = () => {
+    // Clear all cookies
+    document.cookie.split(";").forEach((c) => {
+      document.cookie = c
+        .replace(/^ +/, "")
+        .replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/");
+    });
+    window.location.href = "/login";  // Redirect to login page
+  };
+  const pathname = usePathname();
+  const showLogout = pathname.startsWith("/edit");
+
+  // Check if not logged in (no cookies), then redirect to /login
+  useEffect(() => {
+    if (pathname.startsWith("/edit") && (!document.cookie || document.cookie.trim() === "")) {
+      window.location.href = "/login";
+    }
+  }, [showLogout]);
   return (
     <nav className="navbar navbar-expand mx-3">
       <img src="/image/logo.png" className="h-18 d-inline-block align-text-top " alt="Class-Sync Logo" />
       <h2 className="mx-3 my-3 heading-text">Class-Sync Timetable Manager</h2>
+      {
+        showLogout &&
+        <button className="ms-auto fw-bold h4 px-4 btn btn-lg btn-danger rounded-pill float-end"
+          onClick={logout}>Logout</button>
+      }
       {/* <div className="menu float-end mt-2 mx-2" id="sidebar">
         <div className="item">
           <a className="link text fw-bold"><span className="text-dar">Direct Links <i className="bi bi-list" style={{ WebkitTextStrokeWidth: '1px' }}></i></span></a>

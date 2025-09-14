@@ -1,17 +1,24 @@
+'use client';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import DynamicOptions from "@/components/DynamicOptions";
+import { useState } from "react";
 
 export default function TimetableEditorPage() {
+  const [course, setCourse] = useState('');
+  const [semester, setSemester] = useState('');
+  const [section, setSection] = useState('');
   return (
     <>
       <Header />
       <section className="container-fluid mt-5">
         <div className="container">
           <h1 className="center text fw-bold">Timetable Editing Portal</h1>
-          <div className="row mt-3">
-            <DynamicOptions />
-            <div className="col-1">
+          <div className="row mt-3 ">
+            <div className="col-11"> 
+              <DynamicOptions course={course} setCourse={setCourse} semester={semester} setSemester={setSemester} section={section} setSection={setSection} />
+            </div>
+            <div className="col-1 mt-3">
               <button type="button" className="button" id="reset_tt">
                 <div className="button-top-blue h5 fw-bold"><b>RESET <i className="bi bi-exclamation-triangle-fill text-warning"></i></b></div>
                 <div className="button-bottom-blue"></div>

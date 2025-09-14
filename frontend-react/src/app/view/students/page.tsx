@@ -3,17 +3,16 @@
 import React, { useState, useEffect } from 'react';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
-import { student_schema } from '@/models/student.model'; // Changed from room.model
 import { Schedule, Day } from '@/models/timetable.model';
 import toast from 'react-hot-toast';
 import { timetable_schema, Slot } from '@/models/timetable.model';
 import { room_schema } from '@/models/room.model';
 import DynamicOptions from '@/components/DynamicOptions';
+import { fetch_all_rooms } from '@/utils/fetchroom';
+import { fetch_timetable } from '@/utils/fetchtimetable';
 
 const timeSlots = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
 const daysOfWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export default function StudentPage() {
   const [course, setCourse] = useState('');
@@ -23,96 +22,17 @@ export default function StudentPage() {
   const [timetableData, setTimetableData] = useState<timetable_schema | null>(null); // Changed state variable
   const [room_list, setroom_list] = useState<room_schema[]>([]);
 
-  const fetch_room_list = async () => {
-    const toastId = toast.loading('Fetching Room List...');
-    console.log("Fetching Room List...");
-    try {
-      if (localStorage.getItem('room_list')) {
-        const cachedList = localStorage.getItem('room_list');
-        if (cachedList) {
-          setroom_list(JSON.parse(cachedList));
-          console.log(JSON.parse(cachedList));
-          console.log("Using cached room list");
-          toast.success('Room List Loaded from Cache', { id: toastId });
-          return;
-        }
-      }
-      const response = await fetch(`${SERVER_URL}/room/getall`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log("Room Data Found");
-      setroom_list(result.data || []);
-      localStorage.setItem('room_list', JSON.stringify(result.data || []));
-      toast.success('Room List Loaded', { id: toastId });
-      return;
-    } catch (error) {
-      console.error(':::: Room Data not available (SERVER ERROR) :::: ', error);
-      toast.error('Failed to Load Room List', { id: toastId });
-      return;
-    }
-  };
-  const fetch_timetable = async () => {
-    const toastId = toast.loading('Fetching Timetable...');
-    console.log("Fetching Timetable...");
-    try {
-      if (course == '' || semester == '' || section == '') {
-        console.warn('Course, Semester, or Section not selected');
-        toast.dismiss(toastId);
-        return;
-      }
-      if (localStorage.getItem('timetableData')) {
-        const cachedTimetable = localStorage.getItem('timetableData');
-        if (cachedTimetable && localStorage.getItem('course') === course && localStorage.getItem('semester') === semester && localStorage.getItem('section') === section) {
-          setTimetableData(JSON.parse(cachedTimetable));
-          console.log("Using cached timetable data");
-          toast.success('Timetable Loaded from Cache', { id: toastId });
-          toast.dismiss(toastId);
-          return;
-        }
-      }
-      const response = await fetch(`${SERVER_URL}/table/get-timetable?` + new URLSearchParams({ course: course, semester: semester, section: section }), {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log(result);
-      // Assuming result.data contains the timetable information
-      localStorage.setItem('timetableData', JSON.stringify(result.data || null));
-      localStorage.setItem('course', course);
-      localStorage.setItem('semester', semester);
-      localStorage.setItem('section', section);
-      console.log("Timetable Data Found");
-      toast.success('Timetable Loaded', { id: toastId });
-      setTimetableData(result.data || null);
-      return;
-    } catch (error) {
-      console.error('Error fetching timetable:', error);
-      toast.error('Failed to Load Timetable', { id: toastId });
-      return;
-    }
-  };
-
   useEffect(() => {
     const fetchData = async () => {
-      await fetch_room_list();
+      let rooms = await fetch_all_rooms();
+      setroom_list(rooms);
     };
     fetchData();
   }, []);
   useEffect(() => {
     const fetchData = async () => {
-      await fetch_timetable();
+      let timetable = await fetch_timetable(course, semester, section);
+      setTimetableData(timetable || null);
     };
     fetchData();
   }, [course, semester, section]);

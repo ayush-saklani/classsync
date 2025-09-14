@@ -22,14 +22,13 @@ export default function LoginPage() {
     //   return;
     // }
 
-
     try {
       console.log('response');
 
       const response = await fetch(`${SERVER_URL}/user/login`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ name: email, password: password })
       });
 
       if (!response.ok) {

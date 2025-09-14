@@ -7,11 +7,11 @@ import { faculty_schema, Slot, Schedule, Day } from '@/models/faculty.model';
 import { room_schema } from '@/models/room.model';
 import toast from 'react-hot-toast';
 import { RiResetRightFill } from 'react-icons/ri';
+import { fetch_all_rooms } from '@/utils/fetchroom';
+import { fetch_all_faculty } from '@/utils/fetchfaculty';
 
 const timeSlots = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
 const daysOfWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
-
-const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export default function FacultyPage() {
   const [selectedFacultyId, setSelectedFacultyId] = useState<string>('');
@@ -19,89 +19,23 @@ export default function FacultyPage() {
   const [facultyList, setFacultyList] = useState<faculty_schema[]>([]);
   const [room_list, setroom_list] = useState<room_schema[]>([]);
 
-  const fetch_room_list = async () => {   // Fetch all rooms from the server
-    const toastId = toast.loading('Fetching Room List...');
-    console.log("Fetching Room List...");
-    try {
-      if (localStorage.getItem('room_list')) {
-        const cachedList = localStorage.getItem('room_list');
-        if (cachedList) {
-          setroom_list(JSON.parse(cachedList));
-          console.log(JSON.parse(cachedList));
-          console.log("Using cached room list");
-          toast.success('Room List Loaded from Cache', { id: toastId });
-          return;
-        }
-      }
-      const response = await fetch(`${SERVER_URL}/room/getall`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      console.log("Room Data Found");
-      setroom_list(result.data || []);
-      localStorage.setItem('room_list', JSON.stringify(result.data || []));
-      toast.success('Room List Loaded', { id: toastId });
-      return;
-    } catch (error) {
-      console.error(':::: Room Data not available (SERVER ERROR) :::: ', error);
-      toast.error('Failed to Load Room List', { id: toastId });
-      return;
-    }
-  };
-  const fetch_faculty_list = async () => {
-    const toastId = toast.loading('Fetching Faculty List...');
-    try {
-      console.log("Fetching Faculty List...");
-      if (localStorage.getItem('facultyList')) {
-        const cachedList = localStorage.getItem('facultyList');
-        if (cachedList) {
-          setFacultyList(JSON.parse(cachedList));
-          console.log(JSON.parse(cachedList));
-          console.log("Using cached faculty list");
-          toast.success('Faculty List Loaded from Cache', { id: toastId });
-          return;
-        }
-      }
-      const response = await fetch(`${SERVER_URL}/faculty/getall`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-      const result = await response.json();
-      const filteredFaculty = (result.data || []).filter((faculty: faculty_schema) => faculty.teacherid !== "0");
-      console.log(filteredFaculty);
-      localStorage.setItem('facultyList', JSON.stringify(filteredFaculty));
-      toast.success('Faculty List Loaded', { id: toastId });
-      setFacultyList(filteredFaculty);
-    } catch (error) {
-      console.error(':::: Faculty Data not available (SERVER ERROR) :::: ', error);
-      toast.error('Failed to Load Faculty List', { id: toastId });
-      return [];
-    }
-  };
   const fetchfreshdata = async () => {
     setSelectedFacultyId('');
     setFacultyList([]);
     localStorage.removeItem('facultyList');
     localStorage.removeItem('room_list');
     toast.error('cache cleared. fetching fresh data');
-    await fetch_faculty_list();
-    await fetch_room_list();
+    let faculty = await fetch_all_faculty();
+    setFacultyList(faculty);
+    let rooms = await fetch_all_rooms();
+    setroom_list(rooms);
   };
   useEffect(() => {
     const fetchData = async () => {
-      await fetch_faculty_list();
-      await fetch_room_list();
+      let faculty = await fetch_all_faculty();
+      setFacultyList(faculty);
+      let rooms = await fetch_all_rooms();
+      setroom_list(rooms);
     };
     fetchData();
   }, []);
