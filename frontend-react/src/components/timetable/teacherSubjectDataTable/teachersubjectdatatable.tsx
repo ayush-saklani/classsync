@@ -6,6 +6,7 @@ interface TeacherSubjectTableProps {
 }
 
 const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ teacherSubjectData }) => {
+  
   return (
     <table className="table" id="teacher_table">
       <thead>

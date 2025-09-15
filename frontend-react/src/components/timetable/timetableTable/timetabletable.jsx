@@ -1,5 +1,5 @@
 import React from 'react';
-import { timetable_schema, room_schema } from '@/models/timetable.model';
+import { options } from '@/utils/options';
 
 const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) => {
   const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
@@ -12,7 +12,8 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
         <tr>
           <th className="bording text table-light" scope="col"><i className="bi bi-twitter-x"></i></th>
           {timeSlots.map(slot => (
-            <th key={slot} className="bording text table-light" scope="col">{slot}</th>
+            <th key={slot} className={`bording text table-light ${options["arr"].includes(slot.split('-')[0]) ? 'bus-arr' : ''}
+            ${options["dep"].includes(slot.split('-')[1]) ? 'bus-dep' : ''}`} scope="col">{slot}</th>
           ))}
         </tr>
       </thead>
@@ -29,7 +30,7 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
                   onChange={e => onCellChange(day, slot, 'subject', e.target.value)}
                 >
                   <option value=""></option>
-                  {timetable?.teacher_subject_data.map(subject => (
+                  {timetable?.teacher_subject_data.map(subject => (subject.teacherid != "0" &&
                     <option key={subject.subjectcode} value={subject.subjectcode}>{subject.subjectcode}</option>
                   ))}
                 </select>
@@ -41,7 +42,18 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
                 >
                   <option value="0"></option>
                   {roomList && roomList.map(room => (
-                    <option key={room.roomid} value={room.roomid}>{room.name}</option>
+                    <option key={room.roomid} value={room.roomid}
+                      className=
+                      {`
+                        ${room.schedule[day.toLowerCase()][slot].section.length == 1 ? ' bg-success text-light text-light bg-gradient text fw-bold' :
+                          room.schedule[day.toLowerCase()][slot].section.length == 2 ? ' bg-primary text-light text-dark bg-gradient text fw-bold' :
+                            room.schedule[day.toLowerCase()][slot].section.length == 3 ? ' bg-warning text-dark text-dark bg-gradient text fw-bold' :
+                              room.schedule[day.toLowerCase()][slot].section.length == 4 ? ' bg-danger text-light text-dark bg-gradient text fw-bold' :
+                                room.schedule[day.toLowerCase()][slot].section.length > 4 ? ' bg-dark text-light text-dark bg-gradient text fw-bold' :
+                                  ''
+                        }
+                      `}
+                    >{room.name}{" "}{room.schedule[day.toLowerCase()][slot].semester} {room.schedule[day.toLowerCase()][slot].section.length > 0 ? ` [ ${room.schedule[day.toLowerCase()][slot].section.sort()} ]` : ""}</option>
                   ))}
                 </select>
                 <div className="popover-content">

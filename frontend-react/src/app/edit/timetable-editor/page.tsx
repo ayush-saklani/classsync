@@ -250,7 +250,12 @@ const TimetableEditor = () => {
     setRoomList(newRoomList);
     setFacultyData(newFacultyData);
   };
-
+  //  await save_timetable_func = () => {  
+  // 	await fixtime_firstphase();
+  // 	timetable = jsonData;
+  // 	await fixtime_secondphase();
+  // 	await save_room_list();
+  // 	await save_faculty_list();
 
   const fetch_all_data = async () => {
     const timetableData = await fetch_timetable(course, semester, section);

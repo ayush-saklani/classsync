@@ -21,7 +21,6 @@ const Footer = () => {
                     <a target="_blank" href="https://github.com/ayush-saklani" className="mx-1"><i className="bi bi-github text text-danger"></i></a>
                 </ul>
             </div>
-            
         </footer>
     );
 };
