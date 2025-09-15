@@ -1,4 +1,6 @@
+import { timetable_schema } from "@/models/timetable.model";
 import toast from "react-hot-toast";
+import { timetable_default_schedule } from "./constant";
 const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
 export const fetch_timetable = async (course: string, semester: string, section: string) => {
@@ -37,11 +39,76 @@ export const fetch_timetable = async (course: string, semester: string, section:
         localStorage.setItem('section', section);
         console.log("Timetable Data Found");
         toast.success('Timetable Loaded', { id: toastId });
-        return result.data || null;
+        return result.data;
     } catch (error) {
-        console.error('Error fetching timetable:', error);
+        // console.error('Error fetching timetable:', error);
         toast.error('Failed to Load Timetable', { id: toastId });
         return null;
     }
 };
-// setTimetableData(JSON.parse(cachedTimetable));
+export const save_timetable = async (timetable: timetable_schema) => {
+    const toastId = toast.loading('Saving Timetable...');
+    try {
+        const jsonData = {
+            "course": timetable.course,
+            "semester": timetable.semester,
+            "section": timetable.section,
+            "schedule": timetable.schedule ? timetable.schedule : timetable_default_schedule,
+            "teacher_subject_data": timetable.teacher_subject_data ? timetable.teacher_subject_data : [],
+        };
+
+        const response = await fetch(`${SERVER_URL}/table/save-timetable`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(jsonData),
+            credentials: 'include'
+        });
+
+        if (response.ok) {
+            toast.success('Timetable Saved Successfully', { id: toastId });
+            localStorage.setItem('timetableData', JSON.stringify(timetable));
+            localStorage.setItem('course', timetable.course);
+            localStorage.setItem('semester', timetable.semester);
+            localStorage.setItem('section', timetable.section);
+            return await response.json();
+        } else {
+            throw new Error('Failed to save timetable');
+        }
+    } catch (error) {
+        toast.error('Failed to Save Timetable', { id: toastId });
+        console.error('Error saving timetable:', error);
+        return null;
+    }
+};
+export const remove_teacher_from_section = async (teacherid: string, course: string, semester: string, section: string, subjectcode: string) => {
+    const toastId = toast.loading('Removing Teacher...');
+    try {
+        const response = await fetch(`${SERVER_URL}/faculty/reset?` + new URLSearchParams({ course, semester, section, teacherid, subjectcode }),
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+                },
+                credentials: 'include'
+            }
+        );
+
+        if (!response.ok) {
+            throw new Error('Failed to remove teacher due to network error');
+        }
+
+        const data = await response.json();
+        console.log(data);
+        toast.success('Teacher removed successfully', { id: toastId });
+
+        return data;
+    } catch (error) {
+        toast.error('Failed to remove teacher', { id: toastId });
+        console.error('Error removing teacher:', error);
+        return null;
+    }
+};

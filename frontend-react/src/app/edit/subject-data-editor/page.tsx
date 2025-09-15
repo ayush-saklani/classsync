@@ -4,7 +4,7 @@ import Footer from "@/components/footer";
 import DynamicOptions from "@/components/DynamicOptions";
 import { useEffect, useState } from "react";
 import { Subject, subjectTable_schema } from "@/models/subjecttable.model";
-import { fetch_generic_table_data } from "@/utils/fetchGenericTable";
+import { fetch_generic_table_data, save_generic_table_data, set_generic_data_for_all } from "@/utils/fetchGenericTable";
 import { generic_data_default, room_type_options, subject_type_options } from "@/utils/constant";
 import toast from "react-hot-toast";
 
@@ -36,27 +36,35 @@ export default function SubjectDataEditorPage() {
     theory_practical: 'THEORY',
     room_type: 'class',
   });
+  const handleSubjectChange = (index: number, field: keyof Subject, value: string) => {
+    setGenericData(prev => {
+      if (!prev) return prev;
+      const subjects = [...(prev.teacher_subject_data || [])];
+      subjects[index] = { ...subjects[index], [field]: value } as Subject;
+      return { ...prev, teacher_subject_data: subjects };
+    });
+  };
   const save_new_subject = async () => {
     if (!newSubject.subjectcode || !newSubject.subjectname || !newSubject.weekly_hrs) {
       toast.error("Please fill all required fields");
+      return;
+    }
+
+    if (isNaN(Number(newSubject.weekly_hrs))) {
+      toast.error("Weekly Hours must be a number");
       return;
     }
     if (genericData?.teacher_subject_data?.some(subj => subj.subjectcode === newSubject.subjectcode)) {
       toast.error("Subject code already exists");
       return;
     }
-    //sorting is causing issue
-    // let updatedData = JSON.parse(JSON.stringify(genericData)) as subjectTable_schema;
-    // updatedData.teacher_subject_data.push(newSubject);
-    // updatedData.teacher_subject_data.sort((a, b) => b.theory_practical.localeCompare(a.theory_practical));
-    if (genericData) {
-      const updatedData = { ...genericData };
-      updatedData.teacher_subject_data = [
-      ...(genericData.teacher_subject_data || []),
-      newSubject
-      ]
-      setGenericData(updatedData);
-    }
+
+    setGenericData(prev => {
+      const base = prev ?? { ...generic_data_default };
+      const updatedSubjects = [...(base.teacher_subject_data || []), newSubject];
+      return { ...base, teacher_subject_data: updatedSubjects };
+    });
+
     setNewSubject({
       subjectcode: '',
       teacherid: '',
@@ -68,6 +76,7 @@ export default function SubjectDataEditorPage() {
     });
     toast.success("Subject Added Successfully");
   };
+
   const [removeSubjectCode, setRemoveSubjectCode] = useState('');
   const remove_subject = async () => {
     if (!removeSubjectCode) {
@@ -78,11 +87,42 @@ export default function SubjectDataEditorPage() {
       toast.error("Subject code not found");
       return;
     }
-    let updatedData = { ...genericData } as subjectTable_schema;
-    updatedData.teacher_subject_data = updatedData.teacher_subject_data.filter(subj => subj.subjectcode !== removeSubjectCode);
-    setGenericData(updatedData);
+
+    setGenericData(prev => {
+      if (!prev) return prev;
+      const updatedSubjects = prev.teacher_subject_data.filter(subj => subj.subjectcode !== removeSubjectCode);
+      return { ...prev, teacher_subject_data: updatedSubjects };
+    });
+
     setRemoveSubjectCode('');
     toast.success("Subject Removed Successfully");
+  };
+  const save_generic_data = async () => {
+    if (!course || !semester) {
+      toast.error("Please select course and semester");
+      return;
+    }
+    if (!genericData) {
+      toast.error("No data to save");
+      return;
+    }
+    // const success = await fetch_generic_table_data(course, semester);
+    const success = await save_generic_table_data(genericData);
+    if (success) {
+      toast.success("Generic Data Saved Successfully");
+    } else {
+      toast.error("Failed to Save Generic Data");
+    }
+  };
+  const set_for_all_helper = async () => {
+    if (confirm("This will set the generic data for all sections of this course and semester. This will overwrite existing data. Are you sure?")) {
+      const success = await set_generic_data_for_all(course, semester);
+      if (success) {
+        toast.success("Generic Data Saved Successfully");
+      } else {
+        toast.error("Failed to Save Generic Data");
+      }
+    }
   };
 
   return (
@@ -121,44 +161,79 @@ export default function SubjectDataEditorPage() {
               </tr>
             </thead>
             <tbody>
-              {genericData && genericData.teacher_subject_data.map((subject, index) => (
-                <tr key={index}>
-                  <td className="p-0 font-bold text border-dark border-2 align-middle text-center"><input type="text" className="form-control " defaultValue={subject.subjectname} /></td>
-                  <td className="p-0 font-bold text border-dark border-2 align-middle text-center"><input type="text" className="form-control" defaultValue={subject.subjectcode} /></td>
-                  <td className="p-0 font-bold text border-dark border-2 align-middle text-center"><input type="text" className="form-control" defaultValue={subject.weekly_hrs} /></td>
-                  <td className="p-0 font-bold text border-dark border-2 align-middle text-center">
-                    <select className="form-select" defaultValue={subject.theory_practical}>
-                      {
-                        subject_type_options.map((option) => (
+              {genericData?.teacher_subject_data
+                ?.slice() // copy before sorting
+                .sort((a, b) => {
+                  if (a.theory_practical === "THEORY" && b.theory_practical === "PRACTICAL") return -1;
+                  if (a.theory_practical === "PRACTICAL" && b.theory_practical === "THEORY") return 1;
+                  return 0;
+                })
+                .map((subject, index) => (
+                  <tr key={subject.subjectcode || index}>
+                    <td className="p-0 font-bold text border-dark border-2 align-middle text-center">
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={subject.subjectname}
+                        onChange={e => handleSubjectChange(index, 'subjectname', e.target.value)}
+                      />
+                    </td>
+
+                    <td className="p-0 font-bold text border-dark border-2 align-middle text-center">
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={subject.subjectcode}
+                        onChange={e => handleSubjectChange(index, 'subjectcode', e.target.value)}
+                      />
+                    </td>
+
+                    <td className="p-0 font-bold text border-dark border-2 align-middle text-center">
+                      <input
+                        type="text"
+                        className="form-control"
+                        value={subject.weekly_hrs}
+                        onChange={e => handleSubjectChange(index, 'weekly_hrs', e.target.value)}
+                      />
+                    </td>
+
+                    <td className="p-0 font-bold text border-dark border-2 align-middle text-center">
+                      <select
+                        className="form-select"
+                        value={subject.theory_practical}
+                        onChange={e => handleSubjectChange(index, 'theory_practical', e.target.value)}
+                      >
+                        {subject_type_options.map((option) => (
                           <option key={option} value={option}>
                             {option}
                           </option>
-                        ))
-                      }
-                    </select>
-                  </td>
-                  <td className={`p-0 text border-dark border-2 align-middle text-center `}>
-                    <select
-                      className="form-select text border-0 "
-                      value={subject.room_type?.toString()}
-                      onChange={e => {
-                        const newType = e.target.value;
-                      }}
-                    >
-                      {room_type_options.map(option => (
-                        <option key={option} value={option}>
-                          {option}
-                        </option>
-                      ))}
-                    </select>
-                  </td>
-                </tr>
-              ))}
+                        ))}
+                      </select>
+                    </td>
+
+                    <td className="p-0 text border-dark border-2 align-middle text-center">
+                      <select
+                        className="form-select text border-0"
+                        value={subject.room_type?.toString() || ''}
+                        onChange={e => handleSubjectChange(index, 'room_type', e.target.value)}
+                      >
+                        {room_type_options.map(option => (
+                          <option key={option} value={option}>
+                            {option}
+                          </option>
+                        ))}
+                      </select>
+                    </td>
+                  </tr>
+                ))}
             </tbody>
+
           </table>
 
           <div className="container text-center">
-            <button disabled type="button" className="button" id="save_subject_list">
+            <button type="button" className="button" id="save_subject_list"
+              onClick={() => { save_generic_data(); }}
+            >
               <div className="button-top-blue h4"><b>Save Subject List ( Save Progress )</b></div>
               <div className="button-bottom-blue"></div>
             </button>
@@ -266,11 +341,11 @@ export default function SubjectDataEditorPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section >
       <Footer />
 
       <div className="container text-center pb-3">
-        <button disabled type="button" className="button" id="set_for_all">
+        <button type="button" className="button" id="set_for_all" onClick={() => { set_for_all_helper(); }}>
           <div className="button-top-blue h4"><b>SET ( SET FOR ALL ) <i className="bi bi-exclamation-triangle-fill text-warnin flash"></i> </b></div>
           <div className="button-bottom-blue"></div>
         </button>

@@ -179,3 +179,96 @@ export const generic_data_default = {
     semester: '',
     teacher_subject_data: []
 };
+export const timetable_default_schedule = {
+    "mon": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    },
+    "tue": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    },
+    "wed": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    },
+    "thu": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    },
+    "fri": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    },
+    "sat": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    },
+    "sun": {
+        "08-09": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "09-10": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "10-11": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "11-12": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "12-01": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "01-02": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "02-03": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "03-04": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "04-05": { "class_id": "", "subjectcode": "", "slotdata": "" },
+        "05-06": { "class_id": "", "subjectcode": "", "slotdata": "" }
+    }
+}
+export const timetable_default = {
+    "course": "",
+    "semester": "",
+    "section": "",
+    "schedule": timetable_default_schedule,
+    "teacher_subject_data": []
+}

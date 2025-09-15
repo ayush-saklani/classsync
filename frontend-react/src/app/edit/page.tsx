@@ -105,7 +105,6 @@ export default function EditPage() {
       </section>
 
       <footer className="bd-footer py-4 py-md-5">
-        <logodiv className="loaderdiv" id="loader"></logodiv>
         <div className="position-fixed bottom-0 end-0 m-3" style={{ maxWidth: '25rem', zIndex: 1000 }} id="message_container"></div>
       </footer>
     </>
