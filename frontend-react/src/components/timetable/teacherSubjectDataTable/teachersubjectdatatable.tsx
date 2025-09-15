@@ -9,7 +9,7 @@ const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ teacherSubjec
   return (
     <table className="table" id="teacher_table">
       <thead>
-        <tr style={{ verticalAlign: 'top' }}>
+        <tr>
           <th className="table-light text border-dark border-3" scope="col">Subject Name </th>
           <th className="table-light text border-dark border-3" scope="col">Teacher Name</th>
           <th className="table-light text border-dark border-3" scope="col">Teacher ID</th>
@@ -23,14 +23,14 @@ const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ teacherSubjec
       <tbody>
         {teacherSubjectData && teacherSubjectData.map((row, i) => (
           <tr key={i}>
-            <td className="border-dark border-3">{row.subjectname}</td>
-            <td className="border-dark border-3">{row.teachername}</td>
-            <td className="border-dark border-3">{row.teacherid}</td>
-            <td className="border-dark border-3 fw-bolder">{row.subjectcode}</td>
-            <td className="border-dark border-3 h5 fw-bold">{row.weekly_hrs}</td>
-            <td className="border-dark border-3">{row.theory_practical.charAt(0).toUpperCase() + row.theory_practical.slice(1)}</td>
-            <td className="border-dark border-3 h4 fw-bold">{(row as any).allocated_hrs || 0}</td>
-            <td className="border-dark border-3">{row.room_type.charAt(0).toUpperCase() + row.room_type.slice(1)}</td>
+            <td className="border-dark text border-3">{row.subjectname}</td>
+            <td className="border-dark text border-3">{row.teachername}</td>
+            <td className="border-dark text border-3">{(row.teacherid != "0" && row.teacherid != "") ? row.teacherid : ''}</td>
+            <td className="border-dark text border-3 fw-bolder">{row.subjectcode}</td>
+            <td className="border-dark text border-3 h5 fw-bold">{row.weekly_hrs}</td>
+            <td className="border-dark text border-3">{row.theory_practical.charAt(0).toUpperCase() + row.theory_practical.slice(1)}</td>
+            <td className="border-dark text border-3 h4 fw-bold">{ }</td>
+            <td className="border-dark text border-3">{row.room_type.charAt(0).toUpperCase() + row.room_type.slice(1)}</td>
           </tr>
         ))}
       </tbody>

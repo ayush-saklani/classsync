@@ -6,6 +6,7 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
   const timeSlots = ['08-09', '09-10', '10-11', '11-12', '12-01', '01-02', '02-03', '03-04', '04-05', '05-06'];
 
   return (
+    // bus-arr bus-dep
     <table className="table text-center align-middle" id="mytable">
       <thead>
         <tr>
@@ -20,7 +21,7 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
           <tr key={day}>
             <th className={`bording table-light text ${day === 'SUN' ? 'bg-warning' : ''}`} scope="row">{day}</th>
             {timeSlots.map((slot, j) => (
-              <td key={slot} className="bording">
+              <td key={slot} className="bording timetable-cell">
                 <select
                   className="form-select form-select text subjectselectbox fw-bold"
                   style={{ whiteSpace: 'pre-wrap' }}
@@ -43,7 +44,7 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
                     <option key={room.roomid} value={room.roomid}>{room.name}</option>
                   ))}
                 </select>
-                <div className="popover-content absolute" style={{ }}>
+                <div className="popover-content">
                   {j > 0 && (
                     <button
                       className="copy-left popover-button btn btn-primary rounded-start-pill p-1 me-0"
@@ -77,7 +78,7 @@ const TimetableTable = ({ timetable, roomList, onCellChange, onCopy, onReset }) 
           </tr>
         ))}
       </tbody>
-    </table>
+    </table >
   );
 };
 

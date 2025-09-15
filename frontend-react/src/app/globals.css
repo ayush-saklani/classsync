@@ -853,3 +853,35 @@ table>tbody>tr{
         text-align: center;        
     }
 }
+
+
+/* hover copy button */
+.bording {
+    position: relative;    
+}            
+.bording .popover-content {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translateX(-50%);
+	visibility: hidden;
+	padding: 0px;
+	color: white;
+	width: max-content;
+	margin-bottom: 5px;
+	z-index: 500;
+}
+.bording:hover .popover-content {
+	animation: showPopover 0s 2s forwards;    
+}
+@keyframes showPopover {
+	to {
+		visibility: visible;
+	}
+}
+.popover-button {
+	box-shadow: 2px 2px 5px 0px rgba(0,0,0,0.75);
+}
+.popover-button:hover {
+	scale: 1.1;
+}

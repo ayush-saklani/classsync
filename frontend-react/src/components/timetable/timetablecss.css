@@ -63,3 +63,20 @@
         height: 100%;
     }    
   }
+
+  .timetable-cell {
+    position: relative;
+  }
+
+  .popover-content {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+  }
+
+  .timetable-cell:hover .popover-content {
+    display: block;
+  }

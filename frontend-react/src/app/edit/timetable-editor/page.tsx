@@ -12,6 +12,9 @@ import { room_schema } from '@/models/room.model';
 import DynamicOptions from '@/components/DynamicOptions';
 import Footer from '@/components/footer';
 
+const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
+const timeSlots = ['08-09', '09-10', '10-11', '11-12', '12-01', '01-02', '02-03', '03-04', '04-05', '05-06'];
+
 const TimetableEditor = () => {
   const [course, setCourse] = useState('');
   const [semester, setSemester] = useState('');
@@ -56,15 +59,17 @@ const TimetableEditor = () => {
     setTimetable(newTimetable);
   };
 
-  const reset_table = () => {
-    const newTimetable = JSON.parse(JSON.stringify(timetable));
-    for (const day in newTimetable.schedule) {
-      for (const slot in newTimetable.schedule[day]) {
-        newTimetable.schedule[day][slot].subjectcode = '';
-        newTimetable.schedule[day][slot].class_id = '0';
+  const reset_table = async () => {
+    if (confirm("Are you sure you want to reset the timetable? This action cannot be undone.")) {
+      const newTimetable = JSON.parse(JSON.stringify(timetable));
+      for (const day of days.map(d => d.toLowerCase())) {
+        for (const slot of timeSlots) {
+          newTimetable.schedule[day][slot].subjectcode = '';
+          newTimetable.schedule[day][slot].class_id = '0';
+        }
       }
+      setTimetable(newTimetable);
     }
-    setTimetable(newTimetable);
   };
 
   const save_timetable_func = async () => {
@@ -247,7 +252,7 @@ const TimetableEditor = () => {
   };
 
 
-  const initializePage = async () => {
+  const fetch_all_data = async () => {
     const timetableData = await fetch_timetable(course, semester, section);
     setTimetable(timetableData);
 
@@ -260,7 +265,7 @@ const TimetableEditor = () => {
   };
 
   useEffect(() => {
-    initializePage();
+    fetch_all_data();
   }, [course, semester, section]);
 
 
@@ -278,7 +283,7 @@ const TimetableEditor = () => {
               <DynamicOptions course={course} setCourse={setCourse} semester={semester} setSemester={setSemester} section={section} setSection={setSection} />
             </div>
             <div className="col-1 mt-3">
-              <button type="button" className="button" onClick={async () => { }}>
+              <button type="button" className="button" onClick={async () => { await reset_table(); }}>
                 <div className="button-top-blue h5 fw-bold"><b>RESET</b></div>
                 <div className="button-bottom-blue"></div>
               </button>
@@ -286,24 +291,20 @@ const TimetableEditor = () => {
           </div>
         </div>
 
-        {/* time table div */}
         <div className="container-fluid mt-3">
           <TimetableTable timetable={timetable} roomList={roomList} onCellChange={handleCellChange} onCopy={handleCopy} onReset={handleReset} />
         </div>
-        {/* time table div end */}
 
         <div className="container text-center">
           <button type="button" className="button" onClick={save_timetable_func}>
-            <div className="button-top-red h5"><b>Save TT JSON on DB</b></div>
+            <div className="button-top-red h5"><b>Save Timetable</b></div>
             <div className="button-bottom-red"></div>
           </button>
         </div>
 
-        {/* teacher detail table div */}
         <div className="container mt-3">
           <TeacherSubjectTable teacherSubjectData={timetable ? timetable.teacher_subject_data : null} />
         </div>
-        {/* teacher detail table div end */}
 
         <div className="container text-center">
           <table className="mt-5">
