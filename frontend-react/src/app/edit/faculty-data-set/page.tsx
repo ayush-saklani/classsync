@@ -10,7 +10,7 @@ export default function FacultyDataSettPage() {
         <div className="container">
           <h1 className="center text fw-bold">Timetable Editing Portal - Set Faculty Data</h1>
           <div className="row mt-3">
-            <DynamicOptions />
+            {/* <DynamicOptions /> */}
             <div className="col-1">
               <button type="button" className="button" id="reset_tt">
                 <div className="button-top-blue h5 fw-bold"><b>RESET <i className="bi bi-exclamation-triangle-fill flash"></i></b></div>
