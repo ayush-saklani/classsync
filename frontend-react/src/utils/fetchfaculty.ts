@@ -108,58 +108,39 @@ export const remove_faculty = async (id: string) => {
         return false;
     }
 };
-export const update_faculty = async (id: string, name: string) => {
-    id = id.trim();
-    name = name.trim();
+export const update_one_faculty = async (faculty: { teacherid: string; name: string; schedule: any }) => {
     const toastId = toast.loading('Updating Faculty...');
-    if (id === "0") {
-        toast.error('ID 0 is reserved for Admin. Please use a different ID.', { id: toastId });
-        return false;
-    }
-    if (id === "" || name === "") {
-        toast.error('Please fill all the fields before saving the data (ID and Name are required)', { id: toastId });
+    if (!faculty || !faculty.teacherid || !faculty.name) {
+        toast.error('Faculty data is incomplete.', { id: toastId });
         return false;
     }
     try {
-        // Remove faculty first
-        const removeResponse = await fetch(`${SERVER_URL}/faculty/remove?teacherid=${id}`, {
-            method: 'DELETE',
+        const response = await fetch(`${SERVER_URL}/faculty/updateOne`, {
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
+            },
+            body: JSON.stringify(faculty)
         });
-        if (!removeResponse.ok) {
-            throw new Error(`Failed to remove faculty. HTTP status: ${removeResponse.status}`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
-        await removeResponse.json();
+        await response.json();
 
-        // Add faculty with new name
-        const addResponse = await fetch(`${SERVER_URL}/faculty/add?teacherid=${id}&name=${encodeURIComponent(name)}`, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
-            }
-        });
-        if (addResponse.status === 403) {
-            throw new Error('Faculty not added. This ID already exists, please use a different ID.');
-        }
-        if (!addResponse.ok) {
-            throw new Error(`Failed to add faculty. HTTP status: ${addResponse.status}`);
-        }
-        await addResponse.json();
-
-        // Optionally update local cache
+        // Optionally update local cache if needed
         const cachedList = localStorage.getItem('facultyList');
         if (cachedList) {
-            let facultyList: faculty_schema[] = JSON.parse(cachedList);
-            facultyList = facultyList.filter(faculty => faculty.teacherid !== id);
-            facultyList.push({ teacherid: id, name });
-            localStorage.setItem('facultyList', JSON.stringify(facultyList));
+            let facultyCache: faculty_schema[] = JSON.parse(cachedList);
+            facultyCache = facultyCache.map(f =>
+                f.teacherid === faculty.teacherid
+                    ? { ...f, name: faculty.name, schedule: faculty.schedule }
+                    : f
+            );
+            localStorage.setItem('facultyList', JSON.stringify(facultyCache));
         }
 
-        toast.success('Faculty data updated successfully', { id: toastId });
+        toast.success('Faculty updated successfully', { id: toastId });
         return true;
     } catch (error: any) {
         toast.error(error.message || 'Failed to update faculty', { id: toastId });
