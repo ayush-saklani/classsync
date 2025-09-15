@@ -9,6 +9,7 @@ import { room_schema } from '@/models/room.model';
 import DynamicOptions from '@/components/DynamicOptions';
 import { fetch_all_rooms } from '@/utils/fetchroom';
 import { fetch_timetable } from '@/utils/fetchtimetable';
+import { options } from '@/utils/options';
 
 const timeSlots = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
 const daysOfWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -84,124 +85,6 @@ export default function StudentPage() {
           setSemester={setSemester}
           setSection={setSection} />
       </div>
-      {0 && (
-        <div className="container-fluid" id="ttdiv">
-          <div className="container-fluid mt-3 scrollablecontainer">
-            <table className="table text-center align-middle" id="mytable">
-              <thead>
-                <tr>
-                  <th className="text table-light border-dark border-3" scope="col"><i className="bi bi-twitter-x"></i></th>
-                  <th className="text table-light border-dark border-3" scope="col">08-09</th>
-                  <th className="text table-light border-dark border-3" scope="col">09-10</th>
-                  <th className="text table-light border-dark border-3" scope="col">10-11</th>
-                  <th className="text table-light border-dark border-3" scope="col">11-12</th>
-                  <th className="text table-light border-dark border-3" scope="col">12-01</th>
-                  <th className="text table-light border-dark border-3" scope="col">01-02</th>
-                  <th className="text table-light border-dark border-3" scope="col">02-03</th>
-                  <th className="text table-light border-dark border-3" scope="col">03-04</th>
-                  <th className="text table-light border-dark border-3" scope="col">04-05</th>
-                  <th className="text table-light border-dark border-3" scope="col">05-06</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">MON</th>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                </tr>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">TUE</th>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                  <td className="text bg-practical border-dark border-3"></td>
-                </tr>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">WED</th>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                </tr>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">THU</th>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                  <td className="text bg-holiday border-dark border-3"></td>
-                </tr>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">FRI</th>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                </tr>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">SAT</th>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                  <td className="text bg-theory border-dark border-3"></td>
-                </tr>
-                <tr>
-                  <th className="table-light border-dark border-3" scope="row">SUN</th>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                  <td className="text bg-empty border-dark border-3"></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-
-
-        </div>
-      )}
 
       {1 && (
         <div className="container-fluid" id="ttdiv">
@@ -211,7 +94,8 @@ export default function StudentPage() {
                 <tr>
                   <th className="text table-light border-dark border-3" scope="col"><i className="bi bi-twitter-x h5" style={{ WebkitTextStroke: '1px' }}></i></th>
                   {timeSlots.map((slot) => (
-                    <th key={slot} className="text table-light border-dark border-3" scope="col">{slot}</th>
+                    <th key={slot} className={`text table-light border-dark border-3 ${options["arr"].includes(slot.split('-')[0]) ? 'bus-arr' : ''}
+                    ${options["dep"].includes(slot.split('-')[1]) ? 'bus-dep' : ''}`} scope="col">{slot}</th>
                   ))}
                 </tr>
               </thead>

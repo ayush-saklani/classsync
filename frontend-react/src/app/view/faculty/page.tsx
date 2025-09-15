@@ -9,6 +9,7 @@ import toast from 'react-hot-toast';
 import { RiResetRightFill } from 'react-icons/ri';
 import { fetch_all_rooms } from '@/utils/fetchroom';
 import { fetch_all_faculty } from '@/utils/fetchfaculty';
+import { options } from '@/utils/options';
 
 const timeSlots = ["08-09", "09-10", "10-11", "11-12", "12-01", "01-02", "02-03", "03-04", "04-05", "05-06"];
 const daysOfWeek = ["MON", "TUE", "WED", "THU", "FRI", "SAT", "SUN"];
@@ -168,7 +169,9 @@ export default function FacultyPage() {
                 <tr>
                   <th className="text table-light border-dark border-3" scope="col"><i className="bi bi-twitter-x h5" style={{ WebkitTextStroke: '1px' }}></i></th>
                   {timeSlots.map((slot) => (
-                    <th key={slot} className="text table-light border-dark border-3" scope="col">{slot}</th>
+                    <th key={slot} className={`text table-light border-dark border-3 ${options["arr"].includes(slot.split('-')[0]) ? 'bus-arr' : ''}
+                      ${options["dep"].includes(slot.split('-')[1]) ? 'bus-dep' : ''}`}
+                      scope="col">{slot}</th>
                   ))}
                 </tr>
               </thead>
