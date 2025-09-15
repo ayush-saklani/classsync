@@ -306,6 +306,22 @@ const updatefaculties = asyncHandler(async (req, res, next) => {
     res.status(200).json(new ApiResponse(200, "faculty updated successfully"));
 });
 
+const updateone = asyncHandler(async (req, res, next) => {
+    const faculty = req.body;
+    await Faculties.findOneAndUpdate(
+        {
+            teacherid: faculty.teacherid,
+        },
+        {
+            $set: {
+                name: faculty.name,
+                schedule: faculty.schedule,
+            },
+        }
+    );
+    res.status(200).json(new ApiResponse(200, "faculty updated successfully"));
+});
+
 const resetFromSection = asyncHandler(async (req, res, next) => {
     const teacherid = req.query.teacherid;
     const section = req.query.section;
@@ -346,6 +362,7 @@ export {
     addfaculty,
     removefaculty,
     updatefaculties,
+    updateone,
     getspecified,
     resetFromSection,
 };
