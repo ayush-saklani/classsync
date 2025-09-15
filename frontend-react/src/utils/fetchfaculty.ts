@@ -148,3 +148,30 @@ export const update_one_faculty = async (faculty: { teacherid: string; name: str
         return false;
     }
 };
+export const save_faculty_list = async (faculty_data: faculty_schema[]) => {
+    const toastId = toast.loading('Updating Faculty List...');
+    try {
+        const response = await fetch(`${SERVER_URL}/faculty/update`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({ facultyList: faculty_data })
+        });
+        if (!response.ok) {
+            throw new Error('Data not saved due to network error');
+        }
+        await response.json();
+
+        // Update local cache
+        localStorage.setItem('facultyList', JSON.stringify(faculty_data));
+
+        toast.success('Faculty Data Reset Complete', { id: toastId });
+        return true;
+    } catch (error: any) {
+        toast.error('Faculty Data Reset Incomplete. Server Error', { id: toastId });
+        console.error('Faculty Data Not Updated [SERVER ERROR]:', error);
+        return false;
+    }
+};
