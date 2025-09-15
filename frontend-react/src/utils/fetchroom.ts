@@ -64,3 +64,65 @@ export const save_all_rooms = async (room_list: room_schema[]) => {
         return;
     }
 };
+export const delete_room = async (roomId: string) => {
+    const toastId = toast.loading('Deleting Room...');
+    console.log("Deleting Room...");
+    try {
+        const response = await fetch(`${SERVER_URL}/room/remove?roomid=${roomId}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            credentials: 'include'
+        });
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        toast.success('Room Deleted', { id: toastId });
+        // Optionally update local cache
+        const cachedList = localStorage.getItem('room_list');
+        if (cachedList) {
+            const updatedList = JSON.parse(cachedList).filter((room: room_schema) => room.roomid !== roomId);
+            localStorage.setItem('room_list', JSON.stringify(updatedList));
+        }
+        return true;
+    } catch (error) {
+        console.error(':::: Room Data not deleted (SERVER ERROR) :::: ', error);
+        toast.error('Failed to Delete Room', { id: toastId });
+        return false;
+    }
+};
+export const save_one_room = async (roomdata: room_schema) => {
+    const toastId = toast.loading('Saving Room List...');
+    console.log("Saving Room List...");
+    try {
+        const response = await fetch(`${SERVER_URL}/room/save`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify({
+                "roomid": roomdata.roomid,
+                "name": roomdata.name,
+                "type": roomdata.type,
+                "capacity": roomdata.capacity,
+                "schedule": roomdata.schedule,
+                "allowed_course": roomdata.allowed_course
+            }),
+            credentials: 'include'
+        });
+        console.log(response);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        console.log("saved room list");
+        toast.success('Room List Saved', { id: toastId });
+        return true;
+    } catch (error) {
+        console.error(':::: Room Data not available (SERVER ERROR) :::: ', error);
+        toast.error('Failed to Save Room List', { id: toastId });
+        return false;
+    }
+};
