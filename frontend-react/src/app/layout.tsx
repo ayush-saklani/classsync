@@ -35,7 +35,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <link rel="stylesheet" href="/css/style.css" />
         {/* <link rel="stylesheet" href="/css/loader.css" /> */}
         {/* <link rel="stylesheet" href="/css/responsive_block_view.css" /> */}
-        {/* <link rel="icon" href="/image/logo.png" /> */}
+        <link rel="icon" href="/image/logo.png" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Toaster
