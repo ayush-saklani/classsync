@@ -12,6 +12,8 @@ import { room_schema } from '@/models/room.model';
 import DynamicOptions from '@/components/DynamicOptions';
 import Footer from '@/components/footer';
 import { toast } from 'react-hot-toast';
+import { RiResetRightFill } from 'react-icons/ri';
+import { PiCaretRightDuotone } from 'react-icons/pi';
 
 const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 const timeSlots = ['08-09', '09-10', '10-11', '11-12', '12-01', '01-02', '02-03', '03-04', '04-05', '05-06'];
@@ -390,11 +392,6 @@ const TimetableEditor = () => {
     setRoomList(roomData);
   };
 
-  useEffect(() => {
-    fetch_all_data();
-  }, [course, semester, section]);
-
-
   return (
     <>
       <title>Class-Sync | Editing Portal</title>
@@ -412,8 +409,22 @@ const TimetableEditor = () => {
         <div className="container">
           <h1 className="center text fw-bold">Timetable Editing Portal - Set Faculty Data</h1>
           <div className="row mt-3">
-            <div className="col-11">
+            <div className="md-col-9 col-10">
               <DynamicOptions course={course} setCourse={setCourse} semester={semester} setSemester={setSemester} section={section} setSection={setSection} />
+            </div>
+            <div className="md-col-2 col-1 my-3 px-0">
+              <button
+                type="button"
+                className="text d-flex align-items-center justify-content-center py-2 px-3 gap-2 h-full w-full"
+                title="Reset selection"
+                onClick={() => fetch_all_data()}
+                style={{
+                  borderRadius: '8px',
+                  border: '1.5px solid #ccc',
+                }}
+              >
+                <span className='font-bold text-xl'>Fetch</span>
+              </button>
             </div>
             <div className="col-1 mt-3">
               <button type="button" className="button" onClick={async () => { await reset_table(); }}>
