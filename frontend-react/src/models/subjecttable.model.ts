@@ -6,6 +6,7 @@ export interface Subject {
     teachername: string;
     subjectname: string;
     theory_practical: string;
+    room_type: String,
 }
 
 // Subject Table Type (Defines the structure of subject allocation for a course & semester)

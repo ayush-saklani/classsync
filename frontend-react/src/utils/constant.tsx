@@ -1,6 +1,6 @@
 export const localhost = "https://class-sync-azure.azurewebsites.net";
 export const room_type_options = ["class", "hall", "computerlab", "englishlab", "electroniclab", "mechanicallab", "civillab", "drawinglab", "physicslab", "chemistrylab", "ladieswashroom", "gentswashroom", "office", "staffroom", "other"];
-
+export const subject_type_options = ["THEORY", "PRACTICAL"];
 // const localhost = "http://localhost:3000";
 export const room_default_schedule = {
     "mon": {
@@ -174,3 +174,8 @@ export const faculty_default_schedule = {
         "05-06": { course: "", semester: "", section: [], roomid: [], subjectcode: "" },
     },
 }
+export const generic_data_default = {
+    course: '',
+    semester: '',
+    teacher_subject_data: []
+};

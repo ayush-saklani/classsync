@@ -6,6 +6,7 @@ import { options } from '@/utils/options';
 // const [course, setCourse] = useState('');
 // const [semester, setSemester] = useState('');
 // const [section, setSection] = useState('');
+{/* <DynamicOptions course={course} setCourse={setCourse} semester={semester} setSemester={setSemester} section={section} setSection={setSection} /> */ }
 
 export default function DynamicOptions({ course, semester, section, setCourse, setSemester, setSection, onlyone = 3 }: {
   course: string;

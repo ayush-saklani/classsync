@@ -4,7 +4,6 @@ import React, { useState, useEffect } from 'react';
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { Schedule, Day } from '@/models/timetable.model';
-import toast from 'react-hot-toast';
 import { timetable_schema, Slot } from '@/models/timetable.model';
 import { room_schema } from '@/models/room.model';
 import DynamicOptions from '@/components/DynamicOptions';

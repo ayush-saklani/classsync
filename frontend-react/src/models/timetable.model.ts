@@ -6,6 +6,7 @@ export interface Subject {
     teachername: string;
     subjectname: string;
     theory_practical: string;
+    room_type: String,
 }
 
 // Slot Type
