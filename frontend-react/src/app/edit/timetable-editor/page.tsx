@@ -2,9 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import TeacherSubjectTable from '@/components/timetable/teacherSubjectDataTable/teachersubjectdatatable';
 import TimetableTable from '@/components/timetable/timetableTable/timetabletable';
-import { fetch_timetable, save_timetable } from '@/utils/fetchtimetable';
-import { fetch_all_faculty, save_faculty_list } from '@/utils/fetchfaculty';
-import { fetch_all_rooms, save_all_rooms } from '@/utils/fetchroom';
+import { fetch_timetable, save_timetable_editor_automation } from '@/utils/fetchtimetable';
+import { fetch_all_faculty } from '@/utils/fetchfaculty';
+import { fetch_all_rooms } from '@/utils/fetchroom';
 import Header from '@/components/header';
 import { timetable_schema } from '@/models/timetable.model';
 import { faculty_schema } from '@/models/faculty.model';
@@ -12,8 +12,6 @@ import { room_schema } from '@/models/room.model';
 import DynamicOptions from '@/components/DynamicOptions';
 import Footer from '@/components/footer';
 import { toast } from 'react-hot-toast';
-import { RiResetRightFill } from 'react-icons/ri';
-import { PiCaretRightDuotone } from 'react-icons/pi';
 
 const days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN'];
 const timeSlots = ['08-09', '09-10', '10-11', '11-12', '12-01', '01-02', '02-03', '03-04', '04-05', '05-06'];
@@ -78,10 +76,6 @@ const TimetableEditor = () => {
       }
       setTimetable(newTimetable);
     }
-  };
-
-  const save_timetable_func = async () => {
-    await save_timetable(timetable!);
   };
 
   const updateCounter = () => {
@@ -265,119 +259,29 @@ const TimetableEditor = () => {
     }
     return isValid;
   };
-  const fixtime_firstphase = () => {
-    const newTimetable = JSON.parse(JSON.stringify(timetable));
-    const newRoomList = JSON.parse(JSON.stringify(roomList));
-    const newFacultyData = JSON.parse(JSON.stringify(facultyData));
 
-    for (const day in newTimetable.schedule) {
-      for (const slot in newTimetable.schedule[day]) {
-        const cell = newTimetable.schedule[day][slot];
-        const subjectCode = cell.subjectcode;
-        const roomId = cell.class_id;
-
-        if (roomId !== '0') {
-          const room = newRoomList.find((r: any) => r.roomid === roomId);
-          if (room) {
-            const roomSchedule = room.schedule[day][slot];
-            if (roomSchedule.section.length > 0) {
-              if (roomSchedule.section.length === 1) {
-                roomSchedule.course = "";
-                roomSchedule.semester = "";
-                roomSchedule.subjectcode = "";
-                roomSchedule.teacherid = "";
-                roomSchedule.section = [];
-              } else if (roomSchedule.section.length > 1) {
-                roomSchedule.section = roomSchedule.section.filter((section: any) => section !== timetable!.section);
-              }
-            }
-          }
-        }
-
-        if (subjectCode !== '') {
-          const teacherId = newTimetable.teacher_subject_data.find((t: any) => t.subjectcode === subjectCode)?.teacherid;
-          if (teacherId) {
-            const faculty = newFacultyData.find((f: any) => f.teacherid === teacherId);
-            if (faculty) {
-              const teacherSchedule = faculty.schedule[day][slot];
-              if (teacherSchedule.section.length > 0) {
-                if (teacherSchedule.section.length === 1) {
-                  teacherSchedule.section = [];
-                  teacherSchedule.subjectcode = "";
-                  teacherSchedule.course = "";
-                  teacherSchedule.semester = "";
-                  teacherSchedule.roomid = [];
-                } else if (teacherSchedule.section.length > 1) {
-                  teacherSchedule.section = teacherSchedule.section.filter((section: any) => section !== timetable!.section);
-                }
-              }
-            }
-          }
-        }
+  const save_timetable_func_all = async () => {
+    if (1) { // validateTeacherSubject()
+      const res = await save_timetable_editor_automation(timetable!);
+      console.log(res);
+      if (res) {
+        toast.success("Timetable saved successfully!");
+        let timetable_parsed = JSON.parse(JSON.stringify(timetable));
+        timetable_parsed.schedule = res.schedule;
+        timetable_parsed.teacher_subject_data = res.teacher_subject_data;
+        setTimetable(timetable_parsed);
+        setTimetable2(timetable_parsed);
+        setFacultyData(res.updatedFaculty);
+        setRoomList(res.updatedRooms);
+        localStorage.setItem('facultyList', JSON.stringify(res.updatedFaculty));
+        localStorage.setItem('room_list', JSON.stringify(res.updatedRooms));
+        localStorage.setItem('timetableData', JSON.stringify(timetable_parsed));
+        localStorage.setItem('course', timetable_parsed.course);
+        localStorage.setItem('semester', timetable_parsed.semester);
+        localStorage.setItem('section', timetable_parsed.section);
       }
     }
-    setTimetable(newTimetable);
-    setRoomList(newRoomList);
-    setFacultyData(newFacultyData);
-  };
-
-  const fixtime_secondphase = () => {
-    const newTimetable = JSON.parse(JSON.stringify(timetable));
-    const newRoomList = JSON.parse(JSON.stringify(roomList));
-    const newFacultyData = JSON.parse(JSON.stringify(facultyData));
-
-    for (const day in newTimetable.schedule) {
-      for (const slot in newTimetable.schedule[day]) {
-        const cell = newTimetable.schedule[day][slot];
-        const subjectCode = cell.subjectcode;
-        const roomId = cell.class_id;
-
-        if (roomId !== '0') {
-          const room = newRoomList.find((r: any) => r.roomid === roomId);
-          if (room) {
-            const roomSchedule = room.schedule[day][slot];
-            if (roomSchedule.section.length === 0) {
-              roomSchedule.teacherid = newTimetable.teacher_subject_data.find((x: any) => x.subjectcode === subjectCode).teacherid;
-              roomSchedule.subjectcode = subjectCode;
-              roomSchedule.section.push(newTimetable.section);
-              roomSchedule.semester = newTimetable.semester;
-              roomSchedule.course = newTimetable.course;
-            } else if (roomSchedule.section.length > 0) {
-              roomSchedule.section.push(newTimetable.section);
-            }
-          }
-        }
-
-        if (subjectCode !== '') {
-          const teacherId = newTimetable.teacher_subject_data.find((t: any) => t.subjectcode === subjectCode)?.teacherid;
-          if (teacherId) {
-            const faculty = newFacultyData.find((f: any) => f.teacherid === teacherId);
-            if (faculty) {
-              const teacherSchedule = faculty.schedule[day][slot];
-              if (teacherSchedule.section.length > 0) {
-                teacherSchedule.section.push(newTimetable.section);
-              } else if (teacherSchedule.section.length === 0) {
-                teacherSchedule.section = [newTimetable.section];
-                teacherSchedule.subjectcode = subjectCode;
-                teacherSchedule.course = newTimetable.course;
-                teacherSchedule.semester = newTimetable.semester;
-                teacherSchedule.roomid = [roomId];
-              }
-            }
-          }
-        }
-      }
-    }
-    setTimetable(newTimetable);
-    setRoomList(newRoomList);
-    setFacultyData(newFacultyData);
-  };
-  //  await save_timetable_func = () => {  
-  // 	await fixtime_firstphase();
-  // 	timetable = jsonData;
-  // 	await fixtime_secondphase();
-  // 	await save_room_list();
-  // 	await save_faculty_list();
+  }
 
   const fetch_all_data = async () => {
     const timetableData = await fetch_timetable(course, semester, section);
@@ -391,6 +295,9 @@ const TimetableEditor = () => {
     roomData = roomData.filter((room: room_schema) => room.allowed_course.includes(course));
     setRoomList(roomData);
   };
+  useEffect(() => {
+    fetch_all_data();
+  }, [section, semester, course]);
 
   return (
     <>
@@ -440,7 +347,7 @@ const TimetableEditor = () => {
         </div>
 
         <div className="container text-center">
-          <button type="button" className="button" onClick={save_timetable_func}>
+          <button type="button" className="button" onClick={save_timetable_func_all}>
             <div className="button-top-red h5"><b>Save Timetable</b></div>
             <div className="button-bottom-red"></div>
           </button>

@@ -112,3 +112,40 @@ export const remove_teacher_from_section = async (teacherid: string, course: str
         return null;
     }
 };
+export const save_timetable_editor_automation = async (timetable: timetable_schema) => {
+    const toastId = toast.loading('Saving Timetable...');
+    try {
+        const jsonData = {
+            "course": timetable.course,
+            "semester": timetable.semester,
+            "section": timetable.section,
+            "schedule": timetable.schedule ? timetable.schedule : timetable_default_schedule,
+            "teacher_subject_data": timetable.teacher_subject_data ? timetable.teacher_subject_data : [],
+        };
+
+        const response = await fetch(`${SERVER_URL}/table/save-timetable-editor-automation`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem('accessToken')}`
+            },
+            body: JSON.stringify(jsonData),
+            credentials: 'include'
+        });
+        if(!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const result = await response.json();
+        
+        if (response.ok) {
+            toast.success('Timetable Saved Successfully', { id: toastId });
+            return result.data;
+        } else {
+            throw new Error('Failed to save timetable');
+        }
+    } catch (error) {
+        toast.error('Failed to Save Timetable', { id: toastId });
+        console.error('Error saving timetable:', error);
+        return null;
+    }
+};
