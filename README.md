@@ -51,7 +51,7 @@ _( currently in finalization phase )_**
 - [x] Basic API Design and Implementation.
 - [x] UI Design and improvements.
 
-## Version 1.5 ✅
+## Version 1.2 ✅
 
 - [x] reset button.
 - [x] room validation improvement.
@@ -63,7 +63,7 @@ _( currently in finalization phase )_**
 - [x] Deployment of code **_[backend ( 50% ) + frontend]._**
 - [x] UI improvements.
 
-## Version 1.8 ✅
+## Version 1.3 ✅
 
 - [x] Feature to check the number of lectures allocated out of total required lectures in a week.
 - [x] Login for admin
@@ -78,7 +78,7 @@ _( currently in finalization phase )_**
 - [x] Code Migration from pure HTML CSS JS to NextJS.
 - [x] UI/UX improvements.
 - [x] Developing Backend API's to support this migration.
-## Version 3.5  _( under development )_
+## Version 3.1  _( under development )_
 - [ ] Faculty exchange of teaching slot permanently and temporarily.
 - [ ] Teacher absent status introduced.
 - [ ] College events handling and holiday flashes [ save event get 7 event and get all events delete and update events all required accordingly ]
