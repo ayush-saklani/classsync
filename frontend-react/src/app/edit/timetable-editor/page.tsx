@@ -26,7 +26,7 @@ const TimetableEditor = () => {
   const [timetable2, setTimetable2] = useState<timetable_schema>();
 
   useEffect(() => {
-    toast.success("something");
+    validateTeacherSubject(false);
   }, [timetable]);
 
   const handleCellChange = (day: string, slot: string, type: string, value: string) => {
@@ -100,168 +100,93 @@ const TimetableEditor = () => {
     setTimetable(newTimetable as timetable_schema);
   };
 
-  const validateTeacherSubject2 = () => {//ai wala hai ye  not working properly
-    // updateCounter();
+  const validateTeacherSubject = (flag = false): boolean => {
     let isValid = true;
-
-    if (!timetable) return true;
-    for (const day of days) {
+    if (!timetable || !roomList || !facultyData) return false;
+    // Loop over days and slots
+    for (const day of days.map(d => d.toLowerCase())) {
       for (const slot of timeSlots) {
-        const dayKey = day.toLowerCase();
-        const slotKey = slot;
-        const cell = timetable.schedule[dayKey][slotKey];
-        const subjectCode = cell.subjectcode;
-        const roomId = cell.class_id;
-
-        if (roomId === '0' || subjectCode === '') {
-          continue;
+        const cell = timetable.schedule[day][slot];
+        const teacher = timetable.teacher_subject_data.find(t => t.subjectcode === cell.subjectcode);
+        // toast.success(cell.subjectcode);
+        if (!cell || cell.roomid === "0" || cell.subjectcode === "") {
+          continue; // empty slot
         }
 
-        const room = roomList!.find(r => r.roomid === roomId);
-        if (room) {
-          const roomSchedule = room.schedule[dayKey][slotKey];
-          const teacherId = timetable!.teacher_subject_data.find(t => t.subjectcode === subjectCode)?.teacherid;
+        const room = roomList.find(r => r.roomid === cell.class_id);
+        if (!room) continue;
+        // console.log(room);
 
-          if (!teacherId || teacherId === '0') {
-            continue;
+        const roomSlot = room.schedule[day][slot];
+
+        // --- Room Conflict Checks ---
+        if (roomSlot.section.length > 0) {
+          // Subject conflict
+          if (roomSlot.section.includes(section)) continue;
+          // console.log(roomSlot);
+          if (roomSlot.subjectcode !== cell.subjectcode) {
+            toast.error(
+              `Room Conflict: ${room.name} already has ${roomSlot.subjectcode} on ${day} ${slot}`
+            );
+            isValid = false;
           }
 
-          if (roomSchedule.section.length > 0) {
-            if (roomSchedule.subjectcode !== subjectCode) {
-              toast.error(`Type 1 - Room conflict <br>Diffrent Subject Conflicted at ${day.toUpperCase()} ${slot} slot. Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`);
-              isValid = false;
-            }
-            if (roomSchedule.teacherid !== teacherId) {
-              toast.error(`Type 2 - Room conflict <br>Teacher Conflicted at ${day.toUpperCase()} ${slot} slot [ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. <br>[ Choose another class if the teacher is diffrent ]`);
-              isValid = false;
-            }
+          // Teacher conflict
+          if (roomSlot.teacherid !== teacher?.teacherid) {
+            toast.error(
+              `Room Conflict: ${room.name} has ${roomSlot.teacherid} but you assigned ${teacher?.teacherid} on ${day} ${slot}`
+            );
+            isValid = false;
           }
 
-          const faculty = facultyData!.find(f => f.teacherid === teacherId);
-          if (faculty) {
-            const teacherSchedule = faculty.schedule[dayKey][slotKey];
-            if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
-              toast.error(`Type 11 tester- Teacher Conflict at ${day.toUpperCase()} ${slot} slot. Another class is allotted ${teacherSchedule.subjectcode} as subject in this slot already.`);
-              isValid = false;
-            }
+          // Merge case
+          if (
+            roomSlot.subjectcode === cell.subjectcode &&
+            roomSlot.teacherid === teacher?.teacherid
+            && flag === true
+          ) {
+            toast(
+              `Merge Warning: ${day.toUpperCase()} ${slot} in ${room.name}`,
+              {
+                icon: '⚠️',
+                style: {
+                  // borderRadius: '8px',
+                  background: '#fffbe6',
+                  // color: '#ad8b00',
+                  border: '1.5px solid #ffe58f',
+                  // fontWeight: 'bold'
+                }
+              }
+            );
           }
         }
-      }
-    }
-    if (isValid) {
-      toast.success("No conflicts found! Timetable is valid.");
-    } else {
-      toast.error("Conflicts found! Please review the timetable.");
-    }
-    return isValid;
-  };
 
-  const validateTeacherSubject = () => {					//  this function validates the teacher and subject data in the table and returns true if the data is valid else false
-    // updateCounter();
-    let mytable = timetable2;
-    if (!mytable || !roomList || !facultyData) return false;
+        // --- Teacher Conflict Checks (against timetable itself) ---
+        for (const teacher of Object.values(timetable.teacher_subject_data)) {
+          if (teacher.teacherid === cell.teacherid) {
+            const teachSlot = teacher.schedule[day][slot];
 
-    let isValid = true;
-    for (const day of days) {
-      let currday = day.toLowerCase();
-      for (const slot of timeSlots) {
-        let currslot = slot;
-        let curr_slot_room = mytable.schedule[currday][currslot].class_id;
-        let subjectCode = mytable.schedule[currday][currslot].subjectcode;
-        // Skip room with ID '0'
-        if (curr_slot_room === '0' || subjectCode === '') {
-          continue;
-        }
-
-        // Validate if the room exists in roomList
-        for (let elementr in roomList) {
-          if (roomList[elementr].roomid == curr_slot_room && curr_slot_room != '0') {
-            let temproom = roomList[elementr].schedule[currday][currslot];
-            // console.log("=====================================\n", curr_slot_room, subjectCode);
-
-
-            let roomSchedule = roomList[elementr].schedule[currday][currslot];
-            let teacherId = mytable.teacher_subject_data.find(x => x.subjectcode === subjectCode).teacherid;
-
-            // Skip teacher with ID '0'
-            if (!teacherId || teacherId === '0') {
-              continue;
-            }
-
-            // Check if room has any assigned section
-            if (roomSchedule.section.length > 0) {
-              // Subject mismatch check
-              if (roomSchedule.subjectcode !== subjectCode) {
-                setTimeout(() => {
-                  toast.error(`Type 1 - Room conflict <br>Diffrent Subject Conflicted at ${currday.toUpperCase()} ${currslot} slot Another class is allotted ${roomSchedule.subjectcode} as subject in this slot already.<br>[ Choose another class if the subject is diffrent ]`);
-                }, 1000);
-                isValid = false;
-              }
-              // Teacher mismatch check
-              if (roomSchedule.teacherid !== teacherId) {
-                setTimeout(() => {
-                  toast.error(`Type 2 - Room conflict <br>Teacher Conflicted at ${currday.toUpperCase()} ${currslot} slot [ ${roomSchedule.teacherid} ] is teaching ${roomSchedule.subjectcode} in this slot. <br>[ Choose another class if the teacher is diffrent ]`);
-                }, 2000);
-                isValid = false;
-              }
-            }
-            // Validate the teacher's schedule
-            for (let element in facultyData) {
-              if (facultyData[element].teacherid === teacherId) { // the teacher who is teaching the subject
-                // console.log("========"+facultyData[element].teacherid, teacherId);
-                let teacherSchedule = facultyData[element].schedule[currday][currslot];
-
-                // If the teacher is assigned in the same slot
-                if (teacherSchedule.subjectcode === subjectCode && teacherSchedule.section.length > 0) { // review this condition
-                  if (teacherSchedule.section.includes(section) && teacherSchedule.section.length > 1) {
-                    setTimeout(() => {
-                      // toast.error(`${teacherSchedule.section.includes(section)} && ${teacherSchedule.section} ${currday} ${currs")
-                      toast.error(`Merge at ${currday.toUpperCase()} ${currslot} `);
-                    }, 500);
-                  }
-                  if (!teacherSchedule.section.includes(section) && teacherSchedule.section.length == 1) {
-                    setTimeout(() => {
-                      toast.error(`Merge at ${currday.toUpperCase()} ${currslot} `);
-                    }, 500);
-                  }
-                  // isValid = false;
-                }
-
-                // If the teacher is teaching a different subject in the same slot
-                if (teacherSchedule.subjectcode && teacherSchedule.subjectcode !== subjectCode) {
-                  toast.error(`Type 11 tester- Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot Another class is allotted ${teacherSchedule.subjectcode} as subject in this slot already.`);
-                  isValid = false;
-                }
-                // if (teacherSchedule.section.length > 0) {
-                // 	if (teacherSchedule.section.includes(section)) {
-                // 		toast.error(`Type 22 tester - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot ${facultyData[element].name} [ ${facultyData[element].teacherid} ] is teaching ${teacherSchedule.subjectcode} in this slot. [ change your teacher or choose another class ]`);
-                // 		isValid = false;
-                // 	}
-                // }
-                let teachercurrroomnow = "[NA :: developing rn]";
-                // let teachercurrroomnow = roomList.find(x => x.roomid === facultyData[element].schedule[currday][currslot].roomid[0]).name || "No Room Assigned";
-                console.log(teachercurrroomnow);
-                if (teacherSchedule.subjectcode !== "" && teacherSchedule.subjectcode !== subjectCode) {
-                  toast.error(`Type 1 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot ${facultyData[element].name} [ ${facultyData[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teachercurrroomnow} at the current time.`);
-                  isValid = false;
-                }
-                if (roomList[elementr].roomid.length != 0 && teacherSchedule.roomid[0] && teacherSchedule.roomid[0] !== curr_slot_room) {
-                  if (!teacherSchedule.section.includes(section)) {
-                    toast.error(`Type 2 - Teacher Conflict at ${currday.toUpperCase()} ${currslot} slot ${facultyData[element].name} [ ${facultyData[element].teacherid} ] <br><i><b>( current teacher )</b></i> is teaching ${teacherSchedule.subjectcode} at ${teachercurrroomnow} at the current time.`); isValid = false;
-                  }
-                }
-              }
+            if (
+              teachSlot.subjectcode &&
+              !(teachSlot.subjectcode === cell.subjectcode && teachSlot.roomid === cell.roomid)
+            ) {
+              toast.error(
+                `Teacher Conflict: ${teacher.teacherid} is already teaching ${teachSlot.subjectcode} at ${day} ${slot}`
+              );
+              isValid = false;
             }
           }
         }
 
       }
     }
+    toast.success(isValid ? "No conflicts found!" : "Conflicts found!");
+
     return isValid;
-  };
+  }
 
   const save_timetable_func_all = async () => {
-    if (1) { // validateTeacherSubject()
+    if (validateTeacherSubject(true)) {
       const res = await save_timetable_editor_automation(timetable!);
       console.log(res);
       if (res) {
@@ -350,6 +275,10 @@ const TimetableEditor = () => {
           <button type="button" className="button" onClick={save_timetable_func_all}>
             <div className="button-top-red h5"><b>Save Timetable</b></div>
             <div className="button-bottom-red"></div>
+          </button>
+          <button type="button" className="button" onClick={() => validateTeacherSubject(true)}>
+            <div className="button-top-blue h5"><b>Validate Timetable</b></div>
+            <div className="button-bottom-blue"></div>
           </button>
         </div>
 

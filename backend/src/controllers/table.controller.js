@@ -101,7 +101,7 @@ const save_timetable_editor_automation = asyncHandler(async (req, res, next) => 
                     if (room) {
                         const roomSchedule = room.schedule[day][slot];
                         if (roomSchedule.section.length > 0) {
-                            if (roomSchedule.section.length === 1) {
+                            if (roomSchedule.section.length === 1 && roomSchedule.section.includes(section)) {
                                 roomSchedule.course = "";
                                 roomSchedule.semester = "";
                                 roomSchedule.subjectcode = "";
@@ -122,7 +122,7 @@ const save_timetable_editor_automation = asyncHandler(async (req, res, next) => 
                         if (faculty) {
                             const teacherSchedule = faculty.schedule[day][slot];
                             if (teacherSchedule.section.length > 0) {
-                                if (teacherSchedule.section.length === 1) {
+                                if (teacherSchedule.section.length === 1 && teacherSchedule.section.includes(section)) {
                                     teacherSchedule.section = [];
                                     teacherSchedule.subjectcode = "";
                                     teacherSchedule.course = "";
