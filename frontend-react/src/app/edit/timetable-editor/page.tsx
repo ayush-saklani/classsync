@@ -78,35 +78,14 @@ const TimetableEditor = () => {
     }
   };
 
-  const updateCounter = () => {
-    if (!timetable) return;
-
-    const teacherSubjectData = timetable.teacher_subject_data;
-    const schedule = timetable.schedule;
-
-    const newTeacherSubjectData = teacherSubjectData.map(subject => {
-      let count = 0;
-      for (const day in schedule) {
-        for (const slot in timeSlots) {
-          if (schedule[day][slot].subjectcode === subject.subjectcode) {
-            count++;
-          }
-        }
-      }
-      return { ...subject, allocated_hrs: count };
-    });
-
-    // const newTimetable = { ...timetable, teacher_subject_data: newTeacherSubjectData };
-    // setTimetable(newTimetable as timetable_schema);
-  };
-
   const validateTeacherSubject = (flag = false): boolean => {
     let isValid = true;
     if (!timetable || !roomList || !facultyData) return false;
     // Loop over days and slots
     for (const day of days.map(d => d.toLowerCase())) {
       for (const slot of timeSlots) {
-        const cell = timetable.schedule[day][slot];
+        // as any to avoid typescript errors
+        const cell = (timetable as any).schedule[day][slot];
         const teacher = timetable.teacher_subject_data.find(t => t.subjectcode === cell.subjectcode);
         // toast.success(cell.subjectcode);
         if (!cell || cell.roomid === "0" || cell.subjectcode === "") {
@@ -117,7 +96,8 @@ const TimetableEditor = () => {
         if (!room) continue;
         // console.log(room);
 
-        const roomSlot = room.schedule[day][slot];
+        // as any to avoid typescript errors
+        const roomSlot = (room as any).schedule[day][slot];
 
         // --- Room Conflict Checks ---
         if (roomSlot.section.length > 0) {
@@ -164,7 +144,8 @@ const TimetableEditor = () => {
         // --- Teacher Conflict Checks (against timetable itself) ---
         for (const teacher of Object.values(timetable.teacher_subject_data)) {
           if (teacher.teacherid === cell.teacherid) {
-            const teachSlot = teacher.schedule[day][slot];
+            // as any to avoid typescript errors
+            const teachSlot = (teacher as any).schedule[day][slot];
 
             if (
               teachSlot.subjectcode &&

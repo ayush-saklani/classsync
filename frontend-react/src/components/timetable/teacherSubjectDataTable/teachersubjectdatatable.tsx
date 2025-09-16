@@ -9,12 +9,12 @@ const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ timetable }) 
   const getAllocatedHours = (subjectcode: string) => {
     if (!timetable) return 0;
 
+    const schedule = timetable.schedule as any;
     let count = 0;
-    for (const day of Object.keys(timetable.schedule)) {
-      for (const slot of Object.keys(timetable.schedule[day])) {
-        const cell = timetable.schedule[day][slot];
-        if (!cell || !cell.subjectcode) continue;
-        if (cell.subjectcode === subjectcode) {
+    for (const day of Object.keys(schedule)) {
+      for (const slot of Object.keys(schedule[day])) {
+        const cell = schedule[day][slot];
+        if (cell?.subjectcode === subjectcode) {
           count++;
         }
       }
