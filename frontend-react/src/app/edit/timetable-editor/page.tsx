@@ -87,7 +87,7 @@ const TimetableEditor = () => {
     const newTeacherSubjectData = teacherSubjectData.map(subject => {
       let count = 0;
       for (const day in schedule) {
-        for (const slot in schedule[day]) {
+        for (const slot in timeSlots) {
           if (schedule[day][slot].subjectcode === subject.subjectcode) {
             count++;
           }
@@ -96,8 +96,8 @@ const TimetableEditor = () => {
       return { ...subject, allocated_hrs: count };
     });
 
-    const newTimetable = { ...timetable, teacher_subject_data: newTeacherSubjectData };
-    setTimetable(newTimetable as timetable_schema);
+    // const newTimetable = { ...timetable, teacher_subject_data: newTeacherSubjectData };
+    // setTimetable(newTimetable as timetable_schema);
   };
 
   const validateTeacherSubject = (flag = false): boolean => {
@@ -283,7 +283,7 @@ const TimetableEditor = () => {
         </div>
 
         <div className="container mt-3">
-          <TeacherSubjectTable teacherSubjectData={timetable ? timetable.teacher_subject_data : null} />
+          <TeacherSubjectTable timetable={timetable} />
         </div>
 
         <div className="container text-center">

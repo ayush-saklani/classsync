@@ -2,11 +2,26 @@ import React from 'react';
 import { timetable_schema, Subject } from '@/models/timetable.model';
 
 interface TeacherSubjectTableProps {
-  teacherSubjectData: Subject[] | null;
+  timetable: timetable_schema | null;
 }
 
-const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ teacherSubjectData }) => {
-  
+const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ timetable }) => {
+  const getAllocatedHours = (subjectcode: string) => {
+    if (!timetable) return 0;
+
+    let count = 0;
+    for (const day of Object.keys(timetable.schedule)) {
+      for (const slot of Object.keys(timetable.schedule[day])) {
+        const cell = timetable.schedule[day][slot];
+        if (!cell || !cell.subjectcode) continue;
+        if (cell.subjectcode === subjectcode) {
+          count++;
+        }
+      }
+    }
+    return count;
+  };
+
   return (
     <table className="table" id="teacher_table">
       <thead>
@@ -22,7 +37,7 @@ const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ teacherSubjec
         </tr>
       </thead>
       <tbody>
-        {teacherSubjectData && teacherSubjectData.map((row, i) => (
+        {timetable && timetable.teacher_subject_data && timetable.teacher_subject_data.map((row, i) => (
           <tr key={i}>
             <td className="border-dark text border-3">{row.subjectname}</td>
             <td className="border-dark text border-3">{row.teachername}</td>
@@ -30,7 +45,15 @@ const TeacherSubjectTable: React.FC<TeacherSubjectTableProps> = ({ teacherSubjec
             <td className="border-dark text border-3 fw-bolder">{row.subjectcode}</td>
             <td className="border-dark text border-3 h5 fw-bold">{row.weekly_hrs}</td>
             <td className="border-dark text border-3">{row.theory_practical.charAt(0).toUpperCase() + row.theory_practical.slice(1)}</td>
-            <td className="border-dark text border-3 h4 fw-bold">{ }</td>
+            <td className="border-dark text border-3 h5 fw-bold">
+              {(() => {
+                const allocated = getAllocatedHours(row.subjectcode);
+                const weekly = parseInt(row.weekly_hrs);
+                const color = allocated > weekly ? 'red' : allocated === weekly ? 'green' : 'orange';
+                return (
+                  <span style={{ color }}>{allocated}</span>
+                );
+              })()}</td>
             <td className="border-dark text border-3">{row.room_type.charAt(0).toUpperCase() + row.room_type.slice(1)}</td>
           </tr>
         ))}
